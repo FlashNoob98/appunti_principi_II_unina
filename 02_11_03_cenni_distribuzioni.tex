@@ -1,0 +1,218 @@
+%Lezione 2 i minuti si riferiranno a quelli visibili su teams e non quelli del file registrato con OBS
+\section{Determinazione equazioni di stato di un circuito qualsiasi}
+
+Si riprende la classe di circuiti lineari tempo invarianti (LTI), supponiamo di conoscere
+le variabili di stato $i_L(t) $ e $v_C(t) $ assumendole note, sostituiamo ogni \textit{condensatore}
+con un generatore di tensione di valore pari alla $v_C(t)$ , ripetendo il procedimento
+per ciascun \textit{induttore} che viene sostituito con un generatore di corrente con corrente impressa
+pari a $i_L(t)$.
+
+In queste condizioni, la soluzione del circuito resta formalmente invariata.
+Il nuovo circuito sarà di tipo adinamico, non presenterà più alcun componente dinamico, il nuovo circuito
+prende il nome di \textit{circuito resistivo associato al circuito di partenza}.
+
+Il vantaggio di questa operazione è la possibilità di ricavare $v_L$ e $i_C$ utilizzando il principio
+di \textit{sovrapposizione degli effetti} (PSE).
+
+Si ricavano le equazioni di stato per il seguente circuito:
+26:07
+
+\begin{figure}[h]
+
+\end{figure}
+
+Si applica il PSE, per trovare $i_C$ e $v_L$:
+$$
+i_C = i_c' + i_C'' + i_C '''
+$$
+$$
+v_L = v_L' + v_L'' + v_L'''
+$$
+
+Disegna circuiti 28:48
+
+Circuito 1)
+$$
+v_L' = 0;\ i_C' = \frac{E}{R_1} 
+$$
+Circuito 2)
+$$
+i_C'' = -\frac{v_C}{R_1};\ v_L'' = v_C
+$$
+Circuito 3)
+$$
+i_C''' = -i_L;\ v_L''' = -R_2\cdot i_L
+$$
+
+Sommando i tre contributi:
+$$
+i_C = \frac{E}{R_1} - \frac{v_C}{R_1} - i_L = C\frac{dv_C}{dt}
+$$
+$$
+v_L = v_C - R_2\cdot i_L = L\frac{di_L}{dt}
+$$
+con le condizioni di continuità delle variabili di stato:
+$$
+i_L(0^+) = i_L(0^-)
+$$
+$$
+v_C(0^+) = v_C(0^-)
+$$
+
+\section{Circuiti lineari con generazioni impulsivi}
+Si analizza ora un circuito che presenta generatori di tipo impulsivo, ad esempio la risposta di 
+una linea elettrica a seguito di una fulminazione.
+Si definisce quindi l'impulso rettangolare di ammpiezza $\Delta$, la funzione viene chiamata 
+$\Pi_\Delta(t)$,(funzione porta) è costante nell'intervallo $[-\frac{\Delta}{2},\frac{\Delta}{2}]$,
+l'area del rettangoloide sotteso alla funzione è pari a
+$$
+\int_{-\Delta/2}^{\Delta/2}\Pi_\Delta(\tau)d\tau = 1\ \forall\ \Delta \in\ ]0,+\infty[
+$$
+Ha senso considerare la successione di funzioni ottenute per valori $\Delta$ decrescenti,
+ma dimezzando la base, per mantenere l'area unitaria, va raddoppiata l'altezza.
+
+Passando al limite per $\Delta \rightarrow 0^+$ la successione tende in maniera non ordinaria
+ad un limite che non è una funzione ma può essere definita come funzione generalizzata,
+ossia distribuzione, che prende il nome di \textbf{Delta di Dirac} ($\delta(t)$).
+
+Proprietà della delta:
+\begin{itemize}
+\item È nulla $\forall t \neq 0$
+\item Ha integrale unitario
+\item Proprietà di campionamento $\int_{-\infty}^{+\infty}f(\tau)\delta(\tau-t_0)d\tau = f(t_0)$
+\end{itemize}
+Esempio della proprietà di campionamento: 49:03
+$$
+\int_{-\Delta/2}^{\Delta/2} f(\tau)\Pi_\delta(\tau-t_0)d\tau = \frac{1}{\Delta} \int_{-\Delta/2}^{\Delta/2}  f(\tau)d\tau = f(\vartheta^*)
+$$
+
+
+Analizziamo un'altra funzione $U_\Delta(t)$ definita come segue:
+\begin{equation*}
+\begin{cases}
+0\ ,& t  < -\frac{\Delta}{2} \\
+1\ ,& t  > \frac{\Delta}{2} \\
+\frac{1}{2}+\frac{t}{\Delta}\ ,& -\frac{\Delta}{2} \leq t \leq \frac{\delta}{2}
+\end{cases}
+\end{equation*}
+Rampa 55:03
+
+Eseguendo la derivata temporale si otterrà la funzione $\Pi_\Delta(t)$, al limite di $\Delta \rightarrow 0$
+si ottiene la funzione definita ``gradino'' o funzione di Heaviside $u(t)$.
+
+Un ulteriore modo per definire la $\delta(t)$ è appunto quella di derivata della funzione gradino $u(t)$.
+$$
+\delta(t) = \frac{d}{dt}u(t) \Leftrightarrow \int_{-\infty}^t \delta(\tau)d\tau = u(t)
+$$
+
+\paragraph{Esempio con generatore impulsivo}
+Si prenda un circuito RC serie 01:12:00 e una funzione $e(t)$ che vale $E_0$ per $0 < t < T$ e $0$ 
+altrimenti.
+Ricaviamo $v_C(t)$:
+
+Si suppone che la condizione iniziale, ossia per $t < 0 $, la tensione sul condensatore sia nulla.
+
+\begin{equation*}
+\begin{cases}
+e(t) &= RC\frac{dv_C}{dt} + v_C \\
+v_C(0) &= 0
+\end{cases}
+\end{equation*}
+
+$$
+\begin{cases}
+E_0 &= RC\frac{dv_C}{dt} + v_C \\
+v_C^{(1)}(0) &= 0 \\
+0 \leq t \leq T
+\end{cases}
+$$
+
+$$
+\begin{cases}
+0 &= RC\frac{dv_C}{dt} + v_C \\
+v_C^{(2)}(0) &= v_C^{(1)}(T) \\
+t \geq T
+\end{cases}
+$$
+Rivedi 1:19:00
+
+Si ottiene una funzione esponenziale crescente fino a $T$ e poi decrescente fino a 0 all'infinito.
+Diminuendo il valore di $T$ si vede che il ``picco'' della funzione sarà più basso, al limite 
+di $T \rightarrow 0$ la soluzione si annulla.
+Se imponiamo il prodotto $E_0\cdot T = 1$ ed eseguiamo il limite invece:
+$$
+\lim_{T\rightarrow0^+} v_C(t)
+$$
+Supponiamo di sviluppare la funzione esponenziale con la sua serie di Taylor:
+$$
+e^x = 1 + x =\frac{x^2}{2!} + \frac{x^3}{3!} + ... \Rightarrow 1-e^{-\frac{t}{\tau}} \simeq \frac{t}{\tau} 
+$$
+
+$$
+\begin{cases}
+0\ & t\leq 0 \\
+\frac{1}{T}\frac{t}{\tau}\  & 0 \leq t\leq T \\
+\frac{1}{T}\frac{T}{\tau} e^{-\frac{t-T}{\tau}}\ & t\geq T
+\end{cases}
+$$
+Per $T\rightarrow 0^+$
+$$
+\begin{cases}
+0\ & t\leq 0\\
+\frac{1}{\tau}e^{\frac{-t}{\tau}}\ & t \geq 0
+\end{cases}
+$$
+
+Il primo tratto dell'equazione si approssima quindi ad un tratto lineare fino a T, arrivando ad 
+un'altezza di $\frac{1}{\tau}$ vedi figura 1:32:00
+
+Se 
+$$\Pi_\Delta(t) \stackrel{\Delta\rightarrow0^+}{\rightarrow} \delta(t) \Rightarrow v_C(t) \rightarrow h(t)$$
+$h(t)$ è chiamata risposta all'impulso del circuito dinamico.
+
+$$
+\delta(t) = RC\frac{dv_C}{dt} + v_C \Leftarrow i_C = \frac{\delta(t)-v_C}{R}
+$$
+Se la tensione è impulsiva anche la corrente nel condensatore sarà di tipo impulsivo
+$$
+i_c = C\frac{dv_C}{dt} \Rightarrow \int_{0^-}^{0^+} i_C(\tau)d\tau = e[v_C(0^+)-v_C(0^-)]
+$$
+$$
+v_C(0^+) - v_C(0^-) = \frac{1}{RC} \int_{0^-}^{0^+} \delta(\tau)d\tau - \frac{1}{RC} \int_{0^-}^{0^+} v_C(\tau)d\tau = \frac{1}{RC} = \frac{1}{\tau} \Rightarrow 
+$$
+$$
+\Rightarrow v_C(0^+) = \frac{1}{RC} = \frac{1}{\tau}
+$$
+Rivedi discorso potenza 1:44:00
+
+\paragraph{Risposta al gradino unitario di un circuito dinamico LTI}
+Stesso circuito del precedente, ma stavolta si utilizza come forzamento il gradino unitario di
+Heaviside, la soluzione è più semplice della precedente:
+
+$$
+v_C(t) = 1-e^{-\frac{t}{\tau}}u(t)
+$$
+la chiamiamo $g(t)$ e affermiamo che sia la risposta al gradino, richiamiamo la relazione
+tra la funzione $\Pi_\Delta(t)$ e $U_\Delta(t)$ si ha che:
+$$
+\Pi_\Delta(t) = \frac{U_\Delta\left(t+\frac{\Delta}{2}\right)-U_\Delta\left(t-\frac{\Delta}{2}\right)}{\Delta} = e(t)
+$$
+per $\Delta \rightarrow 0^+$ ottengo $h(t) = v_C(t)$.
+
+Essendo il circuito tempo invariante, si può trovare la risposta alla funzione $\Pi_\Delta(t)$
+come combinazione lineare delle risposte delle due $U_\Delta$ opportunamente traslate, ossia
+la risposta al gradino traslata.
+$$
+\text{Risp} \Pi_\Delta(t) = \frac{\text{Risp}\left\{U_\Delta\left(t+\frac{\Delta}{2}\right)\right\} - 
+\text{Risp}\left\{U_\Delta\left(t-\frac{\Delta}{2}\right)\right\}}{\Delta} = 
+\frac{g\left(t+\frac{\Delta}{2}\right) - g\left(t-\frac{\Delta}{2}\right)}{\Delta}
+$$
+Tutto si trasforma nella funzione rapporto incrementale della funzione $g(t)$ ossia
+$$
+\lim_{\Delta\rightarrow0^+}\text{Risp}\left\{\Pi_\Delta(t)\right\} = h(t) = \frac{dg}{dt}
+$$
+
+$$
+h(t) = \frac{dg}{dt} = 0,\ t < 0;\ \frac{1}{\tau}e^{-\frac{t}{\tau}},\ t\geq0 
+$$
+La risposta all'impulso è quindi la derivata della risposta al gradino.
