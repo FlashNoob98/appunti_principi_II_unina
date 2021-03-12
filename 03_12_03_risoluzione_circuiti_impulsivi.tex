@@ -1,0 +1,136 @@
+
+Approfondiamo bene questo concetto!
+
+Circuito RC serie, supponiamo che la tensione imposta sia un gradino unitario,
+l'equazione di stato sarà:
+$$
+\begin{cases}
+u(t) = RC \frac{dv_c}{dt} + v_c \\
+v_c(0^+) = 0
+\end{cases}
+\Rightarrow v_c(t) = 
+\begin{cases}
+0\ ,\ t<0 \\
+1-e^{-\frac{t}{\tau}}\ ,\ t\geq 0
+\end{cases}
+$$
+
+Se si considera la funzione $U_\Delta$ come una funzione che vale $0$ per $t , \frac{-\Delta}{2}$, cresce
+linearmente fino ad $1 \text{ con $t$ pari a }\frac{\Delta}{2}$, vale $1$ per $t > \frac{\Delta}{2}$,
+allora se si esegue la differenza di due funzioni $U_\Delta$ traslate di $\pm\frac{\Delta}{2}$ si ottiene 
+una porta trapezoidale, diventa una porta per $\Delta \rightarrow 0$.
+
+19:32 riprende le formule della volta precedente sulla derivazione del gradino.
+
+\paragraph{Circuiti RC ed RL semplici}
+Si prendono 2 circuiti modello: il circuito RC parallelo e il circuito RL serie.
+
+Siano i generatori impulsivi: $j(t) = Q\delta(t)$ e $e(t) = \Phi\delta(t)$.
+$$
+j(t) = \frac{v_c}{R} + i_c = Q\delta(t) = \frac{v_c}{R} + C\frac{dv_c}{dt}
+$$
+Si integra la funzione nell'istante in cui è centrata la $\delta(t)$ ossia:
+$$
+\int_{0^-}^{0^+} Q\delta(\tau)d\tau  = \int_{0^-}^{0^+}\frac{v_c}{R}d\tau + C[v_c(0^+)-v_c(0^-)]
+\Leftrightarrow Q = Cv_c(0^+) \ \ [Q] = C \text{ (Coulomb)}
+$$
+$$
+\int_{0^-}^{0^+} Q\delta(\tau)d\tau = \text{ Coulomb}
+$$
+Ciò significa che la $\delta(t)$ ha la dimensione di \si{\per\second} per essere coerente con l'integrale
+e restituire una quantità finita.
+
+Caso duale con circuito RL:
+
+$$
+e(t) = R\cdot i_L + v_L
+$$
+$$
+\Phi\delta(t) = R\cdot i_L + L\frac{di_L}{dt}
+$$
+$$
+\Phi\int_{0^-}^{0^+} \delta(\tau)d\tau = L i_L(0^+)\ , \ i_L(0^-) = 0
+$$
+
+Anche in questo caso per avere la dimensione del flusso in \si{\weber} per $\Phi$ allora la $\delta(t)$ 
+avrà le dimensioni di \si{\per\second}.
+
+\paragraph{Procedura generale per la risoluzione di circuiti con generatori impulsivi}
+Si ha un circuito dinamico semplice al quale è collegato un generatore impulsivo,
+si determina il circuito resistivo associato, ossia vengono sostituiti i condensatori con 
+generatori di tensione e gli induttori con generatori di corrente.
+
+Si ottiene un circuito parziale in cui si spengono i generatori interni (anche quelli equivalenti ai bipoli dinamici) e si lascia agire solo il generatore impulsivo.
+
+Un ulteriore circuito è ottenuto facendo l'esatto contrario e spegnendo quindi il generatore impulsivo.
+
+Si applica il PSE (Principio di Sovrapposizione degli effetti)
+$$
+\begin{cases}
+v_L = v_L' + v_L''\\
+i_C = i_C' + i_C''
+\end{cases}
+$$
+
+Dal circuito C' si ricavano $v_L'$ e $i_C'$ causate dai generatori impulsivi 41:41
+
+Viceversa dal circuito C'' si valutano le variabili di stato utilizzando come condizioni iniziali
+le variabili ottenute in C'.
+
+$$
+v_C(0^+) = \frac{1}{C} \int_{0^-}^{0^+} i_c'(\tau)d\tau \ , \ v_c(0^-) = 0
+$$
+$$
+i_L(0^+) = \frac{1}{L} \int_{0^-}^{0^+} i_L'(\tau)d\tau \ , \ i_L(0^-) = 0
+$$
+L'integrale delle variabili di stato del circuito C'' è pari a 0 dato che la funzione integranda è limitata
+e l'intervallo è infinitesimo.
+
+Infine si risolve il circuito C'' usando le variabili di stato appena calcolate in C'.
+
+Esercizio 
+
+Conclusione dell'esercizio: le variabili di stato possono essere discontinue ma limitate, le altre
+variabili possono invece essere anche impulsive.
+
+\paragraph{Risposta forzata di un circuito LTI}
+Si suppone di avere un solo generatore esterno, se ne vogliono determinare le variabili ai capi
+di un solo bipolo, si parla di filtro o sistema SISO \textit{(Single Input Single Output)},
+sia $x(t)$ l'ingresso e $y(t)$ l'uscita, si deve supporre che il circuito sia a stato 0, ossia
+le sue variabili di stato sono tutte nulle (circuito precedentemente spento).
+
+Si parla di approssimazione \textit{PieceWise-Constant} ossia costante a tratti dell'ingresso
+$x(t)$.
+Si partiziona l'asse dei tempi in tanti intervalli di ampiezza $\Delta t$ centrati negli istanti
+di tempo $t_k = k\Delta t\ ,\ k\ \in\ Z$.
+
+Costruiamo un'approssimazione $x_\Delta(t)$ costante di valore $x(t_k)$ in $\left[t_k-\frac{\Delta t}{2}\ ,\ 
+t_k+\frac{\Delta t}{2}\right]$.
+La funzione $x(t)$ può quindi essere rappresentata come somma di impulsi rettangolari successivi,
+sfruttando la funzione $\Pi_{\Delta}(t)$, sarà quindi:
+$$
+x_{\Delta}(t) = \sum_{k = -\infty}^{+\infty} x(t_k) \Pi_\Delta(t-t_k)\Delta t
+$$
+Eseguendo il limite per $\Delta t \rightarrow 0^+$ in ipotesi di sufficiente regolarità:
+$$
+\lim_{\Delta t \to 0^+} x_\Delta(t) = x(t) = \int_{-\infty}^{+\infty} x(\tau) \delta (t-\tau)
+d\tau
+$$
+Questa conclusione richiama la proprietà di campionamento della $\delta(t)$.
+
+Se vogliamo calcolare la risposta di $x(t)$ allora:
+$$
+\text{Risp}\left\{x(t)\right\} = y(t) = \text{Risp} \left\{\int_{-\infty}^{+\infty} x(\tau)\delta(t-\tau)
+d\tau\right\}
+$$
+per linearità e tempo-invarianza si ottiene
+$$
+y(t) = \int_{-\infty}^{+\infty} x(\tau)h(t-\tau) d\tau
+$$
+chiamato integrale di convoluzione, $h(t)$ è la risposta impulsiva per la variabile di uscita.
+
+Si parla di prodotto di convoluzione tra due funzioni $f,g \ \in\ R$
+$$
+f * g(t) = \int_{-\infty}^{+\infty} f(\tau)g(t-\tau)d\tau
+$$
+Si può calcolare la risposta impulsiva... rivedi 1:57:00
