@@ -1,0 +1,211 @@
+
+Data la risposta all'ingresso impulsivo, si può calcolare la risposta a qualsiasi ingresso, mediante
+l'uso dell'integrale di convoluzione.
+Osservando attentamente l'integrale si vede che la risposta impulsiva gode della proprietà per la quale
+$$
+h(t) = 0 \ t<0,\ h(t) \neq 0 \forall t\ \geq 0 \Rightarrow t - \tau \geq 0 \Rightarrow \tau \leq t
+$$
+
+Se l'ingresso $x(t) = 0,\ t< t_0$ allora possiamo affermare che la $y(t)$ avrà come estremi di integrazione
+$t_0^-$ e $t$, con il - si sottintende la possibilità che siano presenti $\delta(t_0)$ in quell'istante 
+di tempo.
+
+\paragraph{Esempi dell'utilizzo dell'integrale di convoluzione}
+Circuito RC parallelo con forzamento esponenziale, forzato da un generatore di corrente.
+$$
+j(t) = I e ^{\frac{t}{\tau}} u(t)
+$$
+Per studiare la risposta del circuito bisogna per prima cosa determinare la $V_{cf}(t)$, mediante
+lo studio della risposta impulsiva.
+Per determinare la risposta impulsiva si forza il circuito con una $\delta(t)$, utilizzando i metodi 
+precedenti.
+
+$i_c = \delta(t)$
+$$
+v_c(0^+) = \frac{1}{C}\int_{0^-}^{0^+} i_c(\tau)d\tau + V_c(0^-) = \frac{1}{C}
+$$
+Per determinare la risposta impulsiva si determina l'evoluzione libera spegnendo il generatore,
+ci sarà un parallelo RC con la seguente equazione di stato:
+$$
+\begin{cases}
+RC\frac{dV_c}{dt} + v_C = 0 \\
+V_c(0^+) = \frac{1}{C}
+\end{cases}
+$$
+Quindi 
+$$
+V_{c_{lib}} = h(t) = \frac{1}{C} e^{-\frac{t}{RC}},\ t\geq 0
+$$
+$$
+h(t) = \frac{1}{C}e^{-\frac{t}{RC}}\cdot u(t) \forall t
+$$
+
+Utilizzando l'integrale di convoluzione per calcolare la risposta forzata:
+
+$$
+V_{cf}(t) = \int_{0^-}^{t}Ie^{\frac{\tau}{T}} \cdot \frac{1}{C} e^{-\frac{t-\tau}{RC}} d\tau = 
+\frac{I}{C} \int_{0^-}^{t} e^{\frac{\tau}{t}}\cdot e^{-\frac{t}{RC}}\cdot e^{\frac{\tau}{RC}} d\tau
+$$
+
+$$
+= \frac{I}{C} e^{-\frac{t}{RC}}\cdot \frac{e^{t\left(\frac{1}{T}+\frac{1}{RC}\right)}-1}{\frac{1}{RC}+\frac{1}{T}}
+$$
+
+Circuito RC serie con forzamento in tensione a rampa lineare $e(t)$
+$$
+e(t) = \begin{cases}
+0\ t<0 \\
+\frac{t}{T},\ 0\leq t\leq T\\
+0\ t>0
+\end{cases}
+$$
+Possiamo rappresentare questa funzione mediante l'uso di due funzioni $u(t)$
+
+$$
+e(t) = \frac{t}{T}\left[u(t) - u(t-T)\right]
+$$
+Determiniamo quindi la risposta $h(t)$ mediante la risposta al gradino $g(t)$
+Le equazione di stato è:
+$$
+\begin{cases}
+1 = RC\frac{dV_c}{dt} + V_c \\
+V_c(0) = 0 
+\end{cases}
+\Rightarrow V_c(t) = 1 - e^{-\frac{t}{RC}},\ t\geq 0$$
+Quindi 
+$$
+g(t) = (1 - e^{-\frac{t}{RC}})u(t) \forall t
+$$
+ma
+$$
+h(t) = \frac{dg}{dt} = \frac{1}{RC}e^{-\frac{t}{RC}},\ t\geq 0
+$$
+Determiniamo ora la risposta forzata $v_{cf}(t)$:
+$$
+V_{cf}(t) = \int_{0^-}^{t} e(\tau) h(t-\tau)d\tau = \int_{0^-}^{t}\frac{\tau}{T}\left[u(\tau) - u(t-\tau)\right]
+\cdot \frac{1}{RC} e ^{-\frac{t-\tau}{RC}}\cdot u(t-\tau)d\tau
+$$
+Svolgiamo ora l'integrale osservando che $e(\tau) \neq 0 $ solo se $t \in [0,T]$, separiamo quindi
+il calcolo dell'integrale in due eventualità:
+$$
+t\leq T:\ \int_{0^-}^{t}\frac{\tau}{T}\frac{1}{RC}e^{-\frac{t-\tau}{RC}}d\tau = \frac{1}{TRC}e^{-\frac{t}{RC}}\int_{0^-}^{t}\tau e^{\frac{\tau}{RC}}d\tau 
+$$
+utilizzando l'integrazione per parti:
+$$
+\left(f\cdot g\right)' = f'g + g'f
+$$
+$$
+f = \tau\ g' = e^{\frac{\tau}{RC}}
+$$
+$$
+\frac{1}{TRC}e^{-\frac{t}{}RC}\int_{0^-}^{t}\frac{d}{dt}\left[\tau e^{\frac{\tau}{RC}}\cdot RC \right] -
+RC e^{\frac{\tau}{RC}} d\tau =
+$$
+$$
+\frac{1}{TRC} e^{-\frac{t}{RC}} \left\{ \left[t e^{\frac{t}{RC}}\cdot RC \right] - \left[(RC)^2 e^{\frac{\tau}{RC}} \right]_{0^-}^{t}  \right\} =
+$$
+$$
+\frac{t}{T} - \frac{RC}{T}\left(1-e^{-\frac{t}{RC}}\right)
+$$
+
+Secondo caso:
+$$
+t > T:\ \int_{0^-}^{T} \frac{\tau}{T}\frac{1}{RC} e^{-\frac{t-\tau}{RC}}d\tau =  e^{-\frac{t-T}{RC}}-\frac{RC}{T}\left(e^{-\frac{t-T}{RC}} -e^{-\frac{t}{RC}} \right)
+$$
+
+\section{Metodo dei fasori}
+Il metodo dei fasori si basa sul concetto che conoscendo l'andamento di regime con grandezze isofrequenziali, si può risolvere il sistema traspotando le grandezze sinusoidali nel dominio simbolico
+dei fasori, si rapprentano cioè le grandezze descrittive dei bipoli medianti numeri complessi.
+
+Mediante la L-Trasformata si possono usare ancora una volta equazioni nel dominio complesso ma per 
+studiare reti nel regime transitorio.
+
+\paragraph{Analisi delle reti dinamiche LTI con Laplace}
+Consideriamo un blocco contenenti tutte le equazioni circuitali nel dominio del tempo,
+otteniamo tutte le equazioni di stato di induttori e condensatori.
+Questo risultato si ottiene mediante i metodi di risoluzione delle ODE, per arrivare alla conoscenza
+della dinamica delle \textit{variabili di stato}, se sono poi interessato ad altre variabili, attravarso
+operazioni \textit{algebriche lineari} si conosce la dinamica di utte le variabili del circuito.
+
+In alternativa, sfruttando la trasformata di Laplace, le equazioni ODE vengono trasformate nel dominio
+di Laplace, saranno equazioni algebriche lineari anzichè differenziali, risolvendo quindi solo un sistema
+di equazioni lineari si conosce direttamente la trasformata delle variabili di stato, effettuando quindi
+il procedimento inverso di antitrasformazione si ricavano le variabili di stato nel dominio del tempo,
+l'antitrasformazione può essere invece posticipata ed eseguita dopo aver ricavato le generiche variabili
+del circuito, ancora una volta con operazioni algebriche.
+
+La soluzione di un sistema di equazioni differenziali è notevolmente più complesso che risolvere un 
+sistema lineare, ecco il vantaggio dell'utilizzo della trasformata di Laplace.
+
+Definizione della trasformata di Laplace di una funzione $f(t)\ \in\ [0,+\infty[\to R$:
+$$
+L[f(t)] = F(s) = \int_{0^-}^{+\infty} f(t) e^{-st}dt \ F:s \in\ C \to C
+$$
+ammesso che l'integrale improprio converga, per assicurarci che ciò accade si pone la condizione sufficiente, verificata nella stragrande delle situazioni:
+$$
+\text{Se} \left|f(t) \right| \leq Me^{\alpha t} ,\ M,\alpha \in R \text{ costanti}
+$$
+allora l'integrale converge, dim.:
+$$
+\int_{0^-}^{+\infty} f(t) e^{-st}dt \leq \int_{0^-}^{+\infty} \left|f(t)\right| e^{-st}dt \leq
+\int_{0^-}^{+\infty} Me^{\alpha t} e^{-st}dt = M\int_{0^-}^{+\infty} e^{(\alpha-s)t}dt
+$$
+condizione verificata per ogni $\Re \left\{ s\right\} > \alpha$.
+
+Definizione dell'antitrasformata:
+$$
+L^{-1}\left[F(S) \right] = f(t) = \frac{1}{2\pi i} \lim_{T\to+\infty} \int_{\gamma-iT}^{\gamma+iT}
+e^{st}F(s)ds
+$$
+con $\Re\left\{s\right\} = \gamma$ tale che tutte le singolarità di $F(s)$ si trovino a sinistra di $\gamma$.
+
+Proprietà della L-trasformata, ricordando quelle utilizzate nel metodo dei fasori:
+\begin{itemize}
+\item Unicità: $\forall f(t) \in [0,+\infty[\ \exists!\ F(s) = L[F(s)]$
+
+considerate $F(s)$ e $G(s)$, se $F(s) = G(s) \Rightarrow f(t) = g(t)$ quasi ovunque, ossia:
+$\int_{0^-}^{+\infty}|f(t) - g(t)|dt = 0$
+
+\item Linearità: date $f_1(t)$ ed $f_2(t)\ :\ [0,+\infty[ \to R,\ k_1,k_2 \in R$ allora
+$L[k_1f_1(t) + k_2f_2(t)] = k_1F_1(s) + k_2F_2(s) $ si dimostra con la proprietà di linearità dell'integrale
+
+\item Traslazione nel dominio di Laplace: sia data $f(t) \in [0^-,+\infty[,\ L[f(t)] = F(s)$ e
+consideriamo $F(s-\lambda),\ \lambda\ \in\ C$ 
+$F(s-\lambda) = \int_{0^-}^{+\infty}f(t) e^{-(s-\lambda)t}dt = \int_{0^-}^{+\infty} (f(t)e^{\lambda t})e^{-st} dt \Rightarrow F(s-\lambda) = L[f(t) e^{\lambda t}]$ con $Re{s} > \Re \lambda$ 
+
+\item Derivazione: $f(t), L(F(t)  F(s)$ allora $L[\frac{d}{dt}f(t)] = \int_{0^-}^{+\infty}f'e^{-st}dt = 
+\left[fe^{-st}\right]_0^{+\infty} - \int_{0^-}^{+\infty}(-s)e^{-st}\cdot f dt = \left(\lim_{t\to\infty}\left[fe^{-st}\right]-f(0^-)\right) + sF(s) = sF(s) - f(0^-)$
+$$
+L\left[\frac{d}{dt}f(t)\right] = sF(s) - f(0^-)
+$$
+\item Prodotto di convoluzione nel dominio di Laplace, facendo leva sul teorema di Borèl:
+$$
+L\left[f*g(t)\right] =\int_{0^-}^{+\infty}\left(\int_{0^-}^{t}f(\tau)g(t-\tau)d\tau\right) e^{-st}dt = F(s)\cdot G(s)
+$$
+per dimostrare questo teorema si scambiano le variabili di integrazione $t$ e $\tau$ sfruttando i teoremi
+di Tubini(?) e Tonelli
+\end{itemize}
+
+Trasformate notevoli di frequente utilizzo nei circuiti:
+\begin{itemize}
+\item Esponenziale: $f(t) = e^{\lambda t},\ \lambda\ \in R $ 
+$$
+L[e^{\lambda t}] = \int_{0^-}^{+\infty} e^{-(s-\lambda) t} dt = \left[\frac{1}{\lambda -s}e^{(\lambda -s)t}\right]_{0^-}^{+\infty} = \frac{1}{\lambda -s} \left[\lim_{t\to\infty}e^{(\lambda-s)t}-1\right] =
+\frac{1}{s-\lambda}
+$$
+\item Funzione gradino $u(t)$:
+$$
+L[u(t)] = \int_{0^-}^{+\infty}e^{0t}e^{-st}dt = \frac{1}{s}
+$$
+\item Delta di Dirac $\delta(t)$:
+$$
+L[\delta(t)] = \int_{0^-}^{+\infty}\delta(t) e^{-st}dt = e^{-s\cdot 0} = 1
+$$
+\item Funzioni sinusoidali, $\cos(\omega t)=\frac{e^{j\omega t}+e^{-j\omega t}}{2},\ \sin(\omega t) = \frac{e^{j\omega t}-e^{-j\omega t}}{2j}$
+$$
+L[\cos(\omega t)] = \frac{1}{2} L[e^{j\omega t}] + \frac{1}{2} L[e^{-j\omega t}] = \frac{s}{s^2+\omega^2},\ \Re\{s\} > 0
+$$
+$$
+L[\sin(\omega t)] = \frac{1}{2j}\left(\frac{1}{s-j\omega}-\frac{1}{s+j\omega}\right) = \frac{\omega}{s^2+\omega^2},\ \Re\{ s\} > 0
+$$
+\end{itemize}
