@@ -159,38 +159,41 @@ e^{st}F(s)ds
 $$
 con $\Re\left\{s\right\} = \gamma$ tale che tutte le singolarità di $F(s)$ si trovino a sinistra di $\gamma$.
 
-Proprietà della L-trasformata, ricordando quelle utilizzate nel metodo dei fasori:
+\paragraph{Proprietà della L-trasformata} Ricordando quelle utilizzate nel metodo dei fasori:
 \begin{itemize}
 \item Unicità: $\forall f(t) \in [0,+\infty[\ \exists!\ F(s) = L[F(s)]$
 
 considerate $F(s)$ e $G(s)$, se $F(s) = G(s) \Rightarrow f(t) = g(t)$ quasi ovunque, ossia:
-$\int_{0^-}^{+\infty}|f(t) - g(t)|dt = 0$
+$$\int_{0^-}^{+\infty}|f(t) - g(t)|dt = 0$$
 
-\item Linearità: date $f_1(t)$ ed $f_2(t)\ :\ [0,+\infty[ \to R,\ k_1,k_2 \in R$ allora
-$L[k_1f_1(t) + k_2f_2(t)] = k_1F_1(s) + k_2F_2(s) $ si dimostra con la proprietà di linearità dell'integrale
+\item Linearità: date $f_1(t)$ ed $f_2(t) :\ [0,+\infty[ \rightarrow R,\ k_1,k_2 \in R$ allora
+$$L[k_1f_1(t) + k_2f_2(t)] = k_1F_1(s) + k_2F_2(s) $$
+si dimostra con la proprietà di linearità dell'integrale
 
 \item Traslazione nel dominio di Laplace: sia data $f(t) \in [0^-,+\infty[,\ L[f(t)] = F(s)$ e
 consideriamo $F(s-\lambda),\ \lambda\ \in\ C$ 
-$F(s-\lambda) = \int_{0^-}^{+\infty}f(t) e^{-(s-\lambda)t}dt = \int_{0^-}^{+\infty} (f(t)e^{\lambda t})e^{-st} dt \Rightarrow F(s-\lambda) = L[f(t) e^{\lambda t}]$ con $Re{s} > \Re \lambda$ 
+$$F(s-\lambda) = \int_{0^-}^{+\infty}f(t) e^{-(s-\lambda)t}dt = \int_{0^-}^{+\infty} (f(t)e^{\lambda t})e^{-st} dt \Rightarrow F(s-\lambda) = L[f(t) e^{\lambda t}]$$ con $\Re\{s\} > \lambda$ 
 
-\item Derivazione: $f(t), L(F(t)  F(s)$ allora $L[\frac{d}{dt}f(t)] = \int_{0^-}^{+\infty}f'e^{-st}dt = 
-\left[fe^{-st}\right]_0^{+\infty} - \int_{0^-}^{+\infty}(-s)e^{-st}\cdot f dt = \left(\lim_{t\to\infty}\left[fe^{-st}\right]-f(0^-)\right) + sF(s) = sF(s) - f(0^-)$
+\item Derivazione: $f'(t)  = \frac{d}{dt}f(t),\ L[f(t)] = F(s)$ allora 
+$$L\left[\frac{d}{dt}f(t)\right] = \int_{0^-}^{+\infty}f'e^{-st}dt \stackrel{\text{x parti}}{=} 
+\left[fe^{-st}\right]_0^{+\infty} - \int_{0^-}^{+\infty}(-s)e^{-st}\cdot f dt =$$
+$$= \left(\lim_{t\to\infty}\left[fe^{-st}\right]-f(0^-)\right) + sF(s) = sF(s) - f(0^-)$$
 $$
 L\left[\frac{d}{dt}f(t)\right] = sF(s) - f(0^-)
 $$
-\item Prodotto di convoluzione nel dominio di Laplace, facendo leva sul teorema di Borèl:
+\item Prodotto di convoluzione nel dominio di Laplace, facendo leva sul teorema di Borel:
 $$
 L\left[f*g(t)\right] =\int_{0^-}^{+\infty}\left(\int_{0^-}^{t}f(\tau)g(t-\tau)d\tau\right) e^{-st}dt = F(s)\cdot G(s)
 $$
 per dimostrare questo teorema si scambiano le variabili di integrazione $t$ e $\tau$ sfruttando i teoremi
-di Tubini(?) e Tonelli
+di \href{https://it.wikipedia.org/wiki/Teorema_di_Fubini}{Fubini} e Tonelli
 \end{itemize}
-
+\newpage
 Trasformate notevoli di frequente utilizzo nei circuiti:
 \begin{itemize}
 \item Esponenziale: $f(t) = e^{\lambda t},\ \lambda\ \in R $ 
 $$
-L[e^{\lambda t}] = \int_{0^-}^{+\infty} e^{-(s-\lambda) t} dt = \left[\frac{1}{\lambda -s}e^{(\lambda -s)t}\right]_{0^-}^{+\infty} = \frac{1}{\lambda -s} \left[\lim_{t\to\infty}e^{(\lambda-s)t}-1\right] =
+L\left[e^{\lambda t}\right] = \int_{0^-}^{+\infty} e^{-(s-\lambda) t} dt = \left[\frac{1}{\lambda -s}e^{(\lambda -s)t}\right]_{0^-}^{+\infty} = \frac{1}{\lambda -s} \left[\lim_{t\to\infty}e^{(\lambda-s)t}-1\right] =
 \frac{1}{s-\lambda}
 $$
 \item Funzione gradino $u(t)$:
