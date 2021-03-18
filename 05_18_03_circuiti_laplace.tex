@@ -1,0 +1,245 @@
+
+Funzioni generiche $t\cdot f(t)$ con $f(t)$ le funzioni precedentemente analizzate.
+Esponenziale:
+$$
+L[te^{\lambda t}] = \int_{0^-}^{+\infty} t e^{\lambda t}e^{-s t} dt = \int_{0^-}^{+\infty}t e^{(\lambda -s)t}
+dt = 
+$$
+$$
+= \left[\frac{e^{(\lambda -s )t }}{\lambda-s}\cdot t\right]_{0^-}^{+\infty} - \int_{0^-}^{+\infty}1\cdot\frac{1}{\lambda -s}e^{(\lambda-s)t}dt = 
+$$
+$$
+= 0 + \frac{1}{s-\lambda}\cdot\frac{1}{s-\lambda} = \frac{1}{s-\lambda} ,\ \Re\{s\} > \lambda
+$$
+
+Coseno:
+$$
+L[t\cos(\omega t)] = L\left[t \frac{e^{j\omega t}+e^{-j\omega t}}{2}\right] = \frac{1}{2}\frac{1}{(s-j\omega)^2} + \frac{1}{2}\frac{1}{(s+j\omega)^2} = 
+$$
+$$
+= \frac{1}{2}\frac{1}{s^2-\omega^2-2j\omega s} + \frac{1}{2}\frac{1}{s^2-\omega^2+2j\omega s} =
+\frac{1}{2}\frac{s^2-\omega^2+2j\omega s +s^2 -\omega^2 -2j\omega s}{(s^2-\omega^2)^2+4\omega^4s^2} =
+$$
+$$
+= \frac{s^2-\omega^2}{(s^2+\omega^2)^2}
+$$
+
+Seno:
+$$%%Rivedi il rigo qui sotto
+L[t\sin(\omega t)] = \frac{1}{2j} \left[\frac{1}{(s-j\omega)^2}-\frac{1}{s+j\omega}^2\right] =
+\frac{1}{2j}\left[\frac{s^2-\omega^2+2j\omega s-s^2+\omega^2+2j\omega s}{(s^2-\omega^2)^2+4\omega^2s^2}\right] = 
+$$
+$$
+= \frac{2\omega s}{(s^2+\omega^2)^2}
+$$
+Funzioni che descrivono moti periodici smorzati, sfruttando la proprietà di traslazione
+$f(t) = e^{-\sigma t}\cos(\omega t),\  e^{-\sigma t}\sin(\omega t)$:
+$$
+L[e^{-\sigma t}\cos(\omega t)] = L[\cos(\omega t)](s+\sigma) = \frac{s+\sigma}{(s+\sigma)^2+\omega^2}\ \Re\{s\} > -\sigma
+$$
+$$
+L[e^{-\sigma t}\sin(\omega t)] = L[\sin(\omega t)](s+\sigma) = \frac{\omega}{(s+\sigma)^2+\omega^2}\ \Re\{s\} > -\sigma
+$$
+\paragraph{Circuito RL serie con L-trasformata}
+Sia dato il circuito RL serie, se ne voglia determinare la risposta impulsiva $h(t) = i_L(t)$ dato l'ingresso
+$e(t) = \delta(t)$
+$$
+\begin{cases}
+\delta(t) = R\cdot i_L + L\frac{di_L}{dt} \\
+i_L(0^-) = 0
+\end{cases}
+$$
+Si applica la trasformata di Laplace ad entrambi i membri della prima equazione, sfruttando anche
+la proprietà di derivazione:
+$$
+1 = RI_L(s) + L(sI_L(s) - i_L(0^-))
+$$
+$$
+L[i_L(t)] = I_L(s) = \frac{1}{R+sL} = \frac{1}{L}\frac{1}{\frac{R}{L}+s}
+$$
+L'antitrasformata sarà invece pari a:
+$$
+L^{-1}[I_L(s)] = \frac{1}{L} L^{-1}\left[\frac{1}{S+\frac{R}{L}}\right] = \frac{1}{L}e^{-\frac{t}{\tau}},\ 
+\tau = \frac{L}{R}
+$$
+
+Si vede ora la risposta al gradino, $e(t) = u(t)$:
+$$
+u(t) = R\cdot i_L+ L\frac{di_L}{dt} \rightarrow \frac{1}{s} = RI_L + sLI_L 
+$$
+$$
+I_L = \frac{1}{s(R+sL)} = \frac{A}{s} + \frac{B}{R+sL} = \frac{AR+sLA+sB}{s(R+sL)}
+$$
+Si ricavano i valori di $A$ e $B$ sfruttando il principio di identità dei polinomi:
+$$
+LA+B = 0,\ AR = 1
+$$
+
+$$
+A = \frac{1}{R},\ B = -\frac{L}{R}
+$$
+In conclusione:
+$$
+I_L(s) = \frac{1}{R}\left[\frac{1}{s}-\frac{L}{R+SL}\right] = \frac{1}{R}\left[\frac{1}{s}-
+\frac{L}{L\left(\frac{R}{L}+s\right)}\right]
+$$
+Antitrasformando si ottiene:
+$$
+i_L(t) = \frac{u(t)}{R} - \frac{1}{R}e^{-\frac{R}{L} \text{eccetera}}
+$$
+
+\paragraph{Equazioni circuitali nel dominio della L-trasformata}
+Si considera ancora la classe dei circuiti dinamici lineari tempo-invarianti (LTI),
+nel dominio del tempo sono necessarie le LKT e le LKC, le caratteristiche dei bipoli e dei generatori.
+Questo sistema è un DAE, va trasformato in un ODE nelle variabili di stato per poter essere risolto.
+
+Se trasformo tutte le equazioni che provengono dalle leggi di Kirchoof ottengo ancora le stesse equazioni
+ma nel dominio di Laplace:
+$$
+\sum_{k} (\pm)I_k(s) = 0
+$$
+$$
+\sum_k (\pm)V_k(s) = 0
+$$
+Ancora le equazioni dei bipoli:
+$$
+V_R(s) = RI_R(s)
+$$
+$$
+V_L(s) = sLI_L(s) - Li_L(0^-)
+$$
+$$
+I_C(s) = sCV_C(s) - Cv_c(0^-)
+$$
+
+Per trattare i circuiti in evoluzione forzata minuto(46) si può associare un'impedenza equivalente
+ai bipoli, ad esempio l'impedenza operatoriale dell'induttore diventa
+$$
+Z_L(s) = sL,\ V_L(s) = Z_LI_L(s)
+$$
+$$
+Z_C = \frac{1}{sC}
+$$
+Questo risultato ci permette di utilizzare tutti i metodi precedentemente visti per la risoluzione
+di un circuito, si esegue un'antitrasformazione alla fine per ritornare nel dominio del tempo.
+Abbiamo posto però l'ipotesi di trovarsi in evoluzione forzata, ossia supponendo uno stato iniziale 
+nullo, cosa accade se ciò non è vero?
+
+Stato non zero iniziale:
+$$
+V_L(s) = sLI_L - L i_L(0^-)
+$$
+$$
+V_L(s) = Z_LI_L+E_0
+$$
+Si modella il bipolo dinamico con un generatore di tensione in serie, impulsivo.
+Si può fare un ragionamento simile con il condensatore al quale si affianca un generatore di corrente
+in parallelo $J_{cc}$
+$$
+I_C(s) = sCV_C(s) - Cv_C(0^-)
+$$
+$$
+J_{cc} = Cv_C(0^-)
+$$
+
+\paragraph{Funzione di trasferimento e legame con la risposta impulsiva}
+Sia preso un generico circuito LTI, viene forzato con un generatore di tensione, se ne analizzano
+le grandezze su un singolo bipolo interno al circuito, considerato quindi come un SISO $h(t)$,
+l'uscita del sistema può essere calcolata mediante l'integrale di convoluzione della risposta impulsiva.
+$$
+y(t) = \int_{0^-}^{t} x(\tau)h(t-\tau)d\tau
+$$
+Si trasporta il fenomeno nel dominio di Laplace e si considera lo stesso circuito sostituito dai bipoli
+operatoriali, si può ancora considerare il sistema come un SISO con ingresso pari a $X(s)$ e uscita
+pari a $Y(s)$.
+Questo circuito è a-dinamico lineare con un solo generatore, quindi tutte le grandezze sono proporzionali
+al singolo forzamento, posso quindi affermare che $Y(s) = H(s)X(s)$ con $H(s)$ un coefficiente di 
+proporzionalità.
+
+$H(s)$ viene ricavato, mediante il teorema di Borel:
+$$
+L[f*g(t)] = F(s)\cdot G(s)
+$$
+$$
+y(t) = \int_{0^-}^{t} x(\tau)h(t-\tau) d\tau \Rightarrow H(s) = L[h(t)]
+$$
+$H(s)$ si chiama quindi \textit{funzione di trasferimento} del circuito ed è definita come il rapporto
+tra la trasformata dell'uscita e quella dell'ingresso e coincide con la trasformata della risposta
+impulsiva del circuito:
+$$
+H(s) \stackrel{\text{def}}{=} \frac{Y(s)}{X(s)} = L[h(t)]
+$$
+
+Esempio di applicazione, circuito LC forzato in risonanza:
+
+Si ha un generatore ideale di tensione, un induttore ideale e un condensatore ideale senza perdite,
+questo circuito rappresenta il limite ideale 
+La risonanza è associata ad una specifica pulsazione pari a:
+$$
+\omega_r = \frac{1}{\sqrt{LC}}
+$$
+e il forzamento è pari ad un segnale con pulsazione pari alla pulsazione di risonanza
+$$
+e(t) = E_m \sin(\omega_r t)
+$$
+Il circuito non può essere analizzato con il metodo dei fasori dato che non è dissipativo e l'energia 
+immagazzinata nei bipoli dinamici non tende a 0 in evoluzione libera per $t\to \infty$.
+
+Si utilizza quindi l'analisi nel dominio di Laplace:
+$$
+I(s) = \frac{E(s)}{sL+ \frac{1}{SC}}
+$$
+ma
+$$
+E(s) = \frac{\omega_r}{s^2+\omega_r^2} = \frac{\omega_r}{s^2+\frac{1}{LC}} = L[e(t)]
+$$
+$$
+I(s) = \frac{E_m\omega_r s C}{(s^2+\frac{1}{LC})(s^2+\frac{1}{LC})} = \frac{E_m\omega_r\frac{sC}{LC}}{(s^2+\frac{1}{LC})^2} = \frac{E_m\omega_r}{L} \frac{s}{(s^2+\frac{1}{LC})^2}
+$$
+Riprendendo la trasformata del seno:
+$$
+L[t\sin(\omega_r t)] = \frac{2\omega s}{(s^2+\omega^2)^2}
+$$
+riprendendo il calcolo di $I(s)$:
+$$
+= \frac{E_m\omega_r}{2L\omega_r}\cdot \frac{2\omega_r s}{(s^2+\omega_r^2)^2} = \frac{E_m}{2L}\frac{2\omega_r s}{(s^2+\frac{1}{LC})^2}
+$$
+Antitrasformando:
+$$
+i(t) = L^{-1}[I(s)] = \frac{E_m}{2L} t \sin(\omega_r t)
+$$
+
+\newpage
+\paragraph{Calcolo della funzione di trasferimento per un circuito del secondo ordine}
+Circuito minuto 1:40:00
+Siamo interessati come uscita alla $v(t)$ dato l'ingresso $e(t)$, ci trasferiamo ancora una volta dal 
+dominio del tempo a quello di Laplace.
+Si assegnano i parametri del circuito:
+$R_1 = \SI{5}{\ohm}\ R_2=R_3=\SI{10}{\ohm}\ C =\SI{0.5}{\farad}\ L=\SI{1}{\henry} $
+Sostituiamo i bipoli con impedenze, troviamo la $Z_{eq}$ pari a $5 + s$ in serie con $\frac{1}{0.2+0.5s}$
+La tensione in uscita sarà la partizione della tensione in ingresso tra queste due impedenze:
+$$
+V(s) = E(s)\frac{Z_{eq}^{(2)}}{Z_{eq}^{(2)}+Z_{eq}^{(1)}} = \frac{1}{(0.2+0.5 s)(\frac{1}{0.2+0.5 s}+5+s)} = \frac{1}{2+2.75+0.5s^2}
+$$
+Si trovano gli zeri del polinomio, saranno due radici reali e distinte,
+la $H(s)$ sarà quindi:
+$$
+H(s) = \frac{k_1}{s+0.886} + \frac{k_2}{s+4.514} = \frac{k_1 5 +4.514 k_1 + k_2 s + 0.886 k_2 }{s^2+5.45+4} =
+$$
+$$
+= \frac{2}{(s^2+5s+4)},\ 
+\begin{cases}k_1+k_2 = 0\\
+4.514k_1 + 0.886k_2 = 2
+\end{cases}
+$$
+$$
+k_1 = \frac{2}{4.514-0.886} = 0.551 = -k_2
+$$
+In conclusione 
+$$
+H(s) = \frac{0.551}{s+0.886} - \frac{0.551}{s+4.514}
+$$
+antitrasformando:
+$$
+L^{-1}[H(s)] = 0.551\left(e^{-0.886 t}-e^{-4.514 t}\right) = h(t)
+$$
