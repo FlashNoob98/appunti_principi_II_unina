@@ -1,0 +1,315 @@
+
+\paragraph{Calcolo di antitrasformate di funzioni razionali}
+Supponiamo che nei circuiti siano presenti soltanto alcune tipologie di generatori, come ad esempio
+generatori stazionari, sinusoidali... In queste ipotesi le trasformate di Laplace sono funzioni 
+razionali, del tipo:
+$$
+F(s) = \frac{N(s)}{D(s)}\ N(s),D(s) \text{ polinomi con grado } n\leq d
+$$
+
+In generale la $F(s)$ è esprimibile come:
+$$
+F(s) = K + \frac{N^*(s)}{D(s)}\ K \text{ costante, } n^* < d
+$$
+la sua antitrasformata sarà:
+$$
+L^{-1}[F(s)] = k\delta(t) + L^{-1}\left[\frac{N^*(s)}{D(s)}\right] 
+$$
+per determinare la soluzione vanno ricercate le radici del denominatore, chiamate \textit{poli}
+della funzione, mentre le radici del numeratore vengono chiamati \textit{zeri}.
+
+La funzione può avere poli semplici di molteplicità 1:
+$$
+F^*(s) = \frac{k_1}{s-p_1} + \frac{k_2}{s-p_2} + ... + \frac{k_n}{s-p_n} = \sum_{i=1}^{N}\frac{k_i}{s-p_i}
+$$
+$k_i$ viene chiamato residuo i-esimo della $F^*(s)$ e si calcola con:
+\begin{equation}
+\lim_{s\to p_i} \left[(s-p_1)F^*(s)\right]
+\label{eq:formula_poli_semplici}
+\end{equation}
+
+Esempio:
+$$
+F^*(s) = \frac{1}{0.5s^2+2.7s+2} = \frac{2}{s^2+5.4s+4} = \frac{k_1}{s+0.886} + \frac{k_2}{s+4.514}
+$$
+Applicando la \ref{eq:formula_poli_semplici}:
+$$
+k_1 = \frac{2}{-0.886+4.514} = 0.551
+$$
+
+Poli multipli, ossia con molteplicità maggiore di 1, supponiamo ad esempio $p_1$ e $p_2$ poli multipli:
+$$
+F^*(s) = \frac{k_{11}}{(s-p_1)^2} + \frac{k_{12}}{s-p_1} + \sum_{i=3}^{N} \frac{k_1}{s-p_i}
+$$
+$$
+k_{11} = \lim_{s\to p_1} \left[(s-p_1)^2F^*(s)\right]
+$$
+per determinare il secondo residuo invece si deve eseguire il limite della derivata:
+$$
+k_{12} \lim_{s\to p_1} \frac{d}{ds} \left[(s-p_1)^2 F^*(s)\right]
+$$
+Esempio:
+$$
+F^*(s) = \frac{2s+5}{(s+2)^2} = \frac{k_{11}}{(s+2)^2} + \frac{k_{12}}{s+2}
+$$
+$$
+k_{11} = \lim_{s\to-2} \frac{(2s+5)(s+2)^2}{(s+2)^2} = 1
+$$
+$$
+k_{12} = \lim_{s \to -2} \frac{d}{ds} [2s+5] = 2
+$$
+$$
+F^*(s) = \frac{1}{(s+2)^2}+\frac{2}{s+2}\ L^{-1}[F^*(s)] = te^{-2t}+2e^{-2t}
+$$
+
+\textbf{Poli complessi e coniugati:}
+$$
+F^*(s) \frac{2s-1}{s^2+4s+5} = \frac{k_1}{s+2+j} + \frac{k_2}{s+2-j}
+$$
+$$
+k_1 = \frac{2(-2-j)-1}{-2-j+2-j} = \frac{-4-2j-1}{-2j} = \frac{5+2j}{2j} = 1 - \frac{5}{2}j
+$$
+$$
+k_2 = k_1^* = 1+\frac{5}{2}j
+$$
+$$
+F^*(s) = \frac{1-\frac{5}{2}j}{s+2+j} + \frac{1+\frac{5}{2}j}{s+2-j}
+$$
+
+$$
+L^{-1}[F^*(s)] = (1-\frac{5}{2}j)e^{-(2+j)t} + (1+\frac{5}{2}j)e^{-(2-j)t} = e^{-2t}\left[\frac{e^{-jt}+e^{jt}}{2}\cdot 2 - \frac{5}{2}je^{-jt}+\frac{5}{2}je^{jt}\right] =
+$$
+$$
+= e^{-2t}\left[2\cos(t)-5\sin(t)\right]
+$$
+
+\textbf{Esercizio 1 :}
+
+Circuito RLC parallelo, determinare la risposta all'impulso e al gradino
+$$
+R = \SI{10}{\kilo\ohm}\ L = \SI{100}{\milli\henry}\ C = \SI{10}{\micro\farad}
+$$
+$$
+j(t) = \frac{v}{r} + i_L + i_C,\ v = L\frac{di_L}{dt},\ i_c = C\frac{dv_c}{dt}
+$$
+$$\begin{cases}
+C\frac{dv_c}{dt} = i_c = u(t) -\frac{v}{r} - i_L\\
+L\frac{di_L}{dt} = v
+\end{cases}
+$$
+$$
+L\frac{d}{dt}\left[u(t) -\frac{v}{r} - C \frac{dv}{dt}\right] = v
+$$
+
+$$
+\begin{cases}
+\frac{d^2v}{dt^2} + \frac{1}{RC}\frac{dv}{dt} + \frac{v}{LC} = 0\\
+v(0^+)=0\\
+\frac{dv}{dt}0^+ = \frac{1}{C}\left[j(0^+) - \frac{v}{r}(0^+) - i_L(0^+)\right] = \frac{1}{C}
+\end{cases}
+$$
+Si determinano ora le frequenze naturali del sistema:
+
+$$
+\lambda^2 + \frac{1}{RC}\lambda + \frac{1}{LC} = 0
+$$
+$$
+\lambda_{1,2} = -\frac{1}{2RC} \pm \sqrt{\left(\frac{1}{2RC}\right)^2-\frac{1}{LC}}
+$$
+$$
+\lambda_{1,2} = -5 \pm j 1000
+$$
+Quindi 
+$$
+v(t) = e^{-st}(k_1\cos(1000t)+k_2\sin(1000t))
+$$
+$$
+v(0^+) = 0 \Rightarrow k_1 = 0
+$$
+$$
+\frac{dv}{dt}(0^+) = \frac{1}{C} \Rightarrow \left[-5e^{-5t}k_2\sin(1000t) + k_2e^{-5t}\cos(1000t)\cdot1000\right]_{t=0} = \frac{1}{C}
+$$
+$$
+k_2\cdot1000 = \frac{1}{10^{-5}} \Rightarrow k_2 = 100
+$$
+$$
+v(t) = 100e^{-5t}\sin(1000t)\cdot u(t) = g(t)
+$$
+Risposta all'impulso:
+$$
+h(t) = \frac{dg}{dt} = -500e^{-5t}\sin(1000t) + 100e^{-5t}-1000-\cos(1000t) = 
+$$
+$$
+500e^{-5t}\left[200\cos(1000t)-\sin(1000t)\right]\cdot u(t)
+$$
+Controprova:
+$$
+v_c(0^+) = \frac{1}{C}\int_{0^-}^{0^+}\delta(t)d\tau = \frac{1}{C}
+$$
+$$
+i_L(0^+) = \frac{1}{L}\int_{0^-}^{0^+} v_L(t)d\tau = 0
+$$
+$$
+\begin{cases}
+v(0^+) = \frac{1}{C}\\
+\frac{dv}{dt}(0^+) = \frac{1}{C}\left(-\frac{1}{RC}\right) = -\frac{1}{RC^2}
+\end{cases}
+$$
+
+$$
+v(0^+) = \frac{1}{C} = k_1 = 10^5
+$$
+$$
+\frac{dv}{dt}(0^+) = 1000k_2 - \frac{5}{C} = -\frac{1}{RC^2} \Rightarrow 1000k_2 = \frac{5}{C} - \frac{1}{RC^2} = 5\cdot10^5 - \frac{10^10}{10^4} = 5\cdot10^5-10^6 = -5\cdot10^5
+$$
+$$
+k_2 = -500
+$$
+In conclusione:
+$$
+h(t) = e^{-st}\left[10^5\cos(1000t)-500\sin(1000t)\right] = 500e^{-st}\left[200\cos(1000t)-\sin(1000t)\right]\cdot u(t)
+$$
+
+\textbf{Esercizio 2 :} 01:10:00
+
+Determina la risposta impulsiva nel dominio del tempo con la trasformata di Laplace
+$$
+R_1 = \SI{1}{\ohm},\ R_2 = \SI{3}{\ohm},\ L = \SI{3}{\henry},\ C = \SI{1}{\farad}
+$$
+Determiniamo le condizioni iniziali dovute al generatore impulsivo $e(t) = \delta(t)$
+
+Disegna circuito 2
+
+$$
+v_L = -\frac{R_1}{R_1+R_2}\delta(t) = -\frac{1}{4}\delta(t)
+$$
+$$
+i_C = -\frac{\delta(t)}{R_1+R_2} = -\frac{1}{4}\delta(t)
+$$
+$$
+i_L(0^+) = \frac{1}{L} \int_{0^-}^{0^+} -\frac{\delta}{4}d\tau = \SI{-1/12}{\ampere} 
+$$
+$$
+v_c(0^+) = \frac{1}{C} \int_{0^-}^{0^+}-\frac{\delta}{4}d\tau = -\frac{1}{4} = \SI{-0.25}{\volt}
+$$
+quindi
+$$
+v = -\frac{R_2}{R_1+R_2}\delta(t) = -\frac{3}{4}\delta(t) = -0.75\delta(t)
+$$
+
+Determiniamo ora le  equazioni di stato sfruttando le condizioni iniziali appena ricavate:
+Circuito 1:20
+$$
+\begin{cases}
+i_c = -\frac{v_c}{R_1+R_2} +\frac{R_1}{R_1+R_2}i_L = C\frac{dv_C}{dt}\\
+v_L = -\frac{R_1}{R_1+R_2}v_C - \frac{R_1R_2}{R_1+R_2}i_L = L\frac{di_L}{dt}
+\end{cases}
+$$
+$$
+v(t) = R_2i_c = -\frac{R_2}{R_1+R_2}v_c + \frac{R_1R_2}{R_1+R_2}i_L = -\frac{3}{4}v_c +\frac{3}{4}i_L
+$$
+
+Riscriviamo ora la ODE in forma matriciale:
+$$
+\begin{pmatrix}
+ C & 0 \\
+ 0 & L
+\end{pmatrix}
+\frac{d}{dt}
+\begin{pmatrix}
+v_c \\
+i_L
+\end{pmatrix}
+=
+\begin{pmatrix}
+-\frac{1}{R_1+R_2} & \frac{R_1}{R_1+R_2}\\
+-\frac{R_1}{R_1+R_2} & -\frac{R_1R_2}{R_1+R_2}
+\end{pmatrix}
+\begin{pmatrix}
+v_c \\
+i_L
+\end{pmatrix}
+$$
+
+$$
+\vec{x}(t) = \vec{v}e^{\lambda t} \Rightarrow \lambda D \vec{v} e ^{\lambda t} = A\cdot \vec{v}e^{\lambda t} \Rightarrow A\cdot \vec{v} = \lambda D\cdot\vec{v}
+$$
+
+$$
+D^{-1}A\cdot\vec{v} = \lambda\vec{v} = \lambda\vec{v} \Rightarrow 1:33
+$$
+
+$$
+\text{det}\left(A-\lambda I\right) = a_{11}-\lambda ecc = a_{11}a_{22} - a_{11}\lambda - \lambda a_{22} + \lambda^2 - a_{12}a_{21} = 
+$$
+
+$$
+\lambda_{1,2} = -\frac{1}{4} \pm \sqrt{\frac{1}{16}+\left(\frac{1}{16}+\frac{1}{48}\right)} =
+$$
+$$
+v_c(t) = e^{-\sigma t}\left(k_1\cos(¬omega t) + k_2\sin(\omega t)\right)
+$$
+$$
+\frac{dv_c}{dt}(t) = -\sigma e^{-\sigma t}\left(k_1\cos(\omega t)+k_2\sin(\omega t)\right) + e^{-\sigma t}(-k_1\omega \sin(\omega t) + k_2 \omega \cos(\omega t)) = e^{-\sigma t} \left[(k_2\omega -\sigma k_1)\cos(\omega t) - (\sigma k_2 + k_1\omega ) \sin(\omega t) \right]
+$$
+$$
+\frac{dv_c}{dt}(0^+)= -\sigma k_1 + \omega k_2
+$$
+
+Imponiamo ora le condizioni iniziali:
+$$
+v_c(0^+) = \SI{-0.25}{\volt} \Rightarrow k_1 = -0.25
+$$
+$$
+\frac{dv_c}{dt}(0^+) = -\frac{1}{4}v_c(0^+) + \frac{1}{4}i_L(0^+) = \frac{1}{16} + \frac{1}{4}\left(\frac{1}{12}\right) = \frac{1}{24} = 0.0417
+$$
+$$
+k_2 = -\frac{\sqrt{3}}{12} = -0.1443
+$$
+
+$$
+v_c(t) = e^{-0.25 t}\left[-0.25\cos(0.1443 t) - \frac{\sqrt{3}}{12}\sin(0.1443 t)\right]
+$$
+$$
+v(t) = R_2 i_c - \frac{R_2}{R_1+R_2}\delta(t) = R_2C\frac{dv_c}{dt} - \frac{R_2}{R_1+R_2}\delta(t) =
+3\frac{dv_c}{dt} - \frac{3}{4}\delta(t)=
+$$
+$$
+= \frac{1}{8}e^{-\frac{1}{4}t}\left[\cos\left(\frac{\sqrt{3}}{12}t\right) + \sqrt{3}\sin\left(\frac{\sqrt{3}}{12}t\right)\right] - \frac{3}{4}\delta(t)
+$$
+$$
+v(t) = 0.125 e^{-0.25 t}\left[\cos(0.1443 t) + 1.732\sin(0.1443 t)\right] - 0.75\delta(t)
+$$
+
+\textbf{Soluzione con la L-trasformata}
+
+Utilizziamo le impedenze operatoriali
+
+$$
+V = -V_s\frac{Z_{R2}}{Z_{R2}+Z_C+\frac{Z_L+Z_{R1}}{Z_L+Z_{R1}}} = -V_s\frac{R_2}{R_2 + \frac{1}{sC} + 
+\frac{sLR_1}{R_1+sL}} =
+$$
+$$
+= -\frac{3}{3+\frac{1}{s} + \frac{3 s}{3s + 1}} = \frac{-3 s (3s + 1)}{3s(3s+1) + 3s+1 + 3s^2} = 
+$$
+$$
+= \frac{- 3s(3s+1)}{12s^2+6s+1} = H(s)
+$$
+Antitrasformiamo:
+$$
+L^{-1}\left[\frac{-3s(3s+1)}{12s^2+6s +1}\right] = -3 \frac{d}{dt}L^{-1} \left[\frac{3s+1}{12s^2+6s+1}\right] = -\frac{1}{4} \frac{d}{dt} L^{-1} \left[\frac{3s+1}{s^2+0.5s + \frac{1}{12}}\right]
+$$
+$$
+F(s) = \frac{k_1}{s+0.25+0.1443j} + \frac{k_2}{s+0.25-0.1443j}
+$$
+
+...
+
+La trasformata inversa viene eseguita con le funzioni esponenziali:
+$$
+L^{-1}[F(s)] = \frac{3+\sqrt{3}j}{2}e^{-0.25 t}e^{-0.1443 t} + \frac{3-\sqrt{3}j}{2}e^{-0.25 t}e^{j0.1443 t} = e^{-0.125 t}\left[3\cos(0.1443 t) + \sqrt{3}\sin(0.1443 t)\right]\cdot u(t)
+$$
+
+$$
+h(t) = -\frac{1}{4} \frac{d}{dt}L^{-1}[F(s)] = 0.125 e ^{-0.25 t}[\cos(0.1443 t) + \sqrt{3}\sin(0.1443 t)] - 0.75\delta(t)
+$$
