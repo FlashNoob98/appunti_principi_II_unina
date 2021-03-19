@@ -392,13 +392,22 @@ $$
 $$
 v(t) = 0.125 e^{-0.25 t}\left[\cos(0.1443 t) + 1.732\sin(0.1443 t)\right] - 0.75\cdot\delta(t)
 $$
-
+La variabile in uscita non essendo una variabile di stato può contenere, come in questo caso un valore 
+impulsivo.
+\newpage
 \textbf{Soluzione con la L-trasformata}
 
 Utilizziamo le impedenze operatoriali
-
+\begin{figure}[h]
+\centering
+\begin{circuitikz}
+\draw (0,0) to [generic=$Z_{R1}$] (0,2) to (2,2) to [V,invert,l_=$V_s$] (2,0) to (0,0);
+\draw (2,2) to [generic=$Z_C$] (4,2) to [generic=$Z_L$] (4,0) to [generic,l_=$Z_{R2}$,v^=$V$] (2,0);
+\draw (4,2) to (6,2) to [generic=$Z_{R1}$] (6,0) to (4,0);
+\end{circuitikz}
+\end{figure}
 $$
-V = -V_s\frac{Z_{R2}}{Z_{R2}+Z_C+\frac{Z_L+Z_{R1}}{Z_L+Z_{R1}}} = -V_s\frac{R_2}{R_2 + \frac{1}{sC} + 
+V = -V_s\frac{Z_{R2}}{Z_{R2}+Z_C+\frac{Z_L\cdot Z_{R1}}{Z_L+Z_{R1}}} = -V_s\frac{R_2}{R_2 + \frac{1}{sC} + 
 \frac{sLR_1}{R_1+sL}} =
 $$
 $$
@@ -407,23 +416,39 @@ $$
 $$
 = \frac{- 3s(3s+1)}{12s^2+6s+1} = H(s)
 $$
-Antitrasformiamo:
+Antitrasformiamo $H(s)$:
 $$
-L^{-1}\left[\frac{-3s(3s+1)}{12s^2+6s +1}\right] = -3 \frac{d}{dt}L^{-1} \left[\frac{3s+1}{12s^2+6s+1}\right] = -\frac{1}{4} \frac{d}{dt} L^{-1} \left[\frac{3s+1}{s^2+0.5s + \frac{1}{12}}\right]
+L^{-1}\left[\frac{-3s(3s+1)}{12s^2+6s +1}\right] = -3 \frac{d}{dt}L^{-1} \left[\frac{3s+1}{12s^2+6s+1}\right] = -\frac{1}{4} \frac{d}{dt} L^{-1} \left[\frac{3s+1}{s^2+0.5s + \frac{1}{12}}\right] =
 $$
+$$
+= -\frac{1}{4} \frac{d}{dt} L^{-1}[F(s)]
+$$
+Decomponendo in fratti semplici:
 $$
 F(s) = \frac{k_1}{s+0.25+0.1443j} + \frac{k_2}{s+0.25-0.1443j}
 $$
-
-...
+Calcoliamo i residui eseguendo opportunamente i limiti con $p_1 = -0.25-0.1443j$ e $p_2$ il suo 
+coniugato:
+$$
+k_1 = \frac{3p_1+1}{p_1-p_2} = \frac{3}{2}-\frac{\sqrt{3}}{2}j
+$$  
+$$
+k_2 = \bar{k_1} = \frac{3}{2} +\frac{\sqrt{3}}{2}j
+$$
+Sostituendo:
+$$
+F(s) = \frac{\frac{3+\sqrt{3}j}{2}}{s + 0.25 + 0.1443j} + \frac{\frac{3-\sqrt{3}j}{2}}{s+0.25-0.1443j}
+$$
 
 La trasformata inversa viene eseguita con le funzioni esponenziali:
 $$
-L^{-1}[F(s)] = \frac{3+\sqrt{3}j}{2}e^{-0.25 t}e^{-0.1443 t} + \frac{3-\sqrt{3}j}{2}e^{-0.25 t}e^{j0.1443 t} =$$
+L^{-1}[F(s)] = \frac{3+\sqrt{3}j}{2}e^{-0.25 t}e^{-j0.1443 t} + \frac{3-\sqrt{3}j}{2}e^{-0.25 t}e^{j0.1443 t}
 $$
-= e^{-0.125 t}\left[3\cos(0.1443 t) + \sqrt{3}\sin(0.1443 t)\right]\cdot u(t)
+Raggruppando i termini`:
 $$
-
+L^{-1}[F(s)] = e^{-0.125 t}\left[3\cos(0.1443 t) + \sqrt{3}\sin(0.1443 t)\right]\cdot u(t)
 $$
-h(t) = -\frac{1}{4} \frac{d}{dt}L^{-1}[F(s)] = 0.125 e ^{-0.25 t}[\cos(0.1443 t) + \sqrt{3}\sin(0.1443 t)] - 0.75\delta(t)
 $$
+h(t) = -\frac{1}{4} \frac{d}{dt}L^{-1}[F(s)] = 0.125 e ^{-0.25 t}[\cos(0.1443 t) + \sqrt{3}\sin(0.1443 t)] - 0.75\cdot\delta(t)
+$$
+con $\delta(t) = \frac{d}{dt}u(t)$.
