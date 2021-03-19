@@ -18,7 +18,7 @@ $$
 per determinare la soluzione vanno ricercate le radici del denominatore, chiamate \textit{poli}
 della funzione, mentre le radici del numeratore vengono chiamati \textit{zeri}.
 
-La funzione può avere poli semplici di molteplicità 1:
+La funzione può avere \textbf{poli semplici} di molteplicità 1:
 $$
 F^*(s) = \frac{k_1}{s-p_1} + \frac{k_2}{s-p_2} + ... + \frac{k_n}{s-p_n} = \sum_{i=1}^{N}\frac{k_i}{s-p_i}
 $$
@@ -36,58 +36,86 @@ Applicando la \ref{eq:formula_poli_semplici}:
 $$
 k_1 = \frac{2}{-0.886+4.514} = 0.551
 $$
-
-Poli multipli, ossia con molteplicità maggiore di 1, supponiamo ad esempio $p_1$ e $p_2$ poli multipli:
+Una volta trovati tutti i poli semplici, l'antitrasformata della funzione, diviene una somma di
+antitrasformate dei singoli rapporti:
 $$
-F^*(s) = \frac{k_{11}}{(s-p_1)^2} + \frac{k_{12}}{s-p_1} + \sum_{i=3}^{N} \frac{k_1}{s-p_i}
+L^{-1}[F^*(s)] = L^{-1}\left[\sum_{i=1}^{N}\frac{k_i}{s-p_i}\right] = \sum_{i=1}^{N} k_ie^{p_i t}
+$$
+\textbf{Poli multipli}, ossia con molteplicità maggiore di 1, supponiamo ad esempio $p_1$ sia un polo multiplo:
+$$
+F^*(s) = \frac{k_{11}}{(s-p_1)^2} + \frac{k_{12}}{s-p_1} + \sum_{i=3}^{N} \frac{k_i}{s-p_i}
 $$
 $$
 k_{11} = \lim_{s\to p_1} \left[(s-p_1)^2F^*(s)\right]
 $$
-per determinare il secondo residuo invece si deve eseguire il limite della derivata:
+per determinare il secondo residuo del polo invece si deve eseguire il limite della derivata:
 $$
-k_{12} \lim_{s\to p_1} \frac{d}{ds} \left[(s-p_1)^2 F^*(s)\right]
+k_{12} = \lim_{s\to p_1} \frac{d}{ds} \left[(s-p_1)^2 F^*(s)\right]
 $$
 Esempio:
 $$
 F^*(s) = \frac{2s+5}{(s+2)^2} = \frac{k_{11}}{(s+2)^2} + \frac{k_{12}}{s+2}
 $$
 $$
-k_{11} = \lim_{s\to-2} \frac{(2s+5)(s+2)^2}{(s+2)^2} = 1
+k_{11} = \lim_{s\to-2} \frac{(2s+5)\cancel{(s+2)^2}}{\cancel{(s+2)^2}} = 1
 $$
 $$
 k_{12} = \lim_{s \to -2} \frac{d}{ds} [2s+5] = 2
 $$
 $$
-F^*(s) = \frac{1}{(s+2)^2}+\frac{2}{s+2}\ L^{-1}[F^*(s)] = te^{-2t}+2e^{-2t}
+F^*(s) = \frac{1}{(s+2)^2}+\frac{2}{s+2},\ L^{-1}[F^*(s)] = te^{-2t}+2e^{-2t}
 $$
 
 \textbf{Poli complessi e coniugati:}
+Troviamo le radici del denominatore della seguente funzione:
 $$
-F^*(s) \frac{2s-1}{s^2+4s+5} = \frac{k_1}{s+2+j} + \frac{k_2}{s+2-j}
-$$
-$$
-k_1 = \frac{2(-2-j)-1}{-2-j+2-j} = \frac{-4-2j-1}{-2j} = \frac{5+2j}{2j} = 1 - \frac{5}{2}j
+F^*(s) = \frac{2s-1}{s^2+4s+5} = \frac{k_1}{s+2+j} + \frac{k_2}{s+2-j}
 $$
 $$
-k_2 = k_1^* = 1+\frac{5}{2}j
+k_1 = \frac{2(-2-j)-1}{\cancel{-2}-j\cancel{+2}-j} = \frac{-4-2j-1}{-2j} = \frac{5+2j}{2j} = 1 - \frac{5}{2}j
+$$
+$$
+k_2 = \bar{k_1} = 1+\frac{5}{2}j
 $$
 $$
 F^*(s) = \frac{1-\frac{5}{2}j}{s+2+j} + \frac{1+\frac{5}{2}j}{s+2-j}
 $$
-
+\\
 $$
-L^{-1}[F^*(s)] = (1-\frac{5}{2}j)e^{-(2+j)t} + (1+\frac{5}{2}j)e^{-(2-j)t} = e^{-2t}\left[\frac{e^{-jt}+e^{jt}}{2}\cdot 2 - \frac{5}{2}je^{-jt}+\frac{5}{2}je^{jt}\right] =
+L^{-1}[F^*(s)] = \left(1-\frac{5}{2}j\right)e^{-(2+j)t} + \left(1+\frac{5}{2}j\right)e^{-(2-j)t} =
+$$
+$$
+= \left(1-\frac{5}{2}j\right)e^{-2t}e^{-jt} + \left(1+\frac{5}{2}j\right)e^{-2t}e^{jt} =
+$$
+$$
+= e^{-2t}\left[\frac{\left(e^{-jt}+e^{jt}\right)}{2}\cdot 2 - \frac{5}{2}je^{-jt}+\frac{5}{2}je^{jt}\right] =
+$$
+$$
+= e^{-2t}\left[\frac{\left(e^{-jt}+e^{jt}\right)}{2}\cdot 2 + \frac{5}{2j}e^{-jt}-\frac{5}{2j}e^{jt}\right] =
 $$
 $$
 = e^{-2t}\left[2\cos(t)-5\sin(t)\right]
 $$
-
+\newpage
 \textbf{Esercizio 1 :}
 
-Circuito RLC parallelo, determinare la risposta all'impulso e al gradino
+Determinare la risposta all'impulso e al gradino
+\begin{figure}[h]
+\centering
+\begin{circuitikz}
+\draw (0,0) to [I,l=$j(t)$] (0,2)
+            to (2,2) to [R,l_=$R$,i_=$i_R$] (2,0)
+            to (0,0);
+\draw (2,2) to (4,2) to [L,l_=$L$,i_=$i_L$] (4,0) to (2,0);
+\draw (4,2) to (6,2) to [C,l_=$C$,v^=$v(t)$,i_=$i_C$] (6,0) to (4,0);
+\end{circuitikz}
+\caption{Circuito RLC parallelo}
+\end{figure}
 $$
 R = \SI{10}{\kilo\ohm}\ L = \SI{100}{\milli\henry}\ C = \SI{10}{\micro\farad}
+$$
+$$
+j(t) = u(t)
 $$
 $$
 j(t) = \frac{v}{r} + i_L + i_C,\ v = L\frac{di_L}{dt},\ i_c = C\frac{dv_c}{dt}
@@ -307,7 +335,9 @@ $$
 
 La trasformata inversa viene eseguita con le funzioni esponenziali:
 $$
-L^{-1}[F(s)] = \frac{3+\sqrt{3}j}{2}e^{-0.25 t}e^{-0.1443 t} + \frac{3-\sqrt{3}j}{2}e^{-0.25 t}e^{j0.1443 t} = e^{-0.125 t}\left[3\cos(0.1443 t) + \sqrt{3}\sin(0.1443 t)\right]\cdot u(t)
+L^{-1}[F(s)] = \frac{3+\sqrt{3}j}{2}e^{-0.25 t}e^{-0.1443 t} + \frac{3-\sqrt{3}j}{2}e^{-0.25 t}e^{j0.1443 t} =$$
+$$
+= e^{-0.125 t}\left[3\cos(0.1443 t) + \sqrt{3}\sin(0.1443 t)\right]\cdot u(t)
 $$
 
 $$
