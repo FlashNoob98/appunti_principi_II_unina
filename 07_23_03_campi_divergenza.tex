@@ -1,0 +1,462 @@
+
+\section{Introduzione ai campi stazionari e instazionari}
+\subsection{Richiami di analisi vettoriale}
+\paragraph{Sistemi di riferimento e coordinate}
+Per descrivere una proprietà nello spazio, si utilizza di solito un riferimento composto da 
+una terna ortogonale di assi indicati con $L_1$ $L_2$ e $L_3$ con origine comune in $O$.
+Si descrive un punto nello spazio $P$ con un raggio vettore che parte dall'origine e 
+raggiunge il punto $P$.
+
+\begin{figure}[h] %esempio punto P nello spazio
+\centering
+\begin{tikzpicture}[scale=3,tdplot_main_coords]
+\draw [thick,->] (0,0,0) -- (1,0,0) node[anchor= north east]{$l_1$};
+\draw [thick,->] (0,0,0) -- (0,1,0) node[anchor= north west]{$l_2$};
+\draw [thick,->] (0,0,0) -- (0,0,1) node[anchor= south]{$l_3$};
+\tdplotsetcoord{P}{0.8}{50}{45};
+\coordinate (O) at (0,0,0);
+\draw [-stealth,color=red] (O) -- (P) node[anchor = west]{$P$};
+
+\draw [dashed,color=red] (O) -- (Px);
+\draw [dashed,color=red] (O) -- (Py);
+\draw [dashed,color=red] (O) -- (Pz);
+\draw [dashed,color=red] (Px) node[anchor = south east]{$x$} -- (Pxy);
+\draw [dashed,color=red] (Py) node[anchor = south west]{$y$} -- (Pxy);
+%\draw [dashed,color=red] (Px) -- (Pxz);
+%\draw [dashed,color=red] (Pz) -- (Pxz);
+%\draw [dashed,color=red] (Py) -- (Pyz);
+\draw [dashed,color=red] (O) -- (Pxy);
+%\draw [dashed,color=red] (Pz) -- (Pyz);
+\draw [dashed,color=red] (Pxy) -- (P);
+%\draw [dashed,color=red] (Pxz) -- (P);
+%\draw [dashed,color=red] (Pyz) -- (P);
+\draw [dashed,color=red] (Pz) node[anchor = east]{$z$} -- (P);
+\end{tikzpicture}
+\end{figure}
+
+Questo vettore può essere determinato con una terna di scalari $(u_1,u_2,u_3)$ che sono le 
+coordinate del punto $P$.
+
+La scelta più consona è quella di introdurre un sistema di coordinate cartesiane tali che 
+$$
+P \rightarrow (x,y,z)\ \ \vec{OP} = x\vec{e_x} + y\vec{e_y} + z\vec{e_z}
+$$
+con $\vec{e_x},\ \vec{e_y},\ \vec{e_z}$ i versori degli assi coordinati $l_1,\ l_2,\ l_3$.
+
+In alternativa si possono utilizzare le coordinate \textbf{cilindriche}:
+
+\begin{figure}[h] %esempio punto P coordinate cilindriche
+\centering
+\begin{tikzpicture}[scale=3,tdplot_main_coords]
+\draw [thick,->] (0,0,0) -- (1,0,0) node[anchor= north east]{$l_1$};
+\draw [thick,->] (0,0,0) -- (0,1,0) node[anchor= north west]{$l_2$};
+\draw [thick,->] (0,0,0) -- (0,0,1) node[anchor= south]{$l_3$};
+\tdplotsetcoord{P}{0.8}{50}{45};
+\coordinate (O) at (0,0,0);
+\draw [-stealth,color=red] (O) -- (P) node[anchor = west]{$P$};
+
+\draw [color=red] (O) -- (Pxy) node[anchor = north]{$r$};
+\tdplotdrawarc[color=blue,->]{(O)}{0.2}{0}{45}{anchor=north}{$\varphi$};
+%\draw [dashed,color=red] (O) -- (Px);
+%\draw [dashed,color=red] (O) -- (Py);
+%\draw [dashed,color=red] (O) -- (Pz);
+%\draw [dashed,color=red] (Px) node[anchor = south east]{$x$} -- (Pxy);
+%\draw [dashed,color=red] (Py) node[anchor = south west]{$y$} -- (Pxy);
+%\draw [dashed,color=red] (Px) -- (Pxz);
+%\draw [dashed,color=red] (Pz) -- (Pxz);
+%\draw [dashed,color=red] (Py) -- (Pyz);
+%\draw [dashed,color=red] (Pz) -- (Pyz);
+\draw [dashed,color=red] (Pxy) -- (P);
+%\draw [dashed,color=red] (Pxz) -- (P);
+%\draw [dashed,color=red] (Pyz) -- (P);
+\draw [dashed,color=red] (Pz) node[anchor = east]{$z$} -- (P);
+\end{tikzpicture}
+\end{figure}
+
+Il punto $P$ è ancora rappresentato da 3 scalari $(r,\varphi, z)$ e dato dalla combinazione di queste 
+coordinate.
+$$
+\vec{OP} = r\vec{e_r} + \varphi\vec{e_{\varphi}} + z\vec{e_z}
+$$
+
+$$
+\begin{cases}
+r = \sqrt{x^2+y^2}\\
+\sin\varphi = \frac{y}{\sqrt{x^2+y^2}},\ \cos\varphi = \frac{x}{\sqrt{x^2+y^2}}\\
+z = z
+\end{cases}
+$$
+Queste variabili possono essere ottenute in MATLAB con i seguenti comandi:
+\verb|cart2pol| e $\varphi= $ \verb|atan2(y,x)| o viceversa \verb|pol2cart|.
+$$
+\begin{cases}
+x = r\cos\varphi \\
+y = r\sin\varphi \\
+z = z
+\end{cases}
+$$
+
+Un altro sistema di riferimento comunemente utilizzato è quello delle coordinate \textbf{sferiche}.
+
+\begin{figure}[h] %esempio punto P coordinate sferiche
+\centering
+\begin{tikzpicture}[scale=3,tdplot_main_coords]
+\draw [thick,->] (0,0,0) -- (1,0,0) node[anchor= north east]{$l_1$};
+\draw [thick,->] (0,0,0) -- (0,1,0) node[anchor= north west]{$l_2$};
+\draw [thick,->] (0,0,0) -- (0,0,1) node[anchor= south]{$l_3$};
+\tdplotsetcoord{P}{0.8}{50}{45}; %coordinate punto P
+\tdplotsetthetaplanecoords{45}; %coordinata phi per determinare il piano di theta
+\tdplotdrawarc[tdplot_rotated_coords,color=blue,->]{(0,0,0)}{0.5}{0}{50}{anchor=south}{$\theta$};
+\coordinate (O) at (0,0,0);
+\draw [-stealth,color=red] (O) -- (P) node[anchor = west]{$P$};
+\draw (0,0.18,0.13) node[color=red]{$r$};
+\draw [dashed,color=red] (O) -- (Pxy);
+\tdplotdrawarc[color=blue,->]{(O)}{0.2}{0}{45}{anchor=north}{$\varphi$};
+%\draw [dashed,color=red] (O) -- (Px);
+%\draw [dashed,color=red] (O) -- (Py);
+%\draw [dashed,color=red] (O) -- (Pz);
+%\draw [dashed,color=red] (Px) node[anchor = south east]{$x$} -- (Pxy);
+%\draw [dashed,color=red] (Py) node[anchor = south west]{$y$} -- (Pxy);
+%\draw [dashed,color=red] (Px) -- (Pxz);
+%\draw [dashed,color=red] (Pz) -- (Pxz);
+%\draw [dashed,color=red] (Py) -- (Pyz);
+%\draw [dashed,color=red] (Pz) -- (Pyz);
+\draw [dashed,color=red] (Pxy) -- (P);
+%\draw [dashed,color=red] (Pxz) -- (P);
+%\draw [dashed,color=red] (Pyz) -- (P);
+%\draw [dashed,color=red] (Pz) node[anchor = east]{$z$} -- (P);
+\end{tikzpicture}
+\end{figure}
+
+$$
+P\rightarrow (r,\theta,\varphi)\ \ \vec{OP} = r\vec{e_r} + \theta\vec{e_\theta} + \varphi \vec{e_\varphi}
+$$
+con $(\vec{e_r},\vec{e_\theta},\vec{e_\varphi})$ terna levogira
+
+$$
+\begin{cases}
+x = r\sin\theta\cos\varphi\\
+y = r\sin\theta\sin\varphi\\
+z = r\cos\theta
+\end{cases}
+$$
+anche in questo caso è possibile utilizzare la funzione MATLAB \verb|sph2cart|.
+
+Formule inverse:
+$$
+\begin{cases}
+r &= \sqrt{x^2+y^2+z^2} \\
+\cos\theta &= \frac{z}{\sqrt{x^2+y^2+z^2}}\\
+\sin\theta &= \frac{\sqrt{x^2+y^2}}{\sqrt{x^2+y^2+z^2}} \\
+\cos\varphi  &= \frac{x}{\sqrt{x^2+y^2}},\ \sin\varphi = \frac{y}{\sqrt{x^2+y^2}}
+\end{cases}
+$$
+
+\subsection{Spostamenti elementari}
+Supponiamo uno spostamento lungo la direzione $l_1$ associamo un coefficiente ``metrico'' pari 
+alla distanza percorsa nel sistema di coordinate.
+
+\begin{align*}
+dl_1 &= h_1 du_1 \\
+dl_2 &= h_2 du_2 \\
+dl_3 &= h_3 du_3
+\end{align*}
+
+Questi fattori ``aggiustano'' le dimensioni delle relazioni in metri dovute a variazioni di 
+coordinate differenti ad esempio in radianti.
+
+Per le coordinate cartesiane i coefficienti metrici sono tutti uguali tra loro e pari ad 1.
+$$
+h_1 = h_2 = h_3 = 1 \Rightarrow
+\begin{cases}
+dl_1 = dx \\
+dl_2 = dy \\
+dl_3 = dz
+\end{cases}
+$$
+Si suppone di costruire un volumetto elementare attorno il punto $P$, se ne può calcolare
+l'area delle facce e il suo volume.
+Si indica con $dS_1$ la superficie perpendicolare all'asse $l_1$, essa sarà pari a 
+$dS_1 = dl_2\cdot dl_3 = dy\cdot dz$, si riportano per completezza le tre superfici:
+\begin{align*}
+dS_1 &= dl_2\cdot dl_3 = dy\cdot dz \\
+dS_2 &= dl_3\cdot dl_1 = dz\cdot dx \\
+dS_3 &= dl_1\cdot dl_2 = dx\cdot dy
+\end{align*}
+Il volume elementare invece si ricava con:
+$$
+dV = dl_1\cdot dl_2 \cdot dl_3 = dx\cdot dy\cdot dz
+$$
+
+Ripetiamo l'analisi per le \textbf{coordinate cilindriche:}
+$ (u_1,u_2,u_3) = (r,\varphi,z)$
+
+Supponiamo uno spostamento associato alla variazione della coordinata $r$, il raggio vettore
+viene incrementato di una quantità $dr = dl_1 \Rightarrow h_1 =1$.
+
+Effettuando una variazione $d\varphi$ invece il raggio vettore percorrerà un arco pari 
+a $rd\varphi = dl_2 \Rightarrow h_2 = r$ per una variazione di arco ci sarà uno 
+spostamento proporzionale alla distanza dall'origine $r$.
+\begin{align*}
+dr = dl_1 &\Rightarrow h_1 = 1\\
+r d\varphi = dl_2 &\Rightarrow h_2 = r \\
+dz = dl_3 &\Rightarrow h_3 = 1
+\end{align*}
+Superfici elementari:
+\begin{align*}
+dS_1 &= r\cdot d\varphi\cdot dz\\
+dS_2 &= dz\cdot dr\\
+dS_3 &= r\cdot dr\cdot d\varphi
+\end{align*}
+Volume infinitesimo:
+$$
+dV = r\cdot dr\cdot d\varphi\cdot dz
+$$
+
+In \textbf{coordinate sferiche} si ha $(u_1,u_2,u_3)=(r,\theta,\varphi)$
+
+Ad una variazione $dr$ si ha uno spostamento lungo il raggio vettore $\vec{OP}$ quindi anche in questo
+caso il fattore metrico sarà pari ad 1.
+
+Ad una variazione della variabile $\theta$ detta anche co-latitudine, corrisponde una rotazione
+pari a $dl_2 = r\cdot d\theta \Rightarrow h_2 = r$.
+
+Ad una variazione di $\phi$ si ha un arco $dl_3 = r\cdot\sin\theta\cdot d \varphi \Rightarrow h_3 = r\cdot\sin\theta$
+\begin{align*}
+dl_1 &= dr & h_1 &=1 \\
+dl_2 &= r\cdot d\theta & h_2 &=r \\
+dl_3 &= r\cdot\sin\theta\cdot d\varphi & h_3 &= r\cdot \sin\theta 
+\end{align*}
+
+Superfici infinitesime:
+\begin{align*}
+dS_1 &= r^2\cdot\sin\theta\cdot d\theta\cdot d\varphi \\
+dS_2 &= r\cdot \sin\theta \\
+dS_3 &= r\cdot d \theta\cdot dr
+\end{align*}
+Volume infinitesimo:
+$$
+dV = r^2\cdot \sin\theta\cdot dr\cdot d\theta\cdot d\varphi
+$$
+
+\subsection{Richiami sui campi}
+\paragraph{Definizione}
+Si intende con campo \textbf{scalare} una funzione $f:\Omega \in R^3 \to R$ con $\Omega$ 
+sufficientemente regolare.
+
+Un campo \textbf{vettoriale} invece è una funzione $\vec{v} : \Omega \in R^3 \to R^3$
+che può essere espressa mediante 3 campi scalari $v_1(P),v_2(P),v_3(P)$ che sono le componenti
+di $\vec{v}(P)$ nel sistema di coordinate scelto.
+
+In coordinate \textit{cartesiane}:
+$$
+\vec{v}(x,y,z) = v_x(x,y,z)\vec{e_x} + v_y(x,y,z)\vec{e_y} + v_z(x,y,z)\vec{e_z}
+$$
+
+In coordinate \textit{sferiche}:
+$$
+\vec{v}(r,\theta,\varphi) = v_r(r,\theta,\varphi)\vec{e_r} + 
+v_\theta(r,\theta,\varphi)\vec{e_\theta} + v_\varphi(r,\theta,\varphi)\vec{e_\varphi}
+$$
+
+Richiamiamo per i campi scalari la superficie (curva) di livello per il caso bidimensionale 
+(tridimensionale):
+$$
+f(P) \in C^1(\Omega)
+$$
+una superficie di livello è definita da:
+$$
+f(x,y,z) = f_0
+$$
+In ogni punto $P$ passa una ed una sola superficie di livello.
+
+Nel caso bidimensionale $f(x,y) = f_0$.
+
+
+Definiamo la \textbf{linea di forza} di un campo vettoriale.
+Sia $\vec{v(P)} : \Omega \to R^3$ e sia la linea $\gamma$ tangente in ogni punto a $\vec{v(P)}$,
+è per definizione una linea vettoriale di $\vec{v}$.
+L'orientamento dei versori tangenti della linea $\gamma$ descrivono direzione e verso di $\vec{v}$ 
+(non il modulo).
+
+Tracciamento delle linee vettoriali di un campo $\vec{v}(P)$ assegnato:
+
+Riferendosi alle componenti del campo vettoriale secondo gli assi cartesiani appena definiti
+si vede che lo spostamento differenziale $dx$ e $dy$ associato al campo vettoriale soddisfa la 
+relazione:
+$$
+\frac{v_y(P_0)}{v_x(P_0)} = \frac{dy}{dx}(P_0)
+$$
+Estendendo questo concetto per tutti i punti della linea che si vuole tracciare
+possiamo risolvere un problema ai valori iniziali per l'equazione differenziale ordinaria nella
+forma:
+$$
+\begin{cases}
+\frac{dy}{dx} = \frac{v_y(x,y,z)}{v_x(x,y,z)} \\
+\frac{dz}{dx} = \frac{v_z(x,y,z)}{v_x(x,y,z)}\\
+y(x_0) = y_0 \\
+z(x_0) = z_0
+\end{cases}
+$$
+Questa equazione ci restituisce la linea di campo a partire dal punto $P_0$ in forma parametrica
+rispetto ad $x$.
+
+Si definisce una \textbf{superficie vettoriale} di $\vec{v}(P)$
+$$
+S\in \Omega: \hat{n}(P)\cdot\vec{v}(P) = 0\ \forall\ P \in S
+$$
+Sia data una superficie aperta in cui è contenuto un campo vettoriale $\vec{v}$,
+i versori normali $\hat{n}$ saranno ortogonali in ogni punto della superficie $S$ e quindi al 
+campo $\vec{v}$.
+
+Il \textbf{tubo di flusso} di un campo $\vec{v}$: 
+sia $\Gamma$ una linea chiusa che non sia una linea di forza
+sulla quale vengono definiti dei punti, si suppone che ci siano delle linee vettoriali che attraversano
+questi punti. Si definisce questo ``tubo'' in modo tale che le linee vettoriali siano tangenti sulla sua faccia laterale.
+\newpage
+\subsection{Circuitazioni e flussi di campi vettoriali}
+
+\textbf{Circuitazione} (o circolazione) di $\vec{v}$ sulla linea chiusa $\Gamma$, supponiamo un punto $Q$ sulla 
+linea e il versore tangente $\hat{t}(Q)$ e una linea vettoriale $\vec{v}(Q)$ con un certo angolo
+$\alpha$ rispetto a $\hat{t}(Q)$ allora:
+
+$$
+\oint_{\Gamma}  \vec{v}\cdot\hat{t}dl = 
+\oint_{\Gamma}  \left|\vec{v}(Q)\right|\cdot\cos\alpha\ dl
+$$
+con $\hat{t}dl$ elemento di linea orientata.
+
+\textbf{Flusso} di $\vec{v}$ uscente da una superficie chiusa $\Sigma$
+
+$$
+\oiint_{\Sigma}\vec{v}\cdot\hat{n}\ dS = \oiint_{\Sigma} \left|\vec{v}(Q)\right|\cos\alpha\ dS
+$$
+
+\paragraph{Operatori differenziali}
+
+\textbf{Gradiente} siano date due superfici di livello $f(P) = f_0 = S_0$ e
+$f(P) = f_0 + \Delta f = S_1$, consideriamo la distanza $d(P,P_0)$ con 
+$P\in S_1$ lungo la retta normale alla superficie $S_0$ passante per il punto 
+$P_0$ ed individuo un punto $P$ su $S_1$, si considera ora il rapporto $\frac{f(P)\cdot f(P_0)}{d(p,p_0)}$ è un rapporto incrementale che con il limite:
+$$
+\lim_{P\to P_0} \left[\frac{f(P)\cdot f(P_0)}{d(p,p_0)}\right] \stackrel{\text{\text{def}}}{=} \left.\frac{\partial f}{\partial n}\right|_{P_0} 
+$$
+ definisce la derivata parziale lungo la direzione normale passante per il punto $P_0$.
+
+Si definisce il \textbf{gradiente} di $f$ (indicato con $\nabla f$) il vettore con modulo pari a 
+$\left.\frac{\partial f}{\partial n}\right|_{P_0}$, verso pari a quello della
+normale $n$ nella direzione delle $f$ crescenti.
+È quindi possibile definire una generica variazione di $f$ con:
+$$
+df = \nabla f(P_0)\cdot d\vec{r}
+$$
+con $\vec{dr}$ uno generico spostamento $\vec{r_q} - \vec{r_{p_0}},\ q\in\Omega$.
+
+\paragraph{Gradiente nei sistemi di coordinate curvilinee}
+Si consideri uno spostamento elementare lungo ciascuna delle direzioni coordinate
+$dl_1,\ dl_2,\ dl_3$ allora la variazione
+$$
+df = \nabla f (P_0) \cdot dl_i\vec{e_i} = \nabla f(P_0) \cdot h_i du_i\vec{e_i} 
+$$
+ma ricordando che il prodotto tra il gradiente e il versore della coordinata i-esima è pari
+alla derivata direzionale lungo quella coordinata
+$$
+\frac{1}{h_i} \frac{\partial f}{\partial u_i} = \left[\nabla f (P_0)\right]\cdot \vec{e_i}
+$$
+Ad esempio nelle coordinate cartesiane:
+$$
+\nabla f(P) = \frac{\partial f}{\partial x}\vec{e_x} + \frac{\partial f}{\partial y}\vec{e_y} + 
+\frac{\partial f}{\partial z}\vec{e_z}
+$$
+
+Oppure nelle coordinate cilindriche:
+$$
+\nabla f(P) = \frac{\partial f}{\partial r}\vec{e_r} + \frac{1}{r}\frac{\partial f}{\partial \varphi}\vec{e_\varphi} + \frac{\partial f}{\partial z}\vec{e_z}
+$$
+
+Coordinate sferiche:
+$$
+\nabla f(P) = \frac{\partial f}{\partial r}\vec{e_r} + \frac{1}{r}\frac{\partial f}{\partial \theta}\vec{e_\theta} + \frac{1}{r\sin\theta} \frac{\partial f}{\partial \varphi}\vec{e_\varphi}
+$$
+
+
+Aggiungiamo inoltre l'operatore \textbf{divergenza} di un campo vettoriale $\nabla\cdot\vec{v}$.
+
+Sia $\Sigma$ una superficie chiusa che delimita una regione di spazio $\Omega_\Sigma$ contenente 
+il punto $P\in\Omega$, sia $\hat{n}$ il versore normale alla
+superficie, ne definiamo il flusso uscente alla superficie $\Phi_\Sigma$
+$$
+\oiint_\Sigma \vec{v}\cdot \hat{n}dS = \Phi_\Sigma
+$$
+Effettuando il limite sul volume 
+$$
+\lim_{\text{Vol}(\Omega_\Sigma)\to 0} \frac{\oiint_\Sigma \vec{v}\cdot \hat{n}dS}{\text{Vol}(\Omega_\Sigma)}
+\stackrel{\text{def}}{=} \nabla\cdot \vec{v}(P)
+$$
+con la condizione che il volume infinitesimo contenga ancora il punto $P$ ed il limite esista e 
+sia finito.
+
+In coordinate cartesiane la divergenza di $\vec{v}(P)$
+$$
+\nabla\cdot\vec{v}(P) = \frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y} + \frac{\partial v_z}{\partial z}  
+$$
+
+
+\paragraph{Teorema della divergenza}
+Il flusso uscente dalla superficie $\Sigma$ è pari all'integrale esteso al volume 
+$\Omega_\Sigma$ della divergenza.
+$$
+\oiint_\Sigma \vec{v}\cdot \hat{n} dS = \iiint_{\Omega_\Sigma} \nabla\cdot \vec{v} d V
+$$
+
+\paragraph{Campi solenoidali e indivergenti}
+
+Un campo $\vec{V}(P)$ si dice \textbf{solenoidale} nel dominio $\Omega$ se $\forall$ superficie chiusa $\Sigma$
+$$
+\oiint_\Sigma \vec{v}\cdot \hat{n} dS = 0\ \ \forall\ \Sigma \in \Omega
+$$
+
+Per campi solenoidali, il flusso attraverso una superficie aperta dipende solo dall'orlo
+della superficie (flusso concatenato ad una linea).
+$$
+\iint_{S_\Gamma'} \vec{v}\cdot\hat{n}dS = \iint_{S_\Gamma''} \vec{v}\cdot\hat{n}dS 
+$$
+con $\Gamma$ l'orlo delle due superfici $S_\Gamma'$ e $S_\Gamma''$.
+
+Campo \textbf{indivergente}: $\vec{v}(P)$ indivergente in $\Omega$ se $div \vec{v}(P) = 0 \ \forall P \in \Omega$
+
+I campi indivergenti soddisfano il principio di deformazione della superficie:
+
+Supponiamo di avere un dominio $\Omega$ contenente due superfici, $\Sigma_1$ contenente $\Sigma_2$
+allora:
+$$
+\iint_{\Sigma_1} \vec{v}\cdot\hat{n}dS = \iint_{\Sigma_2}\vec{v}\cdot\hat{n}dS 
+$$
+le due superfici sono deformabili con continuità una nell'altra senza mai uscire da $\Omega$.
+
+Determino la regione di spazio compresa tra le due superfici $\Omega_{\Sigma_1\Sigma_2}$,
+effettuando l'integrale della divergenza esso sarà pari a 0 (perchè nulla la divergenza) ma per 
+il teorema della divergenza esso sarà pari all'integrale sulle 2 superfici:
+$$
+\iiint_{\Omega_{\Sigma_1\Sigma_2}} \nabla\cdot\vec{v}dV = 0 = \oiint_{\Sigma_1}\vec{v}\cdot\hat{n}dS - \oiint_{\Sigma_2}\vec{v}\cdot\hat{n}dS
+$$
+
+Quando la \textbf{solenoidalità} è equivalente alla divergenza?
+
+Se $\vec{v}(P)$ è solenoidale in $\Omega$ allora il flusso è pari a zero in ogni sigma,$\oiint_\Sigma \vec{v}\cdot\hat{n}dS = 0 \ \forall \Sigma $ allora
+anche il flusso sulle superfici utilizzate per calcolare il limite che conduce alla divergenza del campo vettoriale ricadono in questa circostanza, quindi $\nabla\cdot\vec{v}$ per $p\to 0$ è pari a 0 in ogni punto
+del dominio $\Omega$, quindi la solenoidalità implica l'indivergenza.
+L'indivergenza diventa una condizione necessaria per la solenoidalità.
+
+Per dimostrare il viceversa è necessario richiedere un'ipotesi sul dominio,ossia che esso sia
+a connessione superficiale semplice (semplicemente connesso?)
+ogni superficie appartenente ad omega può essere ridotta ad un punto con continuità senza uscire da omega,
+allora questa condizione è sufficiente per dire che $\vec{v}(P)$ è solenoidale in omega.
+
+Un esempio di campo non solenoidale è quello con un dominio multi-connesso, ossia un dominio
+al quale viene sottratta un'intera regione di spazio al suo interno.
+Se anche la divergenza del campo in un punto di questo dominio è pari a 0, il campo non è 
+solenoidale perchè l'integrale del flusso non è pari a 0.
+
+Nella regione non inclusa nel dominio potrebbero essere infatti presenti delle cariche
+elettriche, e la divergenza non sarebbe nulla.
