@@ -1,0 +1,213 @@
+
+\section{Introduzione ai campi stazionari e instazionari}
+\subsection{Richiami di analisi vettoriale}
+\paragraph{Sistemi di riferimento e coordinate}
+Per descrivere una proprietà nello spazio, si utilizza di solito un riferimento composto da 
+una terna ortogonale di assi indicati con $L_1$ L2 e L3 con origine comune in $O$.
+Si descrive un punto nello spazio $P$ con un raggio vettore che parte dall'origine e 
+raggiunge il punto $P$.
+
+Questo vettore può essere determinato con una terna di scalari $(u_1,u_2,u_3)$ che sono le coordinate del 
+punto $P$.
+
+La scelta più consona è quella di introdurre un sistema di coordinate cartesiane tali che 
+$$
+P \rightarrow (x,y,z)\ \vec{OP} = x\vec{e_x} + y\vec{e_y} + z\vec{e_z}
+$$
+con $\vec{e_x},\ \vec{e_y},\ \vec{e_z}$ i versori degli assi coordinati $e_1,\ e_2,\ e_3$.
+
+In alternativa si possono utilizzare le coordinate \textbf{cilindriche}:
+Il punto $P$ è ancora rappresentato da 3 scalari $(r,\varphi, z)$ e dato dalla combinazione di queste 
+coordinate.
+$$
+\vec{OP} = r\vec{e_r} + \varphi\vec{e_{\varphi}} + z\vec{e_z}
+$$
+
+$$
+\begin{cases}
+r = \sqrt{x^2+y^2}\\
+\sin\varphi = \frac{y}{\sqrt{x^2+y^2}},\ \cos\varphi = \frac{x}{\sqrt{x^2+y^2}}\\
+z = z
+\end{cases}
+$$
+Queste variabili possono essere ottenute in MATLAB con i seguenti comandi:
+cart2pol e $\varphi= $ atan2(y,x) o viceversa pol2cart.
+
+Un altro sistema di riferimento comunemente utilizzato è quello delle coordinate \textbf{sferiche}.
+$$
+P\rightarrow (r,\theta,\varphi)\ \ \vec{OP} = r\vec{e_r} + \theta\vec{e_\theta} + \varphi \vec{e_\varphi}
+$$
+con $(\vec{e_r},\vec{e_\theta},\vec{e_\varphi})$ terna levogira
+
+$$
+\begin{cases}
+x = r\sin\theta\cos\varphi\\
+y = r\sin\theta\sin\varphi\\
+z = r\cos\theta
+\end{cases}
+$$
+anche in questo caso è possibile utilizzare la funzione MATLAB ``\textit{sph2cart}''.
+Formule inverse:
+$$
+\begin{cases}
+r = \sqrt{x^2+y^2+z^2} \\
+\cos\theta = \frac{z}{\sqrt{x^2+y^2+z^2}}\\
+\sin\theta = \frac{\sqrt{x^2+y^2}}{\sqrt{x^2+y^2+z^2}} \\
+\cos\varphi  = \frac{x}{\sqrt{x^2+y^2}},\ \sin\varphi = \frac{y}{\sqrt{x^2+y^2}}
+\end{cases}
+$$
+\newpage
+\textbf{Spostamenti elementari:}
+Supponiamo uno spostamento lungo la direzione $e_1$ associamo un coefficiente ``metrico'' del 
+sistema di coordinate. RIVEDI!!
+$$
+\begin{cases}
+de_1 = h_1 du_1\\
+de_2
+\end{cases}
+$$
+Questi fattori ``aggiustano'' le dimensioni delle relazioni in metri dovute a variazioni di coordinate
+ad esempio in radianti.
+
+Per le coordinate cartesiane i coefficianti metrici sono tutti uguali tra loro e pari ad 1.
+$$
+h_1 = h_2 = h_3 = 1 \Rightarrow
+\begin{cases}
+de_1 = dx \\
+de_2 = dy \\
+de_3 = dz
+\end{cases}
+$$
+
+Aggiungi parte integrali
+
+Ripetiamo l'analisi per le \textbf{coordinate cilindriche:}
+$ (u_1,u_2,u_3) = (r,\varphi,z)$
+Supponiamo uno spostamento associato alla variazione della coordinata $r$, il raggio vettore
+viene incrementato di una quantità $dr = dl_1 \Rightarrow h_1 =1$.
+
+Effettuando una variazione $d\varphi$ invece il raggio vettore percorrerà un arco pari a $rd\varphi = dl_2 \Rightarrow h_2 = r$ a pari variazione di arco ci sarà uno spostamento maggiore proporzionale alla
+distanza dall'origine $r$.
+
+$$
+dS_1 = rd\varphi dz\ \ dS_2 =dzdr\ \ dS_3 = rdrd\varphi
+$$
+$$
+dV = rdr\ d\varphi\ dz
+$$
+
+In \textbf{coordinate sferiche} si ha $()=()$
+
+Ad una variazione $dr$ si ha uno spostamento lungo il raggio vettore $\vec{OP}$ quindi anche in questo
+caso il fattore metrico sasrä pari ad 1.
+
+Ad una variazione della variabile $\theta$ detta anche co-latitudine, corrisponde una rotazione
+pari a $dl_2 = rd\theta \Rightarrow h_2 = r$.
+
+Ad una variazione di $\phi$ si ha un arco $dl_3 = r\sin\theta d \varphi \Rightarrow h_3 = r\sin\theta$
+
+$$\begin{cases}
+dS_1 = r^2\sin\theta\ d\theta\ d\varphi \\
+dS_2 = r \sin \theta \\
+dS_3 = r d \theta dr
+\end{cases}
+$$
+$$
+dV = r^2 \sin\theta\ dr\ d\theta\ d\varphi
+$$
+
+\paragraph{Campi scalari}
+Si intende con campo scalare una funzione $f:\Omega \in R^3 \to R$ con $\Omega$ sufficientemente 
+regolare.
+
+Un campo \textbf{vettoriale} invece è una funzione $\vec{v} : \Omega \in R^3 \to R^3$
+che può essere espressa mediante 3 campi scalari $v_1(P),v_2(P),v_3(P)$ che sono le componenti di
+$\vec{v}(P)$ nel sistema di coordinate scelto.
+
+$$
+\vec{v}(x,y,z) = v_x(x,y,z)\vec{e_x} + v_y(x,y,z)\vec{e_y} + v_z(x,y,z)\vec{e_z}
+$$
+$$
+\vec{v}(r\theta,\varphi) ECC
+$$
+
+Richiamiamo per i campi scalari la superficie (curva) di livello per il caso bidimensionale 
+(tridimensionale):
+$$
+f(P) \in C^1(\Omega)
+$$
+una superficie di livello è definita da:
+$$
+f(x,y,z) = f_0
+$$
+In ogni punto $P$ passa una ed una sola superficie di livello.
+
+Nel caso bidimensionale $f(x,y) = f_0$.
+
+
+\paragraph{Linea di forza di un campo vettoriale}
+Sia $\vec{v(P)} : \Omega \to R^3$ e sia la linea $\gamma$ tangente in ogni punto a $\vec{v(P)}$,
+è per definizione una linea vettoriale di $\vec{v}$.
+L'orientamento dei versori tangenti della linea $\gamma$ descrivono direzione e verso di $\vec{v}$ 
+(non il modulo).
+
+\textbf{Tracciamento delle linee vettoriali} di un campo $\vec{v}(P)$ assegnato:
+
+Riferendosi allo riferimento degli assi cartesiani appena definiti ...
+
+$$
+\frac{v_y(P_0)}{v_x(P_0)} = \frac{dy}{dx}(P_0)
+$$
+Si può quinid risolvere una ODE
+$$
+\begin{cases}
+\frac{dy}{dx} = \frac{v_y(x,y,z)}{v_x(x,y,z)} \\
+\frac{dz}{dx} = \frac{v_z(x,y,z)}{v_x(x,y,z)}\\
+y(x_0) = y_0 \\
+z(x_0) = z_0
+\end{cases}
+$$
+Si definisce una superficie vettoriale di $\vec{v}(P)$
+$$
+S\in \Omega: \vec{u}(P)\cdot\vec{v}(P) = 0 \forall P \in S
+$$
+I versori normali $\vec{u}$ saranno ortogonali in ogni punto della superficie $S$.
+
+Def: Tubo di flusso di un campo $\vec{v}$, sia $\Gamma$ una linea chiusa che non sia una linea di forza
+sulla quale vengono definiti dei punti, si suppone che ci siano delle linee vettoriali che attraversano
+questi punti. Si definisce questo ``tubo'' in modo tale che le linee vettoriali siano tangenti sulla sua faccia laterale.
+\newpage
+Circuitazioni e flussi di campi vettoriali
+
+\textbf{Circuitazione} (o circolazione) di $\vec{v}$ sulla linea chiusa $\Gamma$, supponiamo un punto $Q$ sulla 
+linea e il versore tangente $\hat{t}(Q)$ e una linea vettoriale $\vec{v}(Q)$ con un certo angolo
+$\alpha$ rispetto a $\hat{t}(Q)$ allora:
+
+$$
+\oint_{\Gamma} = \vec{v}\cdot\hat{t}dl 
+$$
+
+\textbf{Flusso} di $\vec{v}$ uscente da una superficie chiusa $ETA$
+
+$$
+\oiint_{ETA}\vec{v}\cdot\hat{n}dS
+$$
+
+\textbf{Operatori differenziali}
+
+\textbf{Gradiente} siano date due superfici di livello $f(P) = f_0$ e $f(P) = f_0 + \Delta f$, consideriamo la distanza tra $P\in S_1$ lungo la retta normale alla superficie $S_0$ passante per il punto 
+$P_0$ ed individuo un punto $P$ su $S_1$, si considera ora il rapporto $\frac{f(P)\cdot f(P_0)}{d(p,p_0)}$ è un rapporto incrementale che con il limite di $P\to P_0$ si definisce la derivata parziale lungo la
+direzione normale passante per il punto $P_0$.
+
+Aggiungi def Gradiente
+
+Gradiente di coordinate curvilinee
+$$
+df = \nabla f (P_0) \cdot dl_i\vec{e_i}
+$$
+$$
+\frac{1}{h_i} \frac{\partial f}{\partial u_i} = \left[\nabla f (P)\right]\cdot e_i
+$$
+Aggiungi ulteriori esempi con le altre coordinate cilindriche e sferiche al variare dei fattori metrici.
+
+
