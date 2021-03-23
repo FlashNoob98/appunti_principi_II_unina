@@ -187,10 +187,10 @@ $$
 \oint_{\Gamma} = \vec{v}\cdot\hat{t}dl 
 $$
 
-\textbf{Flusso} di $\vec{v}$ uscente da una superficie chiusa $ETA$
+\textbf{Flusso} di $\vec{v}$ uscente da una superficie chiusa $\Sigma$
 
 $$
-\oiint_{ETA}\vec{v}\cdot\hat{n}dS
+\oiint_{\Sigma}\vec{v}\cdot\hat{n}dS
 $$
 
 \textbf{Operatori differenziali}
@@ -210,4 +210,69 @@ $$
 $$
 Aggiungi ulteriori esempi con le altre coordinate cilindriche e sferiche al variare dei fattori metrici.
 
+Aggiungiamo inoltre l'operatore divergenza di un campo vettoriale $\vec{v}$.
 
+Sia $\Sigma$ una regione chiusa contenente il punto $P$ e superficie $\Omega_\Sigma$, ne definiamo
+il flusso $\Phi_\Sigma$
+$$
+\oiint_\Sigma \vec{v}\cdot \hat{n}dS = \Phi_\Sigma
+$$
+Effettuanto il limite sul volume 
+$$
+\lim_{\text{Vol}(\Omega_\Sigma)\to 0} \frac{\oiint_\Sigma \vec{v}\cdot \hat{n}dS}{\text{Vol}(\Omega_\Sigma)}
+\stackrel{def}{=} div \vec{v}(P)
+$$
+con la condizione che il volume infinitesimo contenga ancora il punto $P$ ed il limite esista e 
+sia finito.
+
+In coordinate cartesiane la divergenza di $v$
+$$
+div\vec{v}(P) = \frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y} + \frac{\partial v_z}{\partial z}  
+$$
+
+
+Teorema della divergenza:
+$$
+\oiint_\Sigma \vec{v}\cdot \hat{n} dS = \iiint_{\Omega_\Sigma} div \vec{v} d V
+$$
+
+
+Un campo $\vec{V}(P)$ si dice solenoidale nel dominio $\Omega$ se $\forall$ superficie chiusa $\Sigma$
+$$
+\oiint_\Sigma \vec{v}\cdot \hat{n} dS = 0\ \ \forall\ \Sigma \in \Omega
+$$
+
+Per campi solenoidali, il flusso attraverso una superficie aperta dipende solo dall'orlo
+della superficie (flusso concatenato ad una linea).
+
+Campo \textit{indivergente} $\vec{v}(P)$ indivergente in $\Omega$ se $div \vec{v}(P) = 0 \ \forall P \in \Omega$
+
+I campi indivergenti soddisfano il principio di indeformazione della superficie:
+
+Supponiamo di avere un dominio $\Omega$ contenente due superfici, $\Sigma_1$ contenente $\Sigma_2$
+allora:
+$$
+\iint_{\Sigma_1} \vec{v}\cdot\hat{n}dS = \iint_{\Sigma_2}\vec{v}\cdot\hat{n}dS 
+$$
+le due superfici sono deformabili con continuità una nell'altra senza mai uscire da $\Omega$.
+
+Determino la regione di spazio compresa tra le due superfici sigma 1 e 2, effettuando l'integrale della
+divergenza esso sarà pari a 0 (perchè nulla la divergenza) ma per il teorema della divergenza esso sarà 
+pari all'integrale sulle 2 superfici:
+
+
+Quando la \textbf{solenoidalità} è equivalente allla divergenza?
+
+Se $\vec{v}(P)$ è solenoidale in $\Omega$ allora il flusso è pari a zero in ogni sigma, allora
+anche il flusso sulle superfici ... ??? la divergenza di v(P) per p to 0 è pari a 0 in ogni punto
+del dominio omega, quindi la solenoidalità implkica l'indivergenza.
+
+Per dimostrare il viceversa è necessario richiedere un'ipotesi sul dominio, ossia che esso sia
+a connessione superficiale semplice (semplicemente connesso?)
+ogni superficie appartenente ad omega puö essere ridotta ad un punto ocn continuità senza uscire da omega,
+allora questa condizione è sufficiente per dire che $\vec{v}(P)$ è solenoidale in omega.
+
+Aggiungi esempio campo non solenoidale
+
+Nella regione non inclusa nel dominio potrebbero essere presenti delle cariche elettriche, e la divergenza
+non sarebbe nulla
