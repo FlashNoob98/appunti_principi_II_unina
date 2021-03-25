@@ -1,0 +1,277 @@
+\section{Campi conservativi e rotazionali}
+Definizione di \textbf{rotore} di un campo vettoriale $\vec{v}(P)$:
+
+Consideriamo una linea chiusa $\Gamma$ all'interno del dominio $\Omega$ ed una superficie
+$S_\Gamma$ (di orlo $\Gamma$).
+
+Supponiamo che questa superficie passi su un punto $P$ e consideriamo il versore normale alla 
+superficie orientato con la regola della mano destra rispetto al versore tangente della linea $\Gamma$.
+Consideriamo inoltre:
+$$
+\lim_{\text{Area}(S_\Gamma)\to 0}\left(\frac{\oint_{\Gamma} \vec{v}\cdot\hat{t}dl}{\text{Area}(S_\Gamma)}\right)
+$$
+Nel caso in cui questo limite esista e sia finito e indipendente dalla forma di $\Gamma$, per definizione
+diciamo che questa è la componente normale di un campo vettoriale chiamato \textit{rotore} di $\vec{v}$,
+$(\nabla \times \vec{v})\cdot \hat{n}$.
+
+In coordinate cartesiane si ricava il rootre con:
+
+$$
+\nabla \times \vec{v} =
+\begin{vmatrix}
+\vec{e_x} & \vec{e_y} & \vec{e_z} \\
+\frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+v_x & v_y & v_z
+\end{vmatrix}
+$$
+
+$$
+\nabla\times{\vec{v}}(P) = ...
+$$
+
+\paragraph{Teorema di Stokes}
+Dato un campo $\vec{v} \in \Omega$ sufficientemente regolare, $\Gamma$ chiusa in $\Omega$
+Se calcolo la circuitazione alla linea gamma
+
+$$
+\oint_\Gamma \vec{v}\cdot\hat{t} dl = \iint_{S_\Gamma} \nabla\times \vec{v} \cdot \hat{n} dS
+$$
+
+Si possono dunque introdurre i campi conservativi e irrotazionali:
+$\\vec{v}(P) \in \Omega$ si dice conservativo (per la circuitazione) quando
+$$
+\oint_\Gamma \vec{v}\cdot\hat{t} dl = 0\ \ \forall\ \Gamma \in \Omega
+$$
+
+Questa condizione equivale a dire che presi due punti nello spazio $A$ e $B$ e prese due linee aperte che connettono questi due punti, allora
+$$
+\int_{A\gamma'B} \vec{v}\cdot\hat{t}dl = \int_{A\gamma''B} \vec{v}\cdot\hat{t}dl\ \ \forall A,B\in\Omega,\ \forall \gamma',\gamma'' \in \Omega
+$$
+
+Un campo conservativo può essere espresso come gradiente di una funzione potenziale:
+$$
+\vec{v}(P) = -\nabla\varphi(P)
+$$
+con $\varphi(P)$ funzione potenziale, questo equivale a dire che:
+$$
+\int_{A\gamma B} \vec{v}\cdot \hat{t} dl = \int_{A\gamma B} -\nabla\vec{v}\cdot\hat{t} dl = -\int_{A\gamma B} d\varphi = \varphi(A) - \varphi(B)
+$$
+
+\paragraph{Campi irrotazionali}
+$\vec{v}(P)$ irrotazionale se 
+$$
+\nabla\times \vec{v}(P) = 0\  \forall P \in \Omega
+$$
+Accade dunque che i campi irrotazionali soddisfano il principio di deformazione del contorno,
+
+22:37
+
+Se ipotizzo che $\vec{v}(P) : \nabla\times\vec{v}(P) =0\ \forall P \in \Omega$
+allora 
+$$
+\iint_{S\gamma_1\gamma_2} \nabla\times\vec{v}\cdot\hat{n}dS = 0 = \oint_{\gamma_1} \vec{v}\cdot\hat{t} dl - \oint_{\gamma_2} \vec{v}\cdot\hat{t}dl = 0\ \forall\gamma_1,\gamma_2\in \Omega
+$$
+
+Il segno ``$-$'' all'interno dell'equazione è dovuto al diverso riferimento della superficie rispetto alla
+curva $\gamma_2$.
+
+Quando conservatività e irrotazionalità sono equivalenti?
+Se $\vec{v}(P)$ è conservativo in $\Omega $ allora $\nabla\times\vec{v}=0$
+
+Il viceversa:
+$$
+\begin{cases}
+\vec{v}(P) \text{ irrotazionale in }\Omega \\
+\Omega \text{ a connessione lineare semplice}
+\end{cases}
+\Rightarrow \vec{v}(P) \text{ è conservativo in }\Omega
+$$
+
+Si richiama il \textbf{Teorema di decomposizione di Helmhotz} (in tutto lo spazio)
+
+Preso un campo $\vec{v}(P),\ P \in R^3$ normale all'infinito ossia che il modulo del campo tenda
+a 0 quando la distanza tende all'infinito, in tale ipotesi può essere decomposto nella somma
+di un campo solenoidale e un campo conservativo (entrambi normali all'infinito).
+
+$$
+\vec{v}(P) = \vec{v_\text{sol}} + \vec{v_{\text{cons}}},\ 
+\oint_{\Gamma}\vec{v_\text{cons}}\cdot\hat{t} dl = 0\ \forall\ \Gamma,\ \oiint_{\Sigma}
+\vec{v_{\text{sol}}}\cdot\hat{n}dS = 0\ \forall\ \Sigma 
+$$
+\textit{Se sono note tutte le circuitazioni su linee chiuse dello spazio e tutti i flussi uscenti da
+superfici chiuse per un campo $\vec{v}(P)$ normale all'infinito, allora $\vec{v}(P)$ è univocamente
+determinato}
+
+\textbf{Operatore NABLA} ($\nabla$)
+$$
+\nabla = \frac{\partial}{\partial x}\vec{e_x} + \frac{\partial}{\partial y}\vec{e_y} + \frac{\partial}{\partial z}\vec{e_z}
+$$
+Si esprime il gradiente di un campo scalare $f(P)$ con: $\nabla f$ come se facessi il prodotto
+termine a termine dei componenti dell'operatore $\nabla$
+$$
+\text{grad} f(P) = \nabla f = \frac{\partial f}{\partial x}\vec{e_x}
+$$
+
+\textbf{Divergenza}
+$$
+\text{div}\vec{v}(P) = \nabla\cdot\vec{v} = \frac{\partial v_x}{\partial x} + 
+$$
+
+\textbf{Rotore}
+$$
+\text{rot}\vec{v}(P) = \nabla \times \vec{v}
+$$
+
+\textbf{Identità vettoriali:}
+\begin{align*}
+\nabla\cdot(f\vec{v}) &= f\nabla\cdot\vec{v} + \vec{v}\cdot \nabla f \\
+\nabla(f g) &= f\nabla g + g\nabla f \\
+\nabla \times (f\vec{v}) &= f\nabla\times\vec{v} + \nabla f \vec{v} \\
+\nabla\cdot (\vec{v}\times\vec{w}) &= \vec{w}\cdot\nabla\times\vec{v} - \vec{v}\cdot\nabla\times\vec{w}
+= \vec{w}\cdot(\nabla\times\vec{v}) + \vec{v}\cdot (\vec{w}\times\nabla)
+\end{align*}
+
+Operatori differenziali del secondo ordine:
+$ \vec{v}(P) \in C^2(\Omega) $ e considero combinazioni possibili di grad,div e rot per ottenere
+operatori del secondo ordine:
+\begin{align*}
+\nabla f &\text{ scalare in un vettore}\\
+\nabla\cdot\vec{v} &\text{ vettore in uno scalare}\\
+\nabla\times\vec{v} &\text{ vettore in un vettore}
+\end{align*}
+quindi:
+\begin{align*}
+\nabla\times\nabla f = 0 &\text{ perchè $\nabla f$ è conservativo $\Rightarrow$ irrotazionale}\\
+\nabla\cdot\nabla\times\vec{v} = 0 &\text{ dimostra in coordinate cartesiane}\\
+\nabla\cdot \nabla f = \nabla^2 f &\text{ laplaciano}
+\end{align*}
+\textbf{Operatore laplaciano}
+$$
+\nabla^2 f = \frac{\partial^2f}{\partial x^2} + \frac{\partial^2f}{\partial y^2} + \frac{\partial^2f}{\partial z^2}
+$$
+Laplaciano vettore:
+$$
+\nabla\nabla\cdot\vec{v} - \nabla\times\nabla\times\vec{v} = \vec{\nabla}^2\vec{v}
+$$
+
+$$
+\vec{\nabla}^2\vec{v} = \vec{\nabla}^2v_x\vec{e_x} + ...
+$$
+
+\section{Richiami di Elettromagnetismo}
+L'elettromagnetismo è una delle 4 interazioni fondamentali che governano l'universo, le altre
+sono le interazioni forti, riguardanti i quark, le interazioni deboli riguardano gli elettroni e i 
+neutrini, le interazioni elettromagnetiche (che riguardano le cariche) e le interazioni gravitazionali
+che coinvolgono le masse.
+
+\subsection{La carica elettrica}
+Possono essere di due specie, positive e negative e sono associate a interazioni di tipo repulsivo tra
+cariche della stessa specie e attrattive tra cariche di segno opposto.
+Si parla in questo caso di cariche ferme, altirmenti sarebbero soggette ad altre tipologie di forze.
+L'Unità di misura è il Coulomb [\si{\coulomb}].
+La carica è invariante per una particella in quiete o in moto.
+
+La carica è quantizzata, ossia considerando una vportzione di materia in una certa regione 
+dello spazio vuoto, la carica contenuta $\Delta Q = N^+q_p + N^-q_e\ \ N^+,N^- \in N$
+e i valori di $q_p$ e $q_e$ 
+
+Il principio di conservazione della carica per un sistema chiuso elettricamente afferma che in un tale 
+sistema la quantità di carica netta $Q(t) = Q^+ + Q^- = Q_0\ \forall\ t$
+
+\paragraph{Forza agente su una carica in moto}
+
+Sia dato un sistema di riferimento nello spazio, in un certo punto P dello spazio ci sia una carica $q$
+che sta percorrendo una traiettoria con un certo vettore di velocità $\vec{v}(P,t)$, questa
+carica è sottoposta ad una forza elettromagnetica chiamata \textbf{forza di Lorentz}
+$$
+\vec{F}(p,t) = q\left[\vec{E}(P,t)+\vec{v}(P,t)\times\vec{B}(P,t)\right]
+$$
+dove $\vec{B}$ è il campo di induzione magentica anche detto densità di flusso magnetico.
+
+Ricordando la dinamica newtoniana: $\vec{F} = m\vec{a}$, integrando l'equazione del moto si può
+ricavare la legge orario di ciascuna carica, mediante la legge di Lorentz ammesso che si conoscano 
+il campo elettrico e il campo di induzione magnetica.
+Viene riconosciuto come modello di Maxwell-Lorentz.
+
+Un blocco restituisce i campi elettromagnetici ($\vec{E},\vec{B}$) con i quali, si ricavano in un altro
+``blocco'' le equazioni del moto sfruttando la forza di Lorentz.
+In uscita al secondo blocco mediante la legge oraria, si può calcolare la distribuzione di cariche e 
+corrente $\left(\rho,\vec{J}\right)$, ossia le sorgenti dei due campi, con queste si rientra nel primo blocco.
+
+\paragraph{Definizioni operative}
+Campo elettrico:
+si esegue una misura in condizioni statiche, ossia la carica ha velocità nulla, con un ipotetico 
+dinamometro si può misurare la forza F e facendo il rapporto con la carica $q$:
+$$
+\left.\frac{\vec{F}}{q}\right|_{\vec{v}=0} \stackrel{\text{def}}{=} \vec{E}(P,t)
+$$
+Si effettuano poi due misure dinamiche a velocità non nulla
+$$
+\vec{v}\times\vec{B} = \vec{F} - q\vec{E}
+$$
+Attraverso queste due misure si possono ricavare le componenti di $\vec{E}(P,t)$ e $\vec{B}(P,t)$.
+
+
+Le unità di misura:
+$[F] = \si{\newton}\ \  [E] = \si{\volt\per\meter} \ \ [B] = \si{\tesla}$
+
+Si introduce una descrizione della materia nella teoria del continuo, facendo riferimento alle 
+distribuzioni di cariche:
+Presa una regione $\Omega$ contenente un punto $P$ attorno al quale consideriamo un volumetto elementare 
+$\Delta\Omega$, all'interno del volumetto sono contenute diverse cariche che si muovono a diverse 
+velocità. Nell'ipotesi del continuo si deve supporre che $\Delta \Omega$ deve essere sufficientemente ...
+Ma deve essere anche sufficientemente grande in modo da contenere un numero di particelle che definiscano
+grandezze che variano con continuità.
+
+Si definisce quindi la funzione 
+$$
+\rho(P,t) \stackrel{\text{def}}{=} \frac{N^+q_p+N^-q_e}{\text{Vol}(\Delta\Omega)}
+$$
+densità volumetrica di carica, campo scalare $[\rho] = \si{\coulomb\per\meter}$.
+Si possono inoltre definire densità di carica parziali $\rho^+$ e $\rho^-$ associate alla densità
+di cariche di quello specifico segno, ovviamente $\rho = \rho^+ + \rho^-$.
+
+\textbf{Densità di corrente elettrica}
+Si definiscono con $v^+$ e $v^-$ le velocità medie (di \textit{drift}) dei portatori di carica positivi e negativi.
+
+$$
+\vec{J}(P,t) \stackrel{\text{def}}{=} \frac{N^+q_p\vec{v}^+ + }{\text{Vol}(\Delta \Omega)} = ...
+$$
+
+$$
+[J] = \frac{A}{m^2}
+$$
+Nell'unità di tempo ci sarà un flusso di cariche attraverso il volumetto di controllo, mediante la sua 
+frontiera.
+
+\textbf{Intensità di corrente} attraverso una superficie aperta $S$ orientata con normale $\hat{n}$.
+
+Sia $P$ un punto sulla superficie circondato da un volumetto di controllo, nello stesso punto
+è definito il campo \textit{densità di corrente $J$}.
+
+La quantità di carica netta che attraversa la superficie S nell'intervallo di tempo $[t,t+\delta t]$
+$$
+\delta Q_S = \vec{J}\cdot \hat{n}\ dS\ dt
+$$
+01:35:00
+
+
+
+\textbf{Principio di conservazione della carica per sistemi aperti}
+Sia $\Sigma$ una superficie chiusa che racchiude una superficie
+$\Omega_\Sigma:\ \partial\Omega_\Sigma=\Sigma$
+$$
+i_{\Sigma(t)} = - \frac{dQ_{\Omega_\Sigma}}{dt}
+$$
+
+\paragraph{Materiali isolanti e conduttori}
+Sia una regione $\Omega$ contenente il punto P con il suo volumetto elementare associato, allora
+$\Omega$ è isolante se $\vec{J}(P,t) = 0\ \forall\ t \forall\ p \in \Omega$.
+
+Conduttore ohmico se rispetta la legge di Ohm in forma locale, ossia:
+$\vec{J} = \gamma\vec{E}$ dove $\gamma$ è la conducibilità elettrica [\si{\siemens\per\meter}]
+o viceversa
+$$
+\vec{E} = \mu \vec{J}
+$$
+
