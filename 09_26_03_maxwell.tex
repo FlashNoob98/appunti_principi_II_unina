@@ -1,0 +1,234 @@
+resistività = $\eta$
+\subsection{Conduzione nei metalli}
+I portatori di carica sono elettroni ``liberi'' ossia in grado di percorrere distanze
+macroscopiche sotto l'azione di una forza sotto l'azione di un campo elettrico.
+In un metallo a riposo c'è un moto dei portatori di carica ma la velocità media di deriva (drift)
+$$
+\vec{v}\ ^- = 0
+$$
+cioò non implica che le particelle siano ferme.
+
+Nel caso in cui la velocità media sia diversa da 0 si ha una velocità delle particelle più bassa(?).
+
+Considerando un conduttore cilindrico di sezione di area $S=\SI{1}{\milli\meter^2}$, considerando un'
+intensità di corrente pari ad \SI{1}{\ampere}, quindi
+$$
+J = \frac{i}{S} = 10^6\si{\ampere\per\meter^2} = n^-q_e\vec{v}
+$$
+
+La densità $n^-$ è pari a $10^23/\si{\centi\meter^3} = $
+$$
+v^- = \frac{J}{nqe} =  \frac{10^6}{10^23\cdot10^6\cdot ()} \simeq 10^-6 \si{\meter\per\second} = \SI{1}{\micro\meter\per\second}
+$$
+
+17:20
+
+
+\subsection{Equazioni di Maxwell nel vuoto}
+Ci si possono esprimere tutti i fenomeni di elettromagnetismo macroscopico, in presenza di distribuzioni 
+di carica e correnti nello spazio vuoto.
+
+Forniscono tutte le possibili circuitazioni e i possibili flussi uscenti da superfici chiuse per i campi
+$\vec{E}$ e $\vec{B}$.
+
+In virtù del teorema di decomposizione di Helmoltz si garantisce che $\vec{E}$ e $\vec{B}$ 
+sono univocamente determinati (assumendoli normali all'infinito).
+
+\paragraph{Legge di gauss per il campo elettrico $\vec{E}$}
+Consideriamo una superficie chiusa $\Sigma$ nello spazio con bordo $\Omega_\Sigma$
+la prima equazione di Maxwell afferma: 
+\begin{equation}
+\oiint_\Sigma \vec{E}\cdot\hat{n}dS = \frac{1}{\varepsilon_0}Q_{\Omega_\Sigma} = \frac{1}{\varepsilon_0}
+\iiint_{\Omega_\Sigma} \rho dV \ \ \forall \Sigma,\ \forall t
+\end{equation}
+
+$$
+\left[\oiint \vec{E}\cdot\hat{n}dS\right] = \si{\volt\per\meter\cdot\meter^2} = \si{\volt\cdot\meter}
+$$
+
+\paragraph{Legge di Gauss per il campo $\vec{B}$} o solenoidalità del campo $\vec{B}$,
+afferma che il flusso attraverso una superficie aperta dipende solo dall'orlo (flusso concatenato ad una
+linea).
+\begin{equation}
+\oiint_{\Sigma} \vec{B}\cdot\hat{n}dS = 0\ \forall \Sigma, \forall t
+\end{equation}
+
+$$
+\left[\oiint \vec{B}\cdot\hat{n}dS\right] = \si{\tesla\cdot\meter^2} = \si{\weber}
+$$
+Un'interpretazione di questa legge, in analogia a quella per il campo elettrico, possiamo affermare
+che non è possibile isolare una ``carica'' magnetica netta, ossia un monopolo magnetico.
+
+Le restanti equazioni di Maxwell riguardano le circuitazioni, definiscono i fenomeni di induzione
+elettromagnetica ed induzione magnetoelettrica.
+
+\paragraph{Legge di Faraday-Neumann-Lenz}
+Consideriamo una linea chiusa qualunque $\Gamma$ ed una qualsiasi superficie $S_\Gamma$ di
+orlo $\Gamma$.
+\begin{equation}
+\oint_{\Gamma} \vec{E}\cdot\hat{t}dl = - \iint_{S_\Gamma} \frac{\partial \vec{B}}{\partial t}
+\cdot\hat{n} dS\ \ \forall\Gamma,\ S_\Gamma\in\Omega,\ \forall t
+\end{equation}
+$\Gamma$ ed $S_\Gamma$ possono anche essere variabili nel tempo.
+
+Se in una regione di spazio c'è un campo $\vec{B}$ variabile nel tempo, esso induce necessariamente
+un campo elettrico nella stessa regione di spazio.
+Si può semplificare l'equazione supponendo che le superfici $\Gamma$ ed $S_\Gamma$ siano ferme
+$$
+\oint_{\Gamma} \vec{E}\cdot\hat{t}dl = -\frac{d}{dt} \iint_{S_\Gamma}\vec{b}\cdot\hat{t}dS = 
+-\frac{d}{dt} \Phi_\Gamma
+$$
+Presi due punti qualsiasi $A$ e $B \in R^3$ supponiamo che esistono infinite linee $\gamma$, il terzo 
+termine è il suo opposto.
+
+La differenza fra tensione elettrica calcolata tra due linee che connettono gli stessi punti nello 
+spazio è pari alla variazione di flusso di campo di induzione magnetica concatenato alle due linee.
+
+$$
+v_{AB\gamma} - v_{AB\gamma'} = -\frac{d\Phi_\Gamma}{dt}
+$$
+In generale il campo elettrico NON è conservativo.
+
+\paragraph{Legge di Ampére-Maxwell} (Induzione magnetoelettrica)
+
+\begin{equation}
+\oint_\Gamma \vec{B}\cdot\hat{t} dl = \mu_0 \iint_{S_\Gamma} \left(\vec{J} + \varepsilon_0\frac{\partial\vec{E}}{\partial t}\right)\cdot \hat{n} dS
+\end{equation}
+
+$\mu_0$ è la permeabilità magentica del vuoto $\mu_0 = 4\pi\cdot10^{-7}\si{\henry\per\meter} $
+anche se a partire dalla revisione delle unità di misura del 2019 è una quantita misurata e non più una costante universale (anche se coincide con la precedente definizione per le prime 10 cifre significative)
+
+$$
+\frac{1}{\sqrt{\varepsilon_0\mu_0}} = c \simeq 3\cdot10^{8}\ \si{\meter\per\second}
+$$
+
+questa legge è la duale della legge di Faraday-Neumann-Lenz. Si può riscrivere come:
+$$
+\oint_\Gamma\vec{B}\cdot\hat{t}dl = \mu_0 i_{S_\Gamma}(t) + \mu_0 \iint_{S_\Gamma} \frac{\partial}{\partial t}(\varepsilon_0 \vec{E})\cdot\hat{n}dS
+$$
+Il secondo termine prende il nome di intensità della corrente di spostamento, quindi il termine
+$\left(\varepsilon_0 \vec{E}\right)$ è chiamato densità di corrente di spostamento.
+
+Se le linee e le superfici sono ferme:
+$$
+\oint_\Gamma\vec{B}\cdot\hat{t}dl = \mu_0\iint_{S_\Gamma}\vec{J}\cdot\hat{n}dS + 
+\mu_0\frac{d}{dt}\iint_{S_\Gamma} \varepsilon_0 \vec{E}\cdot\hat{n} dS
+$$
+Si vede che il flusso di $\vec{E}$ ha le dimensioni di una carica elettrica 59:00
+
+\paragraph{Principio di conservazione della carica}
+Combinando linearmente le equazioni d ...
+
+\begin{equation}
+\oiint_\Sigma\vec{J}\cdot\hat{n}dS = - \iiint_{\Omega_\Sigma}\frac{\partial \rho}{\partial t} dV
+\ \ \forall\Sigma,\ \forall t
+\end{equation}
+
+Se le superfici sono ferme
+$$
+i_{\Sigma}(t) = \oiint_\Sigma\vec{J}\cdot\hat{n}dS = -\frac{d}{dt} \iiint_{\Omega_\Sigma} \rho dV = -\frac{dQ_{\Omega_\Sigma}}{dt}\ \forall\Sigma,\ \forall t
+$$
+
+Consideriamo invece il campo di corrente totale, $\vec{J} + \varepsilon_0\frac{\partial\vec{E}}{\partial t}$, con superfici ferme si ha:
+$$
+\oiint_{\Sigma} \left(\vec{J} + \varepsilon_0\frac{\partial\vec{E}}{\partial t}\right)\cdot\hat{n}dS = 
+-\frac{dQ_{\Omega_\Sigma}}{dt} + \frac{d}{dt} \oiint_{\Sigma} \varepsilon_0\vec{E}\cdot\hat{n}dS =
+$$
+$$
+= -\frac{dQ_{\Omega_\Sigma}}{dt} + \varepsilon_0\frac{d}{dt}\left[\frac{Q_{\Omega_\Sigma}}{\varepsilon_0}\right] = 0\ \ \forall\Sigma
+$$
+Si conclude che il campo $\vec{J} + \varepsilon_0\frac{\partial\vec{E}}{\partial t} $ ossia
+il campo di corrente totale è solenoidale.
+
+
+\subsection{Il limite stazionario delle equazioni di Maxwell}
+Si ottengono i modelli quasi-stazionari, un'estensione del modello interamente stazionario.
+Si ha condizione stazionaria se le grandezze (campi, distribuzioni di cariche e correnti) sono 
+costanti nel tempo.
+$$
+\oiint_{\Sigma}\vec{E}\cdot\hat{n}dS = \frac{Q_{\Omega_\Sigma}}{\varepsilon_0} \ \forall \Sigma
+$$
+$$
+\oiint_{\Sigma}\vec{B}\cdot\hat{n}dS = 0 \ \forall\Sigma
+$$
+$$
+\oint_{\Gamma} \vec{E}\cdot\hat{t}dl = 0 \ \ \forall \Gamma
+$$
+$$
+\oint_{\Gamma}\vec{B}\cdot\hat{t} dl = \mu_0 i_{S_\Sigma}\ \forall \Sigma,S_\Sigma
+$$
+aggiungi cons.carica
+Nel limite stazionario $\vec{E}$ e $\vec{B}$ sono disaccoppiati.
+
+termine noto
+Inoltre sono presenti come termini noti la carica elettrica e le correnti, ossia le sorgenti
+per il campo elettrico sono le cariche elettriche, mentre le sorgenti del campo di induzione magnetica
+sono le cariche in moto, ossia le correnti elettriche.
+
+Il campo $\vec{E}$ è conservativo per la circuitazione
+
+Il campo $\vec{J}$ diventa solenoidale, o conservativo per il flusso.
+
+Questo riconduce a
+$$
+\vec{E} = -\nabla\varphi
+$$
+è possibile ricavare il campo elettrico utilizzando una sola incognita $(\varphi)$ piuttosto che
+conoscere le funzioni di tutte le componenti di $\vec{E}$ nello spazio.
+
+Consideriamo una linea aperta che connetta due punti $A$ e $B$, in condizioni stazionarie, è l'integrale di una forma differenziale esatta
+
+$$
+\int_{A\gamma B}\vec{E}\cdot\hat{t}dl \stackrel{\text{def}}{=} v_{AB\gamma} \stackrel{\text{staz.}}{=}
+\int_{A\gamma B}-\nabla\varphi\cdot\hat{t}dl =\varphi(A)-\varphi(B)
+$$
+Ciò equivale a dire che la tensione di due punti dello spazio non dipende dalla linea $\gamma$ ed è
+esprimibile come differenza di potenziale attraverso la $\varphi$.
+
+\paragraph{Lavoro della forza elettromagnetica} Sulle cariche in moto in un volume elementare.
+Sui portatori di carica agisce la forza di Lorentz
+$$
+\vec{F} = q\left(\vec{E}+\vec{v}\times\vec{B}\right)
+$$
+
+Se si considera il lavoro elementare $\delta L$ compiuto nello spostamento di una singola carica in
+$\Delta\Omega$
+$$
+\delta L = \vec{F}\cdot\hat{t}dl = q\left(\vec{E}+\vec{v}\times\vec{B}\right)\cdot \hat{t} dl = q\vec{E}\cdot\vec{v}dt
+$$
+
+Per calcolare il lavoro ottenuto su tutte le particelle
+$$
+dL = \vec{E}\cdot\left(N^+q_pv^+ + N\ ^-q_e\vec{v}\ ^-\right)dt = \vec{E}\cdot\vec{J}\ \text{Vol}(\Delta\Omega)dt
+$$
+
+$$
+\vec{E}\cdot\vec{J} Sistema\ qua
+$$
+
+Se si considera un materiale conduttore ohmico, ossia che soddisfa la legge di Ohm in forma locale
+\begin{align*}
+\begin{matrix}
+\vec{J} = \gamma\vec{E} \\
+\vec{E} = \eta\vec{J}
+\end{matrix}\ 
+\Rightarrow \vec{E}\cdot\vec{J} = \gamma\left|\vec{E}^2\right|
+= \eta\left|\vec{J}^2\right| \geq 0 \ \forall t
+\end{align*}
+Quest'utlimo risultato rappresenta l'energia necessaria all'avanzamento delle particelle, chiamato
+Effetto Joule.
+
+
+\subparagraph{Sorgenti elementari dei campi elettromagnetici}
+Ci si occupa ora del ``secondo'' blocco del modello Maxwell-Lorentz, si analizzano le ulteriori 
+distribuzioni delle sorgenti:
+
+Sia data una struttura con una grandezza preponderante rispetto alle latre due, viene definita 
+\textit{trave}.
+In elettromagnetismo ha senso considerare distribuzioni di cariche e correnti che abbiano una oppure
+due dimensioni prevalenti.
+
+Nel primo caso si hanno densità lineari di carica e corrente.
+
+Nel secondo caso si hanno densità superficiali di carica e corrente.
+
