@@ -1,5 +1,5 @@
 \section{Campi conservativi e rotazionali}
-Definizione di \textbf{rotore} di un campo vettoriale $\vec{v}(P)$:
+\paragraph{Rotore} di un campo vettoriale $\vec{v}(P)$:
 
 Consideriamo una linea chiusa $\Gamma$ all'interno del dominio $\Omega$ ed una superficie
 $S_\Gamma$ (di orlo $\Gamma$).
@@ -8,13 +8,13 @@ Supponiamo che questa superficie passi su un punto $P$ e consideriamo il versore
 superficie orientato con la regola della mano destra rispetto al versore tangente della linea $\Gamma$.
 Consideriamo inoltre:
 $$
-\lim_{\text{Area}(S_\Gamma)\to 0}\left(\frac{\oint_{\Gamma} \vec{v}\cdot\hat{t}dl}{\text{Area}(S_\Gamma)}\right)
+\lim_{\text{Area}(S_\Gamma)\to 0}\left(\frac{\oint_{\Gamma} \vec{v}\cdot\hat{t}dl}{\text{Area}(S_\Gamma)}\right) \stackrel{\text{def}}{=} \left(\nabla\times\vec{v}(P)\right)\cdot\hat{n}
 $$
 Nel caso in cui questo limite esista e sia finito e indipendente dalla forma di $\Gamma$, per definizione
 diciamo che questa è la componente normale di un campo vettoriale chiamato \textit{rotore} di $\vec{v}$,
 $(\nabla \times \vec{v})\cdot \hat{n}$.
 
-In coordinate cartesiane si ricava il rootre con:
+In coordinate cartesiane si ricava il rotore con:
 
 $$
 \nabla \times \vec{v} =
@@ -26,19 +26,21 @@ v_x & v_y & v_z
 $$
 
 $$
-\nabla\times{\vec{v}}(P) = ...
+\nabla\times{\vec{v}}(P) = \left(\frac{\partial v_z}{\partial y} - \frac{\partial v_y}{\partial z}\right)\vec{e_x} -
+\left(\frac{\partial v_z}{\partial x} - \frac{\partial v_x}{\partial z}\right)\vec{e_y} +
+\left(\frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}\right)\vec{e_z}
 $$
 
 \paragraph{Teorema di Stokes}
-Dato un campo $\vec{v} \in \Omega$ sufficientemente regolare, $\Gamma$ chiusa in $\Omega$
-Se calcolo la circuitazione alla linea gamma
+Dato un campo $\vec{v} \in \Omega$ sufficientemente regolare, $\Gamma$ chiusa in $\Omega$.
 
+Se calcolo la circuitazione alla linea gamma
 $$
 \oint_\Gamma \vec{v}\cdot\hat{t} dl = \iint_{S_\Gamma} \nabla\times \vec{v} \cdot \hat{n} dS
 $$
 
 Si possono dunque introdurre i campi conservativi e irrotazionali:
-$\\vec{v}(P) \in \Omega$ si dice conservativo (per la circuitazione) quando
+$\vec{v}(P) \in \Omega$ si dice conservativo (per la circuitazione) quando
 $$
 \oint_\Gamma \vec{v}\cdot\hat{t} dl = 0\ \ \forall\ \Gamma \in \Omega
 $$
@@ -54,20 +56,25 @@ $$
 $$
 con $\varphi(P)$ funzione potenziale, questo equivale a dire che:
 $$
-\int_{A\gamma B} \vec{v}\cdot \hat{t} dl = \int_{A\gamma B} -\nabla\vec{v}\cdot\hat{t} dl = -\int_{A\gamma B} d\varphi = \varphi(A) - \varphi(B)
+\int_{A\gamma B} \vec{v}\cdot \hat{t} dl = \int_{A\gamma B} -\nabla\varphi\cdot\hat{t} dl =
+-\int_{A}^B d\varphi = \varphi(A) - \varphi(B)
 $$
+Il gradiente di una funzione per uno spostamento infinitesimo equivale al differenziale della funzione.
 
 \paragraph{Campi irrotazionali}
-$\vec{v}(P)$ irrotazionale se 
+$\vec{v}(P) \in C^1$ irrotazionale se 
 $$
 \nabla\times \vec{v}(P) = 0\  \forall P \in \Omega
 $$
-Accade dunque che i campi irrotazionali soddisfano il principio di deformazione del contorno,
-
-22:37
-
-Se ipotizzo che $\vec{v}(P) : \nabla\times\vec{v}(P) =0\ \forall P \in \Omega$
-allora 
+I campi irrotazionali soddisfano dunque il principio di deformazione del contorno, in analogia
+ai campi solenoidali che soddisfano il principio di deformazione della superficie.
+Preso un dominio $\Omega$ e due linee in esso contenute $\gamma_1$ e $\gamma_2$,
+se ipotizzo che 
+$$
+\vec{v}(P) : \nabla\times\vec{v}(P) =0\ \forall P \in \Omega
+$$
+ipotizzata una superficie $S\gamma_1\gamma_2$ compresa tra le due curve allora utilizzando
+il teorema di Stokes
 $$
 \iint_{S\gamma_1\gamma_2} \nabla\times\vec{v}\cdot\hat{n}dS = 0 = \oint_{\gamma_1} \vec{v}\cdot\hat{t} dl - \oint_{\gamma_2} \vec{v}\cdot\hat{t}dl = 0\ \forall\gamma_1,\gamma_2\in \Omega
 $$
@@ -76,7 +83,8 @@ Il segno ``$-$'' all'interno dell'equazione è dovuto al diverso riferimento del
 curva $\gamma_2$.
 
 Quando conservatività e irrotazionalità sono equivalenti?
-Se $\vec{v}(P)$ è conservativo in $\Omega $ allora $\nabla\times\vec{v}=0$
+Se $\vec{v}(P)$ è conservativo in $\Omega $ tutti gli integrali lungo linee chiuse sono nulli, 
+allora $\nabla\times\vec{v}=0$
 
 Il viceversa:
 $$
@@ -87,16 +95,16 @@ $$
 \Rightarrow \vec{v}(P) \text{ è conservativo in }\Omega
 $$
 
-Si richiama il \textbf{Teorema di decomposizione di Helmhotz} (in tutto lo spazio)
+\paragraph{Teorema di decomposizione di Helmhotz} (in tutto lo spazio)
 
 Preso un campo $\vec{v}(P),\ P \in R^3$ normale all'infinito ossia che il modulo del campo tenda
 a 0 quando la distanza tende all'infinito, in tale ipotesi può essere decomposto nella somma
 di un campo solenoidale e un campo conservativo (entrambi normali all'infinito).
 
 $$
-\vec{v}(P) = \vec{v_\text{sol}} + \vec{v_{\text{cons}}},\ 
-\oint_{\Gamma}\vec{v_\text{cons}}\cdot\hat{t} dl = 0\ \forall\ \Gamma,\ \oiint_{\Sigma}
-\vec{v_{\text{sol}}}\cdot\hat{n}dS = 0\ \forall\ \Sigma 
+\vec{v}(P) = \vec{v}_\text{sol} + \vec{v}_\text{cons},\ 
+\oint_{\Gamma}\vec{v}_\text{cons}\cdot\hat{t} dl = 0\ \forall\ \Gamma,\ \oiint_{\Sigma}
+\vec{v}_\text{sol}\cdot\hat{n}dS = 0\ \forall\ \Sigma 
 $$
 \textit{Se sono note tutte le circuitazioni su linee chiuse dello spazio e tutti i flussi uscenti da
 superfici chiuse per un campo $\vec{v}(P)$ normale all'infinito, allora $\vec{v}(P)$ è univocamente
@@ -272,6 +280,6 @@ Conduttore ohmico se rispetta la legge di Ohm in forma locale, ossia:
 $\vec{J} = \gamma\vec{E}$ dove $\gamma$ è la conducibilità elettrica [\si{\siemens\per\meter}]
 o viceversa
 $$
-\vec{E} = \mu \vec{J}
+\vec{E} = \eta \vec{J}
 $$
 
