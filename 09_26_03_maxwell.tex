@@ -1,28 +1,25 @@
-resistività = $\eta$
-\subsection{Conduzione nei metalli}
+\paragraph{Conduzione nei metalli}
 I portatori di carica sono elettroni ``liberi'' ossia in grado di percorrere distanze
 macroscopiche sotto l'azione di una forza sotto l'azione di un campo elettrico.
 In un metallo a riposo c'è un moto dei portatori di carica ma la velocità media di deriva (drift)
 $$
 \vec{v}\ ^- = 0
 $$
-cioò non implica che le particelle siano ferme.
+ciò non implica che le particelle siano ferme. Sono soggette infatti anche all'agitazione termica.
 
-Nel caso in cui la velocità media sia diversa da 0 si ha una velocità delle particelle più bassa(?).
+Nel caso in cui la velocità media sia diversa da 0 si ha una velocità delle particelle più bassa.
 
 Considerando un conduttore cilindrico di sezione di area $S=\SI{1}{\milli\meter^2}$, considerando un'
-intensità di corrente pari ad \SI{1}{\ampere}, quindi
+intensità di corrente pari ad \SI{1}{\ampere}, e indicando con $n^-$ la densità di elettroni
+solitamente pari a $\frac{10^{23}}{\si{\centi\meter}^3} = \SI{e29}{\meter^{-3}}$
 $$
 J = \frac{i}{S} = 10^6\si{\ampere\per\meter^2} = n^-q_e\vec{v}
 $$
 
-La densità $n^-$ è pari a $10^23/\si{\centi\meter^3} = $
+La densità $n^-$ di elettroni liberi è solitamente pari a $10^{23}/\si{\centi\meter^3}$
 $$
-v^- = \frac{J}{nqe} =  \frac{10^6}{10^23\cdot10^6\cdot ()} \simeq 10^-6 \si{\meter\per\second} = \SI{1}{\micro\meter\per\second}
+v^- = \frac{J}{n^-q_e} =  \frac{\cancel{10^6}}{10^{23}\cdot\cancel{10^6}\cdot (-1.6\cdot10^{19})} \sim 10^{-6} \si{\meter\per\second} = \SI{1}{\micro\meter\per\second}
 $$
-
-17:20
-
 
 \subsection{Equazioni di Maxwell nel vuoto}
 Ci si possono esprimere tutti i fenomeni di elettromagnetismo macroscopico, in presenza di distribuzioni 
@@ -38,6 +35,7 @@ sono univocamente determinati (assumendoli normali all'infinito).
 Consideriamo una superficie chiusa $\Sigma$ nello spazio con bordo $\Omega_\Sigma$
 la prima equazione di Maxwell afferma: 
 \begin{equation}
+\label{eq:legge_gauss}
 \oiint_\Sigma \vec{E}\cdot\hat{n}dS = \frac{1}{\varepsilon_0}Q_{\Omega_\Sigma} = \frac{1}{\varepsilon_0}
 \iiint_{\Omega_\Sigma} \rho dV \ \ \forall \Sigma,\ \forall t
 \end{equation}
@@ -90,13 +88,13 @@ $$
 In generale il campo elettrico NON è conservativo.
 
 \paragraph{Legge di Ampére-Maxwell} (Induzione magnetoelettrica)
-
 \begin{equation}
+\label{eq:legge_ampere_maxwell}
 \oint_\Gamma \vec{B}\cdot\hat{t} dl = \mu_0 \iint_{S_\Gamma} \left(\vec{J} + \varepsilon_0\frac{\partial\vec{E}}{\partial t}\right)\cdot \hat{n} dS
 \end{equation}
 
-$\mu_0$ è la permeabilità magentica del vuoto $\mu_0 = 4\pi\cdot10^{-7}\si{\henry\per\meter} $
-anche se a partire dalla revisione delle unità di misura del 2019 è una quantita misurata e non più una costante universale (anche se coincide con la precedente definizione per le prime 10 cifre significative)
+$\mu_0$ è la permeabilità magnentica del vuoto $\mu_0 = 4\pi\cdot10^{-7}\si{\henry\per\meter} $
+anche se a partire dalla revisione delle unità di misura del 2019 è una quantità misurata e non più una costante universale (anche se coincide con la precedente definizione per le prime 10 cifre significative)
 
 $$
 \frac{1}{\sqrt{\varepsilon_0\mu_0}} = c \simeq 3\cdot10^{8}\ \si{\meter\per\second}
@@ -114,10 +112,16 @@ $$
 \oint_\Gamma\vec{B}\cdot\hat{t}dl = \mu_0\iint_{S_\Gamma}\vec{J}\cdot\hat{n}dS + 
 \mu_0\frac{d}{dt}\iint_{S_\Gamma} \varepsilon_0 \vec{E}\cdot\hat{n} dS
 $$
-Si vede che il flusso di $\vec{E}$ ha le dimensioni di una carica elettrica 59:00
+Ricordando la \ref{eq:legge_gauss} (legge di Gauss per il campo elettrico), 
+si vede che il flusso di $\varepsilon_0\vec{E}$ ha le dimensioni di una carica elettrica 
+[\si{\coulomb}].
+
 
 \paragraph{Principio di conservazione della carica}
-Combinando linearmente le equazioni d ...
+Combinando linearmente le equazioni \ref{eq:legge_gauss} e \ref{eq:legge_ampere_maxwell} ossia 
+la legge di Gauss e quella di Ampére-Maxwell si ottiene la descrizione del principio di conservazione
+della carica per un sistema aperto.
+Data una superficie chiusa $\Sigma$ contenente una regione $\Omega_\Sigma$ si ottiene
 
 \begin{equation}
 \oiint_\Sigma\vec{J}\cdot\hat{n}dS = - \iiint_{\Omega_\Sigma}\frac{\partial \rho}{\partial t} dV
@@ -140,32 +144,28 @@ $$
 Si conclude che il campo $\vec{J} + \varepsilon_0\frac{\partial\vec{E}}{\partial t} $ ossia
 il campo di corrente totale è solenoidale.
 
-
+\newpage
 \subsection{Il limite stazionario delle equazioni di Maxwell}
 Si ottengono i modelli quasi-stazionari, un'estensione del modello interamente stazionario.
 Si ha condizione stazionaria se le grandezze (campi, distribuzioni di cariche e correnti) sono 
 costanti nel tempo.
-$$
-\oiint_{\Sigma}\vec{E}\cdot\hat{n}dS = \frac{Q_{\Omega_\Sigma}}{\varepsilon_0} \ \forall \Sigma
-$$
-$$
-\oiint_{\Sigma}\vec{B}\cdot\hat{n}dS = 0 \ \forall\Sigma
-$$
-$$
-\oint_{\Gamma} \vec{E}\cdot\hat{t}dl = 0 \ \ \forall \Gamma
-$$
-$$
-\oint_{\Gamma}\vec{B}\cdot\hat{t} dl = \mu_0 i_{S_\Sigma}\ \forall \Sigma,S_\Sigma
-$$
-aggiungi cons.carica
-Nel limite stazionario $\vec{E}$ e $\vec{B}$ sono disaccoppiati.
+\begin{align*}
+&\oiint_{\Sigma}\vec{E}\cdot\hat{n}dS = \frac{Q_{\Omega_\Sigma}}{\varepsilon_0} \ \ \forall \Sigma &
+&\oiint_{\Sigma}\vec{B}\cdot\hat{n}dS = 0 \ \ \forall\Sigma \\
+&\oint_{\Gamma} \vec{E}\cdot\hat{t}dl = 0 \ \ \forall \Gamma &
+&\oint_{\Gamma}\vec{B}\cdot\hat{t} dl = \mu_0 i_{S_\Sigma}\ \ \forall \Sigma,S_\Sigma \\
+&\oiint_\Sigma \vec{J}\cdot\hat{n}dS = 0\ \ \forall\Sigma
+\end{align*}
+Nel limite stazionario $\vec{E}$ e $\vec{B}$ sono disaccoppiati ossia si può determinare
+indipendente l'uno dall'altro.
 
-termine noto
-Inoltre sono presenti come termini noti la carica elettrica e le correnti, ossia le sorgenti
+Osservando le equazioni per il campo elettrico e per quello di induzione magnetica si vede 
+che sono equazioni lineari con un termine noto diverso da 0.
+Sono presenti come termini noti la carica elettrica e le correnti, ossia le sorgenti
 per il campo elettrico sono le cariche elettriche, mentre le sorgenti del campo di induzione magnetica
 sono le cariche in moto, ossia le correnti elettriche.
 
-Il campo $\vec{E}$ è conservativo per la circuitazione
+Il campo $\vec{E}$ è conservativo per la circuitazione.
 
 Il campo $\vec{J}$ diventa solenoidale, o conservativo per il flusso.
 
@@ -199,11 +199,12 @@ $$
 
 Per calcolare il lavoro ottenuto su tutte le particelle
 $$
-dL = \vec{E}\cdot\left(N^+q_pv^+ + N\ ^-q_e\vec{v}\ ^-\right)dt = \vec{E}\cdot\vec{J}\ \text{Vol}(\Delta\Omega)dt
+dL = \vec{E}\cdot\left(N^+q_p\vec{v}\ ^+ + N\ ^-q_e\vec{v}\ ^-\right)dt = \vec{E}\cdot\vec{J}\cdot \text{Vol}(\Delta\Omega)dt
 $$
-
+Quindi la variazione di lavoro nell'unità di tempo (ossia la potenza?) compiuto sui portatori di carica
+per unità di volume è pari a
 $$
-\vec{E}\cdot\vec{J} Sistema\ qua
+\frac{1}{\text{Vol}(\Delta\Omega)}\frac{dL}{dt} = \vec{E}\cdot\vec{J} 
 $$
 
 Se si considera un materiale conduttore ohmico, ossia che soddisfa la legge di Ohm in forma locale
@@ -212,11 +213,12 @@ Se si considera un materiale conduttore ohmico, ossia che soddisfa la legge di O
 \vec{J} = \gamma\vec{E} \\
 \vec{E} = \eta\vec{J}
 \end{matrix}\ 
-\Rightarrow \vec{E}\cdot\vec{J} = \gamma\left|\vec{E}^2\right|
-= \eta\left|\vec{J}^2\right| \geq 0 \ \forall t
+\Rightarrow \vec{E}\cdot\vec{J} = \gamma\left|\vec{E}\right|^2
+= \eta\left|\vec{J}\right|^2 \geq 0 \ \forall t
 \end{align*}
-Quest'utlimo risultato rappresenta l'energia necessaria all'avanzamento delle particelle, chiamato
-Effetto Joule.
+Questa quantità indica su scala microscopica la dissipazione per effetto Joule in un materiale ohmico
+dovuta agli urti tra le cariche in moto e il reticolo metallico che le sorregge, questa energia di
+vibrazione viene quindi trasformata in calore.
 
 
 \subparagraph{Sorgenti elementari dei campi elettromagnetici}
