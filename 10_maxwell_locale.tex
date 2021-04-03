@@ -1,0 +1,305 @@
+
+\subsection{Sorgenti elementari del campo elettromagnetico}
+Le particelle cariche in una descrizione nell'ambito del modello Maxwell-Lorentz possono 
+essere viste come particelle puntiformi.
+
+Le particelle cariche sono in realtà dei limiti ideali in cui la densità volumetrica 
+$\rho\to \infty$ quando il volume della regione $\Omega \to 0$.
+
+Preso un punto $P'$ nello spazio in cui posizioniamo una carica $q$, questa è associata ad una densità
+$\rho(P') = q\delta(P-P')$, con $\delta$ la Delta di Dirac,
+la carica $q$ puntiforme può essere vista come:
+$$
+\iiint_{R^3} \rho dV = \iiint_{R^3} q\delta(P-P')dV = q
+$$
+Grazie alla proprietà di campionamento della $[\delta]= \si{\meter^{-3}}$.
+
+Le distribuzioni di cariche puntiformi in moto generano delle correnti e si possono trattare 
+analogamente.
+
+\paragraph{Densità di carica lineare}
+Si introduce affermando che ha senso considerare delle regioni di spazio chiamate ``strutture''
+ossia regioni in cui ci sono una o due dimensioni prevalenti rispetto alle altre.
+Una struttura lineare può essere rappresentata come una linea media $\gamma$ attorno alla quale
+si sviluppa una regione.
+
+Sia preso l'elemento di linea $dL$ che definisce un ``cilindretto'' centrato attorno
+al punto $P'$, si ipotizza che la sezione del cilindro sia pari ad $S$.
+La carica $dQ$ contenuta nel cilindretto elementare $d\Omega$ è:
+
+$$
+dQ = \rho dV = \rho\ S\ dL
+$$
+
+Se si effettua il passaggio al limite per $S\to 0 $ mantenendo la carica $dQ$ finita, allora $\rho$
+tenderà all'infinito.
+Introduco la grandezza $\rho(P') S(P') = \lambda(P')$ e quindi:
+
+$$
+Q  = \int_\gamma \lambda(P') dl\ \ \ [\lambda] = \si{\coulomb/\meter}
+$$
+\subparagraph{Corrente filiforme (lineare)}
+
+Si descrivono con un vettore densità di corrente $J$ calcolato lungo la linea.
+
+Si considera ancora una volta la linea media $\gamma$ e si calcola la corrente con:
+
+$$
+i(p') = \iint_\Sigma \vec{J}\cdot\hat{n}dS \simeq \vec{J}(P')\cdot\hat{t}(P')S
+$$
+Dato che $\hat{t}(P') \simeq \hat{n}(P')$ dato che il moto delle cariche è consentito solo 
+all'interno del conduttore.
+
+Il campo $\vec{J}(P') = \frac{i(P')}{S}\hat{t}(P')$ ma
+$$
+i(P') = \lim_{\stackrel{S\to 0}{J\to\infty}} \iint_\Sigma \vec{J}\cdot\hat{n}dS
+$$
+si ottiene con un'intensità di corrente non limitata e una sezione che tende a 0 affinchè $JS$ 
+resti finita.
+
+\paragraph{Densità di carica superficiale}
+Si immagina una struttura di tipo superficie di spessore piccolo ma non nullo, si indica con $S$ la
+sua superficie ``media'' che la attraversa.
+Intorno ad un punto $P'$ che giace sulla superficie media e si considera un cilindro che ha il
+punto al suo centro ed ha altezza pari allo spessore della struttura.
+Il cilindretto elementare ha un volume $dV$ con una superficie $dS$ e uno spessore $h(P')$
+
+$$
+dV = h(P') dS
+$$
+quindi
+$$
+dQ = \rho(P')dV = \rho(P')h(P')dS
+$$
+Passando al limite per $h(P') \to 0$ mantenendo la carica $dQ$ finita, necessariamente
+$|\rho(P')| \to \infty$
+Si definisce quindi la densità di carica superficiale $\sigma(P') = \rho(P')h(P')$
+Posso quindi descrivere i fenomeni di carica riferendomi solo alla superficie $S$
+come se la carica fosse ``spalmata'' sulla superficie.
+
+Quindi la carica sarà pari a:
+$$
+Q = \iint_S \sigma(P')dS
+$$
+
+\subparagraph{Densità di corrente superficiale}
+Mi permette di trattare correnti definite su superfici bidimensionali, anche curve ma descrivibili
+mediante rappresentazione parametrica di 2 parametri.
+
+Supponiamo di avere una superficie identica alla precedente che compone la superficie media
+di una struttura con un certo spessore. Nel punto $P' \in S$ si delimita una superficie di controllo
+centrata attorno a questo punto, perpendicolare al piano di $S$ con normale $\hat{n}$, l'area
+di questa superficie è $dS$, la lunghezza della linea appartenente al piano $S$ che interseca tale
+superficie è $dl$, l'altezza è $h$. Si ripete il procedimento precedente.
+$$
+i(P') = \vec{J}(P')\cdot\hat{n}dS = \vec{J}(P')\cdot\hat{n}h(P')dl = \vec{J}(P')h(P')\cdot\hat{n}dl
+$$
+Il prodotto $\vec{J}(P')h(P')$ viene definito come densità di corrente superficiale 
+$$
+J_S(P')\stackrel{\text{def}}{=}\lim_{\stackrel{h(P')\to0}{|hJ|<\infty}} [\vec{J}(P')h(P')]\ \ \ [Js] = \si{\ampere/\meter}
+$$
+La densità di corrente superficiale è quindi un campo che giace nella superficie $S$.
+Se si vuole calcolare l'intensità di corrente attraverso una linea $\gamma$ che giace 
+sulla superficie $S$
+$$
+i_\gamma = \int_\gamma \vec{J_s}\cdot \hat{n} dl
+$$
+\newpage
+\subsection{Equazioni di Maxwell in forma locale (nel vuoto)}
+Le equazioni in forma integrale sono potenti nelle analisi di strutture con particolari simmetrie.
+(Ad esempio sferica, cilindrica, piana ecc...)
+
+In condizioni generiche però risolvere equazioni integrali è più complesso che risolvere problemi di 
+valori al contorno per equazioni differenziali a derivate parziali (PDE).
+Si prestano inoltre a risoluzioni numeriche mediante software di calcolo.
+
+È richiesta particolare attenzione quando si parla di formulazione locale quando sono presenti
+distribuzioni delle sorgenti singolari, ossia in cui le densità di carica o corrente tendono 
+all'infinito.
+
+\paragraph{Legge di Gauss}
+Si considera un dominio $\Omega$ generalmente regolare e osservando l'intorno di
+un punto $P$ interno ad $\Omega$ è costruito un volumetto elementare $\Delta\Omega$.
+Sia $\Delta\Sigma = \partial\Delta\Omega$ la frontiera di $\Delta\Omega$.
+
+Consideriamo la \textbf{Legge di Gauss} applicata ad una $\Delta\Sigma$ intorno al punto $P$
+$$
+\oiint_{\Delta\Sigma}\vec{E}\cdot\hat{n}dS = \frac{1}{\varepsilon_0} \iiint_{\Delta\Omega}\rho dV\ 
+\forall\ \Delta\Sigma \text{ intorno a } P
+$$
+Dato che il volume $\Delta\Omega$ è infinitesimo si può scrivere la precedente approssimando il secondo
+membro:
+$$
+\oiint_{\Delta\Sigma}\vec{E}\cdot\hat{n}dS \simeq \frac{\rho(P)}{\varepsilon_0}\text{Vol}(\Delta\Omega)
+$$
+si dividono ambo i membri per il volume di $\Delta\Omega$ e si ottiene:
+$$
+\frac{\oiint_{\Delta\Sigma}\vec{E}\cdot\hat{n}dS}{\text{Vol}(\Delta\Omega)} \simeq 
+\frac{\rho(P)}{\varepsilon_0}
+$$
+Il secondo termine è una proprietà locale del campo, per adattare il termine di sinistra si esegue
+il limite sul volume mantenendo $\Delta\Omega$ intorno a $P$
+$$
+\lim_{\text{Vol}(\Delta\Omega\to 0)} \frac{\oiint_{\Delta\Sigma}\vec{E}\cdot\hat{n}dS}{\text{Vol}(\Delta\Omega)} = \text{div}\vec{E}(P) = \nabla\cdot\vec{E}(P) = \frac{\rho(P)}{\varepsilon_0}\ \forall
+\ P \in \Omega
+$$
+$P$ deve essere un punto \textit{regolare}, ossia il campo deve essere continuo in $P$.
+La Legge di Gauss si può esprimere dunque con:
+\begin{equation}
+ \nabla\cdot\vec{E}(P) = \frac{\rho(P)}{\varepsilon_0}
+ \label{eq:legge_gauss_locale}
+\end{equation}
+Si osserva che nei punti in cui la densità è nulla, il campo elettrico è \textit{indivergente} e
+può diventare solenoidale se la regione è semplicemente connessa.
+
+Si considera il caso in cui il volume $\Delta\Omega$ si trova in una zona di discontinuità
+di $\vec{E}$, non è possibile definire la divergenza.
+Si considera un cilindretto che contiene il punto $P$ e attraversa la superficie $S$ di discontinuità.
+L'area di base è $A$ e lo spessore è pari ad $h$.
+Le due superfici piane vengono chiamate $S_1$ ed $S_2$ ed hanno entrambe area pari ad $A$.
+Si applica la Legge di Gauss al volume $\Delta\Omega$ la cui frontiera è appunto la superficie del 
+cilindro.
+$$
+\oiint_{\partial\Delta\Omega} \vec{E}\cdot\hat{n}dS = \frac{1}{\varepsilon_0}Q_{\Delta\Omega} \Leftrightarrow \vec{E}_2\cdot\hat{n}_2A + \vec{E}_1\cdot\hat{n}_1A + 
+\iint_{S_{\text{lat}}}\vec{E}\cdot\hat{n}dS
+$$
+allora
+$$
+\vec{E}_2\cdot\hat{n}_2A + \vec{E}_1\cdot\hat{n}_1A + 
+\iint_{S_{\text{lat}}}\vec{E}\cdot\hat{n}dS = \frac{1}{\varepsilon_0} \sigma(P)\cdot A
+$$
+dove $\sigma(P)\cdot  A $ è la quantità di carica presente sulla traccia di $\Delta\Omega$ su $S$.
+
+Si esegue il limite per $h(P)\to 0$ le normali delle due superfici saranno:
+$$
+\begin{matrix}
+\hat{n}_2 & \to& \hat{n}(P) \\
+\hat{n}_1 & \to& -\hat{n}(P)
+\end{matrix}
+\Rightarrow \vec{E}_2\cdot\hat{n}\cancel{A} - \vec{E}_1\cdot\hat{n}\cancel{A} = \frac{\sigma}{\varepsilon_0}\cancel{A} \ \ \forall A \Rightarrow
+$$
+$$
+\Rightarrow \hat{n}\cdot(\vec{E}_2-\vec{E}_1) = \frac{\sigma}{\varepsilon_0}
+$$
+
+La discontinuità del campo in questo caso è associata alla sua componente normale e nella misura 
+in cui il salto di discontinuità tra le due componenti all'interno o l'esterno della superficie sia 
+pari a $\frac{\sigma}{\varepsilon}_0$.
+Formalizzando la Legge di Gauss:
+\begin{align*}
+\nabla\cdot\vec{E} &= \frac{\rho}{\varepsilon_0}\text{ nei punti regolari}\\
+\hat{n}\cdot(\vec{E}_2-\vec{E}_1) &= \frac{\sigma}{\varepsilon_0}
+\text{ sulle superfici di discontinuità}
+\end{align*}
+Con $E_2$ ed $E_1$ il valore dei campi sopra e sotto la superficie $S$ di discontinuità.
+
+\paragraph{La Legge di Gauss per il campo $\vec{B}$ (in forma locale)}
+Sia il volume $\Delta\Omega : \Delta\Sigma = \partial\Delta\Omega$ allora
+\begin{equation}
+\oiint_{\Delta\Sigma}\vec{B}\cdot\hat{n}dS = 0 \ \ \forall\ \Delta \Sigma \Rightarrow
+\begin{cases}
+\nabla\cdot\vec{B} &= 0\text{ nei punti regolari}\\
+\hat{n}\cdot(\vec{B}_2-\vec{B}_1) &= 0 \text{ sulle superfici di discontinuità}
+\end{cases}
+\end{equation}
+
+la componente normale di $\vec{B}$ è sempre continua, se eventualmente sono presenti discontinuità,
+queste riguardano la componente tangenziale alla superficie.
+
+\subparagraph{Legge di Faraday-Neumann-Lenz}
+Si considera un punto $P\in\Omega$ e si utilizza una linea chiusa $\Gamma$ intorno al punto $P$.
+
+Supponiamo inoltre che $P$ sia un punto regolare, applicando la legge di Faraday-Neumann:
+$$
+\oint_{\Gamma}\vec{E}\cdot\hat{t}dl = 
+- \iint_{S_\Gamma} \frac{\partial\vec{B}}{\partial t}\cdot\hat{n}dS
+$$
+essendo l'area di $S_\Gamma$ infinitesima si può avere l'integrale nella seguente maniera:
+$$
+\oint_{\Gamma}\vec{E}\cdot\hat{t}dL \simeq - \frac{\partial\vec{B}}{\partial t} \cdot 
+\hat{n}\text{ Area}(S_\Gamma)\Rightarrow
+$$
+
+$$
+\Rightarrow
+\lim_{\text{Area}(S_\Gamma)\to 0}
+ \frac{\oint_{\Gamma}\vec{E}\cdot\hat{t}dL}{\text{Area}(S_\Gamma)} \simeq
+- \frac{\partial\vec{B}}{\partial t}\cdot\hat{n}
+$$
+equivalentemente
+$$
+\hat{n}\cdot\nabla\times\vec{E}(P) = -\frac{\partial\vec{B}}{\partial t}\cdot\hat{n} 
+\Leftrightarrow \hat{n}\cdot\left(\nabla\times\vec{E}+\frac{\partial\vec{B}}{\partial t}\right) = 0\ \ 
+\forall \Gamma,S_\gamma\Rightarrow \forall \hat{n}
+$$
+quindi
+\begin{equation}
+\nabla\times\vec{E}(P) = -\frac{\partial\vec{B}}{\partial t} \text{ nei punti $P$ regolari}
+\end{equation}
+
+Si considera una superficie di discontinuità (per $\vec{E}$), si applica la Legge di 
+Faraday-Neumann-Lenz a particolari linee.
+Presa una superficie di discontinuità $S$ con normale $\hat{n}$ nel punto $P$, si racchiude una linea
+$\Gamma$ rettangolare che attraversa la superficie, con due tratti paralleli alla superficie e due
+perpendicolari. La linea chiude una superficie $S_\Gamma$ dotata anch'essa di versore normale $\hat{m}$
+orientato anch'esso mediante la regola della mano destra.
+
+I tratti superiore e inferiore hanno lunghezza $L$ e i tratti verticali altezza $h$.
+
+$$
+\oint_{\Gamma}\vec{E}\cdot\hat{t}dl \simeq \vec{E}_1 \cdot\hat{t}_1 L + \vec{E}_2 \cdot\hat{t}_2 L +
+\int_B^C \vec{E}\cdot\hat{t} dl + \int_D^A\vec{E}\cdot\hat{t}dl
+$$
+I due integrali sono eseguiti lungo le curve perpendicolari alla superficie $S$ e variano linearmente 
+con $h$.
+La legge di Faraday-Neumann afferma che:
+$$
+\oint_{\Gamma}\vec{E}\cdot\hat{t}dl = 
+-\iint_{S_\Gamma} \frac{\partial\vec{B}}{\partial t}\cdot \hat{m}dS \simeq 
+- \frac{\partial\vec{B}}{\partial t} \cdot \hat{m} h L
+$$
+mettendo insieme i termini:
+$$
+\vec{E}_1 \cdot\hat{t}_1 \cancel{L} + \vec{E}_2 \cdot\hat{t}_2 \cancel{L} +
+\frac{1}{L}\int_B^C \vec{E}\cdot\hat{t} dl + \frac{1}{L}\int_D^A\vec{E}\cdot\hat{t}dl
+= - \frac{\partial \vec{B}}{\partial t}\cdot \hat{m} h \cancel{L}
+$$
+si esegue il limite per $h/L \to 0$ in modo che l'altezza tenda a 0 più rapidamente rispetto
+alla base.
+
+Il versore tangente $\hat{t}_1 \to \hat{t},\ \hat{t}_2\to -\hat{t}$, restano quindi:
+$$
+\hat{t}\cdot(\vec{E}_1\cdot\vec{E}_2) = 0
+$$
+Si conclude quindi dimostrando che la componente tangenziale di $\vec{E}$ è sempre continua.
+
+Qualunque versore tangenziale ad una superficie è sicuramente perpendicolare alla normale della
+superficie ossia $\hat{t}\cdot\hat{n} = 0$ quindi $\hat{t} = \hat{n}\times\hat{m}$.
+
+Sostituendo 
+$$
+\hat{n}\times\hat{m}\cdot(\vec{E}_1-\vec{E}_2) = 0
+$$
+sfruttando la proprietà di scorrimento circolare del prodotto misto 
+$$
+\hat{n}\times(\vec{E}_2-\vec{E}_1)\cdot\hat{n} = 0 \ \ \forall\ \hat{m} \Rightarrow
+\hat{n}\times(\vec{E}_2-\vec{E}_1) = 0
+$$
+La continuità della componente tangenziale di $\vec{E}$ ad una superficie si scrive in termini
+del versore normale della superficie di discontinuità.
+
+\paragraph{Legge di Ampére-Maxwell (in forma locale)}
+Riferendosi ad una linea $\Gamma$ che circonda un punto $P$ nella superficie $S_\Gamma$
+$$
+\oint_\Gamma\vec{B}\cdot\hat{t}dl = \mu_0 \iint_{S_\Gamma} \left(\vec{J}+\varepsilon_0\frac{\partial \vec{E}}{\partial t}\right)\cdot \hat{m} dS
+$$
+allora
+$$
+\lim_{\text{Area}(S_\Gamma)\to 0} \frac{\oint_\Gamma \vec{B}\cdot\hat{t}dl}{\text{Area}(S_\Gamma)} =
+\hat{m}\cdot\nabla\times\vec{B}(P) = \mu_0 \left(\vec{J}(P)+\varepsilon_0\frac{\partial\vec{E}}{\partial t}(P)\right)\cdot\hat{m}\ \ \forall\ \hat{m}
+$$
+Ciò significa che nei punti regolari la legge di Ampére-Maxwell si scrive
+\begin{equation}
+ \nabla\times\vec{B} = \mu_0\left(\vec{J}+\varepsilon_0\frac{\partial\vec{E}}{\partial t}\right)
+\end{equation}
+
