@@ -1,0 +1,157 @@
+
+\paragraph{Legge di Ampére-Maxwell (locale) su superfici di discontinuità}
+Presa una superficie $S$ di normale $\hat{n}$ e indichiamo la regione al di sopra di $S$ con
+(2) e quella al di sotto con (1).
+Si considera una linea chiusa $\Gamma$ orientata di tipo \textit{rettangolare} ortogonale alla
+superficie, e la superficie orlante è chiamata $S_\Gamma$ con versore normale $\hat{m}$ orientato 
+secondo la regola della mano destra.
+
+$$
+\oint_\Gamma \vec{B}\cdot\hat{t} dl = \mu_0 i_{S_\Gamma} + \mu_0 \iint_{S_\Gamma} \varepsilon_0 \frac{\partial\vec{E}}{\partial t}\cdot\hat{m}dS 
+$$
+$i_{S_\Gamma}$ sono le correnti concatenate alla superficie $S_\Gamma$.
+Ricordando che il tratto di linea elementare ha una lunghezza $L$ e un'altezza $h$, 
+il vettore densità di corrente superficiale $\vec{J}_S$ e $\vec{J}$ un'eventuale
+densità di corrente volumetrica, allora
+$$
+\oint_\Gamma\vec{B}\cdot\hat{t}dl = \vec{B}_1\cdot\hat{t}_1L + \vec{B}_2\cdot\hat{t}_2L +
+\int_B^C\vec{B}\cdot\hat{t}dl + \int_D^A\vec{B}\cdot\hat{t}dl = \mu_0\vec{J}_S\cdot\hat{m} + 
+\mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}\cdot\hat{m}hL + \mu_0 \vec{J}\cdot\hat{m}hL
+$$
+
+passando al limite per $h/l \to 0,\ \hat{t}_1 = \hat{t} = \hat{t}_2,\ \hat{t} = \hat{n}\times\hat{m}$
+
+$$
+\hat{n}\times\hat{m}\cdot(\vec{B}_1-\vec{B}_2) = \mu_0 \vec{J}_S \cdot \hat{m} \Leftrightarrow 
+\hat{n}\times(\vec{B}_2-\vec{B}_1)\cdot\hat{m} = \mu_0 \vec{J}\cdot\hat{m}\ 
+\forall\ \hat{m},\Gamma,S_\Gamma
+$$
+
+$$
+\hat{n}\times(\vec{B}_2-\vec{B}_1) = \mu_0\vec{J}_S\ \text{su} \ S
+$$
+
+Si conclude quindi che la componente tangenziale del campo $\vec{B}$ ad una superficie $S$ è discontinua
+in presenza di correnti superficiali.
+
+\paragraph{Principio di conservazione della carica}
+Sia preso un volumetto $\Delta\Omega$ centrato attorno ad un punto $P$
+$$
+\frac{\oiint_{\partial\Delta\Omega} \vec{J}\cdot\hat{n} dS}{\text{Vol}(\Delta\Omega)} = -\frac{ \iiint_{\Delta\Omega} \frac{\partial\rho}{\partial t} dV}{\text{Vol}(\Delta\Omega)} \stackrel{\text{Vol}(\Delta\Omega)\to 0} {\Rightarrow}
+\nabla\cdot\vec{J} = -\frac{\partial\rho}{\partial t} \in \Omega
+$$
+nei punti regolari.
+
+Sulle superfici di discontinuità invece ripetendo i ragionamenti sulla superficie \textit{``monetina''}
+si ottiene:
+$$
+\hat{n}\cdot\left(\vec{J}_2-\vec{J}_1\right) = -\frac{\partial\sigma}{\partial t} \in S
+$$
+si trascurano infatti i flussi laterali che tendono a 0 se $h\to 0$.
+
+La componente normale del vettore densità di corrente è discontinua se su $S$ è presente una densità
+di carica variabile nel tempo.
+
+\paragraph{Sintesi delle equazioni di Maxwell in forma locale} 
+\begin{align*}
+&\text{Nei punti}\text{ regolari}  & &\text{Nei punti}\text{ irreg}\text{olari}\\
+&\nabla\cdot\vec{E} = \frac{\rho}{\varepsilon_0} & &\hat{n}\cdot(\vec{E}_2-\vec{E}_1) = \frac{\sigma}{\varepsilon_0}\\
+&\nabla\cdot\vec{B} = 0 & &\hat{n}\cdot(\vec{B}_2-\vec{B}_1) = 0\\
+&\nabla\times\vec{E} = -\frac{\partial\vec{B}}{\partial t}& &\hat{n}\times(\vec{E}_2-\vec{E}_1) = 0\\
+&\nabla\times\vec{B} = \mu_0\left(\vec{J} + \varepsilon_0\frac{\partial\vec{E}}{\partial t}\right)& &\hat{n}\times(\vec{B}_2-\vec{B}_1) = \mu_0\vec{J}_S \\
+&\nabla\cdot\vec{J} = -\frac{\partial\rho}{\partial t} & &\hat{n}\cdot(\vec{J}_2-\vec{J}_1) = -\frac{\partial \sigma}{\partial t}
+\end{align*}
+
+\subsection{Elettrostatica}
+28:18
+$$
+\oiint_\Sigma \vec{E}\cdot\hat{n}dS = \frac{Q_{\Omega_\Sigma}}{\varepsilon_0}\ \forall\Sigma\ \text{Legge di Gauss}
+$$
+$$
+\oint_\Gamma \vec{E}\cdot\hat{t}dl = 0 \ \forall\Gamma\ \text{Legge di Faraday-Neumann}
+$$
+
+\subparagraph{Distribuzione di carica volumetrica a simmetria sferica}
+
+Sia $\Omega$ la sfera di raggio $R$, $P(r,\theta,\varphi)$
+
+La distribuzione $\rho$ non dipenderà da $\theta,\varphi$, ossia sarà simmetrica rispetto agli assi.
+Di conseguenza anche le componenti del campo $\vec{E}$ dipenderanno solo da $r$.
+Le componenti del campo $E_\theta$ ed $E_\varphi$ seguiranno le rotazioni dei rispettivi angoli.
+Supponendo che ci sia una componente $E_\theta$ diversa da 0 e si suppone di ruotare la sfera di
+180\textdegree la componente cambierebbe di segno ma rimarrebbe invariata la distribuzione di cariche $\rho$,
+ne consegue che $E_\theta = 0$; un discorso analogo può essere effettuato per la componente $E_\varphi$.
+
+In definitiva si conclude che l'unica componente del campo elettrico è quella lungo 
+il versore $r$ quindi $E_r(r)$.
+Ricordando che:
+\begin{align*}
+dl_1 &= dr \\
+dl_2 &= rd\theta \\
+dl_3 &= r\sin\theta d\varphi \\
+dS = dS_1 = dl_2dl_3 = r^2\sin\theta d\theta d \varphi
+\end{align*}
+$$
+\oiint_\Sigma\vec{E}\cdot\hat{n}dS = \int_0^\pi d\theta \int_0^\pi d\varphi r^2 \sin\theta E_r = 
+\frac{1}{\varepsilon_0} \int_0^\pi d\theta \int_0^\pi d\varphi \int_0^r \rho(r) r^3\sin\theta dr =\frac{1}{\varepsilon_0}\iiint_{\Omega_\Sigma} \rho d V
+$$
+52 minuti
+
+
+Si osserva che se $r\geq R$ 
+$$
+\vec{E}(r) = \frac{Q}{4\pi\varepsilon_0} \frac{1}{r^2} \vec{e}_r,\ Q = \frac{4\pi }{3}R^3\rho_0
+$$
+Facendo tendere $R\to 0 $ e $\rho_0 \to \infty$ in modo da mantenere $Q$ finito, si ottiene
+il campo della carica puntiforme.
+
+\paragraph{Campo elettrico prodotto da una distribuzione di carica qualunque}
+Sia $\rho(P')dV$ la carica elementare in $\Delta\Omega$
+$$
+\vec{dE}(P) = \frac{\rho(P')dV}{4\pi\varepsilon_0}\frac{1}{|\vec{r}_p-\vec{r}_{p'}|^2} \frac{\vec{r}_p-\vec{r}_{p'}}{|\vec{r}_p-\vec{r}_{p'}|}
+$$
+$$
+\vec{dE}(P) = \frac{\rho(P')dV}{4\pi \varepsilon_0} \frac{\vec{r}_p-\vec{r}_{p'}}{|\vec{r}_p-\vec{r}_{p'}|^3}
+$$
+$$
+\vec{E}(P) = \frac{1}{4\pi\varepsilon_0} \iiint_\Omega \rho(P')  \frac{\vec{r}_p-\vec{r}_{p'}}{|\vec{r}_p-\vec{r}_{p'}|^3} dV
+$$
+
+Se la regione $\Omega$ è al finito $(\text{diam }\Omega<\infty)$ si dimostra che 
+$$
+\lim_{|\vec{r}_p| \to \infty} |\vec{E}(P)| = 0\ \ \vec{E}(P) \propto \frac{1}{|\vec{r}_p|^2}
+$$
+01:23
+$$
+\vec{E}(P) \simeq \frac{1}{4\pi\varepsilon_0} \frac{Q}{|\vec{r}_p|^2}
+$$
+\newpage
+\paragraph{Distribuzione di carica con simmetria cilindrica}
+Indefinita lungo $z$ e con raggio $R$.
+
+
+Applicando la legge di Gauss
+$$
+\oiint_\Sigma\vec{E}\cdot\hat{n}dS = \int_0^{2\pi}d\varphi \int_0^L dz E_r(r) = \frac{1}{\varepsilon_0}
+\iiint_{\Omega_\Sigma}\rho dV = \frac{1}{\varepsilon_0} \int_{0}^{\Omega}dr\int_{0}^{2\pi} rd\varphi\int_0^L \rho_0 dz = 2\pi L E_r(r) r
+$$
+
+Quando $r > R$ 
+$$
+E_r(r) = \frac{\rho_0}{2\varepsilon_0} \frac{\pi R^2}{\pi} \frac{1}{r} = 
+\frac{\lambda}{2\pi\varepsilon_0} \frac{1}{r}
+$$
+
+\paragraph{Distribuzione di carica a simmetria piana}
+
+$$
+\oiint_\Sigma \vec{E}\cdot\hat{n}dS = \iint_{A_1} dxdy E_z(z)\hat{n}\cdot\vec{e}_z + 
+\iint_{A_2} dxdy E_z(-z)\hat{n}\cdot\vec{e}_z = SE_z(z) -SE_z(-z) = 2 S E_z(z) =
+$$
+$$
+=\frac{1}{\varepsilon_0} \iiint_{\Omega_\Sigma} \rho dV = \frac{1}{\varepsilon_0} \int_{-z}^{z}dz \iint_A dxdy\rho_0
+$$
+
+
+
+
