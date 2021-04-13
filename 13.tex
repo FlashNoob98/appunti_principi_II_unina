@@ -1,0 +1,273 @@
+
+Si può sfruttare il fatto che il potenziale $V_2$ deve essere normale all'infinito, ossia
+$\lim_{r\to\infty} V_2(r) = 0 \Rightarrow D = 0$.
+
+La $V_1(r)$ deve essere invece definita e continua per ogni valore di $r$, in particolare per $r=0$
+ciò implica che $A=0$.
+
+Quindi $V_2(r) = -\frac{C}{r}$ e $V_1(r) = B$.
+
+V1 = V2 AGGIUNGI
+
+$$
+\frac{\partial V_2}{\partial r} - \frac{\partial V_1}{\partial r} = -\frac{\sigma_0}{\varepsilon_0} =
+\frac{C}{r^2} \Rightarrow C = -\frac{\sigma_0}{\varepsilon_0}R^2
+$$
+$$
+V(r) = \begin{cases}
+\frac{\sigma_0}{\varepsilon_0}R,\ 0\leq r \leq R \\
+\frac{\sigma_0}{\varepsilon_0}\frac{R^2}{r},\ r\geq R
+\end{cases}\Rightarrow
+E_r(r) = -\frac{\partial V}{\partial r} =
+\begin{cases}
+0,\ 0\leq r \leq R \\
+\frac{\sigma_0}{\varepsilon_0}\frac{R^2}{r},\ r\geq R
+\end{cases}
+$$
+
+
+$$
+V(r) = \begin{cases}
+\frac{\sigma_0}{4\pi R \varepsilon_0}4\pi R^2 = \frac{Q}{4\pi\varepsilon_0},\ 0\leq r \leq R \\
+\frac{\sigma_0}{4\pi r \varepsilon_0}4\pi R^2 = \frac{Q}{4\pi\varepsilon_0}\frac{1}{r},\ r\geq R
+\end{cases}
+\Rightarrow \begin{cases}
+0,\ 0\leq r \leq R \\
+\frac{Q}{4\pi\varepsilon_0}\frac{1}{r^2},\ r\geq R
+\end{cases}
+$$
+
+La distribuzione di carica si comporta come se la carica $Q = 4 \pi R^2 \sigma_0$ fosse concentrata
+nell'origine degli assi.
+
+Il potenziale è quindi costante all'interno della sfera e decresce con andamento $1/r$ all'esterno
+della stessa, ossia per $r \geq R$.
+
+\subparagraph{Distribuzione superficiale con simmetria cilindrica}
+$$
+\begin{cases}
+\nabla^2 V_1 = 0,\ 0\leq r\leq R\\
+V_1(r) = V_2(r)\\
+\frac{\partial V_2}{\partial r} - \frac{\partial V_1}{\partial r} = -\frac{\sigma_0}{\varepsilon_0}\ \text{su } \Sigma\\
+\nabla^2 V_2 = 0,\ r\geq R\\
+V_2 \text{ normale all'inifnito}
+\end{cases}
+$$
+
+Eseguiamo il Laplaciano di V(?) 30:06
+$$
+\frac{1}{r}\frac{\partial}{\partial r} \left(r\frac{\partial V}{\partial r}\right) = 0
+$$
+$$
+\frac{1}{r} \left(r\frac{\partial^2 V_1}{\partial r^2}+\frac{\partial V_1}{\partial r}\right) = 0
+\Rightarrow V_1'' + \frac{1}{r}V_1' = 0
+$$
+Risolvendo le equazioni differenziali:
+$$
+V_1(r) = A \ln r + B
+$$
+$$
+V_2(r) = C \ln r + D
+$$
+$$
+V_1(r) \Rightarrow A = 0 \Rightarrow V_1(r) = B RIVEDI
+$$
+$$
+V_2(r) \text{ normale all'infinito} 
+$$
+
+$$
+\frac{\partial V_2}{\partial r} - \frac{\partial V_1}{\partial r} = -\frac{\sigma_0}{\varepsilon_0}
+\Rightarrow C = -\frac{\sigma_0 R}{\varepsilon_0}
+$$
+
+$$
+V(r) = \begin{cases}
+-\frac{\sigma_0 R}{\varepsilon_0} \ln R + D,\ r < R\\
+-\frac{\sigma_0 R}{\varepsilon_0} \ln r + D,\ r \geq R
+\end{cases}
+$$
+$$
+V_1(R) = V_2(R)\Rightarrow D = \frac{\sigma_0 R}{\varepsilon_0} \ln R
+$$
+$$
+E_r (r) = -\frac{\partial V}{\partial r} = \begin{cases}
+0,\ r\leq R\\
+\frac{\sigma_0 R}{\varepsilon_0}\frac{1}{r},\ r\geq R
+\end{cases}
+$$
+Si confronta il campo trovato con la legge di Gauss.
+
+$$
+\oiint_\Sigma \vec{E}\cdot\hat{n}dS = \frac{Q_{\Omega_\Sigma}}{\varepsilon_0}
+$$
+$$
+2 \pi r L E_r = \frac{\sigma}{\varepsilon_0} 2 \pi R L,\ r > R
+$$
+$$
+E_r = \frac{1}{2 \pi \varepsilon_0} \frac{\sigma R 2 \pi}{r} = \frac{\lambda}{2\pi\varepsilon_0}\frac{1}{r}
+$$
+$$
+\lambda = \sigma 2 \pi R
+$$
+Come se la carica fosse contenuta tutta sull'asse di simmetria del cilindro.
+
+
+\subparagraph{Distribuzione di carica superficiale a simmetria piana}
+Potenziale di un doppio strato di cariche.
+
+Prese due lastre cariche $\sigma_0$ e $-\sigma_0$ poste ad una distanza $\Delta/2$ dall'asse $Z$.
+Per simmetria la funzione potenziale sarà funzione di $x$.
+$$
+V(P) = V(x)
+$$
+Dividendo lo spazio in 3 regioni, si definiscono 3 funzioni potenziali:
+$$
+\begin{cases}
+\nabla^2V_1 = 0\ x < \frac{\Delta}{2}\\
+\nabla^2V_2 = 0\ |x| < \frac{\Delta}{2}\\
+\nabla^2V_3 = 0\ x > \frac{\Delta}{2}\\
+V_1(-\frac{\Delta}{2}) = V_2(-\frac{\Delta}{2}) \\
+V_2(\frac{\Delta}{2}) = V_3(\frac{\Delta}{2}) \\
+\left.-\frac{\partial V_3}{\partial x}\right|_{\frac{\Delta}{2}} + \left.\frac{\partial V_2}{\partial x}\right|_{\frac{\Delta}{2}} = \frac{\sigma_0}{\varepsilon_0} \\
+AGGIUNGI ULTIMA
+\end{cases}
+$$
+
+\begin{align*}
+V_1(x) = Ax+B \\
+V_2(x) = Cx+D \\
+V_3(x) = Ex + F \\
+V_1(x) \to 0, \ x\to -\infty \Rightarrow A = 0 \\
+V_3(x) \to 0, \ x\to +\infty \Rightarrow E = 0 
+\end{align*}
+
+54:30
+$$
+V_2(x) = \frac{\sigma_0}{\varepsilon_0}x + D
+$$
+Imponiamo le ...
+\begin{align*}
+V_2(\frac{\Delta}{2}) = \frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} + D = V_3(\frac{\Delta}{2}) = F\\
+V_1(-\frac{\Delta}{2}) = B \text{ ECC...}
+\end{align*}
+
+Si ha però simmetria dispari, ossia 
+$$
+V(x) = - V(-x) \ \Rightarrow D = 0
+$$
+
+...
+
+...
+
+...
+
+Passiamo al limite $\Delta \to 0^+$
+
+$$
+V(x) = \begin{cases}
+-\frac{\tau}{2\varepsilon_0},\ x < 0 \\
+\frac{\tau}{2\varepsilon_0},\ x > 0
+\end{cases}
+$$
+con $\sigma_0 \Delta = \tau $ momento di dipolo.
+Si può confrontare il risultato ottenuto con una distribuzione ??? 01:05:00
+Il campo elettrico sarà discontinuo mentre il potenziale sarà una funzione continua.
+
+\subsection{Elettrostatica in presenza di conduttori}
+Si suppone che ci siano N conduttori (elettrodi) nello spazio in \textit{``equilibrio''}.
+Si parla di conduttore ohmico, ossia che soddisfa la legge di Ohm in forma locale:
+$$
+\vec{J}(P) = \gamma(P)\vec{E}(P)
+$$
+oppure
+$$
+\vec{E}(P) = \eta(P)\vec{J}(P)
+$$
+con $\gamma$ ed $\eta$ conducibilità e resistività elettrica.
+I un conduttore in equilibrio $\vec{J} = 0$ o equivalentemente $\vec{E} = 0$, ciò implica 
+che la funzione potenziale è costante in $\Omega$ fin sulla frontiera del mezzo conduttore.
+
+$\partial \Omega$ è una superficie equipotenziale di $V \stackrel{\text{Principio del max.}}{\Rightarrow} V = \text{ cost in } \Omega$
+
+Siccome $\vec{E} = -\nabla V$ è quindi sempre perpendicolare alla frontiera di un conduttore,
+il modulo e il verso di $\vec{E}$ subito al di fuori di una regione conduttiva $\Omega$ 
+si ricavano applicando le condizioni di raccordo per il campo elettrico:
+$$
+\hat{n}\cdot (\vec{E}_2-\vec{E}_1) = \frac{\sigma}{\varepsilon_0}
+$$
+ma $\vec{E}_1 = 0$ perchè il conduttore è all'equilibrio, quindi 
+$$
+\vec{E}_2 = \frac{\sigma}{\varepsilon_0} \hat{n}
+$$
+Questo risultato prende il nome di Teorema di Coulomb.
+
+
+
+\subsection{Capacità di un conduttore isolato} (rispetto all'inifnito)
+Preso un conduttore generico carico, il campo al suo interno sarà pari a 0, eseguendo un integrale
+esteso alla sua frontiera:
+$$
+\iint_{\partial \Omega}\sigma dS = \iint_{\partial \Omega} \varepsilon_0 \vec{E}\cdot \hat{n} dS
+$$
+eseguiamo il rapporto con l'integrale di linea del campo elettrico da un punto sulla superficie
+
+$$
+\frac{\iint_{\partial \Omega}\sigma dS }{\int_P^\infty \vec{E}\cdot\hat{t}dl } = \frac{Q}{V} \stackrel{\text{def}}{=} C
+$$
+si ottiene la capacità del conduttore isolato per definizione.
+Si osserva che il potenziale $V$ sarà necessariamente proporzionale alla carica $Q$, si 
+conclude che il rapporto è indipendente dalla carica contenuta nel corpo, ma dipenderà soltanto da
+parametri materiali e geometrici.
+\subparagraph{Esempio}
+Elettrodo sferico di raggio $R$
+
+Sarà presente una distribuzione di cariche $\sigma$ uniforme sulla superficie della sfera
+e per simmetria sappiamo che il potenziale $V$ dipenderà solo dalla distanza $r$ dalla sfera.
+$$
+V(r) = \frac{Q}{4 \pi \varepsilon_0}\frac{1}{r},\ r\geq R \stackrel{r=R}{\Rightarrow} V(R) = 
+\frac{Q}{4\pi\varepsilon_0 R}
+$$
+Quindi 
+$$
+C = \frac{Q}{V(R)} = 4\pi\varepsilon_0 R
+$$
+Si può facilmente stimare la capacità del pianeta Terra, considerato come un conduttore ideale
+conoscendo le costanti e approssimando il raggio a circa \SI{6.4e6}{\meter} e $\varepsilon_0 = 
+\SI{8.85e-12}{\farad\per\meter}$ si ha un risultato di circa \SI{711}{\micro\farad}.
+
+\subparagraph{Caso generale di N conduttori}
+Determinare il campo $\vec{E}$ con N conduttori in condizioni elettrostatiche.
+Siano indicati con $C_1$, $C_2$ ... $C_k$ $k=1,...,N$ gli N conduttori e i rispettivi vettori normali
+$\hat{n}_1$, $\hat{n}_2$ ... $\hat{n}_k$.
+Ogni conduttore avrà un suo potenziale $V_k$, la quantità di carica 
+$$
+Q_k = \iint_{\partial c_k} \varepsilon_0 \vec{E}\cdot\hat{n} dS
+$$
+Sia $\Omega$ la regione di spazio non occupata dai conduttori, allora
+$$
+\nabla^2 V = 0 \in \ Omega 
+$$
+e deve rispettare anche
+$$
+\left. V \right|_{c_k} = V_k \text{ su } \partial \Omega_k
+$$
+e $V$ normale all'infinito.
+Per il teorema di unicità della soluzione, questa è univocamente determinata.
+
+Per determinare la soluzione si caratterizza $V(p)$ mediante il principio di sovrapposizione degli effetti:
+si considerano $n$ problemi di valori al contorno (BVP) ausiliari per altrettante funzioni
+potenziali $V^{(k)},\ k=1,...,N$
+$$
+\begin{cases}
+\nabla^2 V^{(i)} = 0 \in \Omega \\
+\left.V^{(i)}\right|_{\partial c_i} =  1,\ \left.V^{(k)}\right|_{\partial c_k} = 0,\ k \neq i
+\end{cases}
+$$
+
+La soluzione del problema omogeneo è:
+$$
+V(P) = V_1 V^{(1)}(P) + V_2 V^{(2)}(P) + ... + V_NV^{(N)}(P)
+$$
+è proprio la soluzione unica del problema di partenza.
