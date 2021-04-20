@@ -153,43 +153,76 @@ samples = 2,
 \end{center}
 Si osserva che se $r\geq R$ 
 $$
-\vec{E}(r) = \frac{Q}{4\pi\varepsilon_0} \frac{1}{r^2} \vec{e}_r,\ Q = \frac{4\pi }{3}R^3\rho_0
+\vec{E}(r) = \frac{Q}{4\pi\varepsilon_0} \frac{1}{r^2} \vec{e}_r,\ \ Q = \frac{4\pi }{3}R^3\rho_0
 $$
 Come se la carica $Q$ fosse puntiforme nell'origine.
 Facendo tendere $R\to 0 $ e $\rho_0 \to \infty$ in modo da mantenere $Q$ finito, si ottiene
 il campo della carica puntiforme.
 
 \paragraph{Campo elettrico prodotto da una distribuzione di carica qualunque}
-Sia $\rho(P')dV$ la carica elementare in $\Delta\Omega$
+Sia $\rho(p')dV$ la carica elementare in $\Delta\Omega$, volumetto infinitesimo della regione $\Omega$.
+Si prenda un punto $p$ all'esterno della regione, $\vec{r}_p$ e $\vec{r}_{p'}$ sono i rispettivi vettori
+che puntano a $p$ e $p'$.
+Si calcola il campo elettrico emesso dalla carica puntiforme in $p$.
 $$
-\vec{dE}(P) = \frac{\rho(P')dV}{4\pi\varepsilon_0}\frac{1}{|\vec{r}_p-\vec{r}_{p'}|^2} \frac{\vec{r}_p-\vec{r}_{p'}}{|\vec{r}_p-\vec{r}_{p'}|}
+\vec{dE}(p) = \frac{\rho(p')dV}{4\pi\varepsilon_0}\cdot\frac{1}{|\vec{r}_p-\vec{r}_{p'}|^2} \cdot\frac{\vec{r}_p-\vec{r}_{p'}}{|\vec{r}_p-\vec{r}_{p'}|}
 $$
+L'ultimo termine è il versore diretto da $p'$ a $p$ indicando il verso del campo elettrico.
+In forma più compatta:
 $$
-\vec{dE}(P) = \frac{\rho(P')dV}{4\pi \varepsilon_0} \frac{\vec{r}_p-\vec{r}_{p'}}{|\vec{r}_p-\vec{r}_{p'}|^3}
+\vec{dE}(p) = \frac{\rho(p')dV}{4\pi \varepsilon_0} \frac{\vec{r}_p-\vec{r}_{p'}}{|\vec{r}_p-\vec{r}_{p'}|^3}
 $$
+Per calcolare il campo generato dall'intera regione $\Omega$:
 $$
-\vec{E}(P) = \frac{1}{4\pi\varepsilon_0} \iiint_\Omega \rho(P')  \frac{\vec{r}_p-\vec{r}_{p'}}{|\vec{r}_p-\vec{r}_{p'}|^3} dV
+\vec{E}(p) = \frac{1}{4\pi\varepsilon_0} \iiint_\Omega \rho(p')  \frac{\vec{r}_p-\vec{r}_{p'}}{|\vec{r}_p-\vec{r}_{p'}|^3} dV
+$$
+L'espressione è valida sia se il punto $p$ è interno ad $\Omega$ o meno. Bisogna prestare attenzione
+al caso in cui $p=p'$ dato che la funzione integranda risulta singolare ma resta finito l'integrale
+perchè esteso ad un volume.
+Se la regione $\Omega$ è al finito $(\text{diam}(\Omega)<\infty)$ si dimostra che 
+$$
+\lim_{|\vec{r}_p| \to \infty} |\vec{E}(p)| = 0,\ \ \vec{E}(p) \propto \frac{1}{|\vec{r}_p|^2}
+$$
+È semplice da osservare:
+$$
+|\vec{r}_p| \gg |\vec{r}_{p'}| \Rightarrow |\vec{r}_p -\vec{r}_{p'}| \simeq |\vec{r}_p| \Rightarrow
+\vec{E}(p) \simeq \frac{1}{4 \pi \varepsilon_0}\frac{Q}{|\vec{r}_p|^2}
 $$
 
-Se la regione $\Omega$ è al finito $(\text{diam }\Omega<\infty)$ si dimostra che 
-$$
-\lim_{|\vec{r}_p| \to \infty} |\vec{E}(P)| = 0\ \ \vec{E}(P) \propto \frac{1}{|\vec{r}_p|^2}
-$$
-01:23
-$$
-\vec{E}(P) \simeq \frac{1}{4\pi\varepsilon_0} \frac{Q}{|\vec{r}_p|^2}
-$$
 \newpage
 \paragraph{Distribuzione di carica con simmetria cilindrica}
-Indefinita lungo $z$ e con raggio $R$.
-
-
-Applicando la legge di Gauss
+Indefinita lungo $z$ e di raggio $R$.
+Ogni punto $P= (r,\varphi,z)$ definito in coordinate cilindriche, la densità di carica $\rho(p)$:
 $$
-\oiint_\Sigma\vec{E}\cdot\hat{n}dS = \int_0^{2\pi}d\varphi \int_0^L dz E_r(r) = \frac{1}{\varepsilon_0}
-\iiint_{\Omega_\Sigma}\rho dV = \frac{1}{\varepsilon_0} \int_{0}^{\Omega}dr\int_{0}^{2\pi} rd\varphi\int_0^L \rho_0 dz = 2\pi L E_r(r) r
+\rho(p) = \begin{cases}
+\rho_0 & \text{se }  r \leq R\\
+0 & \text{se }  r > R
+\end{cases}
 $$
+Simmetrica di rotazione intorno l'asse $z$ ed è invariante per traslazione lungo l'asse $z$ (o $l_3$).
 
+Per questo motivo il campo $\vec{E}$ dipende ancora da una sola componente, $\vec{E}(p) = \vec{E}(r)$
+mentre $E_\varphi = E_z = 0$. $E_\varphi$ è nulla perchè una rotazione di 180\textdegree\ attorno
+l'asse $z$ invertirebbe il segno del campo lasciando $\rho$ invariata; $E_z = 0$ perchè una rotazione
+attorno a $\vec{e}_r$ invertirebbe il segno di $E_z$ lasciando $\rho$ invariata.
+Queste affermazioni sono contraddittorie e l'unico modo per validarle è imporre che le componenti
+siano nulle. In conclusione:
+$$
+\vec{E}(p) = E_r(r)\vec{e}_r
+$$
+Si ricorda che
+$$
+dS = dS_1 = dl_2 dl_3 = rd\varphi dz
+$$
+Applicando la legge di Gauss ad una superficie cilindrica con distribuzione di raggio $R$ e distribuzione $\rho$ mediante un cilindro esterno o interno di raggio $r$:
+$$
+\oiint_\Sigma\vec{E}\cdot\hat{n}dS = \int_0^{2\pi}rd\varphi \int_0^L dz E_r(r) = \frac{1}{\varepsilon_0}
+\iiint_{\Omega_\Sigma}\rho dV = \frac{1}{\varepsilon_0} \int_{0}^{r}dr\int_{0}^{2\pi} rd\varphi\int_0^L \rho_0 dz 
+$$
+$$
+\oiint_\Sigma\vec{E}\cdot\hat{n}dS = 2\pi L E_r(r) r
+$$
+1:17
 Quando $r > R$ 
 $$
 E_r(r) = \frac{\rho_0}{2\varepsilon_0} \frac{\pi R^2}{\pi} \frac{1}{r} = 
