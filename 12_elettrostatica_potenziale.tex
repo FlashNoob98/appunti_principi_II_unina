@@ -214,26 +214,34 @@ $$
 
 \subsection{Calcolo della funzione potenziale in condizioni di simmetria}
 \paragraph{Carica puntiforme}
-Sia $P_0$ un punto distante $r_0$ dall'origine e $P$ distante $r$ dall'origine.
-Si suppone di estendere il raggio $r$ fino alla lunghezza di $r_0$ e di congiungere il punto
+Sia posta una carica $Q$ nell'origine e $P_0$ un punto distante $r_0$ dall'origine e $P$ distante $r$ dall'origine.
+Si suppone di estendere il raggio $r$ fino alla lunghezza di $r_0$ e di congiungere il punto $P'$
 ottenuto con $p_0$ mediante una linea che giace sulla circonferenza di pari raggio.
 
-Sia la carica puntiforme localizzata nell'origine, allora
 $$
 \vec{E}(P) = \frac{Q}{4\pi \varepsilon_0}\frac{1}{r^2} \vec{e}_r
 $$
-Integrando $\vec{E}$
-SCRIVI INTEGRALE 54:54
-
+Integrando $\vec{E}$ lungo la curva $\gamma$ da $P$ a $P_0$
 $$
- = \frac{Q}{4\pi\varepsilon_0}\left(\frac{1}{r} - \frac{1}{r_0}\right)
+\int_{P_\gamma P_0} \vec{E}\cdot \hat{t} dl = \int_{P_\gamma P_0} -\nabla V\cdot \hat{t} dl = 
+\int_r^{r_0} \frac{Q}{4\pi\varepsilon_0}\frac{1}{r^2} \vec{e}_r\cdot \hat{t} dr + 
+\cancel{\int_{P'}^{P_0} \vec{E}\cdot\hat{t} dl}
 $$
-
+ma $\vec{E}\cdot\hat{t} = 0$ perchè i due vettori sono ortogonali
+$$
+\int_r^{r_0} \frac{Q}{4\pi\varepsilon_0}\frac{1}{r^2}dr = \frac{Q}{4\pi\varepsilon_0}\left[-\frac{1}{r}\right]_r^{r_0} = \frac{Q}{4\pi\varepsilon_0}\left(\frac{1}{r} - \frac{1}{r_0}\right)
+$$
+$r_0$ e quindi $P_0$ funge da riferimento per la funzione potenziale, poichè $\vec{E} = -\nabla V$ 
+tutte le funzioni potenziali che differiscono per una costante additiva costituiscono lo stesso
+campo elettrico, in questo caso la costante è proprio $-\frac{Q}{4\pi\varepsilon_0}\frac{1}{r_0}$.
+Si può quindi scegliere la costante di integrazione pari a $0$.
 
 In genere quando le cariche sono al finito, conviene scegliere come funzione potenziale
 $$
 V(r) = \frac{Q}{4 \pi \varepsilon_0}\frac{1}{r}
 $$
+
+56:24
 
 Sia $Q$ una carica nell'origine e $P$ il raggio vettore, il campo è diretto in direzione radiale
 mentre le superfici ad $r$ costante hanno tutte lo stesso potenziale.
