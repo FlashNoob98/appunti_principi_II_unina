@@ -107,74 +107,110 @@ Se il dominio $\Omega$ è a connessione lineare semplice si ottiene l'equazione 
 $$
 \nabla\times\vec{E} = 0 \Rightarrow \vec{E} = - \nabla V \text{ in } \Omega \Rightarrow \nabla^2V = -\frac{\rho}{\varepsilon_0} \text{ in } \Omega
 $$
-Sulla frontiera di $\Omega$: 15:06
+Sulla frontiera di $\Omega$: (condizione di raccordo per la funzione potenziale)
 $$
-\hat{n}\cdot\left(-\nabla V_2 + \nabla V_1\right) = \frac{\sigma}{\varepsilon_0} \Leftrightarrow
--\frac{\partial V_2}{\partial n} + \frac{\partial V_1}{\partial n}...
+\hat{n}\cdot (\vec{E}_2 - \vec{E}_1) = \hat{n}\cdot\left(-\nabla V_2 + \nabla V_1\right) =
+\frac{\sigma}{\varepsilon_0} \Leftrightarrow
+-\frac{\partial V_2}{\partial n} + \frac{\partial V_1}{\partial n} = \frac{\sigma}{\varepsilon_0}
 $$
-
-
+Continuità della componente tangente del campo elettrico:
 $$
 \hat{n}\times\left(\vec{E}_2-\vec{E}_1\right) = 0 \Rightarrow \hat{n}\times\left(-\nabla V_2 + \nabla V_1\right) = 0 \Rightarrow \hat{n}\times\left(-\nabla V_2 + \nabla V_1\right)\cdot\hat{m} = 0
 $$
-quindi
+con $\hat{m}$ versore qualsiasi non parallelo ad $\hat{n}$, si prende ad esempio il versore $\hat{m}$
+ortogonale alla linea chiusa rettangolare che interseca la superficie del dominio, 
+il versore $\hat{t}$ sarà dunque dato dal prodotto vettoriale $\hat{t} = \hat{n}\times\hat{m}$ 
+e risulterà tangente alla linea chiusa secondo il verso antiorario.
+Sfruttando la proprietà circolare del prodotto misto:
 $$
-\hat{t}\cdot\left(\nabla V_2 - \nabla V_1\right) = 0 \Rightarrow \frac{\partial V_2}{\partial n} - \frac{\partial V_1}{\partial n} = 0
-$$
-$$
-\Rightarrow \frac{\partial}{\partial \hat{t}}(V_2-V_1) = 0 \Rightarrow V_2 = V_1
+\begin{aligned}
+\hat{t}\cdot\left(\nabla V_2 - \nabla V_1\right)  = 0 &\Rightarrow \frac{\partial V_2}{\partial \hat{t}} - \frac{\partial V_1}{\partial \hat{t}} = 0 \\
+\frac{\partial}{\partial \hat{t}}(V_2-V_1)  = 0 &\Rightarrow V_2 = V_1
 \text{ lungo la direzione }\hat{t}
+\end{aligned}
 $$
-Si ha quindi continuità del potenziale attraverso le superfici.
+La continuità di $\hat{n}\times\vec{E}$ implica la continuità della funzione potenziale attraverso le superfici data l'arbitrarietà di $\hat{t}$.
 
+\subsection{Funzioni armoniche}
 Supponiamo che la carica $\rho$ sia nulla in $\Omega$, allora
 $$
-\nabla^2 V = 0 \in \Omega \text{ equazione di Laplace}
+\nabla^2 V = 0 \text{ in } \Omega \text{ equazione di Laplace}
 $$
 le soluzioni dell'equazione di Laplace sono funzioni armoniche in $\Omega$.
 
-\subparagraph{Proprietà delle funzioni armoniche}
-
+\paragraph{Proprietà delle funzioni armoniche}
 \subparagraph{Proprietà di unicità della soluzione}
+Supponiamo di analizzare un problema di valori al contorno (BVP = \textit{Boundary Value Problem})
+
+Problema di Dirichlet per l'equazione di Laplace:
 $$
 \begin{cases}
-\nabla^2 V = 0\\
-\left.V\right|_{\partial\Omega} = h \in \partial\Omega
+\nabla^2 V = 0 \text{ in } \Omega\\
+\left.V\right|_{\partial\Omega} = h \text{ su } \partial\Omega
 \end{cases}
 $$
-Si dimostra con l'identità di Green
+Ammette una e una sola soluzione.
+L'unicità si dimostra con l'identità di Green:
 $$
 \nabla\cdot(f\nabla f) = f\nabla^2f + (\nabla f)^2
 $$
+Si integra utilizzando il teorema della divergenza:
 $$
-\iiint_\Omega \nabla\cdot(V\nabla V) = ... 34:55
+\begin{aligned}
+\iiint_\Omega \nabla\cdot(V\nabla V) &= \cancel{\iiint_\Omega V\nabla^2 V dV} + \iiint_\Omega (\nabla V)^2 dV\\
+\iint_{\partial\Omega} V \frac{\partial V}{\partial n}dS &= \iiint_\Omega (\nabla V)^2 dV
+\end{aligned}
 $$
+Questo vale per una qualunque soluzione del problema.
 
-Supponiamo $V_1$ e $V_2$ soluzioni distinte del problema
-
-...
-
-$$
-\nabla(\Delta V) = 0 \in \Omega \Rightarrow \Delta V = \text{cost}
-$$
-
-Principio del massimo delle funzioni armoniche:
-Una funzione armonica in un dominio $\Omega$ assume valori estremi sulla frontiera, se $V$ è costante
-su una superficie $\Sigma$, necessariamente deve essere costante nella regione racchiusa $\Omega_\Sigma$.
-
-
-\subparagraph{Problema di Neumann per l'eq di Laplace}
+Supponiamo $V_1$ e $V_2$ soluzioni. Def $\Delta V = V_1 - V_2$ 
 $$
 \begin{cases}
-\nabla^2 V = 0 \in \Omega\\
-\left.\frac{\partial V}{\partial\hat{n}}\right|_{\partial \Omega} = f \in \partial \Omega
+\nabla^2 (\Delta V) = 0 & \text{ in }\Omega \\
+\left.\Delta V\right|_{\partial \Omega} = 0 \text{ su } \partial \Omega
 \end{cases}
 $$
-Dim.
+Applicando la precedente identià di Green:
 $$
-\iiint_{\Omega} \left[\nabla(\Delta V)\right]^2 dV = \iint_{\partial\Omega} \Delta V \frac{\partial\Delta V}{\partial \hat{n}} dS = 0
+\iint_{\partial \Omega} \Delta V \frac{\partial \Delta V}{\partial n} dS =
+\iiint_\Omega \left[\nabla(\Delta V)\right]^2 dV = 0
 $$
-46:09
+Perchè $\Delta V = 0$ sulla frontiera del dominio.
+Il secondo termine può essere nullo se la funzione integranda è nulla in $\Omega$ ma se il dominio
+è connesso:
+$$
+\nabla(\Delta V) = 0 \text{ in } \Omega \Rightarrow \Delta V = \text{cost in } \Omega \stackrel{\Delta V = 0 \text{ in }\partial\Omega}{\Rightarrow}
+\Delta V = 0 \text{ in } \Omega \Rightarrow V_1 = V_2 \text{ in } \Omega
+$$
+L'unicità della soluzione continua a valere anche se $\Omega$ è illimitato assumendo che V sia 
+normale all'infinito ($V \to 0 \text{ se } r \to \infty$).
+
+\subparagraph{Principio del massimo delle funzioni armoniche}
+Una funzione armonica in un dominio $\Omega$ assume valori estremi (i massimi e i minii) sulla
+frontiera, se $V$ è costante su una superficie $\Sigma$, necessariamente deve essere costante
+nella regione racchiusa $\Omega_\Sigma$ (se definita nella suddetta regione).
+
+Se si riesce ad individuare una superficie sulla quale la funzione armonica è costante, nel caso
+del potenziale si chiamano superfici equipotenziali, necessariamente all'interno della regione
+racchiusa da questa superficie la funzione potenziale è costante.
+
+\subparagraph{Problema di Neumann per l'equazione di Laplace}
+Considerato sempre un dominio $\Omega$ ricerchiamo una funzione armonica in omega con derivata 
+sulla frontiera assegnata di valore $g$
+$$
+\begin{cases}
+\nabla^2 V = 0 \text{ in } \Omega\\
+\left.\frac{\partial V}{\partial\hat{n}}\right|_{\partial \Omega} = g \text{ su } \partial \Omega
+\end{cases}
+$$
+Si può dimostrare che le soluzioni del teorema di Neumann differiscono per una
+costante additiva, invocando l'identità di Green:
+$$
+\begin{aligned}
+\iiint_{\Omega} \left[\nabla(\Delta V)\right]^2 dV &= \iint_{\partial\Omega} \Delta V \frac{\partial\Delta V}{\partial \hat{n}} dS \stackrel{\partial\Delta V/\partial n = 0 }{=} 0\\
+\nabla(\Delta V) &= 0 \text{ in } \Omega \Rightarrow \Delta V = \text{ cost in }\Omega 
+\end{aligned}
+$$
 
 \subsection{Calcolo della funzione potenziale in condizioni di simmetria}
 \paragraph{Carica puntiforme}
