@@ -71,24 +71,43 @@ lastra $\sigma$ e $-\frac{\sigma}{2\varepsilon_0}$ nel lato sinistro della lastr
 Viceversa la lastra sinistra $-\sigma$ avrà verso opposto, applicando la sovrapposizione degli 
 effetti si vede che il campo è nullo all'esterno dei due piani e pari a $-\sigma/\varepsilon_0$ 
 nel mezzo.
+$$
+E_z = \begin{cases}
+0, & |z| > \frac{\Delta}{2}\\
+-\frac{\sigma}{\varepsilon_0}, & |z| \leq \frac{\Delta}{2}
+\end{cases}
+$$
+Questa situazione è analoga a quella presente in un condensatore.
 
-\paragraph{Elettrostatica - Potenziale}
+\section{Elettrostatica - Potenziale}
+Si riportano le equazioni dell'elettrostatica
 $$
-\oiint_\Sigma \vec{E}\cdot\hat{n} dS = \frac{Q_{\Omega_\Sigma}}{\varepsilon_0}\ \forall\Sigma
+\oiint_\Sigma \vec{E}\cdot\hat{n} dS = \frac{Q_{\Omega_\Sigma}}{\varepsilon_0}\ \ \forall\ \Sigma \text{ chiusa}
 $$
 $$
-\oint_\Gamma \vec{E}\cdot\hat{t} dl =0\ \forall \Gamma
+\oint_\Gamma \vec{E}\cdot\hat{t} dl =0\ \ \forall\ \Gamma \text{ chiusa}
 $$
 In forma locale diventano
 $$
-\nabla\cdot\vec{E} = \frac{\rho}{\varepsilon_0}
+\nabla\cdot\vec{E} = \frac{\rho}{\varepsilon_0} \text{ in } \Omega \text{ punti regolari}
+$$
+L'equazione di Faraday-Neumann diventa:
+$$
+\nabla \times \vec{E} = 0 \text{ in } \Omega \text{ punti regolari}
+$$
+Le condizioni di raccordo si scrivono come:
+$$
+\begin{aligned}
+\hat{n}\cdot (\vec{E}_2 - \vec{E}_1) &= \frac{\sigma}{\varepsilon_0} \text{ su } \partial\Omega\\
+\hat{n}\times (\vec{E}_2 - \vec{E}_1) &= 0 \text{ su } \partial\Omega
+\end{aligned}
 $$
 
 Se il dominio $\Omega$ è a connessione lineare semplice si ottiene l'equazione di \textit{Poisson}
 $$
-\nabla\times\vec{E} = 0 \Rightarrow \vec{E} = - \nabla V \in \Omega \Rightarrow \nabla^2V = -\frac{\rho}{\varepsilon_0} \in \Omega
+\nabla\times\vec{E} = 0 \Rightarrow \vec{E} = - \nabla V \text{ in } \Omega \Rightarrow \nabla^2V = -\frac{\rho}{\varepsilon_0} \text{ in } \Omega
 $$
-Sulla frontiera di $\Omega$:
+Sulla frontiera di $\Omega$: 15:06
 $$
 \hat{n}\cdot\left(-\nabla V_2 + \nabla V_1\right) = \frac{\sigma}{\varepsilon_0} \Leftrightarrow
 -\frac{\partial V_2}{\partial n} + \frac{\partial V_1}{\partial n}...
