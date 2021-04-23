@@ -241,23 +241,35 @@ $$
 V(r) = \frac{Q}{4 \pi \varepsilon_0}\frac{1}{r}
 $$
 
-56:24
+Tutte le scelte possibili sono valide, il potenziale è solo un artificio mateatico
+necessario a calcolare il campo che è la vera grandezza fisica.
 
-Sia $Q$ una carica nell'origine e $P$ il raggio vettore, il campo è diretto in direzione radiale
-mentre le superfici ad $r$ costante hanno tutte lo stesso potenziale.
-
-\subparagraph{Potenziale generato da una distribuzione volumetrica $\rho$}
-Sia $\Omega$ una regione carica con densità $\rho(p')$, allora il potenziale elementare sarà
-$\rho(p')dV$, di conseguenza
+Per ricavare il campo a partire dal potenziale è necessario calcolare il gradiente:
 $$
-dV = \frac{\rho(p')dV}{4\pi\varepsilon_0}\frac{1}{|\vec{r}_p - \vec{r}_{p'}|} \Rightarrow
-\frac{1}{4\pi\varepsilon_0} \iiint_\Omega ... 1:18
+\vec{E} = -\nabla V = \frac{Q}{4\pi\varepsilon_0}\frac{1}{r^2}\vec{e}_r
+$$
+pari proprio al campo della carica puntiforme.
+
+Sia $Q$ una carica nell'origine e $P$ il raggio vettore che indica il punto in cui si vuole
+calcolare il campo, le superfici ad $r$ costante hanno tutte lo stesso potenziale mentre
+il campo è diretto in direzione radiale.
+
+\paragraph{Potenziale generato da una distribuzione volumetrica $\rho$}
+Sia $\Omega$ una regione carica con densità $\rho(p')$, con $p'$ interno ad $\Omega$ e raggio
+vettore $\vec{r}_{p'}$, sia il punto in cui si vuole calcolare il campo $p$
+allora la densità di carica elementare sarà $\rho(p')dV$, di conseguenza il potenziale in $p$
+dovuto a $\rho(p')$ sarà:
+$$
+dV = \frac{\rho(p')dV}{4\pi\varepsilon_0}\frac{1}{|\vec{r}_p - \vec{r}_{p'}|} 
+\stackrel{\text{PSE}}{\Rightarrow} \frac{1}{4\pi\varepsilon_0} \iiint_\Omega \frac{\rho(p')}{|\vec{r}_p - \vec{r}_{p'}|} dV = V(p) \text{ potenziale di Coulomb}
 $$
 
-$V(p)$ è continua $\forall P \in R^3$
+$V(p)$ è continua $\forall P \in \mathbb{R}^3$ compresi i punti appartenenti ad $\Omega$, la 
+singolarità è eventualmente integrabile dato che il volume infinitesimo $dV$ ha ordine 3 mentre la 
+funzione integranda va come $\frac{1}{r}$.
 
-\subparagraph{Potenziale prodotto da distribuzione superficiale $\sigma$}
-Sia $S$ la superficie con distribuzione superficiale $\sigma$
+\paragraph{Potenziale prodotto da distribuzione superficiale $\sigma$}
+Sia $S$ la superficie con distribuzione superficiale $\sigma$ 1:06:00
 $$
 dV = \frac{\sigma(p')dS}{4\pi\varepsilon_0} \frac{1}{|\vec{r}_p - \vec{r}_{p'}|} \Rightarrow
 \frac{1}{4\pi\varepsilon_0} \iint_S \frac{\sigma(p')}{|\vec{r}_p - \vec{r}_{p'}|} dS = V(p)
