@@ -241,7 +241,7 @@ $$
 V(r) = \frac{Q}{4 \pi \varepsilon_0}\frac{1}{r}
 $$
 
-Tutte le scelte possibili sono valide, il potenziale è solo un artificio mateatico
+Tutte le scelte possibili sono valide, il potenziale è solo un artificio matematico
 necessario a calcolare il campo che è la vera grandezza fisica.
 
 Per ricavare il campo a partire dal potenziale è necessario calcolare il gradiente:
@@ -269,36 +269,77 @@ singolarità è eventualmente integrabile dato che il volume infinitesimo $dV$ h
 funzione integranda va come $\frac{1}{r}$.
 
 \paragraph{Potenziale prodotto da distribuzione superficiale $\sigma$}
-Sia $S$ la superficie con distribuzione superficiale $\sigma$ 1:06:00
+Sia $S$ la superficie con distribuzione superficiale $\sigma$ $p'$ un punto appartenente alla 
+superficie e $p$ il punto in cui si calcola il potenziale.
 $$
-dV = \frac{\sigma(p')dS}{4\pi\varepsilon_0} \frac{1}{|\vec{r}_p - \vec{r}_{p'}|} \Rightarrow
+dV = \frac{\sigma(p')dS}{4\pi\varepsilon_0} \frac{1}{|\vec{r}_p - \vec{r}_{p'}|} 
+\stackrel{\text{PSE}}{\Rightarrow}
 \frac{1}{4\pi\varepsilon_0} \iint_S \frac{\sigma(p')}{|\vec{r}_p - \vec{r}_{p'}|} dS = V(p)
 $$
+Anche questa funzione è continua $\forall\ p \in \mathbb{R}^3$
 
-\subparagraph{Distribuzione lineare con densità $\lambda(p')$}
-1:23
+\paragraph{Distribuzione lineare con densità $\lambda(p')$}
+con $p'\in\gamma$ 
+$$
+dV = \frac{\lambda(p')dl}{4\pi\varepsilon_0}\frac{1}{|\vec{r}_p-\vec{r}_{p'}|} 
+\stackrel{\text{PSE}}{\Rightarrow} V(p) = \frac{1}{4\pi\varepsilon_0} 
+\int_\gamma \frac{\lambda(p')}{|\vec{r}_p-\vec{r}_{p'}|}dl
+$$
+Questa funzione è continua $\forall p \notin \gamma $ dato che diverge logaritmicamente su $\gamma$.
 
-\subparagraph{Operatori differenziali in coordinate curvilinee}
-Sia $\Delta\Omega$ un volumetto elementare in $P$ di dimensioni $dl_1,\ dl_2,\ dl_3$.
-Siano $(u_1,u_2,u_3)$ un sistema di coordinate curvilinee ortogonali, gli spostamenti elementari
-saranno:
+\subsection{Operatori differenziali in coordinate curvilinee}
+Sia $\Delta\Omega$ un volumetto elementare in $P$ in cui si pone un sistema di coordinate
+locali $l_1,l_2,l_3$, il volumetto ha dimensioni $dl_1,\ dl_2,\ dl_3$.
+Siano $(u_1,u_2,u_3)$ un sistema di coordinate curvilinee ortogonali, 
+gli spostamenti elementari saranno:
 \begin{align*}
 dl_1 &= h_1du_1\\
 dl_2 &= h_2du_2\\
 dl_3 &= h_3du_3
 \end{align*}
-AGGIUNGI SUPERFICI ELEMENTARI
+Con $h_1,h_2,h_3$ i fattori metrici che dipendono dal punto.
+
+Le superfici coordinate elementari:
+\begin{align*}
+dS_1 &= dl_2dl_3 = h_2h_3du_2du_3\\
+dS_2 &= dl_3dl_1 = h_3h_1du_3du_1\\
+dS_3 &= dl_1dl_2 = h_1h_2du_1du_2
+\end{align*}
 
 Volume elementare:
 $$
 dV = dl_1dl_2dl_3 = h_1h_2h_3du_1du_2du_3
 $$
 
+\paragraph{Operatore Divergenza in coordinate curvilinee}
+Operando la definizione intrinseca la divergenza è il rapporto fra il flusso attraverso la 
+superficie del volume elementare e il volume elementare stesso:
 
-
-
-
-
+$$
+\vec{v}(p) \in \mathbb{C}^1(\Omega) :
+$$
+$$
+\nabla\cdot\vec{v} = \frac{\iint_{\partial\Delta\Omega}\vec{v}\cdot\hat{n}dS}{\text{Vol}(\Delta \Omega)}
+= \frac{1}{dV} \left[\begin{aligned}
+&\vec{v}\left(u_1+\frac{du_1}{2},u_2,u_3\right)\cdot\vec{e}_1\cdot
+dS_1\left(u_1+\frac{du_1}{2},u_2,u_3\right) - \\
+&\vec{v}\left(u_1-\frac{du_1}{2},u_2,u_3\right)\cdot\vec{e}_1\cdot
+dS_1\left(u_1-\frac{du_1}{2},u_2,u_3\right) + \\
+&\vec{v}\left(u_1,u_2+\frac{du_2}{2},u_3\right)\cdot\vec{e}_2\cdot
+dS_2\left(u_1,u_2+\frac{du_2}{2},u_3\right)  - \\
+&\vec{v} \left(u_1,u_2-\frac{du_2}{2},u_3\right)\cdot\vec{e}_2\cdot
+dS_2\left(u_1,u_2-\frac{du_2}{2},u_3\right) + \\
+&\vec{v} \left(u_1,u_2,u_3+\frac{du_3}{2}\right)\cdot\vec{e}_3\cdot
+dS_3\left(u_1,u_2,u_3+\frac{du_3}{2}\right) - \\
+&\vec{v} \left(u_1,u_2,u_3-\frac{du_3}{2}\right)\cdot\vec{e}_3\cdot
+dS_3\left(u_1,u_2,u_3-\frac{du_3}{2}\right)
+\end{aligned} \right]
+$$
+Si considerano i primi due termini ricordando che $dV = h_1h_2h_3du_1du_2du_3$
+$$
+\nabla\cdot\vec{v} = \frac{1}{h_1h_2h_3} \left[\frac{v_1(u_1+\frac{du_1}{2},u_2,u_3)dS_1(u_1+\frac{du_1}{2},u_2,u_3) - v_1(u_1-\frac{du_1}{2},u_2,u_3)}{du_1du_2du_3}\right]
+$$
+1:23:50
 \paragraph{Distribuzione di carica superficiale con simmetria sferica}
 $$
 \frac{1}{r^2}\frac{\partial}{\partial r} \left(r^2 \frac{\partial V}{\partial r}\right) = 0
