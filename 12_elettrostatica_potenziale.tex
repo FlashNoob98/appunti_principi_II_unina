@@ -337,13 +337,85 @@ dS_3\left(u_1,u_2,u_3-\frac{du_3}{2}\right)
 $$
 Si considerano i primi due termini ricordando che $dV = h_1h_2h_3du_1du_2du_3$
 $$
-\nabla\cdot\vec{v} = \frac{1}{h_1h_2h_3} \left[\frac{v_1(u_1+\frac{du_1}{2},u_2,u_3)dS_1(u_1+\frac{du_1}{2},u_2,u_3) - v_1(u_1-\frac{du_1}{2},u_2,u_3)}{du_1du_2du_3}\right]
+\begin{aligned}
+&\nabla\cdot\vec{v} = \frac{1}{h_1h_2h_3} \cdot \\
+&\left[\frac{v_1(u_1+\frac{du_1}{2},u_2,u_3)dS_1(u_1+\frac{du_1}{2},u_2,u_3) - v_1(u_1-\frac{du_1}{2},u_2,u_3)dS_1(u_1-\frac{du_1}{2},u_2,u_3)+...}{du_1du_2du_3}\right]
+\end{aligned}
 $$
-1:23:50
+ma $dS_1 = [h_2h_3](u_1+\frac{du_1}{2},u_2,u_3)du_2du_3$
+quindi semplificando i termini $du_2du_3$ si ottiene:
+\begin{equation}
+\nabla\cdot\vec{v} = \frac{1}{h_1h_2h_3}\left[\frac{\partial}{\partial u_1}(v_1h_2h_3) +
+\frac{\partial}{\partial u_2}(v_2h_1h_3) + \frac{\partial}{\partial u_3}(v_3h_1h_2)\right]
+\label{eq:divergenza_curvilinea}
+\end{equation}
+Quella appena ricavata è l'espressione dell'operatore divergenza per un qualsiasi 
+sistema di coordinate curvilineo ortogonale.
+
+\paragraph{Laplaciano in coordinate curvilinee}
+Si ricorda la definizione di gradiente di un campo scalare:
+$$
+\nabla f = \frac{1}{h_1} \frac{\partial f}{\partial u_1} \vec{e}_1 +
+\frac{1}{h_2} \frac{\partial f}{\partial u_2} \vec{e}_2 + 
+\frac{1}{h_3} \frac{\partial f}{\partial u_3} \vec{e}_3
+$$
+Utilizzando la \ref{eq:divergenza_curvilinea} appena ricavata si ottiene il laplaciano $\nabla^2 f = \nabla\cdot(\nabla f) $
+
+$$
+\nabla^2 f = \frac{1}{h_1h_2h_3} \left[ \frac{\partial}{\partial u_1}
+\left(\frac{h_2h_3}{h_1}\frac{\partial f}{\partial u_1}\right) + 
+\frac{\partial}{\partial u_2}
+\left(\frac{h_1h_3}{h_2}\frac{\partial f}{\partial u_2}\right) + 
+\frac{\partial}{\partial u_3}
+\left(\frac{h_1h_2}{h_3}\frac{\partial f}{\partial u_3}\right)\right]
+$$
+\subparagraph{Coordinate sferiche}
+$$
+\nabla^2 f = \frac{1}{r^2\sin\vartheta} \left[\frac{\partial}{\partial r}\left(r^2\sin\vartheta\frac{\partial f}{\partial r}\right)+
+\frac{\partial}{\partial \vartheta}\left( \frac{\cancel{r}\sin\vartheta}{\cancel{r}}\frac{\partial f}{\partial \vartheta}\right) +
+\frac{\partial}{\partial \varphi}\left( \frac{\cancel{r}}{\cancel{r}\sin\vartheta}\frac{\partial f}{\partial \varphi}\right) \right] =
+$$
+$$
+\frac{1}{r^2}\frac{\partial}{\partial r} \left(r^2 \frac{\partial f}{\partial r} \right) 
++ \frac{1}{r^2 \sin\vartheta}\frac{\partial}{\partial \vartheta} \left(\sin \vartheta \frac{\partial f}{\partial \vartheta}\right) +
+\frac{1}{r^2\sin^2\vartheta} \frac{\partial^2 f}{\partial \varphi^2}
+$$
+Si vede dunque che $h_1=1,\ h_2=r,\ h_3 = r\sin\vartheta$
+\subparagraph{Coordiante cilindriche}
+$$
+\begin{aligned}
+\nabla^2 f &= \frac{1}{r} \left[\frac{\partial}{\partial r}\left(r\frac{\partial f}{\partial r} \right) + \frac{\partial}{\partial \phi}\left(\frac{1}{r}\frac{\partial f }{\partial \phi} \right) + \frac{\partial}{\partial z} \left(r \frac{\partial f}{\partial z}\right) \right] = \\
+\nabla^2 f &= \frac{1}{r}\frac{\partial}{\partial r} \left(r\frac{\partial f }{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2 f}{\partial \phi^2} + \frac{\partial^2 f}{\partial z^2}
+\end{aligned}
+$$
+
 \paragraph{Distribuzione di carica superficiale con simmetria sferica}
-$$
-\frac{1}{r^2}\frac{\partial}{\partial r} \left(r^2 \frac{\partial V}{\partial r}\right) = 0
-$$
+Si consideri un guscio sferico di raggio $R$, si definisce 
+$\sigma(R,\vartheta,\varphi) = \sigma_0$, determinare potenziale e campo elettrico in
+tutto lo spazio.
 
-A B C D costanti di integrazione eccetera AAAAAHAHAHAAA
-
+Formulazione del problema: $V(P) = V(r)$ a causa della simmetria, il problema
+è monodimensionale, la funzione potenziale dipende da una sola variabile.
+Si definisce regione $(1)$ quella interna alla sfera e regione $(2)$ quella esterna.
+$$\begin{cases}
+\nabla^2 V_1 = 0, & \text{ in } 0\leq r\leq R \\
+\nabla^2 V_2 = 0, & \text{ in } r > R \\
+V_1(R) = V_2(R), &\text{ continuità del potenziale} \\
+-\frac{\partial V_2}{\partial n} + \frac{\partial V_1}{\partial n} = \frac{\sigma_0}{\varepsilon_0}, & \text{ su } \Sigma : r=R \\
+\lim_{r\to\infty} V_2(r) = 0, & V_2 \text{ normale all'}\infty
+\end{cases}
+$$
+Queste ipotesi garantiscono che la soluzione sia unica.
+Sriscrive l'espressione del Laplaciano in coordinate sferiche, prendendo solo la parte
+che dipende da $r$ a causa della simmetria del problema.
+$$
+\frac{1}{r^2}\frac{\partial}{\partial r} \left(r^2 \frac{\partial V}{\partial r}\right) = 0 \stackrel{r\neq 0}{\Rightarrow} \frac{\partial}{\partial r} \left(r^2 \frac{\partial V}{\partial r}\right) = 0 \Rightarrow r^2 \frac{\partial V}{\partial r} = A \Rightarrow
+\frac{\partial V}{\partial r} = \frac{A}{r^2} \Rightarrow V(r) = -\frac{A}{r} + B
+$$
+Utilizzando le condizioni per la continuità del potenziale e la discontinuità della
+sua derivata normale vanno determinate le costanti relative ai due domini.
+$$
+V_1(r) = -\frac{A}{r} + B \ \ \ V_2(r) = -\frac{C}{r} + D
+$$
+con $A,B,C,D$ costanti di integrazione da determinare utilizzando le condizioni
+di raccordo e al contorno.
