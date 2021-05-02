@@ -5,13 +5,27 @@ $\lim_{r\to\infty} V_2(r) = 0 \Rightarrow D = 0$.
 La $V_1(r)$ deve essere invece definita e continua per ogni valore di $r$, in particolare per $r=0$
 ciò implica che $A=0$.
 
-Quindi $V_2(r) = -\frac{C}{r}$ e $V_1(r) = B$.
+Quindi 
+$$V_2(r) = -\frac{C}{r} \ \  V_1(r) = B$$
 
-V1 = V2 AGGIUNGI
+Si devono utilizzare altre due condizioni per ricavare la costante: la prima è la continuità del 
+potenziale, e l'altra è la discontinuità della componente normale del campo elettrico 
+sulla superficie.
 
 $$
-\frac{\partial V_2}{\partial r} - \frac{\partial V_1}{\partial r} = -\frac{\sigma_0}{\varepsilon_0} =
-\frac{C}{r^2} \Rightarrow C = -\frac{\sigma_0}{\varepsilon_0}R^2
+V_1(R) = V_2(R) = B = -\frac{C}{R}
+$$
+
+$$
+\left(\frac{\partial V_2}{\partial r} - \frac{\partial V_1}{\partial r}\right)_{r=R} = -\frac{\sigma_0}{\varepsilon_0} \stackrel{\partial V_1 = 0}{=}
+\frac{C}{R^2} \Rightarrow C = -\frac{\sigma_0}{\varepsilon_0}R^2
+$$
+Quindi
+$$
+\begin{aligned}
+V_2(r) &= \frac{\sigma}{\varepsilon_0}\frac{R^2}{r}\\
+V_1(r) &= \frac{\sigma}{\varepsilon_0}R
+\end{aligned}
 $$
 $$
 V(r) = \begin{cases}
@@ -21,81 +35,170 @@ V(r) = \begin{cases}
 E_r(r) = -\frac{\partial V}{\partial r} =
 \begin{cases}
 0,\ 0\leq r \leq R \\
-\frac{\sigma_0}{\varepsilon_0}\frac{R^2}{r},\ r\geq R
+\frac{\sigma_0}{\varepsilon_0}\frac{R^2}{r^2},\ r\geq R
 \end{cases}
 $$
 
-
+Dividendo ambo i membri per $4\pi R$
 $$
 V(r) = \begin{cases}
-\frac{\sigma_0}{4\pi R \varepsilon_0}4\pi R^2 = \frac{Q}{4\pi\varepsilon_0},\ 0\leq r \leq R \\
+\frac{\sigma_0}{4\pi R \varepsilon_0}4\pi R^2 = \frac{Q}{4\pi\varepsilon_0 R},\ 0\leq r \leq R \\
 \frac{\sigma_0}{4\pi r \varepsilon_0}4\pi R^2 = \frac{Q}{4\pi\varepsilon_0}\frac{1}{r},\ r\geq R
 \end{cases}
-\Rightarrow \begin{cases}
+\Rightarrow E_r(r) =\begin{cases}
 0,\ 0\leq r \leq R \\
 \frac{Q}{4\pi\varepsilon_0}\frac{1}{r^2},\ r\geq R
 \end{cases}
 $$
 
-La distribuzione di carica si comporta come se la carica $Q = 4 \pi R^2 \sigma_0$ fosse concentrata
+Per $r\geq R$ la distribuzione di carica si comporta come se la carica $Q = 4 \pi R^2 \sigma_0$ fosse concentrata
 nell'origine degli assi.
 
 Il potenziale è quindi costante all'interno della sfera e decresce con andamento $1/r$ all'esterno
-della stessa, ossia per $r \geq R$.
+della stessa, ossia per $r \geq R$ come mostrato in figura \ref{fig:potenziale_sfera_carica}.
 
+\begin{figure}[h] % plot di un grafico 2D andamento del potenziale elettrico
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+%axis lines = left,
+axis x line = center,
+axis y line = middle,
+xlabel = $r$,
+ylabel = $V(r)$,
+ymax = 1.5,
+ymin = 0,
+xtick = {0,1},
+xticklabels = {$0$,$R$},
+ytick = {0,1,2},
+yticklabels = {$0$ , $\frac{Q}{4\pi\varepsilon_0 R}$, }
+]
+
+\addplot [
+domain = 0:1,
+samples = 2,
+]{1};
+
+\addplot[
+domain = 1:4,
+samples = 60,
+] {x^-1};
+
+\node[] at (axis cs: 2.4,0.6) {$\sim \frac{Q}{4\pi\varepsilon_0 r}$};
+\end{axis}
+\end{tikzpicture}
+\caption{Andamento del potenziale attraverso la sfera carica}
+\label{fig:potenziale_sfera_carica}
+\end{figure}
+
+Ricordando che $\vec{E} = -\nabla V$ ma il potenziale è in questo caso una funzione 
+monodimensionale, il gradiente si calcola con una semplice derivata, il risultato
+è mostrato in figura \ref{fig:campo_sfera_carica}.
+
+\begin{figure}[h] % plot di un grafico 2D andamento del campo elettrico
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+%axis lines = left,
+axis x line = center,
+axis y line = middle,
+xlabel = $r$,
+x label style ={anchor=north},
+ylabel = $E(r)$,
+ymax = 1.5,
+ymin = 0,
+xtick = {0,1},
+xticklabels = {$0$,$R$},
+ytick = {0,1,2},
+yticklabels = {$0$ , $\frac{\sigma_0}{\varepsilon_0}$, }
+]
+
+\addplot [
+color = red,
+style = ultra thick,
+domain = 0:1,
+samples = 2,
+]{0};
+
+\addplot[
+color = red,
+style = thick,
+domain = 1:4,
+samples = 60,
+] {x^-2};
+
+\addplot [dashed,color = red] coordinates {(1,0) (1,1)};
+
+\node[] at (axis cs: 2,0.6) {$\sim \frac{Q}{4\pi\varepsilon_0 r^2}$};
+\end{axis}
+\end{tikzpicture}
+\caption{Andamento del campo attraverso la sfera carica}
+\label{fig:campo_sfera_carica}
+\end{figure}
+
+\newpage
 \subparagraph{Distribuzione superficiale con simmetria cilindrica}
+Si supponga di avere una superficie cilindrica indefinita lungo l'asse $z$, di raggio $R$.
+La densità di carica è costante sulla superficie: $\sigma(R,\varphi,z) = \sigma_0$, ne consegue che
+analogamente alla sfera, la funzione potenziale dipende solo da $r$: $V(p)=V(r)$.
+
+Definite con $1$ la regione interna al cilindro e $2$ quella esterna si modella il problema:
 $$
 \begin{cases}
-\nabla^2 V_1 = 0,\ 0\leq r\leq R\\
-V_1(r) = V_2(r)\\
-\frac{\partial V_2}{\partial r} - \frac{\partial V_1}{\partial r} = -\frac{\sigma_0}{\varepsilon_0}\ \text{su } \Sigma\\
-\nabla^2 V_2 = 0,\ r\geq R\\
-V_2 \text{ normale all'inifnito}
+\nabla^2 V_1 = 0, & 0\leq r\leq R\\
+V_1(R) = V_2(R) & \text{continuità su }\sigma \\
+\frac{\partial V_2}{\partial r} - \frac{\partial V_1}{\partial r} = -\frac{\sigma_0}{\varepsilon_0} & \text{su } \Sigma\\
+\nabla^2 V_2 = 0, & r\geq R\\
+\lim_{r\to \infty}V_2(r) = 0 & \text{normale all'infinito}
 \end{cases}
 $$
 
-Eseguiamo il Laplaciano di V(?) 30:06
+Eseguiamo il Laplaciano di $V$ in coordinate cilindriche:
 $$
-\frac{1}{r}\frac{\partial}{\partial r} \left(r\frac{\partial V}{\partial r}\right) = 0
+\frac{1}{r}\frac{\partial}{\partial r} \left(r\frac{\partial V}{\partial r}\right) = 0 \begin{cases}
+\frac{1}{r}\left(r \frac{\partial^2 V_1}{\partial r^2} + 
+\frac{\partial V_1}{\partial r}\right) = 0\Rightarrow V''_1 + 
+\frac{1}{r}V'_1 = 0\\
+\frac{1}{r}\left(r \frac{\partial^2 V_2}{\partial r^2} + 
+\frac{\partial V_2}{\partial r}\right) = 0\Rightarrow V''_2 + 
+\frac{1}{r}V'_2 = 0
+\end{cases}
 $$
-$$
-\frac{1}{r} \left(r\frac{\partial^2 V_1}{\partial r^2}+\frac{\partial V_1}{\partial r}\right) = 0
-\Rightarrow V_1'' + \frac{1}{r}V_1' = 0
-$$
+
 Risolvendo le equazioni differenziali:
-$$
-V_1(r) = A \ln r + B
-$$
-$$
-V_2(r) = C \ln r + D
-$$
-$$
-V_1(r) \Rightarrow A = 0 \Rightarrow V_1(r) = B RIVEDI
-$$
-$$
-V_2(r) \text{ normale all'infinito} 
-$$
+\begin{align*}
+V_1(r) &= A \ln r + B\\
+V_2(r) &= C \ln r + D
+\end{align*}
 
-$$
-\frac{\partial V_2}{\partial r} - \frac{\partial V_1}{\partial r} = -\frac{\sigma_0}{\varepsilon_0}
+\begin{align*}
+V_1(r) \text{ definito e continuo } 
+\forall r\leq R & \Rightarrow A = 0 \Rightarrow V_1(r) = B 
+\text{ costante}\\
+V_2(r) \text{ normale all'infinito} &\Rightarrow D = \ln r_0\\
+V_1(r) = V_2(r) &= B = -\frac{\sigma_0}{\varepsilon_0}R\ln R + D\\
+\frac{\partial V_2}{\partial r} - \frac{\partial V_1}{\partial r} &= -\frac{\sigma_0}{\varepsilon_0}
 \Rightarrow C = -\frac{\sigma_0 R}{\varepsilon_0}
-$$
-
+\end{align*}
+quindi
 $$
 V(r) = \begin{cases}
--\frac{\sigma_0 R}{\varepsilon_0} \ln R + D,\ r < R\\
--\frac{\sigma_0 R}{\varepsilon_0} \ln r + D,\ r \geq R
+-\frac{\sigma_0 R}{\varepsilon_0} \ln R + D,& r < R\\
+-\frac{\sigma_0 R}{\varepsilon_0} \ln r + D,& r \geq R
 \end{cases}
 $$
+ma
 $$
-V_1(R) = V_2(R)\Rightarrow D = \frac{\sigma_0 R}{\varepsilon_0} \ln R
+V_1(R) = V_2(R) = 0\Rightarrow D = \frac{\sigma_0 R}{\varepsilon_0} \ln R
 $$
+Derivando
 $$
 E_r (r) = -\frac{\partial V}{\partial r} = \begin{cases}
-0,\ r\leq R\\
-\frac{\sigma_0 R}{\varepsilon_0}\frac{1}{r},\ r\geq R
+0, & r < R\\
+\frac{\sigma_0 R}{\varepsilon_0}\frac{1}{r},& r\geq R
 \end{cases}
 $$
+38:57
 Si confronta il campo trovato con la legge di Gauss.
 
 $$
