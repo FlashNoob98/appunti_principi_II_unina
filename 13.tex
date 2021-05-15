@@ -56,7 +56,6 @@ nell'origine degli assi.
 
 Il potenziale è quindi costante all'interno della sfera e decresce con andamento $1/r$ all'esterno
 della stessa, ossia per $r \geq R$ come mostrato in figura \ref{fig:potenziale_sfera_carica}.
-
 \begin{figure}[h] % plot di un grafico 2D andamento del potenziale elettrico
 \centering
 \begin{tikzpicture}
@@ -94,7 +93,6 @@ samples = 60,
 Ricordando che $\vec{E} = -\nabla V$ ma il potenziale è in questo caso una funzione 
 monodimensionale, il gradiente si calcola con una semplice derivata, il risultato
 è mostrato in figura \ref{fig:campo_sfera_carica}.
-
 \begin{figure}[h] % plot di un grafico 2D andamento del campo elettrico
 \centering
 \begin{tikzpicture}
@@ -227,33 +225,103 @@ $$
 Dividendo lo spazio in 3 regioni, si definiscono 3 funzioni potenziali:
 $$
 \begin{cases}
-\nabla^2V_1 = 0\ x < \frac{\Delta}{2}\\
-\nabla^2V_2 = 0\ |x| < \frac{\Delta}{2}\\
-\nabla^2V_3 = 0\ x > \frac{\Delta}{2}\\
+\nabla^2V_1 = 0 &x < \frac{\Delta}{2}\\
+\nabla^2V_2 = 0 & |x| < \frac{\Delta}{2}\\
+\nabla^2V_3 = 0 & x > \frac{\Delta}{2}\\
 V_1(-\frac{\Delta}{2}) = V_2(-\frac{\Delta}{2}) \\
 V_2(\frac{\Delta}{2}) = V_3(\frac{\Delta}{2}) \\
-\left.-\frac{\partial V_3}{\partial x}\right|_{\frac{\Delta}{2}} + \left.\frac{\partial V_2}{\partial x}\right|_{\frac{\Delta}{2}} = \frac{\sigma_0}{\varepsilon_0} \\
-AGGIUNGI ULTIMA
+-\left.\frac{\partial V_3}{\partial x}\right|_{\frac{\Delta}{2}} + \left. \frac{\partial V_2}{\partial x}\right|_{\frac{\Delta}{2}} = \frac{\sigma_0}{\varepsilon_0} \\
++\left. \frac{\partial V_1}{\partial x}\right|_{-\frac{\Delta}{2}}  \left.-\frac{\partial V_2}{\partial x}\right|_{-\frac{\Delta}{2}} = -\frac{\sigma_0}{\varepsilon_0}\
 \end{cases}
 $$
+Analizzando la prima equazione:
 
 \begin{align*}
-V_1(x) = Ax+B \\
-V_2(x) = Cx+D \\
-V_3(x) = Ex + F \\
-V_1(x) \to 0, \ x\to -\infty \Rightarrow A = 0 \\
-V_3(x) \to 0, \ x\to +\infty \Rightarrow E = 0 
+&\nabla^2V = \frac{d^2V}{dx^2} = 0 \Rightarrow \\
+&V_1(x) = Ax+B \\
+&V_2(x) = Cx+D \\
+&V_3(x) = Ex + F \\
+&V_1(x) \to 0, \ x\to -\infty \Rightarrow A = 0 \\
+&V_3(x) \to 0, \ x\to +\infty \Rightarrow E = 0 
 \end{align*}
 
-54:30
+Imponendo le condizioni di raccordo:
 $$
-V_2(x) = \frac{\sigma_0}{\varepsilon_0}x + D
+\begin{aligned}
+-\frac{\partial V_3}{\partial x} + \frac{\partial V_2}{\partial x} = \frac{\sigma_0}{\varepsilon_0} 
+&\Leftrightarrow \cancel{-E} + C = \frac{\sigma_0}{\varepsilon_0}\\
+\frac{\partial V_1}{\partial x} - \frac{\partial V_2}{\partial x} = -\frac{\sigma_0}{\varepsilon_0}
+&\Leftrightarrow \cancel{-A} - C = -\frac{\sigma_0}{\varepsilon_0}
+\end{aligned} \Rightarrow C = \frac{\sigma_0}{\varepsilon_0} \Rightarrow V_2(x) = \frac{\sigma_0}{\varepsilon_0}x + D
 $$
-Imponiamo le ...
+
+Imponiamo la continuità del potenziale sulle due superfici di carica
 \begin{align*}
-V_2(\frac{\Delta}{2}) = \frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} + D = V_3(\frac{\Delta}{2}) = F\\
-V_1(-\frac{\Delta}{2}) = B \text{ ECC...}
+V_2\left(\frac{\Delta}{2}\right) = \frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} + D = V_3\left(\frac{\Delta}{2}\right) = F\\
+V_1\left(-\frac{\Delta}{2}\right) = B = V_2\left(-\frac{\Delta}{2}\right) = -\frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} + D = \frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} - D \Rightarrow D = 0
 \end{align*}
+Tirando le somme come mostrato in figura \ref{fig:potenziale_lastre_cariche}:
+$$
+V(x) = \begin{cases}
+-\frac{\sigma_0}{\varepsilon_0}\frac{\Delta}{2} & x \leq -\frac{\Delta}{2} \\
+\frac{\sigma_0}{\varepsilon_0}x & |x| \leq \frac{\Delta}{2} \\
+\frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} & x\geq \frac{\Delta}{2}
+\end{cases}
+$$
+\begin{figure}[h] % plot di un grafico 2D andamento del potenziale elettrico
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+%axis lines = left,
+axis x line = center,
+axis y line = middle,
+xlabel = $x$,
+ylabel = $V(x)$,
+ymax = 1.5,
+ymin = -1.5,
+xtick = {-1,0,1},
+xticklabels = {$-\frac{\Delta}{2}$,$0$,$\frac{\Delta}{2}$},
+ytick = {-1,0,1},
+yticklabels = {$-\frac{\sigma_0}{\varepsilon_0}\frac{\Delta}{2}$,$0$ , $\frac{\sigma_0}{\varepsilon_0}\frac{\Delta}{2}$ },
+xticklabel style = {color = red}
+]
+
+\addplot [
+domain = -1:1,
+samples = 2,
+color = teal,
+]{x};
+
+\addplot[
+domain = 1:2,
+samples = 2,
+color = teal,
+] {1};
+\addplot[
+domain = -2:-1,
+samples = 2,
+color = teal,
+] {-1};
+
+\addplot [dashed,red] coordinates {(1,0) (1,1)};
+\addplot [dashed,red] coordinates {(-1,0) (-1,-1)};
+
+\node[] at (axis cs: 2.4,0.6) {$\sim \frac{Q}{4\pi\varepsilon_0 r}$};
+\end{axis}
+\end{tikzpicture}
+\caption{Andamento del potenziale attraverso le lastre cariche}
+\label{fig:potenziale_lastre_cariche}
+\end{figure}
+
+Analizzando il campo $E_x$
+$$
+E_x = -\frac{\partial V}{\partial x} = \begin{cases}
+0 & x < -\frac{\Delta}{2} \\
+-\frac{\sigma}{\varepsilon_0} & |x| < \frac{\Delta}{2} \\
+0 & x > \frac{\Delta}{2}
+\end{cases}
+$$
+57:48
 
 Si ha però simmetria dispari, ossia 
 $$
