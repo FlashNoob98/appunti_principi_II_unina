@@ -321,30 +321,74 @@ E_x = -\frac{\partial V}{\partial x} = \begin{cases}
 0 & x > \frac{\Delta}{2}
 \end{cases}
 $$
-57:48
 
-Si ha però simmetria dispari, ossia 
-$$
-V(x) = - V(-x) \ \Rightarrow D = 0
-$$
+\begin{figure}[h] % plot di un grafico 2D andamento del potenziale elettrico
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+%axis lines = left,
+axis x line = center,
+axis y line = middle,
+xlabel = $x$,
+ylabel = $E(x)$,
+ymax = 1,
+ymin = -1.5,
+xtick = {-1,0,1},
+xticklabels = {$-\frac{\Delta}{2}$,$0$,$\frac{\Delta}{2}$},
+ytick = {-1,0},
+yticklabels = {$-\frac{\sigma_0}{\varepsilon_0}$,$0$ ,  },
+xticklabel style = {color = red}
+]
 
-...
+\addplot [
+domain = -1:1,
+samples = 2,
+color = teal,
+]{-1};
 
-...
+\addplot[
+domain = 1:2,
+samples = 2,
+color = teal,
+] {0};
+\addplot[
+domain = -2:-1,
+samples = 2,
+color = teal,
+] {0};
 
-...
+\addplot [dashed,red] coordinates {(1,0) (1,-1)};
+\addplot [dashed,red] coordinates {(-1,0) (-1,-1)};
 
-Passiamo al limite $\Delta \to 0^+$
+\node[] at (axis cs: 2.4,0.6) {$\sim \frac{Q}{4\pi\varepsilon_0 r}$};
+\end{axis}
+\end{tikzpicture}
+\caption{Andamento del campo attraverso le lastre cariche}
+\label{fig:campo_lastre_cariche}
+\end{figure}
+
+Passando al limite per $\Delta \to 0^+$ si ottiene uno strato doppio di carica di valori
+uguali ed opposti, come uno strato superficiale continuo di dipoli elementari.
 
 $$
 V(x) = \begin{cases}
--\frac{\tau}{2\varepsilon_0},\ x < 0 \\
-\frac{\tau}{2\varepsilon_0},\ x > 0
+-\frac{\tau}{2\varepsilon_0} & x<0 \\
+\frac{\tau}{2\varepsilon_0} & x>0
 \end{cases}
 $$
-con $\sigma_0 \Delta = \tau $ momento di dipolo.
-Si può confrontare il risultato ottenuto con una distribuzione ??? 01:05:00
-Il campo elettrico sarà discontinuo mentre il potenziale sarà una funzione continua.
+con $\sigma_0\Delta = \tau$ il momento di dipolo per unità di superficie.
+Nei punti regolari $E_x(x) = 0\ \forall x \neq 0 $ ossia il potenziale è discontinuo
+attraverso lo strato mentre il campo no.
+Confrontandolo con le equazioni dello strato semplice carico:
+$$
+E_x(x) = \begin{cases}
+\frac{\sigma_0}{2\varepsilon_0} & x > 0\\
+- \frac{\sigma_0}{2 \varepsilon_0} & x < 0
+\end{cases} \Rightarrow V(x) = \begin{cases}
+-\frac{\sigma_0}{2\varepsilon_0}x & x > 0 \\
+\frac{\sigma_0}{2\varepsilon_0}x & x<0
+\end{cases}
+$$
 
 \subsection{Elettrostatica in presenza di conduttori}
 Si suppone che ci siano N conduttori (elettrodi) nello spazio in \textit{``equilibrio''}.
@@ -360,7 +404,7 @@ con $\gamma$ ed $\eta$ conducibilità e resistività elettrica.
 I un conduttore in equilibrio $\vec{J} = 0$ o equivalentemente $\vec{E} = 0$, ciò implica 
 che la funzione potenziale è costante in $\Omega$ fin sulla frontiera del mezzo conduttore.
 
-$\partial \Omega$ è una superficie equipotenziale di $V \stackrel{\text{Principio del max.}}{\Rightarrow} V = \text{ cost in } \Omega$
+$\partial \Omega$ è una superficie equipotenziale di $V \stackrel{\text{Principio del max.}}{\Rightarrow} V = \text{ cost in } \Omega$.
 
 Siccome $\vec{E} = -\nabla V$ è quindi sempre perpendicolare alla frontiera di un conduttore,
 il modulo e il verso di $\vec{E}$ subito al di fuori di una regione conduttiva $\Omega$ 
@@ -368,21 +412,25 @@ si ricavano applicando le condizioni di raccordo per il campo elettrico:
 $$
 \hat{n}\cdot (\vec{E}_2-\vec{E}_1) = \frac{\sigma}{\varepsilon_0}
 $$
-ma $\vec{E}_1 = 0$ perchè il conduttore è all'equilibrio, quindi 
+ma $\vec{E}_1 = 0$ perché il conduttore è all'equilibrio, quindi 
 $$
 \vec{E}_2 = \frac{\sigma}{\varepsilon_0} \hat{n}
 $$
-Questo risultato prende il nome di Teorema di Coulomb.
+Questo risultato prende il nome di Teorema di Coulomb e permette di calcolare il campo elettrico al 
+di fuori di una superficie conduttiva all'equilibrio senza conoscerne l'effettiva distribuzione di 
+carica.
+Con la stessa legge di Gauss si può dimostrare che non c'è alcuna carica concentrata all'interno
+del conduttore dato che si otterrebbe flusso nullo, ciò implica che la carica è interamente
+distribuita sulla superficie.
 
-
-
-\subsection{Capacità di un conduttore isolato} (rispetto all'inifnito)
+\subsection{Capacità di un conduttore isolato} (rispetto all'infinito)
 Preso un conduttore generico carico, il campo al suo interno sarà pari a 0, eseguendo un integrale
 esteso alla sua frontiera:
 $$
 \iint_{\partial \Omega}\sigma dS = \iint_{\partial \Omega} \varepsilon_0 \vec{E}\cdot \hat{n} dS
 $$
-eseguiamo il rapporto con l'integrale di linea del campo elettrico da un punto sulla superficie
+eseguiamo il rapporto con l'integrale di linea del campo elettrico da un punto sulla superficie all'
+infinito dove si assume il campo nullo.
 
 $$
 \frac{\iint_{\partial \Omega}\sigma dS }{\int_P^\infty \vec{E}\cdot\hat{t}dl } = \frac{Q}{V} \stackrel{\text{def}}{=} C
@@ -393,8 +441,8 @@ conclude che il rapporto è indipendente dalla carica contenuta nel corpo, ma di
 parametri materiali e geometrici.
 \subparagraph{Esempio}
 Elettrodo sferico di raggio $R$
-
-Sarà presente una distribuzione di cariche $\sigma$ uniforme sulla superficie della sfera
+1:29:16
+Sarà presente una distribuzione di cariche $\sigma$ uniforme e costante sulla superficie della sfera
 e per simmetria sappiamo che il potenziale $V$ dipenderà solo dalla distanza $r$ dalla sfera.
 $$
 V(r) = \frac{Q}{4 \pi \varepsilon_0}\frac{1}{r},\ r\geq R \stackrel{r=R}{\Rightarrow} V(R) = 
