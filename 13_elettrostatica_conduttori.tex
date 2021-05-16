@@ -441,7 +441,7 @@ conclude che il rapporto è indipendente dalla carica contenuta nel corpo, ma di
 parametri materiali e geometrici.
 \subparagraph{Esempio}
 Elettrodo sferico di raggio $R$
-1:29:16
+
 Sarà presente una distribuzione di cariche $\sigma$ uniforme e costante sulla superficie della sfera
 e per simmetria sappiamo che il potenziale $V$ dipenderà solo dalla distanza $r$ dalla sfera.
 $$
@@ -460,13 +460,13 @@ conoscendo le costanti e approssimando il raggio a circa \SI{6.4e6}{\meter} e $\
 Determinare il campo $\vec{E}$ con N conduttori in condizioni elettrostatiche.
 Siano indicati con $C_1$, $C_2$ ... $C_k$ $k=1,...,N$ gli N conduttori e i rispettivi vettori normali
 $\hat{n}_1$, $\hat{n}_2$ ... $\hat{n}_k$.
-Ogni conduttore avrà un suo potenziale $V_k$, la quantità di carica 
+Ogni conduttore avrà un suo potenziale $V_k$ in $C_k$ e sulla frontiera $\partial C_k$, la quantità di carica sul k-esimo conduttore:
 $$
 Q_k = \iint_{\partial c_k} \varepsilon_0 \vec{E}\cdot\hat{n} dS
 $$
-Sia $\Omega$ la regione di spazio non occupata dai conduttori, allora
+Sia $\Omega$ la regione di spazio non occupata dai conduttori $\Omega = \mathbb{R}^3 - C_1 - C_2 -... - C_k$, allora
 $$
-\nabla^2 V = 0 \in \ Omega 
+\nabla^2 V = 0 \text{ in } \Omega 
 $$
 e deve rispettare anche
 $$
@@ -480,7 +480,7 @@ si considerano $n$ problemi di valori al contorno (BVP) ausiliari per altrettant
 potenziali $V^{(k)},\ k=1,...,N$
 $$
 \begin{cases}
-\nabla^2 V^{(i)} = 0 \in \Omega \\
+\nabla^2 V^{(i)} = 0 \text{ in } \Omega \\
 \left.V^{(i)}\right|_{\partial c_i} =  1,\ \left.V^{(k)}\right|_{\partial c_k} = 0,\ k \neq i
 \end{cases}
 $$
