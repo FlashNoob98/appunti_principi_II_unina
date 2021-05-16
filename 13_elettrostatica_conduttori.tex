@@ -147,7 +147,7 @@ $$
 V_1(R) = V_2(R) & \text{continuità su }\sigma \\
 \frac{\partial V_2}{\partial r} - \frac{\partial V_1}{\partial r} = -\frac{\sigma_0}{\varepsilon_0} & \text{su } \Sigma\\
 \nabla^2 V_2 = 0, & r\geq R\\
-\lim_{r\to \infty}V_2(r) = 0 & \text{normale all'infinito}
+V_2(r_0) = 0 & \text{potenziale di riferimento}
 \end{cases}
 $$
 
@@ -173,16 +173,16 @@ V_2(r) &= C \ln r + D
 V_1(r) \text{ definito e continuo } 
 \forall r\leq R & \Rightarrow A = 0 \Rightarrow V_1(r) = B 
 \text{ costante}\\
-V_2(r) \text{ normale all'infinito} &\Rightarrow D = \ln r_0\\
-V_1(r) = V_2(r) &= B = -\frac{\sigma_0}{\varepsilon_0}R\ln R + D\\
+V_2(r_0) = 0 &\Rightarrow C\ln r_0 + D = 0\ \text{ se } r_0=1\Rightarrow D=0 \\
+V_1(r) = V_2(r) &= B = -\frac{\sigma_0}{\varepsilon_0}R\ln R + \cancel{D}\\
 \frac{\partial V_2}{\partial r} - \frac{\partial V_1}{\partial r} &= -\frac{\sigma_0}{\varepsilon_0}
 \Rightarrow C = -\frac{\sigma_0 R}{\varepsilon_0}
 \end{align*}
 quindi
 $$
 V(r) = \begin{cases}
--\frac{\sigma_0 R}{\varepsilon_0} \ln R + D,& r < R\\
--\frac{\sigma_0 R}{\varepsilon_0} \ln r + D,& r \geq R
+-\frac{\sigma_0 R}{\varepsilon_0} \ln R + \cancel{D},& r < R\\
+-\frac{\sigma_0 R}{\varepsilon_0} \ln r + \cancel{D},& r \geq R
 \end{cases}
 $$
 ma
@@ -241,9 +241,13 @@ Analizzando la prima equazione:
 &V_1(x) = Ax+B \\
 &V_2(x) = Cx+D \\
 &V_3(x) = Ex + F \\
-&V_1(x) \to 0, \ x\to -\infty \Rightarrow A = 0 \\
-&V_3(x) \to 0, \ x\to +\infty \Rightarrow E = 0 
+%&V_1(x) \to 0, \ x\to -\infty \Rightarrow A = 0 \\
+%&V_3(x) \to 0, \ x\to +\infty \Rightarrow E = 0 
 \end{align*}
+Sfruttando la antisimmetria del potenziale
+$$
+V_1(x) = - V_3(x) \Rightarrow B = -F
+$$
 
 Imponendo le condizioni di raccordo:
 $$
@@ -257,9 +261,9 @@ $$
 
 Imponiamo la continuità del potenziale sulle due superfici di carica
 \begin{align*}
-V_2\left(\frac{\Delta}{2}\right) = \frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} + D = V_3\left(\frac{\Delta}{2}\right) = F\\
-V_1\left(-\frac{\Delta}{2}\right) = B = V_2\left(-\frac{\Delta}{2}\right) = -\frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} + D = \frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} - D \Rightarrow D = 0
-\end{align*}
+&V_2\left(\frac{\Delta}{2}\right) = \frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} + \cancel{D} = V_3\left(\frac{\Delta}{2}\right) = A\frac{\Delta}{2} + F = A\frac{\Delta}{2} - B\\
+&V_1\left(-\frac{\Delta}{2}\right) = A\left(-\frac{\Delta}{2}\right)  + B = V_2\left(-\frac{\Delta}{2}\right) = -\frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} + \cancel{D} 
+\end{align*} FILE 14 10:44
 Tirando le somme come mostrato in figura \ref{fig:potenziale_lastre_cariche}:
 $$
 V(x) = \begin{cases}
