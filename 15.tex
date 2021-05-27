@@ -1,5 +1,47 @@
+Si inverte la matrice precedentemente ottenuta:
+$$
+\begin{bmatrix}
+Q_1\\
+Q_2
+\end{bmatrix} = \frac{4\pi \varepsilon_0}{\frac{1}{R_1R_2}-\frac{1}{d^2}} \begin{bmatrix}
+\frac{1}{R_2} & -\frac{1}{d}\\
+-\frac{1}{d} & \frac{1}{R_1}
+\end{bmatrix}\begin{bmatrix}
+V_1 \\
+V_2
+\end{bmatrix}
+$$
+Si ottengono quindi le capacità parziali:
+\begin{align*}
+&C_{11} = \frac{4\pi\varepsilon_0}{\frac{1}{R_1R_2}-\frac{1}{d^2}}\frac{1}{R_2} & C_{12} = 
+\frac{4\pi\varepsilon_0}{\frac{1}{R_1R_2}-\frac{1}{d^2}}\left(-\frac{1}{d}\right)\\
+&C_{22} = \frac{4\pi\varepsilon_0}{\frac{1}{R_1R_2}-\frac{1}{d^2}}\frac{1}{R_1} & C_{21} = 
+\frac{4\pi\varepsilon_0}{\frac{1}{R_1R_2}-\frac{1}{d^2}}\left(-\frac{1}{d}\right)
+\end{align*}
+\begin{align*}
+&C_{11}^* = C_{11} + C_{12} = \frac{4\pi\varepsilon_0}{\frac{1}{R_1R_2}-\frac{1}{d^2}}
+\left(\frac{1}{R_2} - \frac{1}{d}\right)\\
+&C_{22}^* = \frac{4\pi\varepsilon_0}{\frac{1}{R_1R_2}-\frac{1}{d^2}}
+\left(-\frac{1}{d} + \frac{1}{R_1}\right)\\
+&C_{12}^* = -\frac{4 \pi \varepsilon_0}{\frac{1}{R_1R_2}-\frac{1}{d^2}}\left(-\frac{1}{d}\right) =
+\frac{4 \pi \varepsilon_0}{\left(\frac{1}{R_1R_2} - \frac{1}{d^2}\right)}\cdot\frac{1}{d} = \frac{4\pi\varepsilon_0 R_1R_2d}{d^2-R_1R_2}
+\end{align*}
 
-\paragraph{Capacità per unità di lunghezza di una linea bifilare}
+Se supponiamo che ci sia un fenomeno di induzione completa: 
+$$
+Q_2 = -Q_1 \Rightarrow C = C_{12}^* +
+\left(\frac{1}{C_{11}^*} + \frac{1}{C_{22}^*}\right)^{-1}
+$$
+$$
+C = \frac{Q_1}{V_1-V_2} = \frac{1}{\frac{1}{4\pi\varepsilon_0}}\frac{Q_1}{\frac{Q_1}{R_1} -
+\frac{Q_1}{d}-\left(\frac{Q_1}{d}-\frac{Q_1}{R_2}\right)} =
+\frac{4\pi\varepsilon_0}{\frac{1}{R_1} + \frac{1}{R_2} - \frac{2}{d}}
+$$
+Eseguendo il limite per $d\to \infty$ si vede che l'espressione precedente è coerente con quella 
+ricavata nell'ipotesi in cui le cariche siano poste a grande distanza.
+
+19:50
+\subparagraph{Capacità per unità di lunghezza di una linea bifilare}
 
 I due conduttori possono essere rappresentati mediante 2 sezioni cilindriche,
 le cariche associate $Q_1$ e $Q_2$ saranno quindi misurate in \si{\coulomb\per\meter}.
