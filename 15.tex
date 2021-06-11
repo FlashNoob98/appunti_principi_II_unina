@@ -50,7 +50,7 @@ Applicando il PSE
 \begin{figure}[h!]
 \centering
  \includegraphics[width=0.5\linewidth]{conduttori_bifilari}
-\caption{}
+\caption{Sezione conduttori bifilari}
 \end{figure} 
 
 \begin{align*}
@@ -63,21 +63,144 @@ V_1 &= V_1' + V_1'' = -\frac{\sigma_1 2\pi R_1}{2\pi\varepsilon_0} \ln R_1 -\fra
 V_2 &= V_2' + V_2'' = -\frac{\sigma_1 2\pi R_1}{2\pi\varepsilon_0} \ln d  -\frac{\sigma_2 2\pi R_2}{2\pi\varepsilon_0} \ln R_2
 \end{align*}
 
-Per ipotesi di induzione completa:
+Per ipotesi di induzione completa $(Q_1 = - Q_2)$:
 $$
-C = \frac{Q_1}{V_1-V_2} = \frac{Q_1}{-\frac{Q_1}{2\pi\varepsilon_0}\ln R_1 + \frac{Q_2}{2\pi\varepsilon_0}\ln d + \frac{Q_1}{2\pi\varepsilon_0}\ln d - \frac{Q_2}{2 \pi \varepsilon_0} \ln R_2} = \frac{2\pi\varepsilon_0}{\ln \left(\frac{d^2}{R_1R_2}\right)}
+C = \frac{Q_1}{V_1-V_2} = \frac{Q_1}{-\frac{Q_1}{2\pi\varepsilon_0}\ln R_1 + \frac{Q_1}{2\pi\varepsilon_0}\ln d + \frac{Q_1}{2\pi\varepsilon_0}\ln d - \frac{Q_1}{2 \pi \varepsilon_0} \ln R_2} = \frac{2\pi\varepsilon_0}{\ln \left(\frac{d^2}{R_1R_2}\right)}
 $$
 
-Se si suppone che i raggi dei conduttori siano gli stessi, come accade solitamente nelle linee multifilari, la capacità diventa
+Se si suppone che i raggi dei conduttori siano gli stessi, come accade solitamente nelle linee multifilari, la capacità della linea diventa
 $$
 C\cdot L = \frac{2\pi\varepsilon_0 L}{2 \ln \left(\frac{d}{R}\right)} = \frac{\pi \varepsilon_0 L}{\ln \left(\frac{d}{R}\right)} = 27.8\cdot 10^{-12} \frac{L}{\ln\left(\frac{d}{R}\right)}\ \ [\si{\farad}]
 $$
 Questa ipotesi è valida se non si considera l'influenza del suolo, per studiare l'effetto di questa 
-presenza si usa il \textit{metodo delle immagini}.
+presenza si usa invece il \textit{metodo delle immagini}.
+
+\subsection{Metodo delle immagini}
+È un metodo basato sull'unicità delle soluzioni per problemi di Dirichelet per le equazioni di
+Poisson o Laplace (se il termine noto è nullo). Se si è in grado di determinare una funzione
+armonica che soddisfa le soluzioni del problema, anche se questa non coincide con la reale 
+configurazione delle cariche, questa sarà anche soluzione del problema con le condizioni al contorno
+in esame in virtù del principio di unicità.
+
+Supponiamo la presenza di una carica puntiforme di valore $q$ in $P'$ ad una certa quota $z$
+e si suppone di avere un piano indefinito a potenziale 0.
+Andrebbe in teoria risolto un problema di Dirichelet per l'equazione di Laplace nello spazio
+$z>0$ e opportuna condizione al contorno.
+$$
+\begin{cases}
+\nabla^2 V = 0\\
+V(z=0)=0
+\end{cases}
+$$
+
+In alternativa si suppone di porre nel suolo una carica di valore opposto a pari distanza dal suolo
+della precedente, la soluzione del potenziale se si considerano solo queste due cariche sarà
+$$
+V(\vec{r}) = \frac{q}{4 \pi \varepsilon_0} \left[\frac{1}{|\vec{r}_p-\vec{r}_{p'}|}-\frac{1}{|\vec{r}_p-\vec{r}_{p''}|}\right]
+$$
+Data la simmetria tra le due cariche rispetto al piano di
+terra, lo saranno anche le linee di campo e le superfici equipotenziali, in particolare
+lo stesso piano di terra sarà una superficie equipotenziale.
+\begin{figure}[h!]
+\centering
+ \includegraphics[width=0.5\linewidth]{metodo_immagini}
+\caption{Metodo delle immagini}
+\end{figure} 
+La soluzione trovata come somma dei potenziali della carica reale e della carica immagine
+è armonica e rispetta la condizione al contorno del problema di partenza $(V(z=0)=0)$ sarà
+quindi soluzione del problema iniziale senza carica immagine.
+
+\subparagraph{Linea bifilare in prossimità del terreno}
+Utilizzando ancora il metodo delle immagini si può calcolare il campo generato da una linea
+bifilare in prossimità del suolo.
+\begin{figure}[h!]
+\centering
+ \includegraphics[width=0.5\linewidth]{linea_bifilare_terreno}
+\caption{Metodo delle immagini su una linea bifilare}
+\end{figure} 
+Applicando il PSE
+\begin{align*}
+V_1 &= -\frac{\sigma_1 R_1 2\pi}{2\pi\varepsilon_0}\ln R_1 -
+\frac{\sigma_2 R_2 2 \pi}{2 \pi \varepsilon_0}\ln d - 
+\frac{\sigma_1 R_1 2 \pi}{2\pi \varepsilon_0} \ln(2 h_1) -
+\frac{\sigma_2 R_2 2 \pi}{2\pi\varepsilon_0} \ln D \\
+V_1 &= -\frac{Q_1}{2\pi\varepsilon_0} \ln(2 h_1 R_1) - 
+\frac{Q_2}{2\pi\varepsilon_0} \ln (dD)\\
+V_2 &= -\frac{Q_1}{2\pi\varepsilon_0} \ln(dD) - 
+\frac{Q_2}{2\pi\varepsilon_0} (2h_2R_2)
+\end{align*}
+Nel caso di induzione completa si può calcolare la capacità
+$$
+C = \frac{\cancel{Q_1}}{\frac{\cancel{Q_1}}{2\pi\varepsilon_0}\left[-\ln(2h_1R_1)+\ln(dD)+\ln(dD)-\ln(2h_2R_2)\right]} = 
+\frac{2\pi\varepsilon_0}{\ln\left[\frac{(dD)^2}{4h_1h_2R_1R_2}\right]}
+$$
+Applicando il teorema di Pitagora possiamo sostituire $D^2 = d^2 + (h_1+h_2)^2$
+$$
+C = \frac{2\pi\varepsilon_0}{\ln\left[\frac{d^2}{R_1R_2} 
+\frac{\left[d^2+(h_1+h_2)^2\right]}{4h_1h_2} \right]}
+$$
+Se $h_1$ e $h_2$ tendono ad infinito, il coefficiente al 
+denominatore che li contiene tende ad 1
+$$
+C \to \frac{2\pi\varepsilon_0}{\ln\left(\frac{d^2}{R_1R_2}\right)}
+$$
+Soluzione identica a quella trovata nel caso precedente in
+assenza del terreno.
 
 \subparagraph{Realizzazione di un induttore con un condensatore}
+Sia dato un doppio bipolo con parametro $G$ conduttanza di
+\textit{girazione}, le sue equazioni caratteristiche sono:
+$$
+\begin{cases}
+i_1 = G v_2\\
+i_2 = -G v_1
+\end{cases}
+$$
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.3\linewidth]{giratore}
+\caption{Giratore}
+\end{figure}
+Si realizza mediante dispositivi elettronici come 
+amplificatori operazionali.
 
+Connettendo ad una porta del giratore un condensatore la 
+caratteristica diventa:
+$$
+\begin{aligned}
+i_2 &= -C \frac{dv_2}{dt}\\
+-Gv_1 &= -C\frac{d}{dt}\left(\frac{i_1}{G}\right)\\
+v_1 &= \frac{C}{G^2}\frac{d}{dt}i_1 = L_{eq} \frac{d}{dt}i_1
+\end{aligned}
+$$
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.3\linewidth]{giratore_con_condensatore}
+\caption{Giratore con condensatore}
+\end{figure}
 
-
-\subsection{Materiali dielettrici}
+\section{Materiali dielettrici}
 E il loro modello elettromagnetico
+
+\begin{itemize}
+ \item Cariche ``legate'' nei dielettrici
+ \item Cariche ``libere'' nei conduttori
+\end{itemize}
+Si usano queste due distinzioni macroscopiche anche se è possibile
+assistere a spostamenti macroscopici di cariche anche nei dielettrici
+durante le scariche disruptive e la rottura della relativa 
+\textit{rigidità dielettrica}.
+
+Quando il dielettrico è sottoposto ad un campo esterno, questo esercita 
+una forza sulle cariche deformando la struttura del materiale e 
+producendo così un campo differente, questo fenomeno prende il nome
+di \textit{polarizzazione elettrica} e corrisponde ad un piccolo
+spostamento delle cariche legate nel dielettrico a causa di un campo
+esterno.
+\subsection{Il dipolo elettrico}
+Il dipolo elettrico è costituito da due cariche uguali e opposte
+situate a distanza $d$. In queste condizioni, potenziale e campo 
+dipendono dal \textit{momento di dipolo}. 1:13:00
+$$
+\vec{p} = 
+$$
