@@ -200,7 +200,108 @@ esterno.
 \subsection{Il dipolo elettrico}
 Il dipolo elettrico è costituito da due cariche uguali e opposte
 situate a distanza $d$. In queste condizioni, potenziale e campo 
-dipendono dal \textit{momento di dipolo}. 1:13:00
+dipendono dal \textit{momento di dipolo}.
 $$
-\vec{p} = 
+\vec{p} = qd \frac{(\vec{r}_{p'}-\vec{r}_{p''})}{|\vec{r}_{p'}-\vec{r}_{p''}|}
 $$
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.2\linewidth]{dipolo_elettrico}
+\caption{Dipolo elettrico}
+\end{figure}
+
+In questa configurazione è semplice calcolare il potenziale:
+$$
+V(P) = \frac{q}{4\pi\varepsilon_0}\left[ \frac{1}{|\vec{r}_p-\vec{r}_{p'}|} - \frac{1}{|\vec{r}_p-\vec{r}_{p''}|} \right] = 
+\frac{q}{4\pi\varepsilon_0} \left[ \frac{|\vec{r}_p-\vec{r}_{p''}|-|\vec{r}_p-\vec{r}_{p'}|}
+{|\vec{r}_p-\vec{r}_{p'}|\cdot|\vec{r}_p-\vec{r}_{p''}|} \right]
+$$
+Allontanandosi dal dipolo $|\vec{r}_p| \gg |\vec{r}_{p'}|,|\vec{r}_{p''}|$ quindi il potenziale
+diventa:
+$$
+V(P) = \frac{q}{4\pi\varepsilon_0} \left[ \frac{|\vec{r}_p-\frac{d}{2}\vec{e}_z|-|\vec{r}_p + \frac{d}{2}\vec{e}_z|}
+{|\vec{r}_p-\vec{r}_{p'}|\cdot|\vec{r}_p-\vec{r}_{p''}|} \right] = 
+\frac{q}{4\pi\varepsilon_0} \left[ \frac{\sqrt{r_p^2 + \left(\frac{d}{2}\right)^2-r_p d \cos \vartheta} - \sqrt{r_p^2 + \left(\frac{d}{2}\right)^2 + r_p d \cos \vartheta}}
+{|\vec{r}_p-\vec{r}_{p'}|\cdot|\vec{r}_p-\vec{r}_{p''}|} \right] 
+$$
+Sviluppando in serie il numeratore si ottiene
+$$
+ \sqrt{1 + \left(\frac{d}{2r_p}\right)^2- 
+\frac{d}{r_p} \cos \vartheta} - \sqrt{1 + \left(\frac{d}{2r_p}\right)^2 + \frac{d}{r_p} \cos \vartheta} \simeq %rigo 2
+\left(1 + \frac{d}{2r_p} \cos \vartheta\right) - \left(1 - \frac{d}{2r_p} \cos \vartheta\right)
+\simeq d\cos\vartheta
+$$
+
+In conclusione il potenziale in un punto lontano dal dipolo sarà
+$$
+V(P) \simeq \frac{q}{4\pi\varepsilon_0} \frac{d\cos\vartheta}{r_p^2} = \frac{1}{4\pi\varepsilon_0}
+\frac{\vec{p}\cdot\vec{r}_p}{r_p^3}
+$$
+$$
+\vec{E}(P) = -\nabla V = \frac{3\left(\vec{p}\cdot\vec{r}_p\right)\vec{r}_p - r_p^2\vec{p}}{4\pi\varepsilon_0r_p^5}
+$$
+Si osserva quindi che la funzione potenziale decresce come $\frac{1}{r_p^2}$ mentre il 
+campo decresce come $\frac{1}{r_p^3}$
+
+\subparagraph{Dipolo in un campo elettrico esterno}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.2\linewidth]{dipolo_nel_campo}
+\caption{Dipolo immerso in un campo elettrico $\vec{E}$}
+\end{figure}
+Supponiamo di avere un dipolo di momento $\vec{p}$ e applichiamo un campo esterno $\vec{E}$,
+questo eserciterà una forza sulla carica $q$ ed una opposta sulla carica $-q$, la risultante delle 
+due forze sarà nulla ma producono una coppia sul bipolo esprimibile come
+$$
+\left(\vec{r}_{p'} - \vec{r}_{p''}\right)\times q\vec{E} = \vec{p}\times\vec{E}
+$$
+La coppia tende a far ruotare il bipolo elettrico e l'interazione ammette due condizioni di 
+equilibrio determinate da $\vec{p}\times\vec{E} = 0 $
+
+Stabile se il dipolo è allineato con il campo, instabile se è allineato ma in verso opposto,
+una piccola perturbazione lo farebbe ruotare di 180\textdegree
+
+Questa caratteristica permette di discernere le sostanze in due categorie: apolari ($O_2$) e polari
+($H_2O$) se queste presentano o meno momenti di dipolo permanenti.
+
+Esistono vari tipi di polarizzazione: per \textit{deformazione} se una sostanza apolare, sotto 
+l'azione di un campo elettrico, subisce lo spostamento delle cariche legate producendo 
+un momento di dipolo.
+Oppure per \textit{orientamento} che riguarda le sostanze polari che a temperatura ambiente
+presentano un momento di dipolo medio nullo, pur essendo le singole molecole (o atomi) polari.
+L'agitazione termica determina l'orientamento casuale dei dipoli elementari.
+
+\begin{figure}[h!]
+ \centering
+ \includegraphics[width=0.4\linewidth]{polarizzazione_deformazione}
+ \caption{Polarizzazione per deformazione}
+\end{figure}
+
+
+\begin{figure}[h!]
+ \begin{subfigure}{.5\textwidth}
+ \centering
+ \includegraphics[width=0.45\linewidth]{sost_apolare_a_media_nulla}
+ \caption{Sostanza apolare}
+ \end{subfigure} 
+ \begin{subfigure}{.5\textwidth}
+\centering
+ \includegraphics[width=0.8\linewidth]{sost_apolare_polarizzata}
+ \caption{Sostanza polarizzata}
+ \end{subfigure}
+ \caption{Polarizzazione per orientamento}
+\end{figure}
+
+Dal punto di vista fisico i due fenomeni sono diversi ma dal punto di vista modellistico
+entrambi hanno un momento di dipolo allineato con il campo esterno.
+Si introduce quindi nel volume elementare $\Delta\Omega$ il momento di dipolo medio
+$$
+<\vec{p}> = \vec{P}(Q,t)\cdot \text{Vol}(\Delta\Omega)
+$$
+dove $\vec{P}(Q,t)$ è il vettore (intensità di) di polarizzazione elettrica ed ha il significato 
+di una densità di momento di dipolo media
+$$
+<\vec{p}> = \frac{N<\vec{p}_a>}{\text{Vol}(\Delta\Omega)}\cdot \text{Vol}(\Delta\Omega)
+$$
+Per descrivere le cariche legate all'interno del volumetto può essere comodo immaginare la materia
+costituita da tanti dipolini elementari.
