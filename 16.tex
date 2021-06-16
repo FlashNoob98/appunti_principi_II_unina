@@ -1,4 +1,251 @@
+\textbf{Inizia a 11:40
+Correggi immagine da lezione 16 a lezione 15
+Correggi segni equazioni V1 e V2 cariche immagine
+Fine correzione alle 25:27}
 
+Inizio lezione nuova alle 32:30
+Correggi sommatoria N dipolini
 
+È fondamentale rappresentare i dipoli sulle interfacce
+dei volumetti, una delle due cariche potrebbe trovarsi
+all'esterno del volume di controllo (\textit{come una persona 
+bloccata in metro con la gamba fuori}).
 
+Si determina quindi la carica di polarizzazione, ossia la 
+carica netta presente in $\Delta\Omega$, tutti i dipoli
+all'interno del volume hanno carica netta nulla, perchè 
+contengono appunto entrambe le cariche, gli unici che 
+contribuiscono sono quelli che hanno una carica all'esterno 
+del volume.
 
+L'unico contributo è quindi quello della frontiera di
+$\Delta\Omega$ ossia dei dipoli tagliati.
+
+$$
+Q_{pol} = -\oiint_{\partial\Delta\Omega} \vec{P}\cdot\hat{n}dS
+$$
+Il segno $-$ è giustificato dal fatto che il segno del vettore
+dipolo punta verso la carica positiva che se si trova all'esterno
+del volumetto, ossia il vettore dipolo ë concorde alla normale
+alla superficie, lascerà una carica negativa all'interno del 
+volume.
+Sulla faccia esterna si accumulerà quindi una carica 
+$$
+\sigma_{pol} = \vec{P}\cdot\hat{n}
+$$
+Per calcolare la densità di carica per polarizzazione si esegue il 
+seguente limite:
+$$
+\frac{Q_{pol}}{\text{Vol}(\Delta\Omega)} = 
+\frac{-\oiint_{\partial\Delta\Omega} \vec{P}\cdot\hat{n}dS}
+{\text{Vol}(\Delta\Omega)} \stackrel{\text{Vol}(\Delta\Omega)\to 0}{\Rightarrow} \rho_{pol}(Q,t) = -\nabla\cdot\vec{P}(Q,t)
+$$
+(In seguito verrà omessa la dipendenza dal tempo perché interessati 
+all'elettrostatica)
+
+Considerata una superficie $S$ di discontinuità tra due materiali,
+si può calcolare la condizione di raccordo tra le cariche usando 
+la tecnica della superficie ``a monetina''
+$$
+-\hat{n}\cdot(\vec{P}_2-\vec{P}_1) = \sigma_{pol}
+$$
+dove $\sigma_{pol}$ è la quantità di carica per unità di superficie.
+
+Nel caso in cui si abbia polarizzazione solo nel mezzo $(1)$
+allora si ricade nella precedente
+$$
+\hat{n}\cdot\vec{P}_1 = \sigma_{pol}
+$$
+
+Introdotto il vettore polarizzazione è uqindi possibile esprimere
+i materiali polarizzati come sedi addizionali di distribuzioni di 
+cariche, sia di volume che di superficie.
+
+Il passo successivo è inserire le distribuzioni di carica per 
+polarizzazione nelle equazioni di Maxwell
+
+\subsection{Equazioni di Maxwell in presenza di dielettrici}
+Si distinguono quindi le cariche ``libere'' da quelle ``legate''
+Presa una superficie chiusa $\Sigma$, la legge di Gauss
+$$
+\oiint_\Sigma \vec{E}\cdot\hat{n}dS = \frac{1}{\varepsilon_0}(Q_{lib}+Q_{pol}) = \frac{Q_{lib}}{\varepsilon_0} - \frac{1}{\varepsilon_0} \oiint_{\Sigma} \vec{P}\cdot\hat{n}dS \ \ \forall\Sigma
+$$
+Di conseguenza la quantità di carica libera si ricava con
+$$
+\oiint_{\Sigma} (\varepsilon_0\vec{E}+\vec{P})\cdot \hat{n}dS = 
+Q_{lib}
+$$
+Si introduce quindi un nuovo vettore $\vec{D} = \varepsilon_0\vec{E} + \vec{P}$ chiamato campo spostamento elettrico proprio perché associato allo spostamento delle cariche legate.
+$[\vec{D}] = \si{\coulomb\per\meter^2}$
+
+Le equazioni dell'Elettrostatica diventano:
+\begin{align*}
+&\oiint_{\Sigma}\vec{D}\cdot\hat{n}dS = Q_{lib}\ \ \forall\Sigma \\
+&\oint_{\Gamma} \vec{E}\cdot\hat{t}dl = 0 \ \ \forall \Gamma
+\end{align*}
+
+Utilizzando il campo di spostamento risultano solo le cariche 
+libere, ci si disinteressa quindi delle cariche di polarizzazione,
+si hanno però due campi da determinare $\vec{D}$ ed $\vec{E}$.
+Continua a valere il principio di conservazione della carica, 
+consideriamo in questo caso solo le cariche di polarizzazione.
+$$
+\oiint_\Sigma\vec{J}_{pol}\cdot\hat{n}dS = 
+- \iiint_{\Omega_\Sigma}\frac{\partial}{\partial t} \rho_{pol}dV
+= -\iiint_{\Omega_\Sigma} -\frac{\partial}{\partial t} 
+(\nabla\cdot\vec{P})dV 
+$$
+Applicando il teorema di Schwarz
+$$
+-\iiint_{\Omega_\Sigma} -\frac{\partial}{\partial t} 
+(\nabla\cdot\vec{P})dV = \iiint_{\Omega_\Sigma} \nabla\cdot\left(\frac{\partial\vec{P}}{\partial t}\right)dV
+$$
+e ancora applicando il teorema della divergenza
+$$
+\iiint_{\Omega_\Sigma} \nabla\cdot\left(\frac{\partial\vec{P}}{\partial t}\right)dV = \oiint_{\Sigma}\frac{\partial \vec{P}}{\partial t} \cdot \hat{n}dS = i_{\Sigma_{pol}} = \oiint_\Sigma\vec{J}_{pol}\cdot\hat{n}dS
+$$
+Si definisce quindi a livello locale
+$$
+\vec{J}_{pol} = \frac{\partial \vec{P}}{\partial t}
+$$
+
+\paragraph{Legge di Ampére-Maxwell}
+$$
+\oint_{\Gamma} \vec{B}\cdot\hat{t} dl = \mu_0 \iint_{S_\Gamma}\left( \vec{J}_{lib} + \vec{J}_{pol} + \varepsilon_0\frac{\partial 
+\vec{E}}{\partial t}\right) \cdot \hat{n}dS =
+\mu_0 \iint_{S_\Gamma}\left[\vec{J}_{lib} + 
+\frac{\partial}{\partial t} \left(\varepsilon_0\vec{E}+\vec{P}\right)\right] \cdot \hat{n}dS 
+$$
+$$
+\oint_{\Gamma} \vec{B}\cdot \hat{t} dl = \mu_0 \iint_{S_\Gamma} 
+\left(\vec{J}_{lib} + \frac{\partial \vec{D}}{\partial t}\right)\cdot
+\hat{n}dS\ \ \forall\ \Gamma
+$$
+Di conseguenza il termine $\frac{\partial \vec{D}}{\partial t}$ prende
+il nome di densità di corrente di spostamento.
+
+\paragraph{Equazioni di Maxwell nei dielettrici in forma locale}
+In un volume
+\begin{align*}
+&\nabla \cdot\vec{D} = \rho_{lib}\ \ \text{in }\Omega\\
+&\nabla \times \vec{E} = 0
+\end{align*}
+Su una superficie di discontinuità
+\begin{align*}
+&\hat{n}\cdot\left(\vec{D}_2-\vec{D}_1\right) = \sigma_{lib}\\
+&\hat{n}\times\left(\vec{E}_2-\vec{E}_1\right) = 0
+\end{align*}
+Le incognite delle equazioni sono quindi i campi $\vec{D}$ ed 
+$\vec{E}$ mentre le sorgenti le cariche libere.
+
+Per chiudere il problema e renderlo ``ben posto'' va specificata
+la \textit{relazione costitutiva} del materiale, che leghi
+$\vec{D}$ ed $\vec{E}$.
+
+In generale
+$$
+\vec{D} = \mathbf{D}[\vec{E}]
+$$
+Dove $D$ è un funzionale agente ``sulla storia'' di $\vec{E}$ 
+.
+In realtà è associato un funzionale per ogni singola componente
+del campo $\vec{D}$.
+Il legame può essere non locale nello spazio e nel tempo ossia:
+$\vec{D}(\hat{t},Q)$ dipende dalla storia di $\vec{E}$ in tutti 
+i punti dello spazio e per $t < \hat{t}$, il legame è quindi
+\textbf{anisotropo}, $\vec{D}$ ed $\vec{E}$ possono non essere
+paralleli nello stesso punto.
+
+Trascurando la non località, il legame è espresso comunque da una 
+funzione non lineare:
+$$
+\vec{D} = \mathbf{D}(\vec{E}),\ \ \mathbf{D}: \mathbb{R}^3 \to \mathbb{R}^3
+$$
+Il caso semplice è avere la funzione $\mathbf{D}$ lineare, 
+inizialmente tutti i materiali rispondono in 
+maniera lineare alle sollecitazioni del campo elettrico, come
+il primo termine di una serie di Taylor. Il funzionale $\mathbf{D}$ 
+sarà un tensore del secondo ordine: una matrice dipendente dal 
+punto e il materiale si dirà non omogeneo.
+
+Se il materiale è \textit{isotropo} allora il tensore è una matrice
+diagonale, ossia $\vec{E}$ e $\vec{D}$ sono paralleli.
+$$
+\mathbf{D} = \varepsilon(Q)I,\ \ I\text{ tensore identità}
+$$
+$$
+\vec{D} = \varepsilon \begin{pmatrix}
+                       1 & 0 & 0 \\
+                       0 & 1 & 0 \\
+                       0 & 0 & 1
+                      \end{pmatrix} \cdot \vec{E} = \varepsilon\vec{E}
+$$
+
+Se il materiale è omogeneo, $\varepsilon(Q) = $ cost. il materiale
+è costituito da una costante chiamata \textit{costante dielettrica}
+del materiale, solitamente maggiore di $\varepsilon_0$, per questo
+motivo si rappresenta solitamente la caratteristica di un materiale
+mediante la costante dielettrica relativa
+$$
+\varepsilon_r = \frac{\varepsilon}{\varepsilon_0}
+$$
+\newpage
+Valori tipici possono essere:
+
+\begin{table}[H]
+\centering
+\begin{tabular}[]{c|c}
+ Materiale & $\varepsilon_r$ \\ \hline
+ Aria & $1 + \SI{6e-4}{}$ \\
+ $\text{H}_2\text{O}$ dist. & $80$ \\
+ Vetro & $5\div7$
+ \end{tabular}
+ \caption{Costante dielettrica relativa per alcuni materiali}
+\end{table}
+
+L'introduzione della costante dielettrica introduce un legame tra il 
+campo elettrico e quello di polarizzazione, ricordando che
+$$
+\vec{D} = \varepsilon \vec{E}
+$$
+si ottiene:
+$$
+\vec{D} = \varepsilon_0\vec{E} + \vec{P} \Rightarrow \vec{P} 
+= (\varepsilon-\varepsilon_0)\vec{E} = (\varepsilon_r-1)\varepsilon_0 \vec{E} = \varepsilon_0\chi_e\vec{E}
+$$
+dove $\chi_e = (\varepsilon_r -1)$ è la suscettività dielettrica.
+Dal punto di vista fisico, introdurre il vettore spostamento
+elettrico con una relazione costitutiva lineare, omogenea ed 
+isotropa, consiste nel dire che il momento di dipolo per unità di 
+volume $\vec{P}$ è direttamente proporzionale al campo elettrico
+secondo il coefficiente $\varepsilon_0\chi_e$ variabile in funzione
+del materiale.
+
+Se il campo elettrico applicato è superiore alla rigidità 
+dielettrica, si ha una scarica violenta nel materiale.
+
+Nell'aria a pressione atmosferica la rigidità è \SI{30}{\kilo\volt\per\centi\meter} = \SI{3e6}{\volt\per\meter}
+
+Per vetro e silicati il valore è $40 \div 60 \cdot 10^6$
+\si{\volt\per\meter} 
+
+Questi materiali sono fondamentali per le performance dei condensatori,
+è possibile aumentare la capacità di un condensatore (a pari geometria)
+introducendo un dielettrico tra le armature. Per un condensatore
+piano ad esempio:
+\begin{align*}
+\vec{E} &= -\nabla V \\
+\vec{D} &= \varepsilon\vec{E} = -\varepsilon\nabla V \\
+\hat{n}\cdot (\vec{D}_2-\vec{D_1}) = \sigma_{lib} &\Rightarrow -\varepsilon\frac{\partial V}{\partial x} = \varepsilon E_x = \sigma_{lib}
+\end{align*}
+Calcolando la differenza di potenziale tra le due armature
+$$
+V_1-V_2 = \int_{-\frac{d}{2}}^{\frac{d}{2}}E_x dx =
+\int_{-\frac{d}{2}}^{\frac{d}{2}}\frac{\sigma_{lib}}{\varepsilon}dx = 
+\left[\frac{\sigma_{lib}}{\varepsilon}x \right]_{-\frac{d}{2}}^{\frac{d}{2}} = \frac{\sigma_{lib}}{\varepsilon}d
+$$
+$$
+Q_1 = \sigma_{lib}S \Rightarrow C = \frac{Q_1}{V_1-V_2} = 
+\varepsilon\frac{\sigma_{lib}S}{\sigma_{lib}d} = \varepsilon\frac{S}{d}
+= \varepsilon_r C_{\text{vuoto}}
+$$
