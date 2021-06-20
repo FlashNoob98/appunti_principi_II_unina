@@ -236,21 +236,21 @@ determinabili mediante le condizioni al contorno e di raccordo.
 
 Le condizioni sono:
 \begin{align*}
-&V_1\left(-\frac{d}{2}\right) = V_2\left(-\frac{d}{2}\right)\\
-&V_2\left(x_0\right) = V_3\left(x_0\right)\\
-&V_3\left(\frac{d}{2}\right) = V_4\left(\frac{d}{2}\right)\\
-\hat{n}\cdot (\vec{D}_2-\vec{D}_1) = \sigma_{lib} &\Rightarrow 
+1) \qquad &V_1\left(-\frac{d}{2}\right) = V_2\left(-\frac{d}{2}\right)\\
+2) \qquad &V_2\left(x_0\right) = V_3\left(x_0\right)\\
+3) \qquad &V_3\left(\frac{d}{2}\right) = V_4\left(\frac{d}{2}\right)\\
+4) \qquad  &
 -\varepsilon_1 \left.\frac{\partial V_2}{\partial x}\right|_{-\frac{d}{2}} +
 \varepsilon_0 \left.\frac{\partial V_1}{\partial x}\right|_{-\frac{d}{2}} = 
 \sigma_{lib}\\
-&-\varepsilon_2 \left.\frac{\partial V_3}{\partial x}\right|_{x_0} +
+5) \qquad &-\varepsilon_2 \left.\frac{\partial V_3}{\partial x}\right|_{x_0} +
 \varepsilon_1 \left.\frac{\partial V_2}{\partial x}\right|_{x_0} = 
 0\\
-&-\varepsilon_0 \left.\frac{\partial V_4}{\partial x}\right|_{\frac{d}{2}} +
+6) \qquad &-\varepsilon_0 \left.\frac{\partial V_4}{\partial x}\right|_{\frac{d}{2}} +
 \varepsilon_2 \left.\frac{\partial V_3}{\partial x}\right|_{\frac{d}{2}} = 
 -\sigma_{lib}\\
-&V_3\left(\frac{d}{2}\right) = 0 \qquad \text{pot. di riferimento}\\
-&\text{Il campo deve essere 0 al di fuori delle armature}
+7) \qquad &V_3\left(\frac{d}{2}\right) = 0 \qquad \text{pot. di riferimento}\\
+8-9) \qquad& -\frac{\partial V_1}{\partial x} ,\ -\frac{\partial V_4}{\partial x} = 0\ \ |x| > \frac{d}{2}\ \ \text{campo esterno nullo}
 \end{align*}
 Il potenziale di riferimento è necessario dato che essendo le superfici cariche 
 infinite, non si ha un potenziale normale all'infinito, questo
@@ -259,9 +259,60 @@ Non conta il valore di riferimento assegnato dato che la grandezza di interesse
 è il campo elettrico, ossia il gradiente del potenziale che non dipende
 dal suo riferimento.
 
-L'ultima condizione 
+L'ultima condizione (8-9) deriva dall'estensione all'infinito dei modelli al 
+finito che prevedono un campo elettrico concentrato al centro. Anche i modelli
+all'infinito devono rispettare quindi la normalità all'infinito, ossia il
+campo deve essere nullo al di fuori delle armature.
 
-La condizione di carica che si estende all'infinito va intesa come 1:18:00
+Riscrivendo le equazioni con le costanti incognite si ottiene:
+\begin{align*}
+1)   \qquad & A\left(-\frac{d}{2}\right) + B = C\left(-\frac{d}{2}\right) + D \\
+2)   \qquad & Cx_0 + D = Ex_0 + F \\
+3)   \qquad &E\frac{d}{2} + F = G \frac{d}{2} + H \\
+4)   \qquad &- \varepsilon_1 C + \varepsilon_0 A = \sigma_{lib} \\
+5)   \qquad &- \varepsilon_2 E + \varepsilon_1 C = 0 \\
+6)   \qquad &-\varepsilon_0G = \varepsilon_2 E = -\sigma_{lib} \\
+7)   \qquad & E\frac{d}{2} + F = 0 \\
+8-9) \qquad & A = G = 0
+\end{align*}
 
+Ci sono quindi 9 equazioni in 8 incognite e si può vedere che il sistema 
+ha rango 8.
+Si può porre il sistema lineare con notazione matriciale nel seguente modo:
+\begin{align*}
+\underline{\underline{A}}\ \underline{x} &= \underline{b}\\
+\underline{x} &= \left(A,B,C,D,E,F,G\right)^T \\
+\underline{b} &= \left(0,0,0,\sigma_{lib},0,-\sigma_{lib},0,0\right)^T 
+\end{align*}
+Mentre la matrice $\underline{\underline{A}}$ si deduce dall'analisi delle 
+equazioni. 
+\newpage
+Di seguito è riportato un esempio per risolvere numericamente
+il problema.
+\begin{lstlisting}[style=Matlab-editor,language = Matlab]
+syms d Vp x0 ep0 ep1 ep2 slib x real
 
+A = [ -d/2   1   d/2   -1   0   0   0   0;
+        0    0    x0    1  -x0 -1   0   0;
+        0    0    0     0  d/2  1 -d/2 -1;
+       ep0   0  -ep1    0   0   0   0   0;
+        0    0   ep1    0 -ep2  0   0   0;
+        0    0    0     0  ep2  0 -ep0  0;
+        0    0    0     0  d/2  1   0   0;
+        1    0    0     0   0   0   0   0;
+        0    0    0     0   0   0   1   0];
+
+b=[0;0;0;slib;0;-slib;0;0;0];
+
+K=A\b; %Vettore delle costanti incognite
+V1=K(1)*x+K(2);
+V2=K(3)*x+K(4);
+V3=K(5)*x+K(6);
+V4=K(7)*x+K(8);
+
+V=[V1;V2;V3;V4]
+E=-diff(V,x)
+D=diag([ep0,ep1,ep2,ep0])*E
+\end{lstlisting}
+1:27:58
 
