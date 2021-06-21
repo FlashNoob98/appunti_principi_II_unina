@@ -304,15 +304,29 @@ A = [ -d/2   1   d/2   -1   0   0   0   0;
 
 b=[0;0;0;slib;0;-slib;0;0;0];
 
-K=A\b; %Vettore delle costanti incognite
+%K Vettore delle costanti incognite "equivale" a inv(A)*b anche se e' preferibile questa forma
+K=A\b;
+
+%Si ricavano le diverse tensioni
 V1=K(1)*x+K(2);
 V2=K(3)*x+K(4);
 V3=K(5)*x+K(6);
 V4=K(7)*x+K(8);
 
-V=[V1;V2;V3;V4]
-E=-diff(V,x)
-D=diag([ep0,ep1,ep2,ep0])*E
-\end{lstlisting}
-1:27:58
+%Vettore delle tensioni risolte
+V=[V1;V2;V3;V4] 
 
+%derivata di V rispetto a x
+E=-diff(V,x) 
+
+%Componenti del campo D ottenute con le differenti epsilon
+D=diag([ep0,ep1,ep2,ep0])*E 
+\end{lstlisting}
+La matrice $\underline{\underline{A}}\ [9\times 8]$ rappresenta quindi i coefficienti delle
+costanti delle equazioni che moltiplicati per il vettore delle incognite
+forniscono il vettore dei termini noti $\underline{b}$.
+Analizzando i risultati si vede che questi sono coerenti con quelli ottenuti
+analiticamente dall'analisi precedente.
+È possibile visualizzare un laboratorio virtuale di campi elettrostatici al seguente link:
+\href{http://falstad.com/vector3de/vector3de.html?f=InverseSquaredRadialDipole&d=equip&sl=y&p=1&a1=29&rx=92&ry=0&rz=-1&zm=1.2}{www.falstad.com/vector3de}, sullo stesso sito è possibile visualizzare diversi applet riguardanti ambiti
+diversi della fisica.
