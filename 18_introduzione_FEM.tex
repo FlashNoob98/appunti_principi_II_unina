@@ -55,7 +55,7 @@ una famiglia di equazioni integrali nell'incognita $\hat{u}$ al variare
 di $p$ nello spazio delle funzioni test.
 
 \newpage
-\subparagraph{Metodo di Galerkin}
+\subparagraph{\href{https://it.wikipedia.org/wiki/Metodo_di_Gal\%C3\%ABrkin}{Metodo di Galërkin}}
 Consiste nel ricercare una soluzione espressa mediante la base di uno spazio
 a dimensione finita chiamato ad esempio $W^0_M$ dove $M$ è il numero di
 gradi di libertà da utilizzare ossia quanto più accurata sarà la soluzione,
@@ -76,5 +76,41 @@ $$
 -\sum_{k=1}^M \left(\iiint_\Omega \nabla w_h \cdot \nabla w_k\ dV \right) a_k = 
 \iiint_\Omega w_h f dV + \iiint_\Omega \nabla w_h \cdot \nabla u_\partial\ dV
 $$
-1:27:47
+Svolgendo l'integrale tra parentesi e risolvendo gli integrali a destra
+$$
+-\sum_{k=1}^M L_{hk} a_k = b_h\ \ h=1,...,M
+$$
+L'equazione ottenuta si trasforma in un sistema lineare algebrico del tipo:
+$$
+\underline{L}_M \cdot \underline{a}_M = \underline{b}_M
+$$
+Se si ipotizza una forma per le funzioni test è possibile calcolare i coefficienti
+$L_{hk}$ e risolvere il sistema.
 
+\newpage
+\subparagraph{Metodo degli elementi finiti}
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.2\linewidth]{esempio_dominio_mesh}
+\caption{Esempio dominio con MESH}
+\end{figure}
+Consiste nel partizionare ad esempio con strutture triangolari o tetraediche un dominio.
+Si definisce su ogni nodo $i$ della griglia una funzione test $w_i$
+
+$$
+w_i(\underline{x}) = \begin{cases}
+1 & \text{se } \underline{x} = \underline{x}_i\\
+0 & \text{se } \underline{x} \neq \underline{x}_i
+\end{cases}
+$$
+Vengono definite funzioni ``a tenda'' data la loro somiglianza ad una tenda canadese.
+È possibile calcolare tutti i coefficienti una volta ottenuta la \textit{MESH} del
+dominio, ossia la sua completa triangolazione.
+Una volta nota è possibile assegnare facilmente le funzioni tenda e calcolare i
+coefficienti $L_{hk}$ e $b_h$ note le funzioni $f$ e $g$.
+All'aumentare di $M$ ossia del numero di nodi migliora la descrizione
+della geometria.
+
+In MATLAB è possibile usare la \textit{Partial Differential Equation Toolbox}, per 
+gli amici ``pdetool'' per accedere ad un'interfaccia grafica che permette
+di impostare una geometria e risolvere questo genere di problemi.
