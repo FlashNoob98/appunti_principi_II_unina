@@ -260,8 +260,12 @@ essere risolto con il software.
 \includegraphics[width = 0.3\linewidth]{circuito_risolutore_simbolico}
 \caption{Esempio circuito da risolvere con il risolutore}
 \end{figure}
-La netlist si può generare in questo modo:
-\begin{lstlisting}
+La netlist è una tabella contenente in ordine
+il tipo di bipolo, il nodo iniziale e il
+nodo finale, il valore della sua grandezza caratteristica.
+La netlist dell'esempio si può generare in questo modo:
+
+\begin{lstlisting}[frame = single]
 J 0 1 delta(t)
 C 1 0 1
 L 1 2 1
@@ -269,5 +273,17 @@ R1 1 2 3
 R2 2 3 1
 ZO 0 3 1
 \end{lstlisting}
-1:36:11
+Selezionando la voce ``Laplace pre/post processing'' è possibile ottenere
+la soluzione calcolata mediante la trasformata di Laplace.
+Si ottengono tutte le funzioni di trasferimento delle grandezze caratteristiche.
+È possibile calcolare l'antitrasformata su ``Wolfram Alpha'' seguendo
+i link appropriati e confrontarli con i risultati nel dominio del tempo
+forniti sulla stessa pagina o con MATLAB mediante il seguente codice:
+\begin{lstlisting}[style=Matlab-editor,language = Matlab]
+syms s;
+H = - (s+3)/(5*s^2+7*s+3);
+ilaplace(H)
+pretty(ans)
+\end{lstlisting}
+
 
