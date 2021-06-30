@@ -165,4 +165,75 @@ $$
 $$
 h(t) = \frac{dg}{dt} = 0.3175e^{-0.556t}+0.0714e^{-0.167 t},\ t\geq 0
 $$
-1:16:46
+\newpage
+\subparagraph{3) Funzione di trasferimento}
+È utile per risolvere il problema nel dominio di Laplace.
+Si trasforma il circuito in un circuito di ``impedenze operatoriali'',
+si sostituisce ai condensatori un'impedenza $Z_c(s)$, il generatore viene sostituito
+con la trasformata della $\delta(t)$ quindi un generatore di tensione di valore unitario.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.5\linewidth]{circuito_esercizio_1_Laplace}
+\end{figure}
+$$
+Z_{C_1} = \frac{1}{C_1s}\ \ Z_{C_2} = \frac{1}{C_2s}\ \ Z_{R_1}//Z_{R_2} = \frac{6}{7}\ \ Z_{R_2} = 3
+$$
+Si deve quindi risolvere un circuito adinamico lineare con le normali tecniche di riduzione
+sfruttando le equivalenze serie e parallelo.
+$$
+\begin{aligned}
+Z_{eq}^{(1)} &= \frac{1}{C_2s} + R_2 = \frac{1}{s} + 3 \\
+Z_{eq}^{(2)} & = \frac{Z_{eq}^{(1)}(Z_{R_1}//Z_{R_2})}{Z_{eq}^{(1)}+Z_{R_1}//Z_{R_2}} = 
+\frac{\left(\frac{1}{s}+3\right)\frac{6}{7}}{\left(\frac{1}{s}+3\right)+\frac{6}{7}} =
+\frac{18s + 6}{21s + 5}
+\end{aligned}
+$$
+Sfruttando la formula del partitore di tensione
+$$
+V_{C_1}(s) = \frac{\frac{1}{C_1s}}{\frac{1}{C_1s}+Z_{eq}^{(2)}}\cdot 1 =
+\frac{\frac{1}{3s}}{\frac{1}{3s} + \frac{18s + 6}{21s + 5}} = \frac{21s + 5}{54s^2 + 39s + 5} = H(s) =
+L[h(t)]
+$$
+Per risolvere il problema va antitrasformata la funzione di trasferimento appena ottenuta,
+in questo caso mediante la scomposizione in fratti semplici
+$$
+V_{C_1}(s) = \frac{\frac{21}{54}s + \frac{5}{54}}{s^2 + \frac{39}{54}s + \frac{5}{54}}
+= \frac{K_1}{s + 0.556} + \frac{K_2}{s+0.167}
+$$
+$K_1$ e $K_2$ sono i residui dei fratti, ricavabili con la formula
+$$
+K_1 = \lim_{s\to p_1} [(s-p_1)H(s)] = \frac{\frac{21}{54}(-0.556) + \frac{5}{54}}{-0.556 + 0.167} = 
+0.3175
+$$
+$$
+K_2 = \lim_{s\to p_2}[(s-p_2)H(s)] = 0.0714
+$$
+Il risultato della risposta all'impulso si ottiene antitrasformando
+$$
+L^{-1}[V_{C_1}(s)] = \left(0.3175 e ^{-0.556 t } + 0.0714 e^{-0.167 t}\right)u(t)
+$$
+\newpage
+\subparagraph{Metodo bonus con risolutore elettronico}
+Si genera la netlist del circuito
+\begin{lstlisting}[frame = single]
+E  1 0 delta(t)
+C1 1 2 3
+C2 3 0 1
+R1 2 0 2
+R2 2 0 3
+R3 2 3 3
+\end{lstlisting}
+può essere inserita nel risolutore presente al seguente link \href{http://143.225.92.177:54323/}
+{tinyurl.com/ss2lcsmda}
+
+In alternativa utilizzando MATLAB
+\begin{lstlisting}[style=Matlab-editor,language = Matlab]
+syms s;
+H = (21*s+5)/(54*s^2+39*s+5);
+%Soluzione
+sol = ilaplace(H);
+%Mostra la soluzione in maniera 'grafica'
+pretty(sol)
+%Soluzione a precisione variabile, 4 cifre decimali
+vpa(sol,4)
+\end{lstlisting}
