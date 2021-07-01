@@ -1,0 +1,130 @@
+\section{Conduzione stazionaria}
+Si ricordano le equazioni di Maxwell nel limite stazionario
+considerando le leggi dell'elettrostatica unite a quella della
+conservazione della carica 
+$$
+\oiint_{\Sigma} \vec{D}\cdot \hat{n} dS = Q_{lib}\ 
+\forall\ \Sigma \ \text{Legge di Gauss}
+$$
+$$
+\oint_{\Sigma}\vec{E}\cdot\hat{t} dl = 0 \ \forall\ \Gamma\ \ 
+\text{Farady-Neumann}
+$$
+$$
+\oiint_{\Sigma} \vec{J}\cdot\hat{n}dS = 0\ \ \forall\ \Sigma\
+ \text{Principio di conservazione della carica}
+$$
+Si vedrà che una volta determinato il campo elettrico mediante
+la sua funzione potenziale, ossia con problemi di valori al
+contorno, si potranno facilmente determinare distribuzioni
+di carica libera nei materiali e nei conduttori.
+
+Dalle equazioni sopra riportate si vede che il campo
+$\vec{J}$ è solenoidale mentre il campo $\vec{E}$ è 
+conservativo.
+
+\subparagraph{Conduttori ohmici}
+Sia una regione $\Omega$ contenente un volumetto $\Delta\Omega$
+di centro $P$, si chiama conduttore ohmico se rispetta la legge
+di Ohm in forma locale 
+$$
+\vec{J}(P,t) = \gamma(P)\cdot\vec{E}(P,t) \Leftrightarrow \vec{E} = \eta\vec{J}
+$$
+$\gamma$ può essere una matrice se il materiale non è anisotropo, 
+come quelli che sfruttano l'\href{https://it.wikipedia.org/wiki/Effetto_Hall}{effetto Hall}
+ 
+È utile ricordare la conducibilità del rame pari a \SI{10e7}{\siemens\per\meter} (T $=$ \SI{20}{\celsius}). I limiti di
+questo modello sono:
+\begin{align*}
+\text{Conduttore ideale: }& \gamma\to\infty,\eta\to 0 \Rightarrow 
+\vec{J}\neq 0, \vec{E} = 0 \\
+\text{Isolante ideale: }& \gamma\to 0 ,\eta\to\infty \Rightarrow
+\vec{J} =0, \vec{E}\neq 0
+\end{align*}
+
+\subparagraph{Conduttori in aria} I conduttori vengono spesso rappresentati
+collegati a dei morsetti o terminali ($T^+,T^-$) con resistività nulla 
+mentre sono circondati da ``aria'' a resistività infinita
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{modello_conduttore}
+\end{figure}
+Dato che il campo è necessariamente nullo in tutto il volume occupato
+dai terminali, essi saranno equipotenziali.
+
+La superficie esterna del conduttore invece, per rispettare il
+principio di conservazione della carica rispetta la seguente
+condizione in condizioni stazionarie
+$$
+\hat{n}\cdot\left(\vec{J}_2-\vec{J}_1\right) = 0
+$$
+Dove la regione 1 è quella del componente, la regione 2 è l'area
+esterna, si può infatti porre $\vec{J}_2=0$ data la caratteristica
+isolante dell'aria, ciò implica che \textbf{il vettore densità di corrente ha solo una componente tangenziale} alla superficie del conduttore
+oppure che il conduttore è un tubo di flusso per il campo densità di 
+corrente.
+
+Fatta questa premessa si trova una condizione al contorno per il 
+potenziale, ossia che la derivata normale sulla superficie laterale
+per la funzione potenziale è nulla.
+$$
+\vec{J} = \gamma\vec{E} = -\gamma\nabla V \Rightarrow -\vec{J}_1\cdot
+\hat{n} = \gamma \frac{\partial V_1}{\partial n} = 0
+$$
+Il potenziale sarà costante sulle superfici $S_1$ ed $S_2$ a causa
+del potenziale sui morsetti, non varierà normalmente rispetto
+alla superficie laterale, sono inoltre presenti anche due condizioni 
+di Dirichlet, la soluzione esiste ed è unica.
+
+\subparagraph{Circuito elementare con un generatore}
+Si rappresentano due componenti collegati $C_1$ e $C_2$ e si 
+rappresenta una linea $\Gamma$ chiusa orientata interna al circuito,
+si applica la legge di Faraday-Neumann
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.3\linewidth]{due_componenti_conduzione}
+\end{figure}
+$$
+\oint_\Gamma\vec{E}\cdot\hat{t}dl = 0
+$$
+Nel caso generale ma se i materiali presenti in $C_1$ e $C_2$ sono
+ohmici si avrà:
+$$
+\oint_\Gamma \eta\vec{J}\cdot\hat{t}dl = 0
+$$
+Il campo elettrico è quindi incapace di compiere lavoro affinché una 
+carica di prova percorra quella linea chiusa, non ci può essere una 
+corrente elettrica.
+
+È necessario un campo ``elettromotore'' per stabilire la circolazione
+di corrente, supposto per ipotesi nel conduttore $C_1$, ossia che
+valga la relazione costitutiva
+$$
+\vec{J} = \gamma \left(\vec{E}+\vec{E}_m\right)
+$$
+dove $\vec{E}_m$ è il campo elettromotore di natura non puramente
+elettrica (ad esempio elettro-chimica come una batteria).
+Invertendo la precedente
+$$
+\vec{E} = \eta\vec{J} - \vec{E}_m
+$$
+Riscrivendo la legge di Faraday-Neumann
+$$
+\oint_{\Gamma}\vec{E}\cdot\hat{t}dl =  0 = \int_\Gamma \eta\vec{J}
+\cdot\hat{t}dl - \int_\Gamma \vec{E}_m \cdot \hat{t}dl\Rightarrow
+\int_\Gamma \vec{E}_m\cdot\hat{t}dl = \int_\Gamma \eta\vec{J}
+\cdot\hat{t}dl
+$$
+L'integrale di linea del campo elettromotore viene chiamata
+\textbf{E} e denominato ``forza elettromotrice'' lungo
+la linea $\Gamma$, anche se dimensionalmente è un lavoro per unità
+di carica e non una forza.
+
+Se si assume il funzionamento a vuoto del circuito ossia $\vec{J} = 
+0$, $C_1$ non collegato ad alcun componente 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\linewidth]{generatore_a_vuoto}
+\end{figure}
+allora
+49:01
