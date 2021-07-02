@@ -115,8 +115,9 @@ $$
 \int_\Gamma \vec{E}_m\cdot\hat{t}dl = \int_\Gamma \eta\vec{J}
 \cdot\hat{t}dl
 $$
-L'integrale di linea del campo elettromotore viene chiamata
-\textbf{E} e denominato ``forza elettromotrice'' lungo
+L'integrale di linea del campo elettromotore viene indicato 
+con
+$\mathcal{E}$ e denominato ``forza elettromotrice'' lungo
 la linea $\Gamma$, anche se dimensionalmente è un lavoro per unità
 di carica e non una forza.
 
@@ -126,5 +127,100 @@ Se si assume il funzionamento a vuoto del circuito ossia $\vec{J} =
 \centering
 \includegraphics[width=0.3\linewidth]{generatore_a_vuoto}
 \end{figure}
-allora
-49:01
+allora la F.E.M. è pari all'integrale 
+$$
+-\mathcal{E} = \oint_\Gamma \vec{E}\cdot\hat{t}dl \Rightarrow 
+\mathcal{E} = \int_A^B \vec{E}\cdot\hat{t}dl = \left.v_{AB}\right|_{\Gamma_A}
+$$
+Dove $\Gamma_A$ è il tratto di circuitazione esterno al 
+generatore.
+La tensione a vuoto ai capi del generatore coincide proprio 
+con la forza elettromotrice.
+
+\subparagraph{Circuito elettrico}
+Si vuole risolvere il problema di campo di corrente
+stazionario nel seguente circuito
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.3\linewidth]{circuito_conduzione_stazionaria}
+\end{figure}
+
+Si considera il k-esimo componente $C_k$ collegato ai terminali $(r)$ ed $(s)$
+detti anche nodi, essi saranno regioni equipotenziali.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.3\linewidth]{conduttore_singolo}
+\end{figure}
+Ricordando le equazioni della conduzione stazionaria
+$$
+\begin{aligned}
+\nabla\cdot\vec{J} = 0 & \qquad \vec{J} = \gamma \vec{E} = -\gamma\nabla V\\
+\vec{E} = -\nabla V & \qquad \nabla\cdot\left(-\gamma\nabla V\right) = 0 \Rightarrow \nabla^2 V = 0 \text{ nel materiale conduttore omogeneo}
+\end{aligned}
+$$
+Nel conduttore il problema diventa
+$$
+\begin{cases}
+\nabla^2 v &= 0  \text{ in } C\\
+\left.V\right|_{S_k^+} &= e_r\\
+\left.V\right|_{S_k^-} &= e_s\\
+\left.\frac{\partial V}{\partial n}\right|_{S_{lat_k}} &= 0
+\end{cases}
+$$
+Questo problema è ben posto e ammette soluzione unica, introduciamo una soluzione 
+fondamentale 
+$$
+V^{(k)}: \begin{cases}
+\nabla^2 V^{(k)} &= 0 \text{ in } C_k\\
+V^(k) &= 1 \text{ su } S_k^+ \\
+V^(k) &= 0 \text{ su } S_k^- \\
+\frac{\partial V^{(k)}}{\partial n} &= 0 \text{ su } S_{lat_k}
+\end{cases}
+k = 1,...,l
+$$
+con $l$ il numero di bipoli. La soluzione del problema originario si ottiene con il
+principio di sovrapposizione degli effetti:
+$$
+V = \sum_{k=1}^l a_kV^{(k)} \Rightarrow V(P) = (V_k^+ - V_k^-)V^{(k)}(P) + V_k^-
+$$
+Verifichiamo che questa sia proprio la soluzione ricordando che il Laplaciano 
+di ogni singola funzione $V$ è nullo per ciascun bipolo
+$$
+\begin{aligned}
+\nabla^2 V &= \nabla^2 V^{(k)} = 0\\
+V|_{S_k^+} &= (V_k^+ - \cancel{V_K^-})\cdot 1 + \cancel{V_K^-} = V_k^+ \\
+V|_{S_k^-} &= (V_k^+ - V_k^-)\cdot 0 + V_k^- = V_k^-
+\end{aligned}
+$$
+
+Si considera ora una superficie $\Sigma$ composta dalla superficie $S_k^+$ e da una
+superficie che taglia il terminale $(r)$ in aria, sia $S_r$ la parte di questa 
+superficie che interseca il terminale, con normale entrante.
+Se si applica il principio di conservazione della carica
+$$
+\oiint_\Sigma \vec{J}\cdot\hat{n} dS = 0 \Rightarrow i_{S_r} = i_{S_k^+} = \iint_{S_k} \vec{J}\cdot\hat{n}dS = \iint_{S_k^+}-\gamma\frac{\partial V}{\partial n} dS
+$$
+Sostituendo la soluzione di $V$ prima ottenuta
+$$
+i_{S_r} = i_k = \iint_{S_k^+} -\gamma\left(V_k^+ - V_k^-\right)\frac{\partial V}{\partial n}^{(k)} dS = \left( \iint_{S_k^+} -\gamma\frac{\partial V}{\partial n}^{(k)} dS \right)
+v_k = G_k v_k
+$$
+dove $v_k$ è proprio la tensione ai capi del componente mentre il coefficiente $G_k$
+tra parentesi è il rapporto tra una corrente e una tensione ossia una conduttanza.
+Definendo $R_k = \frac{1}{G_k}$ si ottiene la legge di Ohm in forma integrale
+ossia
+$$
+v_k = R_ki_k
+$$
+
+S si suppone che nel componente sia presente un campo elettromotore, con il PSE
+si sommano le due tensioni
+$$
+\begin{cases}
+v_k' = \mathcal{E} & \text{a vuoto}\\
+v_k'' = R_ki_k 
+\end{cases}\Rightarrow
+v_k = v_k' + v_k'' = \mathcal{E} + R_ki_k
+$$
+Ossia l'equazione caratteristica di un generatore reale di tensione formato da uno ideale
+con una resistenza in serie.
