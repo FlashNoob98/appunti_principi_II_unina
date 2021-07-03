@@ -1,0 +1,110 @@
+\subsection{Dimensionamento mediante criterio termico di una conduttura elettrica}
+Una conduttura elettrica può essere dimensionata mediante differenti criteri, come 
+quello termico, quello del massimo rendiconto economico o quello che minimizza l'ingombro 
+o le perdite.
+
+Si stabilisce la massima corrente stazionaria che un conduttore può sostenere
+senza che subisca danneggiamenti per sé stesso o i corpi circostanti.
+
+Si assume che il conduttore sia una struttura filiforme, prodotta da una sezione
+piana che si muove lungo una linea passante per il suo baricentro, un cilindro a sezione
+variabile con asse la suddetta linea $\Gamma$.
+
+Il conduttore può essere rivestito con un materiale isolante o immerso in un fluido come
+olio minerale o aria.
+
+La lunghezza del conduttore non ha influenza sulla portata mentre la sezione 
+può essere adattata allo specifico carico meccanico a cui il conduttore sarà sottoposto,
+tipicamente i conduttori richiedono flessibilità e le sezioni sono di tipo filiforme
+intrecciati, in una stazione di trasformazione invece, date le elevate potenze in gioco
+possono essere utilizzati dei conduttori a sbarra ai quali possono essere agganciate
+le varie diramazioni.
+
+Il grado di libertà elettrico rimasto è l'area della sezione, area che verrà dimensionata
+nella prossima analisi.
+
+Ogni volta che una corrente attraversa un conduttore, questo si riscalda per effetto Joule
+$$
+P_R^{(a)} = Ri^2 = \iiint_C \eta |\vec{J}|^2 dV \geq 0
+$$
+Questa dissipazione converte il lavoro compiuto dal campo elettromagnetico per
+spostare i portatori di carica in calore fornito al corpo, al reticolo metallico.
+
+Per conduttori rivestiti il riscaldamento per effetto Joule può danneggiare gli isolanti
+per questo motivo esiste una temperatura limite dell'isolante.
+Si riportano le seguenti temperature di riferimento:
+\begin{itemize}
+\item cotone-carta non immersi in olio
+pari a circa \SI{90}{\celsius} a cui vanno sottratti 10 o 20 \si{\celsius} se questa
+viene misurata dall'esterno.
+\item cotone-carta immersi in olio $T_{max} \simeq \SI{105}{\celsius}$
+\item conduttori in aria $T_{max} \simeq 70\div 80\ \si{\celsius}$
+\item conduttori da riscaldamento (stufe o forni) $T_{max} \simeq 400,600,1100\ \si{\celsius} $ a seconda della lega (Cu-Ni, Fe-Ni, Cr-Ni) 
+\end{itemize}
+
+Anche i conduttori nudi presentano lo stesso problema anche se in maniera ridotta, sono però 
+presenti delle giunzioni lungo la linea che uniscono i conduttori in parallelo, per questo
+motivo non si può in ogni caso superare la temperatura di 
+\SI{180}{\celsius}
+
+\paragraph{Andamento del riscaldamento di un conduttore}
+Per analizzare con semplicità l'andamento della temperatura di un conduttore attraversato
+da corrente è necessario eseguire una serie di ipotesi semplificative che non intaccano
+gli ordini di grandezza dei risultati.
+
+\begin{itemize}
+\item Si considera una temperatura media del conduttore, ossia conduttore uniforme,
+altrimenti se ne dovrebbe studiare il campo di temperatura
+\item La capacità termica $Q$ $[\si{\joule\per\celsius}]$ indica la relazione tra il calore 
+fornito al corpo e la sua variazione di temperatura, questa capacità termica è costante
+\item Il fluido in cui`è immerso il conduttore è omogeneo e si trova ad una certa distanza
+ad una temperatura ambiente $T_a$ fissata
+\item Il calore emesso nell'unità di tempo dal corpo è proporzionale alla differenza 
+$T-T_a$
+\end{itemize}
+
+La potenza termica assorbita dal conduttore è pari alla potenza elettrica assorbita
+nell'intervallo di tempo elementare
+$$
+P^{(a)} dt = Q(T-T_a) + H(T-T_a) dt
+$$
+Il coefficiente $H$ detto coefficiente di adduzione o adduttanza termica ha le dimensioni
+$[\si{\watt\per\celsius}]$
+Derivando rispetto al tempo
+$$
+P^{(a)} = Q \frac{d}{dt} (T-T_a) + H(T-T_a)
+$$
+Se si assume che $P, Q, H$ siano costanti allora quella ottenuta è un'equazione
+differenziale lineare del primo ordine a coefficienti costanti, si può integrare 
+$$
+\frac{P^{(a)}}{H} = \frac{Q}{H} \frac{d}{dt} (T-T_a) + (T-T_a)
+$$
+dove $\frac{Q}{H}$ ha le dimensioni di un tempo ed è proprio la costante di tempo termica
+di riscaldamento/raffreddamento del corpo.
+$$
+T-T_a = Be^{-\frac{t}{\tau}} + \frac{P^{(a)}}{H}
+$$
+$B$ è una costante di integrazione determinabile con le condizioni iniziali es.
+$T(t=0) = T_i$
+$$
+T_i - T_a = B + \frac{P^{(a)}}{H} \Rightarrow B = T_i - \left(T_a + \frac{P^{(a)}}{H}\right) 
+= T_i - T_\infty
+$$
+in conclusione
+$$
+T(t) - \cancel{T_a} = (T_i - T_\infty)e^{-\frac{t}{\tau}} + T_\infty - \cancel{T_a}
+$$
+Scomponendo i termini ottenuti
+$$
+T = \left(T_1-T_a-\frac{P^{(a)}}{H}\right)e^{-\frac{t}{\tau}} + T_a + \frac{P^{(a)}}{H} 
+$$
+$$
+T = T_i e^{-\frac{t}{\tau}} + T_a - T_a e^{-\frac{t}{\tau}} + \frac{P^{(a)}}{H} 
+\left(1 - e^{-\frac{t}{\tau}}\right)
+$$
+$$
+T = (T_i - T_a)e^{-\frac{t}{\tau}} + T_a + \frac{P^{(a)}}{H} \left(1-e^{-\frac{t}{\tau}}\right)
+$$
+I primi due termini rappresentano l'evoluzione libera del sistema mentre l'ultimo esplica
+l'evoluzione forzata, perché dipende dalla potenza elettrica fornita.
+54:02
