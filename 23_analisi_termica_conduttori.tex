@@ -107,4 +107,100 @@ T = (T_i - T_a)e^{-\frac{t}{\tau}} + T_a + \frac{P^{(a)}}{H} \left(1-e^{-\frac{t
 $$
 I primi due termini rappresentano l'evoluzione libera del sistema mentre l'ultimo esplica
 l'evoluzione forzata, perché dipende dalla potenza elettrica fornita.
-54:02
+
+Si suppone che la potenza fornita sia una funzione gradino, si vede l'andamento della
+temperatura del conduttore
+$$
+P^{(a)}(t) = P \left[u(t) - u(t-\Delta t)\right]
+$$
+\begin{figure}[H]
+\centering
+\includegraphics[width= 0.4\linewidth]{andamento_termico_conduttore}
+\end{figure}
+con $t^* = \tau$, si vede sviluppando la funzione in serie di Taylor al primo ordine
+$$
+T \simeq (T_i - T_a)\left(1-\frac{t}{\tau}\right) + T_a + \frac{P^{(a)}}{H}\left(-\frac{t}{\tau}\right)
+$$
+$$
+T(t^*) = T_\infty \Rightarrow t^* = \tau
+$$
+$\tau$ rappresenta il tempo necessario al conduttore per raggiungere la temperatura 
+di regime nell'ipotesi adiabatica. 
+$$
+P^{(a)} dt = Q(T-T_a)
+$$
+Invece per $t\geq 4\div 5 \tau$ resta la soluzione di regime
+$$
+P^{(a)}dt = H(T-T_a)dt \Rightarrow T_\infty - T_a = \frac{P^{(a)}}{H}
+$$
+L'incertezza principale di questa analisi riguarda la valutazione del coefficiente
+$H$ di adduttanza termica, solitamente un problema che riguarda tutte e tre le tipologie
+di scambio termico: conduzione, convezione e irraggiamento e che dipende linearmente
+dalla superficie di scambio.
+
+Il dimensionamento di un conduttore avviene dunque valutando la temperatura massima
+di regime ammissibile, non è dunque rilevante il fenomeno transitorio.
+$$
+T_\infty - T_a = \frac{P^{(a)}}{H} = \frac{Ri^2}{H} \Rightarrow i_{\text{max}} = \sqrt{T_\infty-T_a\frac{kA}{R}}
+$$
+Sostituendo la legge di ohm per un conduttore filiforme
+$$
+i_{\text{max}} = \sqrt{T_\infty-T_a\frac{kA\cdot S}{\eta L}}
+$$
+e $T_{\text{max}}$ deve essere la massima temperatura ammissibile dall'isolante.
+In generale 
+$$
+i_{\text{max}} = \sqrt{\left(T_\text{max} - T_a\right)\frac{k}{\eta}} \cdot \sqrt{\frac{A}{\text{Vol}}}\cdot S
+$$
+Ad esempio se si considera un cilindro rettilineo
+\begin{align*}
+A &= \pi d L \\
+\text{Vol} &= \pi \frac{d^2}{4} L\\
+\sqrt{\frac{A}{\text{Vol}}} &= \frac{2}{\sqrt{d}}
+\end{align*}
+Volendo calcolare la densità di corrente massima invece
+$$
+J_{\text{max}} = \frac{i_\text{max}}{S} = \sqrt{\left(T_\infty -T_a\right)\frac{kA\cancel{S}}{\eta S ^{\cancel{2}}L}} = \sqrt{\left(T_\infty -T_a\right)\frac{k}{\eta}\frac{A}{\text{Vol}}}
+$$
+In alternativa si può calcolare la sezione minima per condurre una certa corrente $i_\text{max}$
+$$
+S_\text{min} = \frac{i_\text{max}}{\sqrt{\left(T_\infty -T_a\right)\frac{k}{\eta}\frac{A}{\text{Vol}}}}
+$$
+Questa relazione è indipendente dalla forma della sezione.
+Si nota inoltre che per grandi portate di corrente è più conveniente utilizzare cavi 
+multipli piuttosto che un unico cavo di sezione maggiore.
+Ad esempio un cavo cilindrico con $d = \sqrt{\frac{4S}{\pi}}$
+$$
+\sqrt{\frac{A}{\text{Vol}}} = \frac{2}{\sqrt{d}} = \frac{\sqrt[4]{16}}{\sqrt[4]{\frac{4S}{\pi}}} = \sqrt[4]{\frac{4\pi}{S}}
+$$
+Si considerino le seguenti dati
+\begin{align*}
+S &= 1,10,100,100\ \si{\milli\meter^2} \\
+K &= \SI{10}{\watt\celsius^{-1}\meter^{-2}}\\
+\left(T_\text{max}-T_a\right) &= \SI{30}{\celsius} \\
+\gamma &= \SI{e7}{\siemens\per\meter} \Rightarrow \eta = \SI{e-7}{\ohm\meter}
+\end{align*}
+La densità di corrente massima sarà
+$$
+J_\text{max} = \sqrt{30\cdot\frac{10}{10^{-7}}}\cdot \sqrt[4]{\frac{4\pi}{S}} = \frac{10^5}{\sqrt[4]{S}} = 3.26,1.83,1.03,0.58 \ \si{\mega\ampere\per\meter^2}
+$$
+La portata invece
+$$
+i_\text{max} = J_\text{max}\cdot S = 3.26,18.3,103,580 \ \si{\ampere}
+$$
+Assegnata una $i_\text{max}$, il criterio termico suggerisce l'uso di $n$ conduttori
+in parallelo, se $i_{\text{max}_2} = n\ i_{\text{max}_1}$ per avere la stessa portata
+con un unico conduttore di sezione maggiore si avrebbe
+$$
+S_{\text{min}_2} = (n)^{\frac{4}{3}} S_\text{min}_1
+$$
+un aumento lineare della portata (numero di conduttori) comporta un aumento più che lineare 
+della sezione equivalente necessaria
+\begin{center}
+\begin{tabular}{r c c c c}\centering
+$n =$ & $2$ & $3$ & $6$ & $10$\\
+$(n)^{\frac{4}{3}} =$ & $2.5$ & $4.3$ & $11$ & $21.5$
+\end{tabular}
+\end{center}
+Il dimensionamento di una linea richiede quindi un giusto trade-off tra i costi dei
+conduttori, il loro peso e il costo necessario all'installazione di conduttori multipli.
