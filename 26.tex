@@ -169,7 +169,7 @@ $$
 \nabla\cdot\vec{A}^* = \nabla^2\psi
 $$
 
-\subsection{Campo $\vec{B}$ da distribuzioni di correnti assegnate}
+\subsection{Legge di Biot-Savart}
 Il campo $\vec{B}(P)$ si ricava con
 $$
 \vec{B}(P) = \nabla_p\times\vec{A} = \nabla_p \times \frac{\mu_0}{4\pi}\iiint_\Omega\frac{\vec{J}(p')}{|\vec{r}_p-\vec{r}_{p'}|}dV
@@ -186,6 +186,116 @@ ricordando l'identità vettoriale $\nabla\times(f\vec{v}) = f\nabla\times\vec{v}
 f &= \frac{1}{|\vec{r}_p-\vec{r}_{p'}|} \\
 \vec{v} &= \vec{J}(p')
 \end{align*}
-1:09:04
+sostituendo e ricordando che il rotore rispetto a $p$ di una funzione
+di $p'$ è nullo, come eseguire la derivata di una costante. Si ottiene
+$$
+\vec{B}(p) = \frac{\mu_0}{4\pi}\iiint_\Omega \nabla_p \left(\frac{1}{|\vec{r}_p-\vec{r}_{p'}|}\right) \times \vec{J}(p') dV
+$$
+Il prodotto vettoriale è antisimmetrico
+$$
+\vec{B}(p) = -\frac{\mu_0}{4\pi}\iiint_\Omega \vec{J}(p') \times\nabla_p\left(\frac{1}{|\vec{r}_p - \vec{r}_{p'}|}\right)dV
+$$
+Si ricorda inoltre che la \href{https://www.youmath.it/domande-a-risposte/view/5914-derivata-del-modulo.html}{derivata del valore assoluto} è la derivata di una funzione 
+composta quindi il segno cambia se si deriva rispetto a $p$ o $p'$
+$$
+\nabla_p \left(\frac{1}{|\vec{r}_p - \vec{r}_{p'}|}\right) = -\nabla_{p'} \left(\frac{1}{|\vec{r}_p - \vec{r}_{p'}|}\right)
+$$
+Cambiando il segno
+$$
+\vec{B}(p) = \frac{\mu_0}{4\pi}\iiint_\Omega \vec{J}(p') \times\nabla_{p'}\left(\frac{1}{|\vec{r}_p - \vec{r}_{p'}|}\right)dV
+$$
+L'equazione appena ricavata è la \textit{Legge di Biot-Savart} e afferma che conoscendo
+la densità di corrente, è possibile calcolare il campo $\vec{B}$ in tutto lo spazio
+mediante un integrale.
+Eseguendo anche il gradiente si può semplificare
+$$
+\vec{B}(p) = \frac{\mu_0}{4\pi}\iiint_\Omega \vec{J}(p') \times \frac{\vec{r}_p-\vec{r}_{p'}}{|\vec{r}_p - \vec{r}_{p'}|^3}dV
+$$
+\subparagraph{Analisi corrente quasi-filiforme}
+Sia data una corrente in un circuito chiuso di sezione $S$ attraversato da una corrente
+$i$, la densità di corrente sarà
+$$
+\vec{J}(p') = \frac{i}{S} \hat{t}(p')
+$$
+dove $\hat{t}(p')$ è il versore tangente alla linea media del circuito nel punto $p'$ 
+identico al versore normale alla sezione trasversa.
+$$
+\vec{B}(p) = \frac{\mu_0}{4\pi}\oint_\Gamma \frac{i}{\cancel{S}}\hat{t}(p')\times\frac{\vec{r}_p-\vec{r}_{p'}}{|\vec{r}_p-\vec{r}_{p'}|^3} \cancel{S}dl
+$$
+$$
+\vec{B}(p) = \frac{\mu_0}{4 \pi} i \oint_\Gamma \hat{t}(p') \times \frac{\vec{r}_p-\vec{r}_{p'}}{|\vec{r}_p-\vec{r}_{p'}|^3} dl
+$$
+Anche se non si riesce a calcolare l'integrale a causa di una difficile geometria
+è possibile risolvere il problema numericamente con questa formula.
+La funzione integranda
+$$
+d\vec{B} = \frac{\mu_0}{4\pi} i dl \times \frac{\vec{r}_p - \vec{r}_{p'}}{|\vec{r}_p - \vec{r}_{p'}|^3}
+$$
+rappresenta il contributo di campo infinitesimo del tratto elementare di corrente $idl$
+anche se non ha un vero significato fisico, non ha senso considerare un tratto infinitesimo
+di corrente se questa necessita di una linea chiusa in condizioni stazionarie per poter 
+circolare. La precedente relazione prende in ogni caso il nome di 
+\textit{Legge elementare di Laplace} ed è comunque utile a calcolare le distribuzioni
+di campo.
 
+\subparagraph{Campo di una spira circolare piana}
+Sia una spira circolare piana $\Gamma$ di raggio $R$, il campo potenziale vettore
+$$
+\vec{A}(p) = \frac{\mu_0}{4\pi} \oint_\Gamma i \frac{\hat{t}(p')}{|\vec{r}_p - \vec{r}_{p'}|}dl
+$$
+\begin{align*}
+\hat{t}(p') &= \vec{e}_\varphi' (R,\varphi',z'=0) \\
+dl &= R d\varphi'\\
+\vec{r}_{p'} & = r_{p'} \vec{e}_{r'} (R,\varphi',z'=0)
+\end{align*}
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.3\linewidth]{campo_A_spira_circolare}
+\end{figure}
+Sostituendo
+$$
+\vec{A}(p) = \frac{\mu_0 i}{4\pi}\oint_\Gamma \frac{R \vec{e}_\varphi (R,\varphi',z'=0)}{|r_p\vec{e}_r(r,\varphi,z)-r_{p'}\vec{e}_{r'}(R,\varphi',z'=0)|}d\varphi'
+$$
+Questa funzione può essere risolta analiticamente mediante gli integrali ellittici
+ma è interessante prevalentemente valutare il campo a grande distanza $r_p >> r_{p'}$,
+si approssima quindi la funzione
+$$
+\frac{1}{|\vec{r}_p-\vec{r}_{p'} |} = \left(r_p^2 + r_{p'}^2 - 2\vec{r}_p\cdot\vec{r}_{p'}\right)^{-\frac{1}{2}} = \frac{1}{r_p}\left(1+\left(\frac{r_{p'}}{r_p}\right)^2 - 2\frac{\vec{e}_r\cdot\vec{e}_{r'}}{r_p}r_{p'}\right)^{-\frac{1}{2}}
+$$
+Introducendo la variabile $\varepsilon=\frac{r_{p'}}{r_p}$
+$$
+\frac{1}{|\vec{r}_p-\vec{r}_{p'} |} = \frac{1}{r_p}\left(1 +\varepsilon^2 - 2A\varepsilon\right)^{-\frac{1}{2}}
+$$
+Dove la costante $A = \frac{\vec{e}_r\cdot\vec{e}_{r'}}{r_p}$.
+Sviluppando in serie di Taylor al primo ordine e trascurando dunque $\varepsilon^2$ si 
+ricorda che $\frac{1}{\sqrt{1+x}}\simeq 1 -\frac{x}{2} $ quindi l'equazione diventa
+$$
+\frac{1}{r_p}\left(1 +\cancel{\varepsilon^2} - 2A\varepsilon\right)^{-\frac{1}{2}} \simeq \frac{1}{r_p}\left(1+\frac{\vec{e}_r\cdot\vec{e}_{r'}}{r_p}r_{p'}\right) 
+$$
+Si conclude che a grande distanza ossia $r_p >> r_{p'}$
+$$
+\frac{1}{|\vec{r}_p-\vec{r}_{p'}|} \simeq \frac{1}{r_p} \left(1 + \frac{\vec{e}_r\cdot\vec{e}_{r'}}{r_p}r_{p'}\right)
+$$
+L'equazione semplificata del campo potenziale, ricordando che  $\hat{t}dl = Rd\vec{e}_{r'}$, diventa
+$$
+\vec{A}(p) = \frac{\mu_0 i}{4\pi}\oint_\Gamma \frac{R\ d\vec{e}_{r'}}{r_p} \left(1 + \frac{\vec{e}_r\cdot\vec{e}_{r'}}{r_p}r_{p'}\right) = \frac{\mu_0 i}{4\pi}\left[ \oint_\Gamma \frac{R\ d\vec{e}_{r'}}{r_p} + \oint_\gamma \frac{R^2}{r_p^2}(\vec{e}_r\cdot\vec{e}_{r'})d\vec{e}_{r'}\right]
+$$
+poiché $r_{p'} = R$. Il primo integrale è nullo perché è l'integrale del raggio vettore
+su una circonferenza equivale alla somma dell'area positiva della semicirconferenza 
+positiva e quella negativa della semicirconferenza inferiore.
 
+In conclusione 
+$$
+\vec{A}(p) = \frac{\mu_0}{4\pi}iR^2 \oint_\Gamma \frac{(\vec{e}_r\cdot\vec{e}_{r'})}{r_p^2}d\vec{e}_{r'}
+$$
+Per svolgere l'integrale è necessario il seguente ``trucco'' algebrico, chiamato
+dagli americani ``BAC-CAB''
+\begin{align*}
+\vec{a} &\times\left(\vec{b}\times\vec{c}\right) = \vec{b}\left(\vec{a}\cdot\vec{c}\right) - \vec{c}\left(\vec{a}\cdot\vec{b}\right) \\
+\vec{e}_r &\times \left(\vec{e}_{r'}\times d\vec{e}_{r'}\right) = \vec{e}_{r'}\left(\vec{e}_r\cdot d\vec{e}_{r'}\right) - d\vec{e}_{r'}\left(\vec{e}_r\cdot\vec{e}_{r'}\right)
+\end{align*}
+Si analizza inoltre la seguente relazione
+$$
+d\varphi'\left(\vec{e}_{r'}\left(\vec{e}_r\cdot\vec{e}_{r'}\right)\right) = d\vec{e}_{r'} 
+$$
+1:42:20
