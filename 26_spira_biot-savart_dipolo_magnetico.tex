@@ -290,12 +290,37 @@ $$
 $$
 Per svolgere l'integrale è necessario il seguente ``trucco'' algebrico, chiamato
 dagli americani ``BAC-CAB''
-\begin{align*}
+\begin{align}
 \vec{a} &\times\left(\vec{b}\times\vec{c}\right) = \vec{b}\left(\vec{a}\cdot\vec{c}\right) - \vec{c}\left(\vec{a}\cdot\vec{b}\right) \\
 \vec{e}_r &\times \left(\vec{e}_{r'}\times d\vec{e}_{r'}\right) = \vec{e}_{r'}\left(\vec{e}_r\cdot d\vec{e}_{r'}\right) - d\vec{e}_{r'}\left(\vec{e}_r\cdot\vec{e}_{r'}\right)
-\end{align*}
+\label{eq:BAC-CAB_der}
+\end{align}
 Si analizza inoltre la seguente relazione
+\begin{equation}
+d\varphi'\left(\vec{e}_{r'}\left(\vec{e}_r\cdot\vec{e}_{r'}\right)\right) = d\vec{e}_{r'}\left(\vec{e}_r\cdot\vec{e}_{r'}\right) + \vec{e}_{r'}\left(\vec{e}_r\cdot d\vec{e}_{r'}\right)
+\label{eq:derivata_phi}
+\end{equation}
+Rielaborando la (\ref{eq:BAC-CAB_der}) e la (\ref{eq:derivata_phi}) che contengono il termine integrando
+\begin{align*}
+d\vec{e}_{r'}\left(\vec{e}_r\cdot\vec{e}_{r'}\right) &= \vec{e}_{r'}\left(\vec{e}_r\cdot d\vec{e}_{r'}\right) - \vec{e}_r \times \left(\vec{e}_{r'}\times d\vec{e}_{r'}\right) \\
+d\vec{e}_{r'}\left(\vec{e}_r\cdot\vec{e}_{r'}\right) &= d\varphi'\left(\vec{e}_{r'}\left(\vec{e}_r\cdot\vec{e}_{r'}\right)\right) - \vec{e}_{r'}\left(\vec{e}_r\cdot d\vec{e}_{r'}\right)
+\end{align*}
+Sommando membro a membro le due relazioni si ottiene
 $$
-d\varphi'\left(\vec{e}_{r'}\left(\vec{e}_r\cdot\vec{e}_{r'}\right)\right) = d\vec{e}_{r'} 
+2d\vec{e}_{r'}\left(\vec{e}_r\cdot\vec{e}_{r'}\right) = d\varphi'\left(\vec{e}_{r'}\left(\vec{e}_r\cdot\vec{e}_{r'}\right)\right) - \vec{e}_r \times \left(\vec{e}_{r'}\times d\vec{e}_{r'}\right)
 $$
-1:42:20
+Si divide per due e si sostituisce nell'integranda ricordando che il primo termine è l'integrale di 
+un differenziale esatto, quindi è nullo
+$$
+\vec{A}(p) = \frac{\mu_0}{4\pi}\frac{iR^2}{2}\oint_\Gamma - \frac{- \vec{e}_r \times \left(\vec{e}_{r'}\times d\vec{e}_{r'}\right)}{r_p^2} = \frac{\mu_0}{4\pi}\frac{iR^2}{2}\left(\oint_\Gamma\vec{e}_{r'}\times d\vec{e}_{r'} \right)\times \frac{\vec{e}_r}{r_p^2}
+$$
+Il termine fra parentesi incluso il coefficiente che lo moltiplica viene indicato con $\vec{m}$ ed
+è il \href{https://it.wikipedia.org/wiki/Momento_magnetico}{momento di dipolo magnetico} della spira. Il potenziale vettore a grandi distanza assume quindi l'espressione
+di un potenziale generato da un dipolo magnetico $\vec{m}$.
+$$
+\vec{A}(p) = \frac{\mu_0}{4\pi} \vec{m} \times \frac{\vec{e}_r}{r_p^2}
+$$
+Per la spira 
+$$
+\vec{m} = i\pi R^2 \vec{e}_z = i S \vec{e}_z
+$$ 
