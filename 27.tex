@@ -1,0 +1,39 @@
+
+\subparagraph{Potenziale vettore di una spira a grande distanza}
+Si ricorda l'espressione del vettore potenziale
+$$
+\vec{A}(p) = \frac{\mu_0}{4\pi}\hat{m}\times\frac{\vec{e}_r}{r_p^2} = \frac{\mu_0}{4\pi}\vec{m}\times\frac{\vec{r}_p}{r_p^3} = -\frac{\mu_0}{4\pi}\vec{m}\times\nabla_p \left(\frac{1}{r_p} \right)
+$$
+È quindi possibile calcolare il campo $\vec{B}$ effettuando il rotore di $\vec{A}$
+$$
+\vec{B}(p) = \nabla\times\vec{A} = -\frac{\mu_0}{4\pi}\nabla_p\times\left(\vec{m}\times\nabla_p\left(\frac{1}{r_p}\right)\right)
+$$
+Identità vettoriale: $\nabla\times(f\vec{v}) = f\nabla\times\vec{v} + \nabla f \times \vec{v}$
+$$
+f = \frac{1}{r_p} \qquad \vec{v}=\vec{m}
+$$
+quindi
+$$
+\nabla\times\left(\frac{\vec{m}}{r_p}\right) = \frac{1}{r_p}\nabla\times\vec{m} + \nabla\left(\frac{1}{r_p}\right)\times \vec{m} = \frac{1}{r_p}\nabla\times\vec{m} - \vec{m}\times\nabla\left(\frac{1}{r_p}\right)
+$$
+L'ultimo termine può essere sostituito nell'espressione del campo ma il rotore rispetto
+a $p$ del rotore di $\vec{m}$ è nullo quindi
+$$
+\vec{B}(p) = \frac{\mu_0}{4\pi} \nabla_p\times\nabla_p\times\left(\frac{\vec{m}}{r_p}\right)
+$$
+ma il rotore del rotore è il gradiente della divergenza meno il laplaciano vettore
+$$
+\vec{B}(p) = \frac{\mu_0}{4\pi} \left[\nabla\left(\nabla\cdot\left(\frac{\vec{m}}{r_p}\right)\right) - \cancel{\nabla^2\left(\frac{\vec{m}}{r_p}\right)}\right]
+$$
+Il laplaciano di $\frac{\vec{m}}{r_p}$ è nullo in quanto il momento magnetico $\vec{m}$ è 
+costante come il potenziale di una carica puntiforme
+$$
+\vec{B}(p) = \frac{\mu_0}{4\pi}\nabla\left(\nabla\cdot\left(\frac{\vec{m}}{r_p}\right)\right) = \frac{\mu_0}{4\pi}\nabla\left(\vec{m}\cdot\nabla\left(\frac{1}{r_p}\right)\right)
+$$
+l'espressione tra parentesi può essere nominata $\psi$, un caso in cui il campo magnetico
+può essere espresso mediante un potenziale magnetico scalare, dato che $\psi$ è una funzione 
+scalare.
+$$
+\psi(p) = \frac{\mu_0}{4\pi}\vec{m}\cdot\nabla\left(\frac{1}{r_p}\right) = -\vec{m}\cdot \frac{\vec{r_p}}{r_p^3}
+$$
+14:12
