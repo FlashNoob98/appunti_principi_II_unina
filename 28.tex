@@ -118,7 +118,7 @@ fenomeno.
 Si immagina la materia come una distribuzione continua di dipoli elementari.
 
 Si considera un atomo di idrogeno, composto da un protone e un elettrone, si suppone
-un orbita circolare dell'elettrone (ATTENZIONE NON È UN MODELLO ACCURATO DEL MOTO DEGLI ELETTRONI MA FORNISCE BUONI RISULTATI DAL PUNTO DI VISTA DEL CAMPO MAGNETICO).
+un' orbita circolare dell'elettrone (ATTENZIONE NON È UN MODELLO ACCURATO DEL MOTO DEGLI ELETTRONI MA FORNISCE BUONI RISULTATI DAL PUNTO DI VISTA DEL CAMPO MAGNETICO).
 \begin{figure}[H]
 \centering
 \includegraphics[width = 0.3\linewidth]{orbita_elettrone}
@@ -153,4 +153,144 @@ e^- &= \SI{-1.6e-19}{\coulomb}\\
 m_e & = \SI{9.11e-31}{\kilo\gram} \\
 \gamma &= \SI{-1.76e11}{\coulomb\per\kilo\gram}
 \end{align*}
-1:06:44
+Il modulo del momento magnetico $\mu_b$ della spira associata al moto dell'elettrone prende il
+nome di \href{https://it.wikipedia.org/wiki/Magnetone_di_Bohr}{\textit{Magnetone di Bohr}}
+ed è pari a 
+$$
+\mu_b = \SI{9.27e-24}{\ampere\meter^2} = \si{\joule\per\tesla}
+$$
+$$
+\si{\joule\per\tesla} = \si{\volt\ampere\second}\cdot\si{\meter^2\per\weber}
+$$
+ma $\si{\volt\second} = \si{\weber}$ e resta $\si{\ampere} \cdot \si{\meter^2}$
+
+Rappresenta il momento magnetico orbitale ma l'elettrone possiede anche il momento 
+magnetico di spin, intrinseco all'elettrone, associato classicamente ad una rotazione su
+sé stessa della particella se questa fosse estesa.
+
+La meccanica quantistica stabilisce che 
+$$
+\vec{\mu} = \gamma \vec{L}_e = \frac{e^-}{2 m_e}\cdot g_J \vec{L}_e
+$$
+dove $g_J$ è il \href{https://it.wikipedia.org/wiki/Fattore_di_Land\%C3\%A9}{\textit{fattore di Landé}} ed è prossimo in questo caso a 2, compensando il fattore due al 
+denominatore
+ricavato mediante l'analisi classica.
+
+\subparagraph{Materia magnetizzata}
+Può essere presentata come collezione di dipoli magnetici elementari.
+
+Si consideri un dominio $\Omega$ contenente un cubetto $\Delta \Omega$ di centro $p'$.
+
+Si definisce il vettore $\vec{M}(p')$
+$$
+\vec{M}(p') \stackrel{\text{def}}{=} \frac{\sum_{j=1}^N \vec{\mu_j}}{\text{Vol }\Delta\Omega}
+$$
+il modulo dei momenti magnetici elementari è pari al magnetone di Bohr
+$$
+\left|\vec{\mu}_j\right| = \mu_B
+$$
+
+Il campo $\vec{M}$ prende il nome di intensità di magnetizzazione o magnetizzazione del 
+materiale ed ha le dimensioni di un momento magnetico per unità di volume
+$$
+[M] = \frac{\si{\ampere}\cdot\si{\meter^2}}{\si{\meter^3}} = \frac{\si{\ampere}}{\si{\meter}}
+$$
+\newpage
+
+Si suppone di stendere nel dominio $\Omega$ una superficie aperta $S$.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.4 \linewidth]{superficie_concatena_spire}
+\end{figure}
+Ci sono tre possibilità:
+\begin{enumerate}
+\item La superficie $S$ taglia le spire elementari in due punti
+\item La superficie non interseca in alcun punto le spire elementari
+\item La superficie $S$ concatena con l'orlo alcune spire elementari
+\end{enumerate}
+La circostanza 1 produce due contributi di corrente di segno opposto attraverso la superficie $S$ quindi il contributo complessivo è nullo; 
+la circostanza 2 non produce alcuna corrente attraverso la superficie; la circostanza 
+3 invece è l'unica a dare un contributo alla $i_{\text{mol}}$ corrente molecolare
+definita come:
+$$
+i_{\text{mol}} = \iint_S \vec{J}_{\text{mol}} \cdot \hat{n} dS
+$$
+
+La corrente molecolare dipende dunque solo dal contorno della $S$ così come il flusso
+del campo $\vec{B}$ dipende solo dall'orlo della superficie. Similmente al campo $\vec{B}$
+la corrente molecolare può essere visto, se $\Gamma$ è l'orlo della superficie $S$ come
+$$
+i_{\text{mol}} = \oint_\Gamma \vec{M}\cdot\hat{t} dl 
+$$
+Si dimostra che è proprio il campo di magnetizzazione $\vec{M}$ a generare le correnti
+molecolari.
+
+Si consideri il tratto elementare dell'orlo $\Gamma$ rettificato, si rappresenta una 
+spira elementare che circonda il tratto come mostrato in figura.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.4\linewidth]{correnti_molecolari}
+\end{figure}
+
+$$
+d i_\text{mol} = \vec{J}_\text{mol}\cdot\hat{n} dS = \vec{M}\cdot\hat{t}dl = \frac{N \vec{\mu}_\text{av}}{\text{Vol }\Dellta \Omega } \cdot \hat{t} dl = \frac{N i A}{\text{Vol }\Delta\Omega} \frac{\vec{\mu}_\text{av}}{|\vec{\mu}_\text{av}|}\cdot \hat{t}dl = \vec{M}\cdot\hat{t}dl
+$$
+dove $\vec{\mu}_\text{av}$ è il momento magnetico medio (average) e $\vec{M} = \frac{N\vec{\mu}_\text{av}}{\text{Vol}\Delta\Omega}$.
+
+Se 
+$$
+i_\text{mol} = \iint_S J_\text{mol} \cdot\hat{n} dS = \oint_\Gamma \vec{M}\cdot\hat{t}dl \stackrel{\text{T. di Stokes}}{=} \iint_S \nabla\times\vec{M}\cdot\hat{n} dS \ \forall \ S
+$$
+allora nei punti regolari
+$$
+\vec{J}_\text{mol} = \nabla\times\vec{M}
+$$
+Assegnato il campo di magnetizzazione è quindi possibile determinare la corrente 
+molecolare.
+
+All'interfaccia tra due regioni di discontinuità si può ripetere il ragionamento su una
+linea $\Gamma$ che attraversa entrambe le regioni.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.4\linewidth]{correnti_molecolari_superficiali}
+\end{figure}
+$$
+i_\text{mol} = \oint_\Gamma \vec{M}\cdot\hat{t}dl \simeq L(M_{t1} - M_{t2}) + \stackrel{\text{contributo}}{\text{proporz ad h}} = i_\Gamma 
+$$
+Passando al limite $\frac{h}{l}\to 0 $ il secondo termine tende a zero
+$$
+\cancel{L}(M_{t1} - M_{t2}) = J_\text{S mol} \cancel{L}
+$$
+quindi la discontinuità è pari
+$$
+\hat{n}\times(\vec{M}_2 - \vec{M}_1) = J_\text{S mol}
+$$
+in particolare se $\vec{M}_2 = 0$ (vuoto)
+$$
+J_\text{S mol} = -\hat{n}\times\vec{M} = \vec{M}\times\hat{n}
+$$
+
+Un materiale magnetico è dunque soggetto a due distribuzioni di corrente
+\begin{align*}
+-\vec{J}_\text{mol} &= \nabla\times\vec{M} \qquad \text{in }\Omega \\
+-\vec{J}_\text{S mol} &= \vec{M}\times\hat{n} \qquad \text{su } \partial\Omega
+\end{align*}
+
+Se si inseriscono questi termini nelle equazioni di Maxwell magnetostatiche
+\begin{align*}
+&\oiint_\Sigma \vec{B}\cdot\hat{n}dS = 0 \qquad \forall\ \Sigma\text{ chiusa di }\mathbb{R}^3\\
+&\oint_\Gamma \vec{B}\cdot\hat{t} dl = (i_{\Gamma\text{ lib}} + i_{\Gamma\text{ mol}})\mu_0
+= \mu_0 i_{\Gamma\text{ lib}} + \mu_0 \iint_{S_\Gamma} \nabla\times\vec{M}\cdot\hat{n}dS
+\end{align*}
+Applicando il teorema di Stokes alla seconda equazione
+$$
+\oint_\Gamma \frac{\vec{B}}{\mu_0} \cdot\hat{t}dl = i_{\Gamma\text{ lib}} + \oint_\Gamma \vec{M}\cdot\hat{t}dl \Rightarrow \oint_\Gamma \left(\frac{\vec{B}}{\mu_0} - \vec{M}\right)\cdot\hat{t} dl = i_{\Gamma \text{ lib}}
+$$
+Si definisce un nuovo campo $\vec{H}$ magnetico del materiale
+$$
+\vec{H} \stackrel{\text{def}}{=} \frac{\vec{B}}{\mu_0} - \vec{M}
+$$
+la cui equazione cardine è
+$$
+\oint_\Gamma \vec{H}\cdot\hat{t} dl = i_{\Gamma\text{ lib}}
+$$
