@@ -233,7 +233,7 @@ spira elementare che circonda il tratto come mostrato in figura.
 \end{figure}
 
 $$
-d i_\text{mol} = \vec{J}_\text{mol}\cdot\hat{n} dS = \vec{M}\cdot\hat{t}dl = \frac{N \vec{\mu}_\text{av}}{\text{Vol }\Dellta \Omega } \cdot \hat{t} dl = \frac{N i A}{\text{Vol }\Delta\Omega} \frac{\vec{\mu}_\text{av}}{|\vec{\mu}_\text{av}|}\cdot \hat{t}dl = \vec{M}\cdot\hat{t}dl
+d i_\text{mol} = \vec{J}_\text{mol}\cdot\hat{n} dS = \vec{M}\cdot\hat{t}dl = \frac{N \vec{\mu}_\text{av}}{\text{Vol }\Delta \Omega } \cdot \hat{t} dl = \frac{N i A}{\text{Vol }\Delta\Omega} \frac{\vec{\mu}_\text{av}}{|\vec{\mu}_\text{av}|}\cdot \hat{t}dl = \vec{M}\cdot\hat{t}dl
 $$
 dove $\vec{\mu}_\text{av}$ è il momento magnetico medio (average) e $\vec{M} = \frac{N\vec{\mu}_\text{av}}{\text{Vol}\Delta\Omega}$.
 
@@ -294,3 +294,11 @@ la cui equazione cardine è
 $$
 \oint_\Gamma \vec{H}\cdot\hat{t} dl = i_{\Gamma\text{ lib}}
 $$
+Sulle superfici di discontinuità la componente tangenziale di $\vec{H}$ è discontinua
+solo se ci sono correnti superficiali libere. In forma locale dunque
+\begin{align*}
+&\nabla\cdot\vec{B} = 0 \qquad \text{in } \Omega\\
+&\nabla\times\vec{H} = \vec{J}_\text{lib} \\
+&\hat{n} \cdot (\vec{B}_2-\vec{B}_1) = 0\\
+&\hat{n} \times (\vec{H}_2 - \vec{H}_1) = \vec{J}_{S\text{ lib}}
+\end{align*}
