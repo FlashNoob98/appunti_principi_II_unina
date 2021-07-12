@@ -208,7 +208,7 @@ elettriche. L'area piccola del ciclo di isteresi corrisponde a piccole perdite d
 un grande prodotto $H\cdot M$.
 \end{itemize}
 
-\subparagraph{Lavoro fatto dai generatori in una variazione del campo magnetico}
+\subsection{Lavoro eseguito dai generatori in una variazione del campo magnetico}
 Preso un toro di materiale ferromagnetico sul quale viene posto un avvolgimento massiccio 
 che lo concatena percorso da corrente.
 La spira $\Omega_S$ è sede della corrente $\vec{J}_0$ e di un campo elettromotore 
@@ -229,7 +229,7 @@ $$
 Il campo $\left(\vec{E} + \frac{\partial \vec{A}}{\partial t}\right)$ è conservativo e 
 quindi esprimibile come il gradiente di un campo potenziale:
 $$
-\vec{E} = -\frac{\partial \vec{A}}{\partial t} - \nabla\varphi
+\vec{E} = -\frac{\partial \vec{A}}{\partial t} - \nabla\varphi = -\vec{E}_m
 $$
 con $\varphi$ potenziale scalare.
 
@@ -237,6 +237,48 @@ I generatori compensano $\vec{E}$ con un campo $\vec{E}_m$ opposto per non far
 variare $\vec{J}_0$, la potenza necessaria ad effettuare questa compensazione è pari
 a 
 $$
-P^{(a)}_{\text{gen}} = \iiint_{\Omega_S} \vec{E}_m\cdot\vec{J}_0 dV
+P^{(a)}_{\text{gen}} = \iiint_{\Omega_S} \vec{E}_m\cdot\vec{J}_0 dV = 
+\iiint_{\Omega_\infty} \left(\frac{\partial \vec{A}}{\partial t} \cdot\ \vec{J}_0 + \nabla\varphi \vec{J}_0\right) dV
 $$
--12:50
+Siccome $\vec{J}_0$ sono le correnti sorgenti del campo magnetico allora $\vec{J}_0 = \nabla\times\vec{H}_a$
+è dunque un campo solenoidale, moltiplicato per un campo conservativo $\nabla\varphi$.
+Vale la seguente identità vettoriale
+$$
+\nabla\cdot(\varphi \nabla\times \vec{H}_a) = \varphi\cancel{\nabla\cdot(\nabla\times\vec{H}_a)} +
+\nabla\varphi\cdot\nabla\times\vec{H}_a
+$$
+Sostituendo il secondo termine dell'integrale
+$$
+\iiint_{\Omega_\infty}\nabla\varphi\cdot\nabla\times\vec{H}_a dV = \iiint_{\Omega_\infty} \nabla\cdot(\varphi\nabla\times\vec{H}_a) dV \stackrel{\text{T. Divergenza}}{=} \iint_{\partial\Omega_\infty} \varphi\nabla\times\vec{H}_a\cdot\hat{n}dS = 0
+$$
+L'integrale è pari a zero per la normalità all'infinito dei campi quindi l'equazione
+della potenza fornita dal generatore resta
+$$
+P^{(a)}_{\text{gen}} =
+\iiint_{\Omega_\infty} \left(\frac{\partial \vec{A}}{\partial t} \cdot\ \vec{J}_0 \right) dV = \iiint_{\Omega_\infty} \frac{\partial \vec{A}}{\partial t} \cdot\ \left( \nabla\times\vec{H}_a \right) dV
+$$
+Ricordando che $\nabla\cdot(\vec{v}\times\vec{w}) = \vec{w}\cdot\nabla\times\vec{v} -  \vec{v}\cdot\nabla\times\vec{w}$, si pone $\vec{w} = \frac{\partial \vec{A}}{\partial t}$ e
+$\vec{v} = \vec{H}_a$
+
+Per la normalità all'infinito $\nabla\cdot(\vec{v}\times\vec{w}) = 0$ è quindi possibile
+scambiare i termini nel prodotto vettoriale ossia $\vec{w}\cdot\nabla\times\vec{v} = \vec{v}\cdot\nabla\times\vec{w} $, nell'integrale si ha
+$$
+P^{(a)}_{\text{gen}} = \iiint_{\Omega_\infty} \frac{\partial \vec{A}}{\partial t} \cdot\ \left( \nabla\times\vec{H}_a \right) dV = \iiint_{\Omega_\infty} \vec{H}_a \cdot\ \left( \nabla\times\frac{\partial \vec{A}}{\partial t} \right) dV
+$$
+Invertendo la derivata temporale con quella spaziale
+$$
+P^{(a)}_{\text{gen}} = \iiint_{\Omega_\infty}\vec{H}_a \cdot\frac{\partial}{\partial t} \nabla\times\vec{A} dV =  \iiint_{\Omega_\infty}\vec{H}_a \cdot \frac{\partial \vec{B}}{\partial t} dV
+$$
+Il lavoro svolto dal generatore è pari a 
+$$
+\Delta L_{\text{gen}} = P^{(a)}_{\text{gen}} \Delta t = \iiint_{\Omega_\infty} \vec{H}_a
+\cdot\Delta\vec{B} dV
+$$
+
+In una variazione ciclica come quella di isteresi magnetica il lavoro svolto è
+$$
+\Delta L_{\text{gen}}^{(\text{ciclo})} = \oint_{\text{ciclo}} \iiint_{\Omega_\infty} \vec{H}_a\cdot d\vec{B} dV = \iiint_{\Omega_\infty} \left(\oint_{\text{ciclo}} \vec{H}_a \cdot d\vec{B}\right) dV = <p^{(a)_{\text{mat}}}> T 
+$$
+Il prodotto tra parentesi è proprio l'area del ciclo di isteresi nel punto $p$, mentre
+l'integrale di volume esterno rappresenta la somma delle aree del ciclo in tutti i punti 
+dello spazio. La perdita per isteresi è inoltre lineare con la frequenza di alimentazione.
