@@ -182,4 +182,97 @@ Il ferro dolce presenta un ciclo di isteresi stretto, approssimabile alla sua
 linea media se il materiale lavora nella zona di non saturazione. Si definisce una 
 permeabilità differenziale $\frac{dB}{dH} = \mu_r\mu_0$ e approssimare il materiale
 ferromagnetico ad un mezzo lineare.
-1:29:22
+
+\paragraph{Tensione magnetica}
+Si supponga di avere una ``ciambella'' ferromagnetica che concateni un certo numero di 
+correnti.
+Il dominio è chiamato $\Omega$ e si assume una sezione $S_l$ è variabile lungo la 
+geometria dove $l$ è l'ascissa curvilinea della linea media, orientata in questo caso in 
+verso antiorario.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.3\linewidth]{hopkinson_tubo_flusso}
+\end{figure}
+
+Si applica la legge di Ampere
+$$
+\oint_\Gamma \vec{H}\cdot \hat{t} dl = i_\Gamma = \Sigma_k (\pm)i_k = \int_{\Gamma}\frac{\vec{B}}{\mu_l} \cdot\hat{t}dl
+$$
+È quindi possibile calcolare il flusso in qualunque ascissa $l$ 
+$$
+\iint_{S_l}\vec{B}\cdot\hat{n} dS = 0
+$$
+si assume $\sqrt{S_\Gamma} \ll \oint_\Gamma dl$ ossia la dimensione superficiale molto
+minore della lunghezza della linea media $\Gamma$.
+
+In queste ipotesi il versore normale al campo $\vec{B}$ si confonde con il versore
+tangente della linea media, quindi
+$$
+\Phi \simeq \vec{B}\cdot\hat{t}S_l \Rightarrow \oint_\Gamma \vec{H}\cdot\hat{t}dl = 
+i_\Gamma = \oint\frac{\Phi}{S_l \mu_l} dl = \Phi\oint_\Gamma \frac{1}{S_l\mu_l}dl
+$$
+Si vede dunque che 
+$$
+\oint_\Gamma \vec{H}\cdot\hat{t}dl = \text{f.m.m.}_{\Gamma} = \mathcal{R} \Phi = i_\Gamma
+$$
+dove f.m.m. è la forza magnetomotrice lungo la linea $\Gamma$ e $\mathcal{R}$ prende
+il nome di riluttanza magnetica del tubo di flusso individuato da $\Gamma$.
+
+Si enuncia la legge di Hopkinson
+$$
+i_\Gamma = \mathcal{R}\cdot\Phi
+$$
+in analogia alla legge di Ohm la $\Phi$ corrisponde alla corrente, la $i_\Gamma$ alla 
+forza elettromotrice e la riluttanza $\mathcal{R}$ alla resistenza.
+
+La resistenza di un conduttore, calcolata con l'ipotesi di conduttore quasi filiforme
+$$
+R = \int_{A\Gamma B} \frac{\eta_l}{S_l}dl
+$$
+La riluttanza invece
+$$
+\mathcal{R} = \int_{A\Gamma B} \frac{1}{\mu_l S_l}dl
+$$
+si vede che è del tutto analoga.
+
+\newpage
+\paragraph{Circuito magnetico con traferro}
+Si considera un elemento ferromagnetico con un traferro, chiamato anche giogo a ``C'' 
+come mostrato in figura.
+\begin{figure}
+\centering
+\includegraphics[width = 0.5\linewidth]{giogo_a_C}
+\end{figure}
+
+Applicando la legge di Hopkinson e orientando la linea di integrazione con l'avvolgimento
+destrorso
+$$
+\oint_{\Gamma_1} \vec{H}\cdot\hat{t}dl = Ni = \mathcal{R}_{Fe} \Phi + \mathcal{R}_\delta\Phi
+$$
+Se si ipotizza che la permeabilità tenda ad infinito nel ferro, la riluttanza nel ferro
+tende a zero, quindi
+$$
+Ni \simeq \mathcal{R}_\delta\Phi
+$$
+il campo $\vec{B}$ invece è molto più grande attraverso il traferro che fuori, si 
+applica ancora una volta la legge di Ampere alla linea $\Gamma_2$
+$$
+\oint_{\Gamma_2} \vec{H}\cdot\hat{t} dl = Ni = \oint_{\Gamma_1}\vec{H}\cdot\hat{t}dl \stackrel{\mu_{\text{Fe}}\to\infty}{\Rightarrow} \int_{A\Gamma B} \vec{H}\cdot \hat{t} dl 
+= \int_{D\Gamma_2 C} \vec{H}\cdot\hat{t}dl
+$$
+Supponendo che nell'aria il campo $\vec{B}$ e $\vec{H}$ siano paralleli
+$$
+\int_{A\Gamma_1 B} \vec{B}\cdot\hat{t} dl = \int_{D\Gamma_2 C}\vec{B}\cdot\hat{t}dl
+\Rightarrow <B_t>_{A\Gamma_1 B}\cdot|AB| = <B_t>_{D\Gamma_2 C}\cdot|DC|
+$$
+ma $|AB| = \delta$ quindi 
+$$
+<B_t>_{A\Gamma_1 B} = \frac{|DC|}{\delta}<B_t>_{D\Gamma_2C}
+$$
+siccome $\frac{|DC|}{\delta}$ è una quantità molto grande, allora il campo nel traferro
+sarà molto più grande (migliaia di volte) di quello all'esterno.
+
+A causa dei diversi valori di permeabilità in presenza dei traferri, la riluttanza di 
+questi ultimi sarà molto più alta rispetto a quella del ferro, e sarà l'unica presa
+in considerazione nell'analisi di un circuito resistivo equivalente mentre
+i tratti in ferro verranno approssimati a corto circuiti.
