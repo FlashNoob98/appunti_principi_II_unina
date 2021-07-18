@@ -197,6 +197,212 @@ $\frac{\partial\vec{D}}{\partial t} \to 0$, $\frac{\partial\rho_\text{lib}}{\par
 Si suppone che ci sia una distribuzione di correnti assegnate in una certa regione causa
 di un campo di induzione magnetica $\vec{B}$ nello spazio per la legge di Biot-Savart.
 
-Si vuole estendere questo fenomeno a correnti variabili nel tempo in maniera quasi stazionaria
-affinché non ci siano correnti di spostamento
-1:00:00
+Si vuole estendere questo fenomeno a correnti variabili nel tempo in maniera quasi 
+stazionaria affinché non ci siano correnti di spostamento.
+
+Sia presente un circuito quasi filiforme attraversato da una corrente $i$, si ipotizza 
+inoltre che sia presente nello spazio una regione conduttiva $\Omega_c$ ipotizzando
+che ci sia una permeabilità magnetica assegnata e che sia in prima approssimazione un
+conduttore perfetto. Il materiale è dunque lineare dal punto di vista magnetico
+oppure se ferromagnetico, il punto di lavoro è ancora nella regione lineare di un 
+materiale SOFT.
+
+Le equazioni del modello MQS in forma locale sono
+$$
+\begin{aligned}
+&\nabla\cdot\vec{B} = 0\qquad\qquad\ \text{in }\Omega\\
+&\nabla\times\vec{H} = \vec{J}_\text{lib} \qquad\ \  \text{in } \Omega_\infty-\Omega_c\\
+&\nabla\times\vec{E} = -\frac{\partial\vec{B}}{\partial t} \qquad \text{in } \Omega_\infty-\Omega_c
+\end{aligned}
+$$
+Nel conduttore perfetto il campo elettrico è nullo anche in presenza di correnti 
+libere
+$$
+\vec{E}=0,\ \vec{J}_\text{lib} \neq 0
+$$
+e quindi sarà nullo anche il rotore del campo, di conseguenza
+$$
+\nabla\times\vec{E} = -\frac{\partial\vec{B}}{\partial t} \Rightarrow \frac{\partial\vec{B}}{\partial t} = 0
+$$
+Quindi il campo $\vec{B}$ resta costante nel conduttore e nell'ipotesi di sistema a riposo 
+iniziale, questo resta nullo.
+
+In un conduttore perfetto non può penetrare un campo di induzione magnetica e in 
+particolare sulla superficie
+$$
+\hat{n}\cdot\vec{B} = 0
+$$
+un conduttore ideale ha quindi al suo interno un campo elettrico nullo e un campo
+di induzione magnetica nullo.
+
+Nello spazio non occupato dal conduttore invece $\Omega_\infty-\Omega_c$ si suppone
+che la variazione delle correnti sia più lenta di $\tau_e$ quindi la carica di volume 
+è nulla istante per istante $(\rho = 0 )$ e quindi anche la divergenza del campo $\nabla\cdot\vec{E} = 0$
+è nulla nello spazio.
+
+Le equazioni che descrivono il campo elettrico indotto
+$$
+\begin{aligned}
+&\nabla\cdot\vec{E} = 0\\
+&\nabla\times\vec{E} = -\frac{\partial\vec{B}}{\partial t}\\
+&\hat{n}\cdot\left(\vec{E}_2-\vec{E}_1\right) = \frac{\sigma}{\varepsilon_0} \qquad \text{su }\partial(\Omega_\infty-\Omega_c) \\
+& \hat{n}\times\left(\vec{E}_2-\vec{E}_1\right) = 0
+\end{aligned}
+$$
+mediante la legge di Biot-Savart si scompone il campo $\vec{E}$ in due parti, quella prodotta
+dal campo $\vec{B}$ e quella prodotta dalle cariche $\sigma$
+
+Dunque il campo $\vec{E}_B$ prodotto dall'induzione magnetica si descrive come
+$$
+\begin{aligned}
+&\nabla\cdot\vec{E}=0\\
+&\nabla\times\vec{E} = -\frac{\partial \vec{B}}{\partial t}\\
+&\hat{n}\cdot\left( \vec{E}_2-\vec{E}_1  \right) = 0
+\end{aligned}
+$$
+ma questo modello è identico a quello del campo magnetostatico prodotto da una
+distribuzione di correnti assegnata
+$$\begin{aligned}
+&\nabla\cdot\vec{B}=0\\
+&\nabla\times\vec{B} = -\frac{\partial \vec{B}}{\partial t}\\
+&\hat{n}\cdot\left( \vec{B}_2-\vec{B}_1  \right) = 0\\
+&\hat{n}\times\left(\vec{B}_2-\vec{B}_1\right) = 0 \quad \text{senza correnti superficiali}
+\end{aligned}
+$$
+Il campo $\vec{E}_B$ si ottiene dunque mediante la legge di Biot-Savart
+$$
+\vec{B} = \frac{\mu_0}{4\pi} \iiint_{\Omega_\infty - \Omega_C} \vec{J}\times
+\frac{\vec{r}_p-\vec{r}_{p'}}{|\vec{r}_p-\vec{r}_{p'}|^3} dV
+$$
+che confrontata con l'integrale del rotore di $\vec{B}$
+$$
+\vec{E}_B = -\frac{1}{4 \pi} \iiint_{\Omega_\infty - \Omega_C} \frac{\partial\vec{B}}{\partial t} \times \frac{\vec{r}_p - \vec{r}_{p'}}{\left|\vec{r}_p - \vec{r}_{p'}\right|^3} dV
+$$
+permette di calcolare il campo $\vec{E}_B$ elettrico indotto dalla variazione di campo
+di induzione magnetica nel tempo.
+
+Per calcolare l'altro termine $\vec{E}_\sigma$ si avranno equazioni differenti come:
+$$
+\begin{aligned}
+&\nabla\cdot\vec{E}=0\\
+&\nabla\times\vec{E} = 0\qquad\qquad\quad\ \ \text{ su }\Omega_\infty-\Omega_C\\
+&\hat{n}\cdot\left(\vec{E}_2-\vec{E}_1\right) = \frac{\sigma}{\varepsilon_0}\qquad \text{su }\partial\left(\Omega_\infty-\Omega_c\right)
+\end{aligned}
+$$
+se il campo $\vec{E}$ è conservativo, si può esprimere il campo come gradiente di una funzione potenziale e risolvere le equazioni al contorno
+$$
+\vec{E}=-\nabla\varphi \Rightarrow \begin{cases}
+\nabla^2 \varphi = 0\\
+-\frac{\partial \varphi_2}{\partial n} + \frac{\partial \varphi_1}{\partial n} = \frac{\sigma}{\varepsilon_0} \text{ su } \partial\left(\Omega_\infty - \Omega_C\right)
+\end{cases}
+$$
+
+Il campo totale dunque
+$$
+\vec{E} = \vec{E}_B + \vec{E}_\sigma
+$$
+rispetterà la continuità delle componenti tangenziali su $\partial\left(\Omega_\infty-\Omega_C\right)$
+$$
+\hat{n}\times\left(\vec{E}_{B_2} - \vec{E}_{B_1}\right) = -\hat{n}\times\left(\vec{E}_{\sigma_2} - \vec{E}_{\sigma_1}\right)
+$$
+
+In alternativa introducendo il potenziale vettore $\vec{A}:\ \vec{B}=\nabla\times\vec{A}$
+$$
+\nabla\times\vec{E} = -\frac{\partial\vec{B}}{\partial t} = \nabla\times\vec{E} = -\nabla
+\times\left(\frac{\partial\vec{A}}{\partial t}\right) \Rightarrow \nabla\times\left(
+\vec{E}+\frac{\partial\vec{A}}{\partial t}\right) = 0
+$$
+se la regione è a connessione superficiale semplice, se 
+$$
+\vec{E} + \frac{\partial \vec{A}}{\partial t} = -\nabla\varphi \Rightarrow \vec{E} = 
+-\frac{\partial \vec{A}}{\partial t} - \nabla\varphi
+$$
+
+
+Queste equazioni sono fondamentali per capire le caratteristiche di schermatura di un 
+conduttore da un campo magnetico variabile.
+
+\newpage
+\subsection{Diffusione del campo magnetico attraverso conduttori sottili}
+Si considera una sorta di cilindro cavo con sezione non circolare ma di forma qualsiasi
+attraversato da una corrente $\vec{J}$ che corre lungo la superficie laterale, costante
+lungo $z$.
+$$
+\vec{J} = J_x \left(x,y,t\right)\vec{e}_x + J_y\left(x,y,t\right)\vec{e}_y
+$$
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.3\linewidth]{schermo_magnetico_cilindrico}
+\end{figure}
+Si astrae la corrente superficiale
+$$
+\Delta\to 0,\ J\to \infty:\ J\cdot\Delta = J_S
+$$
+La legge di Ampére-Maxwell afferma in questo caso
+$$
+\hat{n}\times\left(\vec{H}_2-\vec{H}_1\right) = \vec{J}_S
+$$
+ma siccome il versore $\hat{n}$ è ortogonale all'asse $\vec{e}_z$
+allora il campo $\vec{H}$ sarà diretto lungo $z$
+$$
+\vec{H} = H_z\left(x,y,t\right)\vec{e}_z
+$$
+quindi
+$$
+H_{z_1} - H_{z_2} = J_S
+$$
+
+$H_{z_1}$ e $J_S$ sono incognite da determinare.
+Si applica la legge di Faraday-Neumann ad una linea $\Gamma$ che giace nel cilindro
+in un piano $x,y$
+$$
+\oint_\Gamma \vec{E}\cdot\hat{t}dl = -\frac{d}{dt} \iint_{S_\Gamma} \vec{B}\cdot\hat{n}dS
+$$
+ma nel conduttore $\vec{J} = \gamma\vec{E}$ che sostituita nell'integrale
+$$
+\oint_\Gamma \frac{\vec{J}}{\gamma}\cdot\hat{t}dl = -\frac{d}{dt} \Phi_\Gamma
+$$
+Ricordando che lo spessore del foglio è sottile si ha che $\vec{J}\Delta = \vec{J}_S \Rightarrow \vec{J} = \frac{\vec{J}_S}{\Delta}$
+
+$$
+\oint_\Gamma \frac{\vec{J}_s}{\Delta\gamma} \cdot\hat{t}dl = -\frac{d}{dt} \Phi_\Gamma
+$$
+
+Se $\vec{J}$ è solenoidale (come assunto nel modello MQS) la corrente $\vec{J}_S$ non 
+dipende dalla coordinata azimutale $\varphi$, può quindi essere esclusa dall'integrale.
+$$
+J_S\oint_\Gamma\frac{dl}{\Delta_l\gamma_l} = -\frac{d}{dt}\Phi_\Gamma \Rightarrow
+\begin{aligned}
+&\Delta_l = \Delta\\
+&\gamma_l = \gamma
+\end{aligned}
+\Rightarrow \frac{J_S L}{\Delta\gamma} = -\frac{d}{dt}\Phi_\Gamma
+$$
+Se si assume il cilindro omogeneo e $L$ è il perimetro della sua sezione.
+
+Nel caso particolare in cui la sezione del cilindro sia circolare di raggio $a$, la precedente diventa
+$$
+\frac{J_s 2\pi a}{\Delta\gamma} = -\frac{d}{dt}\left(\mu_0\pi a^2 H_{z_1}\right)
+$$
+Ricordando la discontinuità della componente tangenziale si ottiene
+$$
+\frac{H_{z_1} - H_{z_2}}{\Delta\gamma}\cdot 2\cancel{\pi} \cancel{a} = -\frac{d}{dt} \left(\mu_0 \cancel{\pi}a^{\cancel{2}}H_{z_1}\right) \Rightarrow \frac{2H_{z_1}}{\Delta\gamma} - \frac{2H_{z_2}}{\Delta\gamma} = -\mu_0 a \frac{d}{dt}H_{z_1}
+$$
+Si può riscrivere come
+$$
+\mu_0\frac{a\Delta\gamma}{2}\frac{dH_{z_1}}{dt} + H_{z_1} = H_{z_2}
+$$
+dove $\tau_m =  \mu_0\frac{a\Delta\gamma}{2}$ è la costante di tempo della diffusione 
+del campo magnetico.
+
+Conoscendo il campo nella regione (2) e risolvendo l'equazione differenziale si ottiene 
+l'equazione nel tempo del campo magnetico all'interno del cilindro
+$$
+\begin{aligned}
+& H_{z_2}(t) = H_0u(t)\\
+& H_{z_1}(t) = H_0\left(1-e^{-\frac{t}{\tau_m}}\right)
+\end{aligned}
+$$
+Ciò significa che per un tempo $t\ll \tau_m$ l'interno del cilindro è effettivamente 
+schermato dal campo esterno, mentre a regime o per un tempo $t > (4\div5)\ \tau_m$ il campo
+interno tende ad essere uguale e opposto a quello esterno.
