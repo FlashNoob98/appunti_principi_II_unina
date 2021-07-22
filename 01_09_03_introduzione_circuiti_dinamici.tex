@@ -8,7 +8,6 @@ si definisce lineare tempo variante (LTV).
 
 Preso un generico circuito, vogliamo determinare una tensione o un'intensità di corrente di un generico
 bipolo.
-\textit{(Nella vita bisogna sempre porsi un obiettivo)}
 
 \textbf{Strumenti a disposizione:}
 
@@ -59,15 +58,15 @@ In letteratura un sistema simile si indica con DAE (Differential Algebric Equati
 dalla ODE (Ordinary Differential Equation).
 
 Le tecniche utilizzate in teoria dei circuiti mirano a trasformare una DAE in una ODE, ossia 
-per formulare le equazioni circuitali come equazioni differenziali ordinarie, per operare questa trasformazione si fa riferimento
-alla dinamica delle sole {variabili di stato}: $i_l(t)\ v_c(t)$
+formulare le equazioni circuitali come equazioni differenziali ordinarie, per operare questa trasformazione si fa 
+riferimento alla dinamica delle sole {variabili di stato}: $i_l(t),\ v_c(t)$
 
 La loro conoscenza permette di esprimere tutte le altre variabili attraverso relazioni algebriche, vengono definite
-variabili \textit{slaved}, perchè subordinate alle prime.
+variabili \textit{slaved}, perché subordinate alle prime.
 
 Per eseguire ciò si richiama una procedura generale per l'analisi di circuiti lineari tempo varianti (LTV).
-Questa procedura si basa su un'analisi a intervallo: si partiziona l'asse dei tempi in intervalli in ciascuno dei quali esiste un circuito 
-tempo invariante (LTI) equivalente a quello di partenza.
+Questa procedura si basa su un'analisi a intervallo: si partiziona l'asse dei tempi in intervalli in ciascuno dei 
+quali esiste un circuito tempo invariante (LTI) equivalente a quello di partenza.
 
 \begin{figure}[h] %tre stati diversi dello stesso circuito
 \centering
@@ -119,7 +118,7 @@ Supponiamo che i generatori indipendenti abbiano grandezze \textbf{limitate}, os
 in questa ipotesi sappiamo che le variabili di stato sono funzioni \textbf{continue} ossia:
 \begin{equation*}
 \begin{split}
-i_L (0^+) & = i_L(0^-) \\ 
+i_L (0^+) & = i_L(0^-) \\
 v_C (0^+) & = v_C(0^-)
 \end{split}
 \end{equation*}
@@ -161,10 +160,10 @@ adinamico ad un semplice generatore con un resistore equivalente.
 
 Applicando ad esempio la LKT $e_0(t) = R_{th}\cdot C \frac{dV_C}{dt} + V_C$ si ha l'equazione di stato
 del circuito e supponendo di conoscere $V_C(t=0) = V_0 $ allora la soluzione dell'equazione è:
-$$V_C(t) = [V_0-V_{C_p}(0)] e ^{-\frac{t}{\tau}} + V_{C_p}(t)$$ dove $\tau = R_{th}\cdot C$ e $V_{C_p}(t)$
+$$V_C(t) = [V_0-V_{C_p}(0)] e^{-\frac{t}{\tau}} + V_{C_p}(t)$$ dove $\tau = R_{th}\cdot C$ e $V_{C_p}(t)$
 è la soluzione a regime. 
  
-Dopo un intervallo pari a $4\sim5\ \tau$ si assume il processo di carica o scarica terminato.
+Dopo un intervallo pari a $4\sim 5\ \tau$ si assume il processo di carica o scarica terminato.
 
 Per il circuito RL 
 $$I_L(t) = [I_0-I_{L_p}(0)]e^{-\frac{t}{\tau}} + I_{L_p}(t)$$ 
@@ -174,8 +173,8 @@ Osservazione: la soluzione generale del circuito RC, ossia la dinamica di $V_c(t
 come la somma di due termini $V_{C_{tr}}(t)$ e $V_{C_p}(t)$, il primo transitorio, che tende a svanire se 
 attendiamo un tempo sufficiente lungo, porta con se la \textit{memoria} dello stato iniziale, memoria che 
 viene
-persa quando $t>4\sim5\tau$, ammesso che $\tau$ sia positiva; esistono infatti alcune combinazioni di 
-elementi circuitali si comportano come un resistore negativo.
+persa quando $t>4\sim5\ \tau$, ammesso che $\tau$ sia positiva; esistono infatti alcune combinazioni di 
+elementi circuitali che si comportano come un resistore negativo.
 
 Il secondo termine è quello di regime permanente, che ovviamente non ha memoria dello stato iniziale ma 
 dipende solo dalla nuova configurazione
@@ -183,27 +182,29 @@ del circuito (termine forzato).
 
 La decomposizione in regime transitorio e permanente è una decomposizione generale che vale per qualsiasi circuito, a patto di complicare opportunamente la matematica.
 
-Si parla inoltre di evoluzione libera ed evoluzione forzata 
+Si parla quindi di evoluzione libera ed evoluzione forzata 
 $$\begin{cases}
 e_0(t) = R_{th}C\frac{dV_c}{dt} + V_C \\
 V_c(0) = V_0
 \end{cases}$$
-
 si scompone in:
 
-$$\begin{cases} %evoluzione libera
+Evoluzione libera
+$$\begin{cases}
 0 &= R_{th}C\frac{dV_c}{dt} + V_C \\ 
 V_c(0) &= V_0
 \end{cases}$$
 
-$$\begin{cases} %evoluzione forzata
+Evoluzione forzata
+$$\begin{cases}
 e_0(t) &= R_{th}C\frac{dV_c}{dt} + V_C \\
 V_c(0) &= 0
 \end{cases}$$
 
 Trattazione analoga (duale) per il circuito RL
 
-\section{Circuiti lineari tempo invarianti del II ordine}
+\newpage
+\subsection{Circuiti lineari tempo invarianti del II ordine}
 Divisi in (RC, RL, RLC), la procedura generale di risoluzione richiede tre step:
 \begin{enumerate}
  \item Determinazione delle equazioni di stato
@@ -233,15 +234,15 @@ Equazioni di interconnessione:
 LKC nel nodo evidenziato in rosso (tra i due resistori)
 \begin{equation*}
 \begin{cases}
- I_1 &= I_C+I_L \ \text{LKC}\\
- E &= R_1\cdot I_1 + V_C\ \text{LKT} \\
+I_1 &= I_C+I_L \ \text{LKC}\\
+E &= R_1\cdot I_1 + V_C\ \text{LKT} \\
 V_C &= R_2 \cdot I_L + V_L \\
 V_L &= L\frac{dI_L}{dt} \\
 I_C &= C\frac{dV_C}{dt}
 \end{cases}
 \end{equation*}
-Ricaviamo $I_1$ dalla seconda e sostituiamola nella prima,
-ora vanno ricavate le variabili di stato ottenendo
+Si ricava $I_1$ dalla seconda e si sostituisce nella prima,
+ora si ricavano le variabili di stato ottenendo
 $$
 \begin{cases}
 i_C = \frac{E}{R_2} - \frac{v_C}{R_1} - i_L \\
@@ -263,7 +264,7 @@ v_C(0^+) = v_C(0^-) = 0\\
 i_L(0^+) = i_L(0^-) = 0
 \end{cases}
 $$
-Per risolvere queste equazioni conviene ridurre l'equazione del secondo ordine ad una sola delle incognite,
+Per risolvere queste equazioni conviene ridurle ad un'equazione del secondo ordine ad una sola incognita,
 ad esempio si sostituisce nell'equazione che definisce $i_C$, $v_C$ ricavata dalla equazione di
 $v_L$, in questo modo si ha un'unica equazione in cui compaiono le grandezze relative all'induttore.
 
@@ -271,26 +272,52 @@ Si ottiene
 \begin{equation}
 LC \frac{d^2i_L}{dt^2} + CR_2\frac{di_L}{dt} = \frac{E}{R_1} - \frac{L}{R_1}\frac{di_L}{dt} - \frac{R_2}{R_1}i_L-i_L
 \end{equation}
+raccogliendo i termini
+$$
+\frac{d^2i_L}{dt^2} + \left(\frac{R_2}{L} + \frac{1}{R_1C}\right)\frac{di_L}{dt}+ \left(1 + \frac{R_2}{R_1}\right)\frac{1}{LC} i_L = \frac{E}{R_1}\frac{1}{LC}
+$$
 %ora raccogli i termini
-Controlli da eseguire: controllo dimensionale, positività dei coefficienti altrimenti il circuito non sarebbe dissipativo.
+Controlli da eseguire: controllo dimensionale e positività dei coefficienti altrimenti il circuito non sarebbe dissipativo.
 
 L'integrale generale è scritto come somma dell'integrale dell'omogenea associata e dell'integrale particolare.
-Polinomio caratteristico:
+Si ottiene il polinomio caratteristico a partire dall'omogenea associata, ossia annullando il forzamento:
 \begin{equation}
- \lambda^2 + (\frac{R_2}{L} + \frac{1}{R_1 C})\lambda + (1+\frac{R_2}{R1})\frac{1}{LC} = 0
+\lambda^2 + \left(\frac{R_2}{L} + \frac{1}{R_1 C}\right)\lambda + \left(1+\frac{R_2}{R_1}\right)\frac{1}{LC} = 0
 \end{equation}
 La soluzione del polinomio può essere di tre tipi:
 
-Caso 1, radici reali e distinte $\Rightarrow$
-Vedi grafico 01:38:00 modi naturali aperiodici smorzati
+\begin{itemize}
+\item Caso 1, radici reali e distinte, modi naturali aperiodici smorzati
+$$
+i_{L_0} = K_1 e^{\lambda_1 t} + K_2 e^{\lambda_2 t}
+$$
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{evoluzione_libera_reali_distinte}
+\end{figure}
 
-Caso 2 radici reali e coincidenti, caso piuttosto patologico
-la radice viene determinata con $-\sigma$ avremo un modo esponenziale decrescente $e^{-\sigma t} $ con $\tau = \frac{1}{\sigma}$
-e un modo pari a  $te^{-\sigma t}$
 
-Caso 3 modo periodico smorzato
-$\lambda_{1,2} = -\sigma \pm j\omega d$, la distanza tra due picchi è pari a $\frac{2\pi}{\omega}$
+\item Caso 2, radici reali e coincidenti, caso piuttosto patologico
+la radice viene determinata con $-\sigma$ si avrà un modo esponenziale decrescente $e^{-\sigma t} $ con
+$\tau = \frac{1}{\sigma}$ e un modo pari a  $t\cdot e^{-\sigma t}$
+$$
+i_{L_0} = K_1 e^{-\sigma t} + K_2 t\cdot e^{-\sigma t}
+$$
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.4\linewidth]{evoluzione_libera_reali_coincidenti}
+\end{figure}
+Vengono detti modi aperiodici smorzati con smorzamento critico.
+
+
+\item Caso 3, modi periodici smorzati, soluzioni complesse coniugate
+$\lambda_{1,2} = -\sigma \pm j\omega_d$, la distanza tra due picchi è pari a $\frac{2\pi}{\omega_d}$
 $$i_{L_0}(t) = e^{-\sigma t} [K_1 \cos (\omega_d t) + K_2 \sin(\omega_d t)]$$
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{evoluzione_libera_complesse_coniugate}
+\end{figure}
+\end{itemize}
 
 Restano da determinare le costanti di integrazione imponendo le condizioni iniziali,
 \begin{equation*}

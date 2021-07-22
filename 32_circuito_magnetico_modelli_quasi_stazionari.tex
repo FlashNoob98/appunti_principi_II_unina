@@ -405,4 +405,32 @@ $$
 $$
 Ciò significa che per un tempo $t\ll \tau_m$ l'interno del cilindro è effettivamente 
 schermato dal campo esterno, mentre a regime o per un tempo $t > (4\div5)\ \tau_m$ il campo
-interno tende ad essere uguale e opposto a quello esterno.
+interno tende ad essere uguale a quello esterno.
+
+La corrente superficiale 
+$$
+J_S = H_{z_1} - H_{z_2} \stackrel{t>0}{=} H_{z_1} - H_0 = -H_0 e^{-\frac{t}{\tau_m}}
+$$
+ha un andamento simile al campo $\vec{H}$ ma ha un valore iniziale negativo e tende a zero.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.3\linewidth]{campo_e_corrente_schermo_magnetico}
+\end{figure}
+
+Essendoci un campo magnetico variabile si può determinare il campo elettrico $\vec{E}$ 
+indotto, applicando la legge di Faraday-Neumann ad una linea piana $\Gamma$ di raggio $r$
+$$
+\oint_\Gamma \vec{E}\cdot\hat{t} dl = -\frac{d}{dt} \iint_{S_\Gamma} \vec{B}\cdot\hat{n}dS
+$$
+con $\vec{B} = \mu_0 \vec{H}$ e $B_z = \mu_0 H_z$.
+
+Svolgendo gli integrali
+$$
+\begin{aligned}
+&r< a \\
+& 2 \cancel{\pi} \cancel{r} E_\varphi = -\frac{d}{dt} \left(\mu_0 H_{z_1}\cancel{\pi} r^{\cancel{2}}\right) \Rightarrow E_\varphi = -\frac{\mu_0}{2}r \frac{dH_{z_1}}{dt}\\
+& r >  a \\
+& 2\pi r E_\varphi = -\frac{d}{dt} \left(\mu_0 H_{z_1} \pi a^2\right) - \frac{d}{dt} \left(\mu_0 H_{z_2} \pi \left(r^2 - a^2\right)\right)
+\end{aligned}
+$$
+
