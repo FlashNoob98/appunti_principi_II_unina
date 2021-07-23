@@ -287,7 +287,8 @@ Si ottiene il polinomio caratteristico a partire dall'omogenea associata, ossia 
 La soluzione del polinomio può essere di tre tipi:
 
 \begin{itemize}
-\item Caso 1, radici reali e distinte, modi naturali aperiodici smorzati
+\item Caso 1, radici reali e distinte, solitamente negative in sistemi dissipativi, modi naturali aperiodici 
+smorzati
 $$
 i_{L_0} = K_1 e^{\lambda_1 t} + K_2 e^{\lambda_2 t}
 $$
@@ -322,7 +323,21 @@ $$i_{L_0}(t) = e^{-\sigma t} [K_1 \cos (\omega_d t) + K_2 \sin(\omega_d t)]$$
 Restano da determinare le costanti di integrazione imponendo le condizioni iniziali,
 \begin{equation*}
 \begin{cases}
-i_L(0^+) = i_L(0^-) \\
-\frac{di_L}{dt}(0^+) = \frac{1}{L}[v_C(0^+) - R_2I_L(0^+)] = 0
+i_L(0^+) = i_L(0^-) = \SI{0}{\ampere}\\
+\frac{di_L}{dt}(0^+) = \frac{1}{L}[v_C(0^+) - R_2i_L(0^+)] = 0
 \end{cases}
 \end{equation*}
+
+Supponendo dunque di avere soluzioni $\lambda_1,\ \lambda_2$ reali e distinte e ricordando di aggiungere
+il termine a regime $\frac{E}{R_1 + R_2}$ nella determinazione dei coefficienti
+$$
+\begin{aligned}
+i_L(0^+) = 0 & \Rightarrow \\
+\frac{di_L}{dt}(0^+) = 0 & \Rightarrow
+\end{aligned}
+\begin{cases}
+K_1+K_2 + \frac{E}{R_1+R_2} = 0 \\
+\lambda_1K_1 + \lambda_2K_2 = 0
+\end{cases}
+$$
+La soluzione del sistema permette di ricavare i coefficienti $K_1$ e $K_2$
