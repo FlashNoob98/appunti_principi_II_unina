@@ -1,46 +1,115 @@
-
-Approfondiamo bene questo concetto!
-
-Circuito RC serie, supponiamo che la tensione imposta sia un gradino unitario,
+Si consideri un circuito RC serie
+\begin{figure}[H]\centering
+\begin{circuitikz}
+\draw
+(0,0) to [voltage source,invert,l=$u(t)$] (0,2)
+      to [R=$R$] (2,2)
+      to [C,l_=$C$,v^=$v_C$] (2,0) -- (0,0)
+;
+\end{circuitikz}
+\end{figure}
+si suppone che la tensione imposta al generatore sia un gradino unitario $u(t)$,
 l'equazione di stato sarà:
 $$
 \begin{cases}
-u(t) = RC \frac{dv_c}{dt} + v_c \\
-v_c(0^+) = 0
+u(t) = RC \frac{dv_C}{dt} + v_C \\
+v_C(0^+) = 0
 \end{cases}
-\Rightarrow v_c(t) = 
+\Rightarrow v_C(t) = \left.
 \begin{cases}
-0\ ,\ t<0 \\
-1-e^{-\frac{t}{\tau}}\ ,\ t\geq 0
+0 & t<0 \\
+1-e^{-\frac{t}{\tau}} & t\geq 0
+\end{cases}\right] = g(t)
+$$
+
+Si considera la funzione $U_\Delta$
+$$U_\Delta(t) = 
+\begin{cases}
+0 & t< -\frac{\Delta}{2}\\
+\frac{1}{2} + \frac{t}{\Delta} & -\frac{\Delta}{2} < t < \frac{\Delta}{2} \\
+1 & t > \frac{\Delta}{2}
 \end{cases}
 $$
-
-Se si considera la funzione $U_\Delta$ come una funzione che vale $0$ per $t , \frac{-\Delta}{2}$, cresce
-linearmente fino ad $1 \text{ con $t$ pari a }\frac{\Delta}{2}$, vale $1$ per $t > \frac{\Delta}{2}$,
-allora se si esegue la differenza di due funzioni $U_\Delta$ traslate di $\pm\frac{\Delta}{2}$ si ottiene 
-una porta trapezoidale, diventa una porta per $\Delta \rightarrow 0$.
-
-19:32 riprende le formule della volta precedente sulla derivazione del gradino.
-
-\paragraph{Circuiti RC ed RL semplici}
-Si prendono 2 circuiti modello: il circuito RC parallelo e il circuito RL serie.
-
-Siano i generatori impulsivi: $j(t) = Q\delta(t)$ e $e(t) = \Phi\delta(t)$.
+se si esegue la differenza di due funzioni $U_\Delta$ traslate di $\pm\frac{\Delta}{2}$ si ottiene 
+una porta trapezoidale
 $$
-j(t) = \frac{v_c}{R} + i_c = Q\delta(t) = \frac{v_c}{R} + C\frac{dv_c}{dt}
+f(t) = \frac{U_\Delta\left(t+\frac{\Delta}{2}\right) - U_\Delta\left(t-\frac{\Delta}{2}\right)}{\Delta}
+$$
+tende ad una $\delta(t)$ delta di Dirac per $\Delta \rightarrow 0$.
+Semplicemente si può invece definire la porta come differenza di due gradini traslati, in questo modo
+si elimina il problema dei segmenti obliqui.
+
+La linearità del sistema e la tempo-invarianza delle grandezze dei bipoli implica che la
+risposta ad una combinazione lineare di funzioni traslate nel tempo si ottiene come combinazione lineare 
+delle risposte dei singoli termini traslati.
+$$
+\text{Risp}\left\{\Pi_\Delta(t)\right\} = \frac{\text{Risp}\left\{u\left(t+\frac{\Delta}{2}\right) \right\} -\text{Risp}\left\{ u\left(t-\frac{\Delta}{2}\right) \right\}}{\Delta} = \frac{g\left(t+\frac{\Delta}{2}\right)-
+g\left(t-\frac{\Delta}{2}\right)}{\Delta}
+$$
+Eseguendo il limite per $\Delta\to 0^+ $ si vede che quello appena presentato è un rapporto incrementale e
+quindi
+$$
+\lim_{\Delta\to0^+} \Rightarrow \text{Risp} \left\{\delta(t)\right\} =h(t) = \frac{dg}{dt}
+$$
+Ricordando le funzioni $h(t)$ e $g(t)$ si vede la relazione
+$$
+h(t) = \begin{cases}
+0 & t<0\\
+\frac{1}{\tau}e^{-\frac{t}{\tau}} & t\geq 0
+\end{cases}\qquad
+g(t) = \begin{cases}
+0 & t<0\\
+1 - e^{-\frac{t}{\tau}} & t\geq 0
+\end{cases} \Rightarrow
+\frac{dg}{dt} = h(t)
+$$
+è possibile studiare la risposta all'impulso sfruttando quella al gradino, che è una funzione limitata e 
+più semplice da analizzare.
+
+\paragraph{Circuiti RC ed RL semplici con generatori impulsivi}
+Si considerino 2 circuiti modello: il circuito RC parallelo e il circuito RL serie.
+
+\begin{figure}[H]\centering
+\begin{subfigure}{.4\textwidth}\centering
+\begin{circuitikz}
+\draw
+(0,0) to [current source,l=$j(t)$] (0,2)
+      to (1,2) to [R=$R$,i>^=$i_R$] (1,0) to (0,0);
+\draw
+(1,2) to (2.5,2)  to [C,l_=$C$,v^=$v_C(t)$,i>_=$i_C$] (2.5,0) -- (1,0)
+;
+\end{circuitikz}
+\subcaption{RC parallelo}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}\centering
+\begin{circuitikz}
+\draw
+(0,0) to [voltage source,invert,l=$e(t)$] (0,2)
+      to [R,l_=$R$] (2.5,2) to [L,l_=$L$,i_>=$i_L(t)$,v^=$v_L$] (2.5,0) -- (0,0)
+;
+\end{circuitikz}
+\subcaption{RL serie}
+\end{subfigure}
+\end{figure}
+
+Siano i generatori impulsivi: $j(t) = Q\delta(t)$ ed $e(t) = \Phi\delta(t)$.
+$$
+j(t) = \frac{v_C}{R} + i_C = Q\delta(t) = \frac{v_C}{R} + C\frac{dv_C}{dt}
 $$
 Si integra la funzione nell'istante in cui è centrata la $\delta(t)$ ossia:
 $$
-\int_{0^-}^{0^+} Q\delta(\tau)d\tau  = \int_{0^-}^{0^+}\frac{v_c}{R}d\tau + C[v_c(0^+)-v_c(0^-)]
-\Leftrightarrow Q = Cv_c(0^+) \ \ [Q] = C \text{ (Coulomb)}
+\int_{0^-}^{0^+} Q\delta(\tau)d\tau  = \cancel{\int_{0^-}^{0^+}\frac{v_C}{R}d\tau} + C[v_C(0^+)-\cancel{v_C(0^-)}]
+\Leftrightarrow Q = Cv_C(0^+) \ \ [Q] = \si{\coulomb} \text{ (Coulomb)}
 $$
 $$
-\int_{0^-}^{0^+} Q\delta(\tau)d\tau = \text{ Coulomb}
+\left[\int_{0^-}^{0^+} Q\delta(\tau)d\tau\right] = \text{ Coulomb}
 $$
+Tirando la costante $C$ fuori dall'integrale, che ha la dimensione di Coulomb, l'integrale rimanente
+deve essere adimensionale.
 Ciò significa che la $\delta(t)$ ha la dimensione di \si{\per\second} per essere coerente con l'integrale
 e restituire una quantità finita.
 
-Caso duale con circuito RL:
+\subparagraph{Caso duale con circuito RL:}
 
 $$
 e(t) = R\cdot i_L + v_L
@@ -54,8 +123,8 @@ $$
 
 Anche in questo caso per avere la dimensione del flusso in \si{\weber} per $\Phi$ allora la $\delta(t)$ 
 avrà le dimensioni di \si{\per\second}.
-
-\paragraph{Procedura generale per la risoluzione di circuiti con generatori impulsivi}
+\newpage
+\subsection{Procedura generale per la risoluzione di circuiti con generatori impulsivi}
 Si ha un circuito dinamico semplice al quale è collegato un generatore impulsivo,
 si determina il circuito resistivo associato, ossia vengono sostituiti i condensatori con 
 generatori di tensione e gli induttori con generatori di corrente.
@@ -64,6 +133,25 @@ Si ottiene un circuito parziale in cui si spengono i generatori interni (anche q
 
 Un ulteriore circuito è ottenuto facendo l'esatto contrario e spegnendo quindi il generatore impulsivo.
 
+\begin{figure}[H]\centering
+\begin{subfigure}{0.45\linewidth}\centering
+\includegraphics[width=\linewidth]{lezione_03_circuito_A}
+\subcaption{Circuito iniziale}
+\end{subfigure}
+\begin{subfigure}{0.45\linewidth}\centering
+\includegraphics[width=\linewidth]{lezione_03_circuito_B}
+\subcaption{Circuito resistivo associato}
+\end{subfigure}
+\begin{subfigure}{0.45\linewidth}\centering
+\includegraphics[width=\linewidth]{lezione_03_circuito_C-}
+\subcaption{Circuito C'}
+\end{subfigure}
+\begin{subfigure}{0.4\linewidth}\centering
+\includegraphics[width=\linewidth]{lezione_03_circuito_C--}
+\subcaption{Circuito C"}
+\end{subfigure}
+\end{figure}
+37:19
 Si applica il PSE (Principio di Sovrapposizione degli effetti)
 $$
 \begin{cases}
@@ -78,7 +166,7 @@ Viceversa dal circuito C'' si valutano le variabili di stato utilizzando come co
 le variabili ottenute in C'.
 
 $$
-v_C(0^+) = \frac{1}{C} \int_{0^-}^{0^+} i_c'(\tau)d\tau \ , \ v_c(0^-) = 0
+v_C(0^+) = \frac{1}{C} \int_{0^-}^{0^+} i_C'(\tau)d\tau \ , \ v_C(0^-) = 0
 $$
 $$
 i_L(0^+) = \frac{1}{L} \int_{0^-}^{0^+} i_L'(\tau)d\tau \ , \ i_L(0^-) = 0
