@@ -151,7 +151,10 @@ Un ulteriore circuito è ottenuto facendo l'esatto contrario e spegnendo quindi 
 \subcaption{Circuito C"}
 \end{subfigure}
 \end{figure}
-37:19
+È sempre necessario determinare la dinamica dello stato, in modo da ridurre tutte le equazioni circuitali
+ad un'equazione differenziale e non algebrico-differenziale, in seguito si ricavano le restanti 
+variabili mediante operazioni algebriche.
+
 Si applica il PSE (Principio di Sovrapposizione degli effetti)
 $$
 \begin{cases}
@@ -160,10 +163,11 @@ i_C = i_C' + i_C''
 \end{cases}
 $$
 
-Dal circuito C' si ricavano $v_L'$ e $i_C'$ causate dai generatori impulsivi 41:41
+Dal circuito C' si ricavano $v_L'$ e $i_C'$ in funzione dei generatori impulsivi, si determineranno le 
+discontinuità delle variabili di stato $i_L$ e $v_C$ a $t=0$.
 
-Viceversa dal circuito C'' si valutano le variabili di stato utilizzando come condizioni iniziali
-le variabili ottenute in C'.
+Viceversa dal circuito C'' si valutano le variabili di stato utilizzando le condizioni iniziali
+ricavate in C'.
 
 $$
 v_C(0^+) = \frac{1}{C} \int_{0^-}^{0^+} i_C'(\tau)d\tau \ , \ v_C(0^-) = 0
@@ -176,11 +180,137 @@ e l'intervallo è infinitesimo.
 
 Infine si risolve il circuito C'' usando le variabili di stato appena calcolate in C'.
 
-Esercizio 
+In sintesi per analizzare un circuito con generatori impulsivi bisogna determinare le condizioni iniziali
+utilizzando un circuito ausiliario in cui i generatori non impulsivi sono spenti e ogni induttore e condensatore
+è sostituito da un circuito aperto o un corto circuito.
 
-Conclusione dell'esercizio: le variabili di stato possono essere discontinue ma limitate, le altre
+\subsection{Esempio risposta impulsiva circuito del secondo ordine}
+Si vuole risolvere il seguente circuito del secondo ordine
+\begin{figure}[H]\centering
+\begin{circuitikz}
+\draw
+(0,0) to [R,l=$R_1$] (0,2) to (2,2)
+      to [C,l_=$C$,i>_=$i_C$,v^=$v_C$] (2,0) to (0,0);
+\draw
+(2,2) to [R,l_=$R_2$,i^=$i(t)$] (4,2)
+      to [L,l_=$L$,i=$i_L$] (4,0) to (2,0)
+;
+\draw
+(4,2) to (5,2) to [current source,invert,l=$\delta(t)$] (5,0) to (4,0);
+\end{circuitikz}
+\caption*{Circuito C'}
+\end{figure}
+
+Si vuole determinare la risposta impulsiva per la variabile $i(t)$ che non è una variabile di stato.
+Si procede con il metodo risolutivo sostituendo i bipoli dinamici con i rispettivi generatori chiusi 
+o aperti
+\begin{figure}[H]\centering
+\begin{circuitikz}
+\draw
+(0,0) to [R,l=$R_1$] (0,2) to (2,2)
+      to [short,i>_=$i_C'$] (2,0) to (0,0);
+\draw
+(2,2) to [R,l_=$R_2$,i^=$i'(t)$] (4,2)
+      to [open,v=$v_L'$] (4,0) to (2,0)
+;
+\draw
+(4,2) to (5,2) to [current source,invert,l=$\delta(t)$] (5,0) to (4,0);
+\end{circuitikz}
+\end{figure}
+
+Il resistore $R_1$ è in parallelo ad un corto circuito, di conseguenza si vede che la corrente
+$i_C'(t)$ è pari a $\delta(t)$ mentre $v_L' = R_2\delta(t)$
+
+Si ricavano le variabili di stato
+\begin{align*}
+v_C(0^+) &= \frac{1}{C}\int_{0^-}^{0^+} i_C' d\tau = \frac{1}{C} \int_{0^-}^{0^+}\delta(\tau)d\tau = \frac{1}{C}\\
+i_L(0^+) &= \frac{1}{L}\int_{0^-}^{0^+} v_L' d\tau = \frac{1}{L} \int_{0^-}^{0^+}R_2\delta(\tau)d\tau = \frac{R_2}{L}
+\end{align*}
+
+Si risolve il circuito C'' per determinare le equazioni di stato introducendo i generatori sostitutivi
+
+\begin{figure}[H]\centering
+\begin{circuitikz}
+\draw
+(0,0) to [R,l=$R_1$] (0,2) to (2,2)
+      to [voltage source,i>_=$i_C''$,v^=$v_C$] (2,0) to (0,0);
+\draw
+(2,2) to [R,l_=$R_2$,i^=$i''(t)$] (4,2)
+      to [current source,l_=$i_L$,v^>=$v_L''$] (4,0) to (2,0)
+;
+\end{circuitikz}
+\caption*{Circuito C''}
+\end{figure}
+
+Applicando il PSE spegnendo prima il generatore di corrente e poi quello di tensione
+\begin{align*}
+i_C'' &= -\frac{v_C}{R_1} - i_L= C\frac{dv_C''}{dt}\\
+v_L'' &= v_C - R_2i_L = L\frac{di_L''}{dt}
+\end{align*}
+Quelle appena ottenute sono le equazioni di stato sostituendo le equazioni caratteristiche dei bipoli dinamici.
+Si ottiene infine il problema di Cauchy soluzione dello stato del circuito
+$$\begin{cases}
+C\frac{dv_C''}{dt} = -\frac{v_C}{R_1} - i_L \\
+L\frac{di_L''}{dt} = v_C - R_2i_L \\
+v_C(0^+) = \frac{1}{C} \\
+i_L(0^+) = \frac{R_2}{L}
+\end{cases}$$
+La richiesta dell'esercizio è trovare la $i(t)$, si applica la LKC al nodo tra 
+il resistore $R_2$ e l'induttore
+$$
+i(t) = i_L - \delta(t)
+$$
+è quindi sufficiente sottrarre l'impulso $\delta(t)$ alla corrente $i_L$ ricavata risolvendo le
+equazioni di stato.
+
+Per ricavare $i_L$ si isola $v_C$ dalla seconda equazione di stato (che contiene anche la derivata di $i_L$)
+e la si sostituisce nella prima.
+$$
+v_C = R_2i_L + L\frac{di_L}{dt}
+$$
+$$
+C \frac{d}{dt}\left[R_2i_L + L\frac{di_L}{dt} \right] = -\frac{R_2}{R_1}i_L - \frac{L}{R_1}\frac{di_L}{dt} - i_L
+$$
+raccogliendo
+$$
+LC\frac{d^2i_L}{dt^2} + \left(R_2C +\frac{L}{R_1}\right)\frac{di_L}{dt} + \left(1+\frac{R_2}{R_1}\right)i_L = 0
+$$
+Eseguendo il controllo dimensionale tutti i termini hanno le dimensioni di una corrente (Ampere).
+Si suppone che il circuito sia dissipativo e dunque i resistori con resistenza maggiore di zero,
+le radici del polinomio caratteristico hanno dunque parte reale negativa (il transitorio si estingue).
+\newpage
+
+Aggiungendo le condizioni iniziali si ottiene il problema di Cauchy
+$$\left\{
+\begin{aligned}
+&LC\frac{d^2i_L}{dt^2} + \left(R_2C +\frac{L}{R_1}\right)\frac{di_L}{dt} + \left(1+\frac{R_2}{R_1}\right)i_L = 0
+\\
+&i_L(0^+) = \frac{R_2}{L}\\
+&\frac{di_L}{dt}(0^+) = \frac{1}{L} \left[v_C(0^+) - R_2i_L(0^+)\right] = \frac{1}{LC} - \frac{R_2^2}{L^2}
+\end{aligned}\right.
+$$
+
+Si valutano le frequenze naturali del circuito risolvendo il polinomio caratteristico, dividendo tutto per $LC$
+$$
+\lambda^2 + \left(\frac{R_2}{L} + \frac{1}{R_1C}\right)\lambda + \frac{\left(1+\frac{R_2}{R_1}\right)}{LC}=0
+$$
+
+Si suppone che $\lambda_1$ e $\lambda_2$ siano reali e distinte, la soluzione del problema sarà del tipo
+$$\begin{aligned}
+i_L(t) &= K_1e^{\lambda_1t} + K_2e^{\lambda_2t}\\
+i_L(0^+) &=\frac{R_2}{L} = K_1 + K_2\\
+\frac{di_L}{dt}(0^+) &= \frac{1}{LC} - \frac{R_2^2}{L^2} = \lambda_1K_1 + \lambda_2K_2
+\end{aligned}
+$$
+La corrente incognita $i(t)$ sarà per quanto visto precedentemente mediante la LKC
+$$
+i(t) = i_L-\delta(t) = \left(K_1e^{\lambda_1t} + K_2e^{\lambda_2t}\right)u(t) -\delta(t)
+$$
+
+Si osserva che le variabili di stato possono essere discontinue ma comunque limitate, le altre
 variabili possono invece essere anche impulsive.
 
+\newpage
 \paragraph{Risposta forzata di un circuito LTI}
 Si suppone di avere un solo generatore esterno, se ne vogliono determinare le variabili ai capi
 di un solo bipolo, si parla di filtro o sistema SISO \textit{(Single Input Single Output)},
@@ -192,7 +322,7 @@ $x(t)$.
 Si partiziona l'asse dei tempi in tanti intervalli di ampiezza $\Delta t$ centrati negli istanti
 di tempo $t_k = k\Delta t\ ,\ k\ \in\ Z$.
 
-Costruiamo un'approssimazione $x_\Delta(t)$ costante di valore $x(t_k)$ in $\left[t_k-\frac{\Delta t}{2}\ ,\ 
+Si costruisce un'approssimazione $x_\Delta(t)$ costante di valore $x(t_k)$ in $\left[t_k-\frac{\Delta t}{2}\ ,\ 
 t_k+\frac{\Delta t}{2}\right]$.
 La funzione $x(t)$ può quindi essere rappresentata come somma di impulsi rettangolari successivi,
 sfruttando la funzione $\Pi_{\Delta}(t)$, sarà quindi:
@@ -206,7 +336,7 @@ d\tau
 $$
 Questa conclusione richiama la proprietà di campionamento della $\delta(t)$.
 
-Se vogliamo calcolare la risposta di $x(t)$ allora:
+Se si vuole calcolare la risposta di $x(t)$ allora:
 $$
 \text{Risp}\left\{x(t)\right\} = y(t) = \text{Risp} \left\{\int_{-\infty}^{+\infty} x(\tau)\delta(t-\tau)
 d\tau\right\}
@@ -217,8 +347,9 @@ y(t) = \int_{-\infty}^{+\infty} x(\tau)h(t-\tau) d\tau
 $$
 chiamato integrale di convoluzione, $h(t)$ è la risposta impulsiva per la variabile di uscita.
 
-Si parla di prodotto di convoluzione tra due funzioni $f,g \ \in\ R$
+Si parla di prodotto di convoluzione tra due funzioni $f,g \ \in\ \mathbb{R}$
 $$
 f * g(t) = \int_{-\infty}^{+\infty} f(\tau)g(t-\tau)d\tau
 $$
-Si può calcolare la risposta impulsiva... rivedi 1:57:00
+Noto l'ingresso $x(t)$ si può calcolare la risposta forzata se si conosce la risposta impulsiva
+dello stesso circuito, relativa alla medesima grandezza di uscita.
