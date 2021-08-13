@@ -6,18 +6,25 @@ $$
 h(t) = 0 \ t<0,\ h(t) \neq 0 \forall t\ \geq 0 \Rightarrow t - \tau \geq 0 \Rightarrow \tau \leq t
 $$
 
-Se l'ingresso $x(t) = 0,\ t< t_0$ allora possiamo affermare che la $y(t)$ avrà come estremi di integrazione
+Se l'ingresso $x(t) = 0,\ t< t_0$ allora si può affermare che la $y(t)$ avrà come estremi di integrazione
 $t_0^-$ e $t$, con il - si sottintende la possibilità che siano presenti $\delta(t_0)$ in quell'istante 
 di tempo.
 
 \paragraph{Esempi dell'utilizzo dell'integrale di convoluzione}
 Circuito RC parallelo con forzamento esponenziale, forzato da un generatore di corrente.
+\begin{figure}[H]\centering
+\begin{circuitikz}
+\draw (0,0) to [current source,l=$j(t)$] (0,2)
+to (1,2) to [R,l^=$R$] (1,0) to (0,0);
+\draw (1,2) to (2.5,2) to [C,l_=$C$,v^=$v_C$,i_>=$i_C$] (2.5,0) to (1,0);
+\end{circuitikz}
+\end{figure}
 $$
 j(t) = I e ^{\frac{t}{\tau}} u(t)
 $$
 Per studiare la risposta del circuito bisogna per prima cosa determinare la $V_{cf}(t)$, mediante
 lo studio della risposta impulsiva.
-Per determinare la risposta impulsiva si forza il circuito con una $\delta(t)$, utilizzando i metodi 
+Per determinare la risposta impulsiva si forza il circuito con una $\delta(t)$ e lo si studia utilizzando i metodi 
 precedenti.
 
 $i_c = \delta(t)$
@@ -59,12 +66,12 @@ e(t) = \begin{cases}
 0\ t>0
 \end{cases}
 $$
-Possiamo rappresentare questa funzione mediante l'uso di due funzioni $u(t)$
+Si può rappresentare questa funzione mediante l'uso di due funzioni $u(t)$
 
 $$
 e(t) = \frac{t}{T}\left[u(t) - u(t-T)\right]
 $$
-Determiniamo quindi la risposta $h(t)$ mediante la risposta al gradino $g(t)$
+Si può quindi calcolare la risposta $h(t)$ mediante la risposta al gradino $g(t)$
 Le equazione di stato è:
 $$
 \begin{cases}
@@ -80,7 +87,7 @@ ma
 $$
 h(t) = \frac{dg}{dt} = \frac{1}{RC}e^{-\frac{t}{RC}},\ t\geq 0
 $$
-Determiniamo ora la risposta forzata $v_{cf}(t)$:
+Si determina ora la risposta forzata $v_{cf}(t)$:
 $$
 V_{cf}(t) = \int_{0^-}^{t} e(\tau) h(t-\tau)d\tau = \int_{0^-}^{t}\frac{\tau}{T}\left[u(\tau) - u(t-\tau)\right]
 \cdot \frac{1}{RC} e ^{-\frac{t-\tau}{RC}}\cdot u(t-\tau)d\tau
@@ -113,19 +120,19 @@ $$
 t > T:\ \int_{0^-}^{T} \frac{\tau}{T}\frac{1}{RC} e^{-\frac{t-\tau}{RC}}d\tau =  e^{-\frac{t-T}{RC}}-\frac{RC}{T}\left(e^{-\frac{t-T}{RC}} -e^{-\frac{t}{RC}} \right)
 $$
 
-\section{La trasformata di Laplace}
-Il metodo dei fasori si basa sul concetto che conoscendo l'andamento di regime con grandezze isofrequenziali, si può risolvere il sistema traspotando le grandezze sinusoidali nel dominio simbolico
-dei fasori, si rapprentano cioè le grandezze descrittive dei bipoli medianti numeri complessi.
+\subsection{La trasformata di Laplace}
+Il metodo dei fasori si basa sul concetto che conoscendo l'andamento di regime con grandezze isofrequenziali, si può risolvere il sistema trasportando le grandezze sinusoidali nel dominio simbolico
+dei fasori, si rappresentano cioè le grandezze descrittive dei bipoli medianti numeri complessi.
 
 Mediante la L-Trasformata si possono usare ancora una volta equazioni nel dominio complesso ma per 
 studiare reti nel regime transitorio.
 
 \paragraph{Analisi delle reti dinamiche LTI con Laplace}
-Consideriamo un blocco contenenti tutte le equazioni circuitali nel dominio del tempo,
-otteniamo tutte le equazioni di stato di induttori e condensatori.
+Si consideri un blocco contenente tutte le equazioni circuitali nel dominio del tempo,
+si ottengono tutte le equazioni di stato di induttori e condensatori.
 Questo risultato si ottiene mediante i metodi di risoluzione delle ODE, per arrivare alla conoscenza
-della dinamica delle \textit{variabili di stato}, se sono poi interessato ad altre variabili, attravarso
-operazioni \textit{algebriche lineari} si conosce la dinamica di utte le variabili del circuito.
+della dinamica delle \textit{variabili di stato}, se si è poi interessati ad altre variabili, attraverso
+operazioni \textit{algebriche lineari} si conosce la dinamica di tutte le variabili del circuito.
 
 In alternativa, sfruttando la trasformata di Laplace, le equazioni ODE vengono trasformate nel dominio
 di Laplace, saranno equazioni algebriche lineari anzichè differenziali, risolvendo quindi solo un sistema
@@ -134,7 +141,7 @@ il procedimento inverso di antitrasformazione si ricavano le variabili di stato 
 l'antitrasformazione può essere invece posticipata ed eseguita dopo aver ricavato le generiche variabili
 del circuito, ancora una volta con operazioni algebriche.
 
-La soluzione di un sistema di equazioni differenziali è notevolmente più complesso che risolvere un 
+La soluzione di un sistema di equazioni differenziali è notevolmente più complessa che risolvere un 
 sistema lineare, ecco il vantaggio dell'utilizzo della trasformata di Laplace.
 
 Definizione della trasformata di Laplace di una funzione $f(t)\ \in\ [0,+\infty[\to R$:
@@ -159,7 +166,7 @@ e^{st}F(s)ds
 $$
 con $\Re\left\{s\right\} = \gamma$ tale che tutte le singolarità di $F(s)$ si trovino a sinistra di $\gamma$.
 
-\subsection{Proprietà della L-trasformata} Ricordando quelle utilizzate nel metodo dei fasori:
+\paragraph{Proprietà della L-trasformata} Ricordando quelle utilizzate nel metodo dei fasori:
 \begin{itemize}
 \item Unicità: $\forall f(t) \in [0,+\infty[\ \exists!\ F(s) = L[F(s)]$
 
