@@ -1,6 +1,7 @@
 
-Funzioni generiche $t\cdot f(t)$ con $f(t)$ le funzioni precedentemente analizzate.
-Esponenziale:
+Funzioni generiche: $t\cdot f(t)$ con $f(t)$ le funzioni precedentemente analizzate.
+\begin{itemize}
+\item Esponenziale:
 $$
 L[te^{\lambda t}] = \int_{0^-}^{+\infty} t e^{\lambda t}e^{-s t} dt = \int_{0^-}^{+\infty}t e^{(\lambda -s)t}
 dt = 
@@ -12,7 +13,7 @@ $$
 = 0 + \frac{1}{s-\lambda}\cdot\frac{1}{s-\lambda} = \frac{1}{s-\lambda} ,\ \Re\{s\} > \lambda
 $$
 
-Coseno:
+\item Coseno:
 $$
 L[t\cos(\omega t)] = L\left[t \frac{e^{j\omega t}+e^{-j\omega t}}{2}\right] = \frac{1}{2}\frac{1}{(s-j\omega)^2} + \frac{1}{2}\frac{1}{(s+j\omega)^2} = 
 $$
@@ -24,15 +25,15 @@ $$
 = \frac{s^2-\omega^2}{(s^2+\omega^2)^2}
 $$
 
-Seno:
+\item Seno:
 $$%%Rivedi il rigo qui sotto
-L[t\sin(\omega t)] = \frac{1}{2j} \left[\frac{1}{(s-j\omega)^2}-\frac{1}{s+j\omega}^2\right] =
+L[t\sin(\omega t)] = \frac{1}{2j} \left[\frac{1}{(s-j\omega)^2}-\frac{1}{(s+j\omega)^2}\right] =
 \frac{1}{2j}\left[\frac{s^2-\omega^2+2j\omega s-s^2+\omega^2+2j\omega s}{(s^2-\omega^2)^2+4\omega^2s^2}\right] = 
 $$
 $$
 = \frac{2\omega s}{(s^2+\omega^2)^2}
 $$
-Funzioni che descrivono moti periodici smorzati, sfruttando la proprietà di traslazione
+\item Funzioni che descrivono moti periodici smorzati, sfruttando la proprietà di traslazione
 $f(t) = e^{-\sigma t}\cos(\omega t),\  e^{-\sigma t}\sin(\omega t)$:
 $$
 L[e^{-\sigma t}\cos(\omega t)] = L[\cos(\omega t)](s+\sigma) = \frac{s+\sigma}{(s+\sigma)^2+\omega^2}\ \Re\{s\} > -\sigma
@@ -40,9 +41,20 @@ $$
 $$
 L[e^{-\sigma t}\sin(\omega t)] = L[\sin(\omega t)](s+\sigma) = \frac{\omega}{(s+\sigma)^2+\omega^2}\ \Re\{s\} > -\sigma
 $$
+\end{itemize}
+\newpage
 \paragraph{Circuito RL serie con L-trasformata}
 Sia dato il circuito RL serie, se ne voglia determinare la risposta impulsiva $h(t) = i_L(t)$ dato l'ingresso
 $e(t) = \delta(t)$
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}
+\draw (0,0) to [voltage source,invert,l=$e(t)$] (0,2)  
+            to  [R,l=$R$] (2,2) to [L,i>_=$i_L$,l_=$L$,v^=$v_L$] (2,0) to (0,0);
+\end{circuitikz}
+\end{figure}
+
 $$
 \begin{cases}
 \delta(t) = R\cdot i_L + L\frac{di_L}{dt} \\
@@ -71,9 +83,10 @@ $$
 I_L = \frac{1}{s(R+sL)} = \frac{A}{s} + \frac{B}{R+sL} = \frac{AR+sLA+sB}{s(R+sL)}
 $$
 Si ricavano i valori di $A$ e $B$ sfruttando il principio di identità dei polinomi:
-$$
-LA+B = 0,\ AR = 1
-$$
+$$\begin{cases}
+LA+B = 0\\
+AR = 1
+\end{cases}$$
 
 $$
 A = \frac{1}{R},\ B = -\frac{L}{R}
@@ -85,15 +98,15 @@ I_L(s) = \frac{1}{R}\left[\frac{1}{s}-\frac{L}{R+SL}\right] = \frac{1}{R}\left[\
 $$
 Antitrasformando si ottiene:
 $$
-i_L(t) = \frac{u(t)}{R} - \frac{1}{R}e^{-\frac{R}{L} \text{eccetera}}
+i_L(t) = \frac{u(t)}{R} - \frac{1}{R}e^{-\frac{R}{L}t}u(t) = \frac{u(t)}{R}\left(1-e^{-\frac{R}{L}}t\right)
 $$
 
-\paragraph{Equazioni circuitali nel dominio della L-trasformata}
+\subsection{Equazioni circuitali nel dominio della L-trasformata}
 Si considera ancora la classe dei circuiti dinamici lineari tempo-invarianti (LTI),
 nel dominio del tempo sono necessarie le LKT e le LKC, le caratteristiche dei bipoli e dei generatori.
-Questo sistema è un DAE, va trasformato in un ODE nelle variabili di stato per poter essere risolto.
+Questo sistema è un DAE (Differential Algebric Equation), va trasformato in un ODE nelle variabili di stato per poter essere risolto.
 
-Se trasformo tutte le equazioni che provengono dalle leggi di Kirchoof ottengo ancora le stesse equazioni
+Se si trasformano tutte le equazioni che provengono dalle leggi di Kirchhoff si ottengono ancora le stesse equazioni
 ma nel dominio di Laplace:
 $$
 \sum_{k} (\pm)I_k(s) = 0
@@ -102,47 +115,39 @@ $$
 \sum_k (\pm)V_k(s) = 0
 $$
 Ancora le equazioni dei bipoli:
-$$
-V_R(s) = RI_R(s)
-$$
-$$
-V_L(s) = sLI_L(s) - Li_L(0^-)
-$$
-$$
-I_C(s) = sCV_C(s) - Cv_c(0^-)
-$$
+$$\begin{aligned}
+V_R(s) &= RI_R(s)\\
+V_L(s) &= sLI_L(s) - Li_L(0^-)\\
+I_C(s) &= sCV_C(s) - Cv_C(0^-)\\
+V_E(s) &= E(s)\\
+I_J(s)&= J(s)
+\end{aligned}$$
 
-Per trattare i circuiti in evoluzione forzata minuto(46) si può associare un'impedenza equivalente
+Per trattare i circuiti in evoluzione forzata ($i_L(0^-)=0,\ v_C(0^-)=0$) si può associare un'impedenza equivalente
 ai bipoli, ad esempio l'impedenza operatoriale dell'induttore diventa
-$$
-Z_L(s) = sL,\ V_L(s) = Z_LI_L(s)
-$$
-$$
-Z_C = \frac{1}{sC}
-$$
-Questo risultato ci permette di utilizzare tutti i metodi precedentemente visti per la risoluzione
+$$\begin{aligned}
+Z_L(s) = sL,&\ V_L(s) = Z_LI_L(s)\\
+Y_C(s) = sC,&\ I_C= Y_C V_C 
+\end{aligned}$$
+Questo risultato permette di utilizzare tutti i metodi precedentemente visti per la risoluzione
 di un circuito, si esegue un'antitrasformazione alla fine per ritornare nel dominio del tempo.
-Abbiamo posto però l'ipotesi di trovarsi in evoluzione forzata, ossia supponendo uno stato iniziale 
+Si è però posta l'ipotesi di trovarsi in evoluzione forzata, ossia supponendo uno stato iniziale 
 nullo, cosa accade se ciò non è vero?
 
 Stato non zero iniziale:
-$$
-V_L(s) = sLI_L - L i_L(0^-)
-$$
-$$
-V_L(s) = Z_LI_L+E_0
-$$
+$$\begin{aligned}
+V_L(s) &= sLI_L - L i_L(0^-)\\
+V_L(s) &= Z_LI_L+E_0
+\end{aligned}$$
 Si modella il bipolo dinamico con un generatore di tensione in serie, impulsivo.
 Si può fare un ragionamento simile con il condensatore al quale si affianca un generatore di corrente
 in parallelo $J_{cc}$
-$$
-I_C(s) = sCV_C(s) - Cv_C(0^-)
-$$
-$$
-J_{cc} = Cv_C(0^-)
-$$
+$$\begin{aligned}
+I_C(s) &= sCV_C(s) - Cv_C(0^-)\\
+J_{cc} &= Cv_C(0^-)
+\end{aligned}$$
 
-\paragraph{Funzione di trasferimento e legame con la risposta impulsiva}
+\subsection{Funzione di trasferimento e legame con la risposta impulsiva}
 Sia preso un generico circuito LTI, viene forzato con un generatore di tensione, se ne analizzano
 le grandezze su un singolo bipolo interno al circuito, considerato quindi come un SISO $h(t)$,
 l'uscita del sistema può essere calcolata mediante l'integrale di convoluzione della risposta impulsiva.
@@ -153,7 +158,7 @@ Si trasporta il fenomeno nel dominio di Laplace e si considera lo stesso circuit
 operatoriali, si può ancora considerare il sistema come un SISO con ingresso pari a $X(s)$ e uscita
 pari a $Y(s)$.
 Questo circuito è a-dinamico lineare con un solo generatore, quindi tutte le grandezze sono proporzionali
-al singolo forzamento, posso quindi affermare che $Y(s) = H(s)X(s)$ con $H(s)$ un coefficiente di 
+al singolo forzamento, si può quindi affermare che $Y(s) = H(s)X(s)$ con $H(s)$ un coefficiente di 
 proporzionalità.
 
 $H(s)$ viene ricavato, mediante il teorema di Borel:
@@ -170,7 +175,7 @@ $$
 H(s) \stackrel{\text{def}}{=} \frac{Y(s)}{X(s)} = L[h(t)]
 $$
 
-Esempio di applicazione, circuito LC forzato in risonanza:
+\paragraph{Esempio} Circuito LC forzato in risonanza:
 
 Si ha un generatore ideale di tensione, un induttore ideale e un condensatore ideale senza perdite,
 questo circuito rappresenta il limite ideale 
@@ -211,12 +216,24 @@ $$
 
 \newpage
 \paragraph{Calcolo della funzione di trasferimento per un circuito del secondo ordine}
-Circuito minuto 1:40:00
-Siamo interessati come uscita alla $v(t)$ dato l'ingresso $e(t)$, ci trasferiamo ancora una volta dal 
+
+$$R_1 = \SI{5}{\ohm}\ R_2=R_3 = \SI{10} {\ohm}\ C=\SI{0.5}{\farad}\ L=\SI{1}{\henry}$$
+\begin{figure}[H]\centering
+\begin{circuitikz}
+\draw (0,2) to [open,v=$e(t)$] (0,0); 
+\draw (0,2) to [R,l_=$R_1$] (2,2)
+            to [L,l_=$L$] (4,2)
+            to [R,l_=$R_2$] (4,0) to (0,0);
+\draw (4,2) to (7,2)
+            to [R,l_=$R_3$,v^=$v(t)$] (7,0) to (4,0);
+\draw (5.5,2) to [C,l_=$C$] (5.5,0);
+\end{circuitikz}
+\end{figure}
+Si è interessati all'uscita $v(t)$ dato l'ingresso $e(t)$, ci si trasferisce ancora una volta dal 
 dominio del tempo a quello di Laplace.
 Si assegnano i parametri del circuito:
 $R_1 = \SI{5}{\ohm}\ R_2=R_3=\SI{10}{\ohm}\ C =\SI{0.5}{\farad}\ L=\SI{1}{\henry} $
-Sostituiamo i bipoli con impedenze, troviamo la $Z_{eq}$ pari a $5 + s$ in serie con $\frac{1}{0.2+0.5s}$
+Sostituiti i bipoli con impedenze, si trovano la $Z_{eq}$ pari a $5 + s$ in serie con $\frac{1}{0.2+0.5s}$
 La tensione in uscita sarà la partizione della tensione in ingresso tra queste due impedenze:
 $$
 V(s) = E(s)\frac{Z_{eq}^{(2)}}{Z_{eq}^{(2)}+Z_{eq}^{(1)}} = \frac{1}{(0.2+0.5 s)(\frac{1}{0.2+0.5 s}+5+s)} = \frac{1}{2+2.75+0.5s^2}
