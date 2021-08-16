@@ -1,17 +1,17 @@
-\section{Campi conservativi e rotazionali}
+\subsection{Campi conservativi e rotazionali}
 \paragraph{Rotore} di un campo vettoriale $\vec{v}(P)$:
 
-Consideriamo una linea chiusa $\Gamma$ all'interno del dominio $\Omega$ ed una superficie
+Si consideri una linea chiusa $\Gamma$ all'interno del dominio $\Omega$ ed una superficie
 $S_\Gamma$ (di orlo $\Gamma$).
 
-Supponiamo che questa superficie passi su un punto $P$ e consideriamo il versore normale alla 
+Si supponga che questa superficie passi su un punto $P$ e si consideri il versore normale alla 
 superficie orientato con la regola della mano destra rispetto al versore tangente della linea $\Gamma$.
-Consideriamo inoltre:
+Si consideri inoltre:
 $$
 \lim_{\text{Area}(S_\Gamma)\to 0}\left(\frac{\oint_{\Gamma} \vec{v}\cdot\hat{t}dl}{\text{Area}(S_\Gamma)}\right) \stackrel{\text{def}}{=} \left(\nabla\times\vec{v}(P)\right)\cdot\hat{n}
 $$
 Nel caso in cui questo limite esista e sia finito e indipendente dalla forma di $\Gamma$, per definizione
-diciamo che questa è la componente normale di un campo vettoriale chiamato \textit{rotore} di $\vec{v}$,
+si afferma che questa è la componente normale di un campo vettoriale chiamato \textit{rotore} di $\vec{v}$,
 $(\nabla \times \vec{v})\cdot \hat{n}$.
 
 In coordinate cartesiane si ricava il rotore con:
@@ -34,7 +34,7 @@ $$
 \paragraph{Teorema di Stokes}
 Dato un campo $\vec{v} \in \Omega$ sufficientemente regolare, $\Gamma$ chiusa in $\Omega$.
 
-Se calcolo la circuitazione alla linea gamma
+Si calcola la circuitazione alla linea $\Gamma$
 $$
 \oint_\Gamma \vec{v}\cdot\hat{t} dl = \iint_{S_\Gamma} \nabla\times \vec{v} \cdot \hat{n} dS
 $$
@@ -69,11 +69,11 @@ $$
 I campi irrotazionali soddisfano dunque il principio di deformazione del contorno, in analogia
 ai campi solenoidali che soddisfano il principio di deformazione della superficie.
 Preso un dominio $\Omega$ e due linee in esso contenute $\gamma_1$ e $\gamma_2$,
-se ipotizzo che 
+si ipotizza che 
 $$
 \vec{v}(P) : \nabla\times\vec{v}(P) =0\ \forall P \in \Omega
 $$
-ipotizzata una superficie $S\gamma_1\gamma_2$ compresa tra le due curve allora utilizzando
+ipotizzata una superficie $S\gamma_1\gamma_2$ compresa tra le due curve, utilizzando
 il teorema di Stokes
 $$
 \iint_{S\gamma_1\gamma_2} \nabla\times\vec{v}\cdot\hat{n}dS = 0 = \oint_{\gamma_1} \vec{v}\cdot\hat{t} dl - \oint_{\gamma_2} \vec{v}\cdot\hat{t}dl = 0\ \forall\gamma_1,\gamma_2\in \Omega
@@ -95,7 +95,7 @@ $$
 \Rightarrow \vec{v}(P) \text{ è conservativo in }\Omega
 $$
 
-\paragraph{Teorema di decomposizione di Helmhotz} (in tutto lo spazio)
+\subsection{Teorema di decomposizione di Helmhotz} (in tutto lo spazio)
 
 Preso un campo $\vec{v}(P),\ P \in R^3$ normale all'infinito ossia che il modulo del campo tenda
 a 0 quando la distanza tende all'infinito, in tale ipotesi può essere decomposto nella somma
@@ -110,19 +110,23 @@ $$
 superfici chiuse per un campo $\vec{v}(P)$ normale all'infinito, allora $\vec{v}(P)$ è univocamente
 determinato}
 
+\newpage
+\subsection{Operatori vettoriali}
 \textbf{Operatore NABLA} ($\nabla$)
 $$
 \nabla = \frac{\partial}{\partial x}\vec{e_x} + \frac{\partial}{\partial y}\vec{e_y} + \frac{\partial}{\partial z}\vec{e_z}
 $$
-Si esprime il gradiente di un campo scalare $f(P)$ con: $\nabla f$ come se facessi il prodotto
+Si esprime il gradiente di un campo scalare $f(P)$ con: $\nabla f$ come se si facesse il prodotto
 termine a termine dei componenti dell'operatore $\nabla$
 $$
-\text{grad} f(P) = \nabla f = \frac{\partial f}{\partial x}\vec{e_x}
+\text{grad} f(P) = \nabla f = \frac{\partial f}{\partial x}\vec{e_x} + \frac{\partial f}{\partial y}\vec{e_y} + 
+\frac{\partial f}{\partial z}\vec{e_z}
 $$
 
 \textbf{Divergenza}
 $$
-\text{div}\vec{v}(P) = \nabla\cdot\vec{v} = \frac{\partial v_x}{\partial x} + 
+\text{div}\vec{v}(P) = \nabla\cdot\vec{v} = \frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y} +
+\frac{\partial v_z}{\partial z}
 $$
 
 \textbf{Rotore}
@@ -140,7 +144,7 @@ $$
 \end{align*}
 
 Operatori differenziali del secondo ordine:
-$ \vec{v}(P) \in C^2(\Omega) $ e considero combinazioni possibili di grad,div e rot per ottenere
+$ \vec{v}(P) \in C^2(\Omega) $ e si considerano combinazioni possibili di grad,div e rot per ottenere
 operatori del secondo ordine:
 \begin{align*}
 \nabla f &\text{ scalare in un vettore}\\
@@ -159,27 +163,27 @@ $$
 $$
 Laplaciano vettore:
 $$
-\nabla\nabla\cdot\vec{v} - \nabla\times\nabla\times\vec{v} = \vec{\nabla}^2\vec{v}
+\nabla\nabla\cdot\vec{v} - \nabla\times\nabla\times\vec{v} \stackrel{\text{def}}{=} \vec{\nabla}^2\vec{v}
+$$
+In coordinate cartesiane:
+$$
+\vec{\nabla}^2\vec{v} = \nabla^2v_x\vec{e_x} + \nabla^2v_y\vec{e_y} + \nabla^2v_z\vec{e_z}
 $$
 
-$$
-\vec{\nabla}^2\vec{v} = \vec{\nabla}^2v_x\vec{e_x} + ...
-$$
-
+\newpage
 \section{Richiami di Elettromagnetismo}
-L'elettromagnetismo è una delle 4 interazioni fondamentali che governano l'universo, le altre
-sono le interazioni forti, riguardanti i quark, le interazioni deboli riguardano gli elettroni e i 
+L'elettromagnetismo è una delle 4 interazioni fondamentali che governano l'universo, esistono infatti le interazioni forti, riguardanti i quark, le interazioni deboli riguardano gli elettroni e i 
 neutrini, le interazioni elettromagnetiche (che riguardano le cariche) e le interazioni gravitazionali
 che coinvolgono le masse.
 
 \subsection{La carica elettrica}
 Possono essere di due specie, positive e negative e sono associate a interazioni di tipo repulsivo tra
 cariche della stessa specie e attrattive tra cariche di segno opposto.
-Si parla in questo caso di cariche ferme, altirmenti sarebbero soggette ad altre tipologie di forze.
-L'Unità di misura è il Coulomb [\si{\coulomb}].
+Si parla in questo caso di cariche ferme, altrimenti sarebbero soggette ad altre tipologie di forze.
+L'unità di misura è il Coulomb [\si{\coulomb}].
 La carica è invariante per una particella in quiete o in moto.
 
-La carica è quantizzata, ossia considerando una vportzione di materia in una certa regione 
+La carica è quantizzata, ossia considerando una porzione di materia in una certa regione 
 dello spazio vuoto, la carica contenuta $\Delta Q = N^+q_p + N^-q_e\ \ N^+,N^- \in N$
 e i valori di $q_p$ e $q_e$ 
 
@@ -194,10 +198,10 @@ carica è sottoposta ad una forza elettromagnetica chiamata \textbf{forza di Lor
 $$
 \vec{F}(p,t) = q\left[\vec{E}(P,t)+\vec{v}(P,t)\times\vec{B}(P,t)\right]
 $$
-dove $\vec{B}$ è il campo di induzione magentica anche detto densità di flusso magnetico.
+dove $\vec{B}$ è il campo di induzione magnetica anche detto densità di flusso magnetico.
 
 Ricordando la dinamica newtoniana: $\vec{F} = m\vec{a}$, integrando l'equazione del moto si può
-ricavare la legge orario di ciascuna carica, mediante la legge di Lorentz ammesso che si conoscano 
+ricavare la legge oraria di ciascuna carica, mediante la legge di Lorentz ammesso che si conoscano 
 il campo elettrico e il campo di induzione magnetica.
 Viene riconosciuto come modello di Maxwell-Lorentz.
 
@@ -227,9 +231,9 @@ Si introduce una descrizione della materia nella teoria del continuo, facendo ri
 distribuzioni di cariche:
 Presa una regione $\Omega$ contenente un punto $P$ attorno al quale consideriamo un volumetto elementare 
 $\Delta\Omega$, all'interno del volumetto sono contenute diverse cariche che si muovono a diverse 
-velocità. Nell'ipotesi del continuo si deve supporre che $\Delta \Omega$ deve essere sufficientemente ...
-Ma deve essere anche sufficientemente grande in modo da contenere un numero di particelle che definiscano
-grandezze che variano con continuità.
+velocità. Nell'ipotesi del continuo si deve supporre che $\Delta \Omega$ deve essere sufficientemente piccolo
+per avere un'accurata risoluzione del fenomeno, ma deve essere anche sufficientemente grande in modo da 
+contenere un numero elevato di particelle che definiscano grandezze che variano con continuità.
 
 Si definisce quindi la funzione 
 $$
@@ -242,8 +246,10 @@ di cariche di quello specifico segno, ovviamente $\rho = \rho^+ + \rho^-$.
 \textbf{Densità di corrente elettrica}
 Si definiscono con $v^+$ e $v^-$ le velocità medie (di \textit{drift}) dei portatori di carica positivi e negativi.
 
+
 $$
-\vec{J}(P,t) \stackrel{\text{def}}{=} \frac{N^+q_p\vec{v}^+ + }{\text{Vol}(\Delta \Omega)} = ...
+\vec{J}(P,t) \stackrel{\text{def}}{=} \frac{N^+q_p\vec{v}^+ + N^-q_e\vec{v}^-}{\text{Vol}(\Delta \Omega)} = 
+n^+q_p\vec{v}^+ + n^-q_e\vec{v}^- = \rho^+ \vec{v}^+ + \rho^- \vec{v}^-
 $$
 
 $$
@@ -261,9 +267,15 @@ La quantità di carica netta che attraversa la superficie S nell'intervallo di t
 $$
 \delta Q_S = \vec{J}\cdot \hat{n}\ dS\ dt
 $$
-01:35:00
-
-
+infatti $\vec{J}\cdot\hat{n}dS$ rappresenta la porzione di portatori di carica che attraversano
+la superficie $dS$. Analizzando l'intero contributo che attraversa la superficie
+$$
+dQ_S = \iint_S \vec{J}\cdot\hat{n}dS dt
+$$
+quindi
+$$
+\frac{dQ_S}{dt} = i_S(t)
+$$
 
 \textbf{Principio di conservazione della carica per sistemi aperti}
 Sia $\Sigma$ una superficie chiusa che racchiude una superficie
