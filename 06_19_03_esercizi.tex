@@ -1,6 +1,6 @@
 
-\paragraph{Calcolo di antitrasformate di funzioni razionali}
-Supponiamo che nei circuiti siano presenti soltanto alcune tipologie di generatori, come ad esempio
+\subsection{Calcolo di antitrasformate di funzioni razionali}
+Si supponga che nei circuiti siano presenti soltanto alcune tipologie di generatori, come ad esempio
 generatori stazionari, sinusoidali... In queste ipotesi le trasformate di Laplace sono funzioni 
 razionali, del tipo:
 $$
@@ -41,7 +41,7 @@ antitrasformate dei singoli rapporti:
 $$
 L^{-1}[F^*(s)] = L^{-1}\left[\sum_{i=1}^{N}\frac{k_i}{s-p_i}\right] = \sum_{i=1}^{N} k_ie^{p_i t}
 $$
-\textbf{Poli multipli}, ossia con molteplicità maggiore di 1, supponiamo ad esempio $p_1$ sia un polo multiplo:
+\textbf{Poli multipli}, ossia con molteplicità maggiore di 1, si supponga ad esempio che $p_1$ sia un polo multiplo:
 $$
 F^*(s) = \frac{k_{11}}{(s-p_1)^2} + \frac{k_{12}}{s-p_1} + \sum_{i=3}^{N} \frac{k_i}{s-p_i}
 $$
@@ -67,7 +67,7 @@ F^*(s) = \frac{1}{(s+2)^2}+\frac{2}{s+2},\ L^{-1}[F^*(s)] = te^{-2t}+2e^{-2t}
 $$
 
 \textbf{Poli complessi e coniugati:}
-Troviamo le radici del denominatore della seguente funzione:
+Si trovano le radici del denominatore della seguente funzione:
 $$
 F^*(s) = \frac{2s-1}{s^2+4s+5} = \frac{k_1}{s+2+j} + \frac{k_2}{s+2-j}
 $$
@@ -151,11 +151,11 @@ $$
 $$
 \lambda_{1,2} = -5 \pm j 1000
 $$
-Quindi abbiamo modi naturali periodici smorzati ossia:
+Quindi si hanno modi naturali periodici smorzati ossia:
 $$
 v(t) = e^{-5t}(k_1\cos(1000t)+k_2\sin(1000t))
 $$
-Imponiamo ora le condizioni iniziali:
+Si impongono ora le condizioni iniziali:
 $$
 v(0^+) = 0 \Rightarrow k_1 = 0
 $$
@@ -175,7 +175,7 @@ $$
 $$
 500e^{-5t}\left[200\cos(1000t)-\sin(1000t)\right]\cdot u(t)
 $$
-Verifica della $h(t)$, utilizziamo la procedura per analizzare la risposta all'impulso, sostituendo
+Verifica della $h(t)$, utilizzando la procedura per analizzare la risposta all'impulso, sostituendo
 i bipoli dinamici, il condensatore diventerà un corto circuito e l'induttore un circuito aperto:
 \begin{figure}[h]
 \centering
@@ -190,7 +190,7 @@ i bipoli dinamici, il condensatore diventerà un corto circuito e l'induttore un
 \end{figure}
 
 $i_C$ sarà chiaramente pari a $\delta(t)$ e $v_L = 0$.
-Determiniamo la discontinuità di $v_C$:
+Si determina la discontinuità di $v_C$:
 $$
 v_c(0^+) = \frac{1}{C}\int_{0^-}^{0^+}\delta(\tau)d\tau = \frac{1}{C}
 $$
@@ -219,7 +219,7 @@ h(t) = e^{-5t}\left[10^5\cos(1000t)-500\sin(1000t)\right] = 500e^{-5t}\left[200\
 $$
 
 \textbf{Esercizio 2 :}
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \begin{circuitikz}
 \draw (0,0) to [R,l=$R_1$] (0,2);
@@ -229,11 +229,11 @@ $$
 \end{circuitikz}
 \end{figure}
 
-Determina la risposta impulsiva nel dominio del tempo con la trasformata di Laplace
+Si determini la risposta impulsiva nel dominio del tempo con la trasformata di Laplace
 $$
 R_1 = \SI{1}{\ohm},\ R_2 = \SI{3}{\ohm},\ L = \SI{3}{\henry},\ C = \SI{1}{\farad}
 $$
-Determiniamo le condizioni iniziali dovute al generatore impulsivo $e(t) = \delta(t)$
+Si determinano le condizioni iniziali dovute al generatore impulsivo $e(t) = \delta(t)$
 
 %circuito ausiliario
 \begin{figure}[h]
@@ -246,7 +246,7 @@ Determiniamo le condizioni iniziali dovute al generatore impulsivo $e(t) = \delt
 \end{circuitikz}
 \caption{Circuito ausiliario}
 \end{figure}
-Determiniamo quindi le variabili di stato $v_L$ e $i_C$:
+Si calcolano quindi le variabili di stato $v_L$ e $i_C$:
 $$
 v_L = -\frac{R_1}{R_1+R_2}\delta(t) = -\frac{1}{4}\delta(t)
 $$
@@ -264,7 +264,7 @@ $$
 v(t) = -\frac{R_2}{R_1+R_2}\delta(t) = -\frac{3}{4}\delta(t) = -0.75\cdot\delta(t)
 $$
 
-Determiniamo ora le  equazioni di stato sfruttando le condizioni iniziali appena ricavate:
+Si ricavano ora le equazioni di stato sfruttando le condizioni iniziali appena ricavate:
 
 \begin{figure}[h]
 \centering
@@ -288,7 +288,7 @@ $$
 v(t) = R_2i_c = -\frac{R_2}{R_1+R_2}v_c + \frac{R_1R_2}{R_1+R_2}i_L = -\frac{3}{4}v_c +\frac{3}{4}i_L
 $$
 
-Riscriviamo ora la ODE in forma matriciale:
+Riscrivendo ora la ODE in forma matriciale:
 $$
 \begin{pmatrix}
  C & 0 \\
@@ -331,7 +331,7 @@ D^{-1}A\cdot\underline{v} = \lambda\underline{v} \Rightarrow D^{-1}A =
 -\frac{1}{12} & -\frac{1}{4}
 \end{bmatrix}
 $$
-Calcoliamo quindi gli autovalori della matrice risolvendo il seguente problema:
+Si calcolano quindi gli autovalori della matrice risolvendo il seguente problema:
 $$
 \text{det}\left(A-\lambda I\right) = 
 \begin{vmatrix}
@@ -347,11 +347,11 @@ $$
 $$
 \lambda_{1,2} = -\frac{1}{4} \pm \sqrt{\frac{1}{16}+\left(\frac{1}{16}+\frac{1}{48}\right)} = -\frac{1}{4}\pm \frac{\sqrt{3}}{12} = - 0.25 \pm 0.1433j
 $$
-Abbiamo ancora una volta una soluzione sinusoidale smorzata
+Si ha ancora una volta una soluzione sinusoidale smorzata
 $$
 v_c(t) = e^{-\sigma t}\left(k_1\cos(\omega t) + k_2\sin(\omega t)\right),\ \sigma = 0.25,\ \omega = 0.1443
 $$
-Calcoliamo direttamente anche la derivata in forma esplicita, necessaria al calcolo di $i_C$:
+Si ricava direttamente anche la derivata in forma esplicita, necessaria al calcolo di $i_C$:
 $$
 \frac{dv_c}{dt}(t) = -\sigma e^{-\sigma t}\left(k_1\cos(\omega t)+k_2\sin(\omega t)\right) + e^{-\sigma t}(-k_1\omega \sin(\omega t) + k_2 \omega \cos(\omega t)) =
 $$
@@ -363,7 +363,7 @@ $$
 \label{eq:dvc_esercizio2}
 \end{equation}
 
-Imponiamo ora le condizioni iniziali:
+Imponendo le condizioni iniziali:
 $$
 v_c(0^+) = \SI{-0.25}{\volt} \Rightarrow k_1 = -0.25
 $$
@@ -381,7 +381,7 @@ In definitiva:
 $$
 v_c(t) = e^{-0.25 t}\left[-0.25\cos(0.1443 t) - \frac{\sqrt{3}}{12}\sin(0.1443 t)\right]
 $$
-Applichiamo l'equazione determinata dal circuito resistivo associato:
+Applicando l'equazione determinata dal circuito resistivo associato:
 $$
 v(t) = R_2 i_c - \frac{R_2}{R_1+R_2}\delta(t) = R_2C\frac{dv_c}{dt} - \frac{R_2}{R_1+R_2}\delta(t) =
 3\frac{dv_c}{dt} - \frac{3}{4}\delta(t)=
@@ -397,8 +397,8 @@ impulsivo.
 \newpage
 \textbf{Soluzione con la L-trasformata}
 
-Utilizziamo le impedenze operatoriali
-\begin{figure}[h]
+Utilizzando le impedenze operatoriali
+\begin{figure}[H]
 \centering
 \begin{circuitikz}
 \draw (0,0) to [generic=$Z_{R1}$] (0,2) to (2,2) to [V,invert,l_=$V_s$] (2,0) to (0,0);
@@ -416,7 +416,7 @@ $$
 $$
 = \frac{- 3s(3s+1)}{12s^2+6s+1} = H(s)
 $$
-Antitrasformiamo $H(s)$:
+Antitrasformando $H(s)$:
 $$
 L^{-1}\left[\frac{-3s(3s+1)}{12s^2+6s +1}\right] = -3 \frac{d}{dt}L^{-1} \left[\frac{3s+1}{12s^2+6s+1}\right] = -\frac{1}{4} \frac{d}{dt} L^{-1} \left[\frac{3s+1}{s^2+0.5s + \frac{1}{12}}\right] =
 $$
@@ -427,7 +427,7 @@ Decomponendo in fratti semplici:
 $$
 F(s) = \frac{k_1}{s+0.25+0.1443j} + \frac{k_2}{s+0.25-0.1443j}
 $$
-Calcoliamo i residui eseguendo opportunamente i limiti con $p_1 = -0.25-0.1443j$ e $p_2$ il suo 
+Si calcolano i residui eseguendo opportunamente i limiti con $p_1 = -0.25-0.1443j$ e $p_2$ il suo 
 coniugato:
 $$
 k_1 = \frac{3p_1+1}{p_1-p_2} = \frac{3}{2}-\frac{\sqrt{3}}{2}j
@@ -444,7 +444,7 @@ La trasformata inversa viene eseguita con le funzioni esponenziali:
 $$
 L^{-1}[F(s)] = \frac{3+\sqrt{3}j}{2}e^{-0.25 t}e^{-j0.1443 t} + \frac{3-\sqrt{3}j}{2}e^{-0.25 t}e^{j0.1443 t}
 $$
-Raggruppando i termini`:
+Raggruppando i termini:
 $$
 L^{-1}[F(s)] = e^{-0.125 t}\left[3\cos(0.1443 t) + \sqrt{3}\sin(0.1443 t)\right]\cdot u(t)
 $$
