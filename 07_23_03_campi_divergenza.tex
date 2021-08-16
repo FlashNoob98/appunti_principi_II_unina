@@ -45,7 +45,7 @@ con $\vec{e_x},\ \vec{e_y},\ \vec{e_z}$ i versori degli assi coordinati $l_1,\ l
 
 In alternativa si possono utilizzare le coordinate \textbf{cilindriche}:
 
-\begin{figure}[h] %esempio punto P coordinate cilindriche
+\begin{figure}[H] %esempio punto P coordinate cilindriche
 \centering
 \begin{tikzpicture}[scale=3,tdplot_main_coords]
 \draw [thick,->] (0,0,0) -- (1,0,0) node[anchor= north east]{$l_1$};
@@ -98,7 +98,7 @@ $$
 
 Un altro sistema di riferimento comunemente utilizzato è quello delle coordinate \textbf{sferiche}.
 
-\begin{figure}[h] %esempio punto P coordinate sferiche
+\begin{figure}[H] %esempio punto P coordinate sferiche
 \centering
 \begin{tikzpicture}[scale=3,tdplot_main_coords]
 \draw [thick,->] (0,0,0) -- (1,0,0) node[anchor= north east]{$l_1$};
@@ -153,7 +153,7 @@ r &= \sqrt{x^2+y^2+z^2} \\
 $$
 
 \subsection{Spostamenti elementari}
-Supponiamo uno spostamento lungo la direzione $l_1$ associamo un coefficiente ``metrico'' pari 
+Si supponga uno spostamento lungo la direzione $l_1$ associando un coefficiente ``metrico'' pari 
 alla distanza percorsa nel sistema di coordinate.
 
 \begin{align*}
@@ -273,7 +273,7 @@ In ogni punto $P$ passa una ed una sola superficie di livello.
 Nel caso bidimensionale $f(x,y) = f_0$.
 
 
-Definiamo la \textbf{linea di forza} di un campo vettoriale.
+Si definisce la \textbf{linea di forza} di un campo vettoriale.
 Sia $\vec{v(P)} : \Omega \to R^3$ e sia la linea $\gamma$ tangente in ogni punto a $\vec{v(P)}$,
 è per definizione una linea vettoriale di $\vec{v}$.
 L'orientamento dei versori tangenti della linea $\gamma$ descrivono direzione e verso di $\vec{v}$ 
@@ -298,7 +298,7 @@ y(x_0) = y_0 \\
 z(x_0) = z_0
 \end{cases}
 $$
-Questa equazione ci restituisce la linea di campo a partire dal punto $P_0$ in forma parametrica
+Questa equazione restituisce la linea di campo a partire dal punto $P_0$ in forma parametrica
 rispetto ad $x$.
 
 Si definisce una \textbf{superficie vettoriale} di $\vec{v}(P)$
@@ -316,7 +316,7 @@ questi punti. Si definisce questo ``tubo'' in modo tale che le linee vettoriali 
 \newpage
 \subsection{Circuitazioni e flussi di campi vettoriali}
 
-\textbf{Circuitazione} (o circolazione) di $\vec{v}$ sulla linea chiusa $\Gamma$, supponiamo un punto $Q$ sulla 
+\textbf{Circuitazione} (o circolazione) di $\vec{v}$ sulla linea chiusa $\Gamma$, si suppone un punto $Q$ sulla 
 linea e il versore tangente $\hat{t}(Q)$ e una linea vettoriale $\vec{v}(Q)$ con un certo angolo
 $\alpha$ rispetto a $\hat{t}(Q)$ allora:
 
@@ -332,7 +332,7 @@ $$
 \oiint_{\Sigma}\vec{v}\cdot\hat{n}\ dS = \oiint_{\Sigma} \left|\vec{v}(Q)\right|\cos\alpha\ dS
 $$
 
-\paragraph{Operatori differenziali}
+\subsection{Operatori differenziali}
 
 \textbf{Gradiente} siano date due superfici di livello $f(P) = f_0 = S_0$ e
 $f(P) = f_0 + \Delta f = S_1$, consideriamo la distanza $d(P,P_0)$ con 
@@ -341,7 +341,7 @@ $P_0$ ed individuo un punto $P$ su $S_1$, si considera ora il rapporto $\frac{f(
 $$
 \lim_{P\to P_0} \left[\frac{f(P)\cdot f(P_0)}{d(p,p_0)}\right] \stackrel{\text{\text{def}}}{=} \left.\frac{\partial f}{\partial n}\right|_{P_0} 
 $$
- definisce la derivata parziale lungo la direzione normale passante per il punto $P_0$.
+definisce la derivata parziale lungo la direzione normale passante per il punto $P_0$.
 
 Si definisce il \textbf{gradiente} di $f$ (indicato con $\nabla f$) il vettore con modulo pari a 
 $\left.\frac{\partial f}{\partial n}\right|_{P_0}$, verso pari a quello della
@@ -380,11 +380,11 @@ $$
 $$
 
 
-Aggiungiamo inoltre l'operatore \textbf{divergenza} di un campo vettoriale $\nabla\cdot\vec{v}$.
+Si aggiunge inoltre l'operatore \textbf{divergenza} di un campo vettoriale $\nabla\cdot\vec{v}$.
 
 Sia $\Sigma$ una superficie chiusa che delimita una regione di spazio $\Omega_\Sigma$ contenente 
 il punto $P\in\Omega$, sia $\hat{n}$ il versore normale alla
-superficie, ne definiamo il flusso uscente alla superficie $\Phi_\Sigma$
+superficie, se ne definisce il flusso uscente alla superficie $\Phi_\Sigma$
 $$
 \oiint_\Sigma \vec{v}\cdot \hat{n}dS = \Phi_\Sigma
 $$
@@ -416,7 +416,7 @@ $$
 \oiint_\Sigma \vec{v}\cdot \hat{n} dS = 0\ \ \forall\ \Sigma \in \Omega
 $$
 
-Per campi solenoidali, il flusso attraverso una superficie aperta dipende solo dall'orlo
+Per i campi solenoidali, il flusso attraverso una superficie aperta dipende solo dall'orlo
 della superficie (flusso concatenato ad una linea).
 $$
 \iint_{S_\Gamma'} \vec{v}\cdot\hat{n}dS = \iint_{S_\Gamma''} \vec{v}\cdot\hat{n}dS 
@@ -427,15 +427,15 @@ Campo \textbf{indivergente}: $\vec{v}(P)$ indivergente in $\Omega$ se $div \vec{
 
 I campi indivergenti soddisfano il principio di deformazione della superficie:
 
-Supponiamo di avere un dominio $\Omega$ contenente due superfici, $\Sigma_1$ contenente $\Sigma_2$
+Si supponga di avere un dominio $\Omega$ contenente due superfici, $\Sigma_1$ contenente $\Sigma_2$
 allora:
 $$
 \iint_{\Sigma_1} \vec{v}\cdot\hat{n}dS = \iint_{\Sigma_2}\vec{v}\cdot\hat{n}dS 
 $$
 le due superfici sono deformabili con continuità una nell'altra senza mai uscire da $\Omega$.
 
-Determino la regione di spazio compresa tra le due superfici $\Omega_{\Sigma_1\Sigma_2}$,
-effettuando l'integrale della divergenza esso sarà pari a 0 (perchè nulla la divergenza) ma per 
+Determinata la regione di spazio compresa tra le due superfici $\Omega_{\Sigma_1\Sigma_2}$,
+effettuando l'integrale della divergenza esso sarà pari a 0 (perché nulla la divergenza) ma per 
 il teorema della divergenza esso sarà pari all'integrale sulle 2 superfici:
 $$
 \iiint_{\Omega_{\Sigma_1\Sigma_2}} \nabla\cdot\vec{v}dV = 0 = \oiint_{\Sigma_1}\vec{v}\cdot\hat{n}dS - \oiint_{\Sigma_2}\vec{v}\cdot\hat{n}dS
@@ -443,20 +443,20 @@ $$
 
 Quando la \textbf{solenoidalità} è equivalente alla divergenza?
 
-Se $\vec{v}(P)$ è solenoidale in $\Omega$ allora il flusso è pari a zero in ogni sigma,$\oiint_\Sigma \vec{v}\cdot\hat{n}dS = 0 \ \forall \Sigma $ allora
-anche il flusso sulle superfici utilizzate per calcolare il limite che conduce alla divergenza del campo vettoriale ricadono in questa circostanza, quindi $\nabla\cdot\vec{v}$ per $p\to 0$ è pari a 0 in ogni punto
+Se $\vec{v}(P)$ è solenoidale in $\Omega$ allora il flusso è pari a zero in ogni $\Sigma$, $\oiint_\Sigma \vec{v}\cdot\hat{n}dS = 0 \ \forall \Sigma $ allora
+anche il flusso sulle superfici utilizzate per calcolare il limite che conduce alla divergenza del campo vettoriale ricade in questa circostanza, quindi $\nabla\cdot\vec{v}$ per $p\to 0$ è pari a 0 in ogni punto
 del dominio $\Omega$, quindi la solenoidalità implica l'indivergenza.
 L'indivergenza diventa una condizione necessaria per la solenoidalità.
 
-Per dimostrare il viceversa è necessario richiedere un'ipotesi sul dominio,ossia che esso sia
-a connessione superficiale semplice (semplicemente connesso?)
-ogni superficie appartenente ad omega può essere ridotta ad un punto con continuità senza uscire da omega,
-allora questa condizione è sufficiente per dire che $\vec{v}(P)$ è solenoidale in omega.
+Per dimostrare il viceversa è necessario richiedere un'ipotesi sul dominio, ossia che esso sia
+a connessione superficiale semplice (semplicemente connesso)
+ogni superficie appartenente ad $\Omega$ può essere ridotta ad un punto con continuità senza uscire da $\Omega$,
+allora questa condizione è sufficiente per dire che $\vec{v}(P)$ è solenoidale in $\Omega$.
 
 Un esempio di campo non solenoidale è quello con un dominio multi-connesso, ossia un dominio
 al quale viene sottratta un'intera regione di spazio al suo interno.
 Se anche la divergenza del campo in un punto di questo dominio è pari a 0, il campo non è 
-solenoidale perchè l'integrale del flusso non è pari a 0.
+solenoidale perché l'integrale del flusso non è pari a 0.
 
 Nella regione non inclusa nel dominio potrebbero essere infatti presenti delle cariche
 elettriche, e la divergenza non sarebbe nulla.
