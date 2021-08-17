@@ -1,6 +1,6 @@
 
 \paragraph{Legge di Ampére-Maxwell (locale) su superfici di discontinuità}
-Presa una superficie $S$ di normale $\hat{n}$ e indichiamo la regione al di sopra di $S$ con
+Presa una superficie $S$ di normale $\hat{n}$ e si indichi la regione al di sopra di $S$ con
 (2) e quella al di sotto con (1).
 Si considera una linea chiusa $\Gamma$ orientata di tipo \textit{rettangolare} ortogonale alla
 superficie, e la superficie orlante è chiamata $S_\Gamma$ con versore normale $\hat{m}$ orientato 
@@ -13,11 +13,12 @@ $i_{S_\Gamma}$ sono le correnti concatenate alla superficie $S_\Gamma$.
 Ricordando che il tratto di linea elementare ha una lunghezza $L$ e un'altezza $h$, 
 il vettore densità di corrente superficiale $\vec{J}_S$ e $\vec{J}$ un'eventuale
 densità di corrente volumetrica, allora
-$$
-\oint_\Gamma\vec{B}\cdot\hat{t}dl = \vec{B}_1\cdot\hat{t}_1L + \vec{B}_2\cdot\hat{t}_2L +
-\int_B^C\vec{B}\cdot\hat{t}dl + \int_D^A\vec{B}\cdot\hat{t}dl = \mu_0\vec{J}_S\cdot\hat{m} + 
+$$\begin{aligned}
+\oint_\Gamma\vec{B}\cdot\hat{t}dl &= \vec{B}_1\cdot\hat{t}_1L + \vec{B}_2\cdot\hat{t}_2L +
+\int_B^C\vec{B}\cdot\hat{t}dl + \int_D^A\vec{B}\cdot\hat{t}dl = \\
+&= \mu_0\vec{J}_S\cdot\hat{m} + 
 \mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}\cdot\hat{m}hL + \mu_0 \vec{J}\cdot\hat{m}hL
-$$
+\end{aligned}$$
 
 passando al limite per $h/l \to 0,\ \hat{t}_1 = \hat{t} = \hat{t}_2,\ \hat{t} = \hat{n}\times\hat{m}$
 
@@ -70,7 +71,7 @@ $$
 $$
 \oint_\Gamma \vec{E}\cdot\hat{t}dl = 0 \ \forall\Gamma\ \text{Legge di Faraday-Neumann}
 $$
-Si vuole vedere ora come ricavare le configurazioni di campo elettrico associati a distribuzioni
+Si vuole analizzare come ricavare le configurazioni di campo elettrico associati a distribuzioni
 di cariche assegnate, utilizzando le equazioni di Maxwell in forma integrale.
 
 \subsection{Distribuzione di carica volumetrica a simmetria sferica}
@@ -178,7 +179,7 @@ $$
 $$
 L'espressione è valida sia se il punto $p$ è interno ad $\Omega$ o meno. Bisogna prestare attenzione
 al caso in cui $p=p'$ dato che la funzione integranda risulta singolare ma resta finito l'integrale
-perchè esteso ad un volume.
+perché esteso ad un volume.
 Se la regione $\Omega$ è al finito $(\text{diam}(\Omega)<\infty)$ si dimostra che 
 $$
 \lim_{|\vec{r}_p| \to \infty} |\vec{E}(p)| = 0,\ \ \vec{E}(p) \propto \frac{1}{|\vec{r}_p|^2}
@@ -202,8 +203,8 @@ $$
 Simmetrica di rotazione intorno l'asse $z$ ed è invariante per traslazione lungo l'asse $z$ (o $l_3$).
 
 Per questo motivo il campo $\vec{E}$ dipende ancora da una sola componente, $\vec{E}(p) = \vec{E}(r)$
-mentre $E_\varphi = E_z = 0$. $E_\varphi$ è nulla perchè una rotazione di 180\textdegree\ attorno
-l'asse $z$ invertirebbe il segno del campo lasciando $\rho$ invariata; $E_z = 0$ perchè una rotazione
+mentre $E_\varphi = E_z = 0$. $E_\varphi$ è nulla perché una rotazione di 180\textdegree\ attorno
+l'asse $z$ invertirebbe il segno del campo lasciando $\rho$ invariata; $E_z = 0$ perché una rotazione
 attorno a $\vec{e}_r$ invertirebbe il segno di $E_z$ lasciando $\rho$ invariata.
 Queste affermazioni sono contraddittorie e l'unico modo per validarle è imporre che le componenti
 siano nulle. In conclusione:
