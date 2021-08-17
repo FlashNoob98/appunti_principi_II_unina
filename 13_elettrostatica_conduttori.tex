@@ -56,7 +56,7 @@ nell'origine degli assi.
 
 Il potenziale è quindi costante all'interno della sfera e decresce con andamento $1/r$ all'esterno
 della stessa, ossia per $r \geq R$ come mostrato in figura \ref{fig:potenziale_sfera_carica}.
-\begin{figure}[h] % plot di un grafico 2D andamento del potenziale elettrico
+\begin{figure}[H] % plot di un grafico 2D andamento del potenziale elettrico
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -93,7 +93,7 @@ samples = 60,
 Ricordando che $\vec{E} = -\nabla V$ ma il potenziale è in questo caso una funzione 
 monodimensionale, il gradiente si calcola con una semplice derivata, il risultato
 è mostrato in figura \ref{fig:campo_sfera_carica}.
-\begin{figure}[h] % plot di un grafico 2D andamento del campo elettrico
+\begin{figure}[H] % plot di un grafico 2D andamento del campo elettrico
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -151,7 +151,7 @@ V_2(r_0) = 0 & \text{potenziale di riferimento}
 \end{cases}
 $$
 
-Eseguiamo il Laplaciano di $V$ in coordinate cilindriche:
+Si esegue il Laplaciano di $V$ in coordinate cilindriche:
 $$
 \frac{1}{r}\frac{\partial}{\partial r} \left(r\frac{\partial V}{\partial r}\right) = 0 \begin{cases}
 \frac{1}{r}\left(r \frac{\partial^2 V_1}{\partial r^2} + 
@@ -259,7 +259,7 @@ $$
 \end{aligned} \Rightarrow C = \frac{\sigma_0}{\varepsilon_0} \Rightarrow V_2(x) = \frac{\sigma_0}{\varepsilon_0}x + D
 $$
 
-Imponiamo la continuità del potenziale sulle due superfici di carica
+Si impone la continuità del potenziale sulle due superfici di carica
 \begin{align*}
 &V_2\left(\frac{\Delta}{2}\right) = \frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} + \cancel{D} = V_3\left(\frac{\Delta}{2}\right) = A\frac{\Delta}{2} + F = A\frac{\Delta}{2} - B\\
 &V_1\left(-\frac{\Delta}{2}\right) = A\left(-\frac{\Delta}{2}\right)  + B = V_2\left(-\frac{\Delta}{2}\right) = -\frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} + \cancel{D} 
@@ -274,7 +274,7 @@ V(x) = \begin{cases}
 \frac{\sigma_0}{\varepsilon_0} \frac{\Delta}{2} & x\geq \frac{\Delta}{2}
 \end{cases}
 $$
-\begin{figure}[h] % plot di un grafico 2D andamento del potenziale elettrico
+\begin{figure}[H] % plot di un grafico 2D andamento del potenziale elettrico
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -328,7 +328,7 @@ E_x = -\frac{\partial V}{\partial x} = \begin{cases}
 \end{cases}
 $$
 
-\begin{figure}[h] % plot di un grafico 2D andamento del potenziale elettrico
+\begin{figure}[H] % plot di un grafico 2D andamento del potenziale elettrico
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -435,13 +435,13 @@ esteso alla sua frontiera:
 $$
 \iint_{\partial \Omega}\sigma dS = \iint_{\partial \Omega} \varepsilon_0 \vec{E}\cdot \hat{n} dS
 $$
-eseguiamo il rapporto con l'integrale di linea del campo elettrico da un punto sulla superficie all'
-infinito dove si assume il campo nullo.
-
+si esegue il rapporto con l'integrale di linea del campo elettrico da un punto sulla superficie all'infinito 
+dove si assume il campo nullo
 $$
 \frac{\iint_{\partial \Omega}\sigma dS }{\int_P^\infty \vec{E}\cdot\hat{t}dl } = \frac{Q}{V} \stackrel{\text{def}}{=} C
 $$
 si ottiene la capacità del conduttore isolato per definizione.
+
 Si osserva che il potenziale $V$ sarà necessariamente proporzionale alla carica $Q$, si 
 conclude che il rapporto è indipendente dalla carica contenuta nel corpo, ma dipenderà soltanto da
 parametri materiali e geometrici.
