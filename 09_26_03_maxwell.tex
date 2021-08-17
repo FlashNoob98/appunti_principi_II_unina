@@ -1,6 +1,6 @@
 \paragraph{Conduzione nei metalli}
 I portatori di carica sono elettroni ``liberi'' ossia in grado di percorrere distanze
-macroscopiche sotto l'azione di una forza sotto l'azione di un campo elettrico.
+macroscopiche sotto l'azione di una forza dovuta all'azione di un campo elettrico.
 In un metallo a riposo c'è un moto dei portatori di carica ma la velocità media di deriva (drift)
 $$
 \vec{v}\ ^- = 0
@@ -9,30 +9,30 @@ ciò non implica che le particelle siano ferme. Sono soggette infatti anche all'
 
 Nel caso in cui la velocità media sia diversa da 0 si ha una velocità delle particelle più bassa.
 
-Considerando un conduttore cilindrico di sezione di area $S=\SI{1}{\milli\meter^2}$, considerando un'
+Considerando un conduttore cilindrico con sezione di area $S=\SI{1}{\milli\meter^2}$, considerando un'
 intensità di corrente pari ad \SI{1}{\ampere}, e indicando con $n^-$ la densità di elettroni
 solitamente pari a $\frac{10^{23}}{\si{\centi\meter}^3} = \SI{e29}{\meter^{-3}}$
 $$
 J = \frac{i}{S} = 10^6\si{\ampere\per\meter^2} = n^-q_e\vec{v}
 $$
 
-La densità $n^-$ di elettroni liberi è solitamente pari a $10^{23}/\si{\centi\meter^3}$
+La velocità degli elettroni liberi è solitamente pari a
 $$
 v^- = \frac{J}{n^-q_e} =  \frac{\cancel{10^6}}{10^{23}\cdot\cancel{10^6}\cdot (-1.6\cdot10^{19})} \sim 10^{-6} \si{\meter\per\second} = \SI{1}{\micro\meter\per\second}
 $$
 
 \subsection{Equazioni di Maxwell nel vuoto}
-Ci si possono esprimere tutti i fenomeni di elettromagnetismo macroscopico, in presenza di distribuzioni 
-di carica e correnti nello spazio vuoto.
+Con le equazioni di Maxwell nel vuoto si possono esprimere tutti i fenomeni di elettromagnetismo macroscopico, in 
+presenza di distribuzioni di carica e correnti nello spazio vuoto.
 
 Forniscono tutte le possibili circuitazioni e i possibili flussi uscenti da superfici chiuse per i campi
 $\vec{E}$ e $\vec{B}$.
 
 In virtù del teorema di decomposizione di Helmoltz si garantisce che $\vec{E}$ e $\vec{B}$ 
-sono univocamente determinati (assumendoli normali all'infinito).
+siano univocamente determinati (assumendoli normali all'infinito).
 
 \paragraph{Legge di gauss per il campo elettrico $\vec{E}$}
-Consideriamo una superficie chiusa $\Sigma$ nello spazio con bordo $\Omega_\Sigma$
+Considerata una superficie chiusa $\Sigma$ nello spazio con bordo $\Omega_\Sigma$
 la prima equazione di Maxwell afferma: 
 \begin{equation}
 \label{eq:legge_gauss}
@@ -54,14 +54,14 @@ linea).
 $$
 \left[\oiint \vec{B}\cdot\hat{n}dS\right] = \si{\tesla\cdot\meter^2} = \si{\weber}
 $$
-Un'interpretazione di questa legge, in analogia a quella per il campo elettrico, possiamo affermare
+Un'interpretazione di questa legge, in analogia a quella per il campo elettrico, si può affermare
 che non è possibile isolare una ``carica'' magnetica netta, ossia un monopolo magnetico.
 
 Le restanti equazioni di Maxwell riguardano le circuitazioni, definiscono i fenomeni di induzione
 elettromagnetica ed induzione magnetoelettrica.
 
 \paragraph{Legge di Faraday-Neumann-Lenz}
-Consideriamo una linea chiusa qualunque $\Gamma$ ed una qualsiasi superficie $S_\Gamma$ di
+Considerata una linea chiusa qualunque $\Gamma$ ed una qualsiasi superficie $S_\Gamma$ di
 orlo $\Gamma$.
 \begin{equation}
 \oint_{\Gamma} \vec{E}\cdot\hat{t}dl = - \iint_{S_\Gamma} \frac{\partial \vec{B}}{\partial t}
@@ -69,14 +69,14 @@ orlo $\Gamma$.
 \end{equation}
 $\Gamma$ ed $S_\Gamma$ possono anche essere variabili nel tempo.
 
-Se in una regione di spazio c'è un campo $\vec{B}$ variabile nel tempo, esso induce necessariamente
+Se in una regione di spazio è presente un campo $\vec{B}$ variabile nel tempo, esso induce necessariamente
 un campo elettrico nella stessa regione di spazio.
 Si può semplificare l'equazione supponendo che le superfici $\Gamma$ ed $S_\Gamma$ siano ferme
 $$
 \oint_{\Gamma} \vec{E}\cdot\hat{t}dl = -\frac{d}{dt} \iint_{S_\Gamma}\vec{b}\cdot\hat{t}dS = 
 -\frac{d}{dt} \Phi_\Gamma
 $$
-Presi due punti qualsiasi $A$ e $B \in R^3$ supponiamo che esistono infinite linee $\gamma$, il terzo 
+Presi due punti qualsiasi $A$ e $B \in R^3$ si suppone che esistano infinite linee $\gamma$, il terzo 
 termine è il suo opposto.
 
 La differenza fra tensione elettrica calcolata tra due linee che connettono gli stessi punti nello 
@@ -93,7 +93,7 @@ In generale il campo elettrico NON è conservativo.
 \oint_\Gamma \vec{B}\cdot\hat{t} dl = \mu_0 \iint_{S_\Gamma} \left(\vec{J} + \varepsilon_0\frac{\partial\vec{E}}{\partial t}\right)\cdot \hat{n} dS
 \end{equation}
 
-$\mu_0$ è la permeabilità magnentica del vuoto $\mu_0 = 4\pi\cdot10^{-7}\si{\henry\per\meter} $
+$\mu_0$ è la permeabilità magnetica del vuoto $\mu_0 = 4\pi\cdot10^{-7}\si{\henry\per\meter} $
 anche se a partire dalla revisione delle unità di misura del 2019 è una quantità misurata e non più una costante universale (anche se coincide con la precedente definizione per le prime 10 cifre significative)
 
 $$
@@ -133,7 +133,7 @@ $$
 i_{\Sigma}(t) = \oiint_\Sigma\vec{J}\cdot\hat{n}dS = -\frac{d}{dt} \iiint_{\Omega_\Sigma} \rho dV = -\frac{dQ_{\Omega_\Sigma}}{dt}\ \forall\Sigma,\ \forall t
 $$
 
-Consideriamo invece il campo di corrente totale, $\vec{J} + \varepsilon_0\frac{\partial\vec{E}}{\partial t}$, con superfici ferme si ha:
+Considerato invece il campo di corrente totale, $\vec{J} + \varepsilon_0\frac{\partial\vec{E}}{\partial t}$, con superfici ferme si ha:
 $$
 \oiint_{\Sigma} \left(\vec{J} + \varepsilon_0\frac{\partial\vec{E}}{\partial t}\right)\cdot\hat{n}dS = 
 -\frac{dQ_{\Omega_\Sigma}}{dt} + \frac{d}{dt} \oiint_{\Sigma} \varepsilon_0\vec{E}\cdot\hat{n}dS =
@@ -157,11 +157,11 @@ costanti nel tempo.
 &\oiint_\Sigma \vec{J}\cdot\hat{n}dS = 0\ \ \forall\Sigma
 \end{align*}
 Nel limite stazionario $\vec{E}$ e $\vec{B}$ sono disaccoppiati ossia si può determinare
-indipendente l'uno dall'altro.
+indipendentemente l'uno dall'altro.
 
 Osservando le equazioni per il campo elettrico e per quello di induzione magnetica si vede 
 che sono equazioni lineari con un termine noto diverso da 0.
-Sono presenti come termini noti la carica elettrica e le correnti, ossia le sorgenti
+Sono presenti come termini noti la carica elettrica e le correnti: le sorgenti
 per il campo elettrico sono le cariche elettriche, mentre le sorgenti del campo di induzione magnetica
 sono le cariche in moto, ossia le correnti elettriche.
 
@@ -176,7 +176,7 @@ $$
 è possibile ricavare il campo elettrico utilizzando una sola incognita $(\varphi)$ piuttosto che
 conoscere le funzioni di tutte le componenti di $\vec{E}$ nello spazio.
 
-Consideriamo una linea aperta che connetta due punti $A$ e $B$, in condizioni stazionarie, è l'integrale di una forma differenziale esatta
+Considerata una linea aperta che connetta due punti $A$ e $B$, in condizioni stazionarie, è l'integrale di una forma differenziale esatta
 
 $$
 \int_{A\gamma B}\vec{E}\cdot\hat{t}dl \stackrel{\text{def}}{=} v_{AB\gamma} \stackrel{\text{staz.}}{=}
@@ -201,7 +201,7 @@ Per calcolare il lavoro ottenuto su tutte le particelle
 $$
 dL = \vec{E}\cdot\left(N^+q_p\vec{v}\ ^+ + N\ ^-q_e\vec{v}\ ^-\right)dt = \vec{E}\cdot\vec{J}\cdot \text{Vol}(\Delta\Omega)dt
 $$
-Quindi la variazione di lavoro nell'unità di tempo (ossia la potenza?) compiuto sui portatori di carica
+Quindi la variazione di lavoro nell'unità di tempo (ossia la potenza) compiuto sui portatori di carica
 per unità di volume è pari a
 $$
 \frac{1}{\text{Vol}(\Delta\Omega)}\frac{dL}{dt} = \vec{E}\cdot\vec{J} 
@@ -219,18 +219,3 @@ Se si considera un materiale conduttore ohmico, ossia che soddisfa la legge di O
 Questa quantità indica su scala microscopica la dissipazione per effetto Joule in un materiale ohmico
 dovuta agli urti tra le cariche in moto e il reticolo metallico che le sorregge, questa energia di
 vibrazione viene quindi trasformata in calore.
-
-
-\subparagraph{Sorgenti elementari dei campi elettromagnetici}
-Ci si occupa ora del ``secondo'' blocco del modello Maxwell-Lorentz, si analizzano le ulteriori 
-distribuzioni delle sorgenti:
-
-Sia data una struttura con una grandezza preponderante rispetto alle latre due, viene definita 
-\textit{trave}.
-In elettromagnetismo ha senso considerare distribuzioni di cariche e correnti che abbiano una oppure
-due dimensioni prevalenti.
-
-Nel primo caso si hanno densità lineari di carica e corrente.
-
-Nel secondo caso si hanno densità superficiali di carica e corrente.
-

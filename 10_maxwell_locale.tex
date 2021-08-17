@@ -1,18 +1,30 @@
 
-\subsection{Sorgenti elementari del campo elettromagnetico}
+\subsection{Sorgenti elementari dei campi elettromagnetici}
+Ci si occupa ora del ``secondo'' blocco del modello Maxwell-Lorentz, si analizzano le ulteriori 
+distribuzioni delle sorgenti:
+
+Sia data una struttura con una grandezza preponderante rispetto alle altre due, viene definita 
+\textit{trave}.
+In elettromagnetismo ha senso considerare distribuzioni di cariche e correnti che abbiano una oppure
+due dimensioni prevalenti.
+
+Nel primo caso si hanno densità lineari di carica e corrente.
+
+Nel secondo caso si hanno densità superficiali di carica e corrente.
+
 Le particelle cariche in una descrizione nell'ambito del modello Maxwell-Lorentz possono 
 essere viste come particelle puntiformi.
 
 Le particelle cariche sono in realtà dei limiti ideali in cui la densità volumetrica 
 $\rho\to \infty$ quando il volume della regione $\Omega \to 0$.
 
-Preso un punto $P'$ nello spazio in cui posizioniamo una carica $q$, questa è associata ad una densità
+Preso un punto $P'$ nello spazio in cui si posiziona una carica $q$, questa è associata ad una densità
 $\rho(P') = q\delta(P-P')$, con $\delta$ la Delta di Dirac,
 la carica $q$ puntiforme può essere vista come:
 $$
 \iiint_{R^3} \rho dV = \iiint_{R^3} q\delta(P-P')dV = q
 $$
-Grazie alla proprietà di campionamento della $[\delta]= \si{\meter^{-3}}$.
+Sfruttando la proprietà di campionamento della $[\delta]= \si{\meter^{-3}}$.
 
 Le distribuzioni di cariche puntiformi in moto generano delle correnti e si possono trattare 
 analogamente.
@@ -40,21 +52,21 @@ Q  = \int_\gamma \lambda(P') dl\ \ \ [\lambda] = \si{\coulomb/\meter}
 $$
 \subparagraph{Corrente filiforme (lineare)}
 
-Si descrivono con un vettore densità di corrente $J$ calcolato lungo la linea.
+Si descrive con un vettore densità di corrente $J$ calcolato lungo la linea.
 
 Si considera ancora una volta la linea media $\gamma$ e si calcola la corrente con:
 
 $$
 i(p') = \iint_\Sigma \vec{J}\cdot\hat{n}dS \simeq \vec{J}(P')\cdot\hat{t}(P')S
 $$
-Dato che $\hat{t}(P') \simeq \hat{n}(P')$ dato che il moto delle cariche è consentito solo 
+Dato che $\hat{t}(P') \simeq \hat{n}(P')$ poiché il moto delle cariche è consentito solo 
 all'interno del conduttore.
 
 Il campo $\vec{J}(P') = \frac{i(P')}{S}\hat{t}(P')$ ma
 $$
 i(P') = \lim_{\stackrel{S\to 0}{J\to\infty}} \iint_\Sigma \vec{J}\cdot\hat{n}dS
 $$
-si ottiene con un'intensità di corrente non limitata e una sezione che tende a 0 affinchè $JS$ 
+si ottiene con un'intensità di corrente non limitata e una sezione che tende a 0 affinché $J\cdot S$ 
 resti finita.
 
 \paragraph{Densità di carica superficiale}
@@ -74,19 +86,19 @@ $$
 Passando al limite per $h(P') \to 0$ mantenendo la carica $dQ$ finita, necessariamente
 $|\rho(P')| \to \infty$
 Si definisce quindi la densità di carica superficiale $\sigma(P') = \rho(P')h(P')$
-Posso quindi descrivere i fenomeni di carica riferendomi solo alla superficie $S$
+Si possono quindi descrivere i fenomeni di carica riferendosi solo alla superficie $S$
 come se la carica fosse ``spalmata'' sulla superficie.
 
 Quindi la carica sarà pari a:
 $$
 Q = \iint_S \sigma(P')dS
 $$
-
+\newpage
 \subparagraph{Densità di corrente superficiale}
-Mi permette di trattare correnti definite su superfici bidimensionali, anche curve ma descrivibili
+Permette di trattare correnti definite su superfici bidimensionali, anche curve ma descrivibili
 mediante rappresentazione parametrica di 2 parametri.
 
-Supponiamo di avere una superficie identica alla precedente che compone la superficie media
+Si suppone di avere una superficie identica alla precedente che compone la superficie media
 di una struttura con un certo spessore. Nel punto $P' \in S$ si delimita una superficie di controllo
 centrata attorno a questo punto, perpendicolare al piano di $S$ con normale $\hat{n}$, l'area
 di questa superficie è $dS$, la lunghezza della linea appartenente al piano $S$ che interseca tale
@@ -104,16 +116,16 @@ sulla superficie $S$
 $$
 i_\gamma = \int_\gamma \vec{J_s}\cdot \hat{n} dl
 $$
-\newpage
+
 \subsection{Equazioni di Maxwell in forma locale (nel vuoto)}
 Le equazioni in forma integrale sono potenti nelle analisi di strutture con particolari simmetrie.
 (Ad esempio sferica, cilindrica, piana ecc...)
 
 In condizioni generiche però risolvere equazioni integrali è più complesso che risolvere problemi di 
 valori al contorno per equazioni differenziali a derivate parziali (PDE).
-Si prestano inoltre a risoluzioni numeriche mediante software di calcolo.
+Le ultime si prestano inoltre a risoluzioni numeriche mediante software di calcolo.
 
-È richiesta particolare attenzione quando si parla di formulazione locale quando sono presenti
+È richiesta particolare attenzione se si parla di formulazione locale quando sono presenti
 distribuzioni delle sorgenti singolari, ossia in cui le densità di carica o corrente tendono 
 all'infinito.
 
@@ -122,7 +134,7 @@ Si considera un dominio $\Omega$ generalmente regolare e osservando l'intorno di
 un punto $P$ interno ad $\Omega$ è costruito un volumetto elementare $\Delta\Omega$.
 Sia $\Delta\Sigma = \partial\Delta\Omega$ la frontiera di $\Delta\Omega$.
 
-Consideriamo la \textbf{Legge di Gauss} applicata ad una $\Delta\Sigma$ intorno al punto $P$
+Considerata la \textbf{Legge di Gauss} applicata ad una $\Delta\Sigma$ intorno al punto $P$
 $$
 \oiint_{\Delta\Sigma}\vec{E}\cdot\hat{n}dS = \frac{1}{\varepsilon_0} \iiint_{\Delta\Omega}\rho dV\ 
 \forall\ \Delta\Sigma \text{ intorno a } P
@@ -209,7 +221,7 @@ queste riguardano la componente tangenziale alla superficie.
 \subparagraph{Legge di Faraday-Neumann-Lenz}
 Si considera un punto $P\in\Omega$ e si utilizza una linea chiusa $\Gamma$ intorno al punto $P$.
 
-Supponiamo inoltre che $P$ sia un punto regolare, applicando la legge di Faraday-Neumann:
+Si supponga inoltre che $P$ sia un punto regolare, applicando la legge di Faraday-Neumann:
 $$
 \oint_{\Gamma}\vec{E}\cdot\hat{t}dl = 
 - \iint_{S_\Gamma} \frac{\partial\vec{B}}{\partial t}\cdot\hat{n}dS
@@ -258,7 +270,7 @@ $$
 -\iint_{S_\Gamma} \frac{\partial\vec{B}}{\partial t}\cdot \hat{m}dS \simeq 
 - \frac{\partial\vec{B}}{\partial t} \cdot \hat{m} h L
 $$
-mettendo insieme i termini:
+unendo i termini:
 $$
 \vec{E}_1 \cdot\hat{t}_1 \cancel{L} + \vec{E}_2 \cdot\hat{t}_2 \cancel{L} +
 \frac{1}{L}\int_B^C \vec{E}\cdot\hat{t} dl + \frac{1}{L}\int_D^A\vec{E}\cdot\hat{t}dl
