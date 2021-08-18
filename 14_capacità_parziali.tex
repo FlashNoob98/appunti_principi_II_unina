@@ -3,7 +3,7 @@
 Siano $N$ conduttori carichi $c_1,c_2,\ldots ,c_i$ e le rispettive normali alle superfici
 $\hat{n}_i$, ogni conduttore carico avrà un potenziale $V_i$. Trovare il potenziale $V(P)$ 
 dato dagli stessi e le cariche contenute.
-Supponiamo che $V(P) = V_k$ in $c_k$ e su $\partial c_k$.
+Si suppone che $V(P) = V_k$ in $c_k$ e su $\partial c_k$.
 La carica contenuta dal conduttore $k$, $Q_k$ è data da
 
 $$
@@ -11,7 +11,7 @@ Q_k = \int_{\partial_{C_k}} \varepsilon_0 \vec{E}\cdot\hat{n}_k dS
 $$
 
 Sia $\Omega = \mathbb{R}^3 - c_1 - c_2 - \ldots  - c_k$ la regione esterna che non contiene i
-conduttori, si ha un problema di Dirichelet esterno per l'Equazione di Laplace.
+conduttori, si ha un problema di Dirichlet esterno per l'Equazione di Laplace.
 
 \begin{equation}
 \begin{cases}
@@ -21,7 +21,7 @@ V|_{\partial_{C_k}} = V_k & k=1,\ldots ,N \\
 \end{cases}
 \label{eq:problema_dirichelet}
 \end{equation}
-In queste condizioni sappiamo che la soluzione esiste ed è unica.
+In queste condizioni si dimostra che la soluzione esiste ed è unica.
 La soluzione generale si costruisce con il PSE considerando N BVPs ausiliari:
 $$
 \begin{cases}
@@ -37,7 +37,7 @@ La soluzione generale del problema \ref{eq:problema_dirichelet} sarà:
 & \nabla^2 V = 0 \ \ \text{ in }\Omega
 \end{align*}
 I laplaciani sono tutti pari a 0 quindi anche la loro somma sarà pari a 0.
-Possiamo ora considerare la carica depositata sul conduttore $C_i$:
+Si può ora considerare la carica depositata sul conduttore $C_i$:
 $$
 Q_i = \int_{\partial_{C_i}} \varepsilon_0 \vec{E} \cdot \hat{n}_i dS = \int_{\partial_{C_i}} -\varepsilon_0 \frac{\partial V}{\partial n_i} dS = \left(\int_{\partial_{C_i}} - \varepsilon_0 \frac{\partial V}{\partial n_i}^{(1)} dS\right)V_1 + \ldots  + \left(\int_{\partial_{C_i}} - \varepsilon_0 \frac{\partial V}{\partial n_i}^{(N)} dS\right)V_N
 $$
@@ -113,7 +113,7 @@ $$
 Q_1 = 4 \pi \varepsilon_0 R_1 V_1,\ Q_2 = 4 \pi \varepsilon_0 R_2 V_2
 $$
 
-Supponiamo che $Q_1 = -Q_2$ (fenomeno di induzione completa)
+Supponendo che $Q_1 = -Q_2$ (fenomeno di induzione completa)
 $$
 -Q_1 = 4 \pi \varepsilon_0 R_2 V_2 \Rightarrow V_1 - V_2 = \frac{Q_1}{4 \pi \varepsilon_0}
 \left(\frac{1}{R_1} + \frac{1}{R_2}\right)
@@ -160,7 +160,7 @@ Q_1 &= C_{11} V_1 + C_{12}V_2 = C_{11}V_1 + C_{12}V_2 + C_{12}V_1 - C_{12}V_1 = 
 Q_2 &= C_{21}V_1 + C_22 V_2 = C_{21}^*(V_2-V_1) + C_{22}^*(V_2-\cancel{V_{\infty}})
 \end{aligned}
 $$
-Supponiamo che ci sia induzione completa: $Q_1 = - Q_2$
+Supponendo che ci sia induzione completa: $Q_1 = - Q_2$
 $$\begin{aligned}
 Q_1 &= C_{11}^*V_1 + C_{12}^*(V_1-V_2) \\
 -Q_1 &= C_{21}^*(V_2-V_1) + C_{22}^*V_2
@@ -187,7 +187,7 @@ Per realizzare un condensatore che non sia influenzato dalla presenza di condutt
 si sfrutta la proprietà di schermo elettrostatico, si realizza un'armatura in modo da contenere
 l'altra in modo da mantenere pari a zero una delle due capacità rispetto all'infinito.
 Un modo è quindi quello di chiudere un conduttore $C_1$ all'interno dell'altro $C_2$.
-La capacità parziale del primo conduttore è nulla perchè il campo all'interno del conduttore
+La capacità parziale del primo conduttore è nulla perché il campo all'interno del conduttore
 più grande è nullo, di conseguenza, per la legge di Gauss anche la carica contenuta nel conduttore
 1 sarà pari a 0.
 $$\begin{aligned}
