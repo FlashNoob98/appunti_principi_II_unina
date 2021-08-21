@@ -27,7 +27,7 @@ Si ottengono quindi le capacità parziali:
 \frac{4 \pi \varepsilon_0}{\left(\frac{1}{R_1R_2} - \frac{1}{d^2}\right)}\cdot\frac{1}{d} = \frac{4\pi\varepsilon_0 R_1R_2d}{d^2-R_1R_2}
 \end{align*}
 
-Se supponiamo che ci sia un fenomeno di induzione completa: 
+Se si suppone che ci sia un fenomeno di induzione completa: 
 $$
 Q_2 = -Q_1 \Rightarrow C = C_{12}^* +
 \left(\frac{1}{C_{11}^*} + \frac{1}{C_{22}^*}\right)^{-1}
@@ -47,7 +47,7 @@ I due conduttori possono essere rappresentati mediante due sezioni cilindriche,
 le cariche associate $Q_1$ e $Q_2$ si accumuleranno per unità di lunghezza e 
 saranno quindi misurate in \si{\coulomb\per\meter}.
 Applicando il PSE
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
  \includegraphics[width=0.5\linewidth]{conduttori_bifilari}
 \caption{Sezione conduttori bifilari}
@@ -76,16 +76,16 @@ Questa ipotesi è valida se non si considera l'influenza del suolo, per studiare
 presenza si usa invece il \textit{metodo delle immagini}.
 
 \subsection{Metodo delle immagini}
-È un metodo basato sull'unicità delle soluzioni per problemi di Dirichelet per le equazioni di
+È un metodo basato sull'unicità delle soluzioni per problemi di Dirichlet per le equazioni di
 Poisson o Laplace (se il termine noto è nullo). Se si è in grado di determinare una funzione
 armonica che soddisfa le soluzioni del problema, anche se questa non coincide con la reale 
 configurazione delle cariche, questa sarà anche soluzione del problema con le condizioni al contorno
 in esame in virtù del principio di unicità.
 
-Supponiamo la presenza di una carica puntiforme di valore $q$ in $P'$ ad una certa quota $z$
+Si suppone la presenza di una carica puntiforme di valore $q$ in $P'$ ad una certa quota $z$
 e si suppone di avere un piano indefinito a potenziale 0.
-Andrebbe in teoria risolto un problema di Dirichelet per l'equazione di Laplace nello spazio
-$z>0$ e opportuna condizione al contorno.
+Andrebbe in teoria risolto un problema di Dirichlet per l'equazione di Laplace nello spazio
+$z>0$ e una opportuna condizione al contorno.
 $$
 \begin{cases}
 \nabla^2 V = 0\\
@@ -101,7 +101,7 @@ $$
 Data la simmetria tra le due cariche rispetto al piano di
 terra, lo saranno anche le linee di campo e le superfici equipotenziali, in particolare
 lo stesso piano di terra sarà una superficie equipotenziale.
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
  \includegraphics[width=0.5\linewidth]{metodo_immagini}
 \caption{Metodo delle immagini}
@@ -113,7 +113,7 @@ quindi soluzione del problema iniziale senza carica immagine.
 \subparagraph{Linea bifilare in prossimità del terreno}
 Utilizzando ancora il metodo delle immagini si può calcolare il campo generato da una linea
 bifilare in prossimità del suolo.
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
  \includegraphics[width=0.5\linewidth]{linea_bifilare_terreno}
 \caption{Metodo delle immagini su una linea bifilare}
@@ -183,7 +183,7 @@ i_1 = G v_2\\
 i_2 = -G v_1
 \end{cases}
 $$
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.3\linewidth]{giratore}
 \caption{Giratore}
@@ -200,7 +200,7 @@ i_2 &= -C \frac{dv_2}{dt}\\
 v_1 &= \frac{C}{G^2}\frac{d}{dt}i_1 = L_{eq} \frac{d}{dt}i_1
 \end{aligned}
 $$
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.3\linewidth]{giratore_con_condensatore}
 \caption{Giratore con condensatore}
@@ -231,7 +231,7 @@ dipendono dal \textit{momento di dipolo}.
 $$
 \vec{p} = qd \frac{(\vec{r}_{p'}-\vec{r}_{p''})}{|\vec{r}_{p'}-\vec{r}_{p''}|}
 $$
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.2\linewidth]{dipolo_elettrico}
 \caption{Dipolo elettrico}
@@ -271,19 +271,19 @@ Si osserva quindi che la funzione potenziale decresce come $\frac{1}{r_p^2}$ men
 campo decresce come $\frac{1}{r_p^3}$
 
 \subparagraph{Dipolo in un campo elettrico esterno}
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.2\linewidth]{dipolo_nel_campo}
 \caption{Dipolo immerso in un campo elettrico $\vec{E}$}
 \end{figure}
-Supponiamo di avere un dipolo di momento $\vec{p}$ e applichiamo un campo esterno $\vec{E}$,
+Si suppone di avere un dipolo di momento $\vec{p}$ e si applica un campo esterno $\vec{E}$,
 questo eserciterà una forza sulla carica $q$ ed una opposta sulla carica $-q$, la risultante delle 
 due forze sarà nulla ma producono una coppia sul bipolo esprimibile come
 $$
 \left(\vec{r}_{p'} - \vec{r}_{p''}\right)\times q\vec{E} = \vec{p}\times\vec{E}
 $$
 La coppia tende a far ruotare il bipolo elettrico e l'interazione ammette due condizioni di 
-equilibrio determinate da $\vec{p}\times\vec{E} = 0 $
+equilibrio determinate da $\vec{p}\times\vec{E} = 0 $.
 
 Stabile se il dipolo è allineato con il campo, instabile se è allineato ma in verso opposto,
 una piccola perturbazione lo farebbe ruotare di 180\textdegree
@@ -298,14 +298,14 @@ Oppure per \textit{orientamento} che riguarda le sostanze polari che a temperatu
 presentano un momento di dipolo medio nullo, pur essendo le singole molecole (o atomi) polari.
 L'agitazione termica determina l'orientamento casuale dei dipoli elementari.
 
-\begin{figure}[h!]
+\begin{figure}[H]
  \centering
  \includegraphics[width=0.4\linewidth]{polarizzazione_deformazione}
  \caption{Polarizzazione per deformazione}
 \end{figure}
 
 
-\begin{figure}[h!]
+\begin{figure}[H]
  \begin{subfigure}{.5\textwidth}
  \centering
  \includegraphics[width=0.45\linewidth]{sost_apolare_a_media_nulla}
