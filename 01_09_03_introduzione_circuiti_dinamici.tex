@@ -1,12 +1,12 @@
 \section{Introduzione ai circuiti dinamici}
 Tutti i circuiti che contengono componenti come
-resistori, induttori e condensatori, generatori indipendenti di tensione e corrente ai quali associamo 
+resistori, induttori e condensatori, generatori indipendenti di tensione e corrente ai quali si associa 
 una tensione impressa o una corrente impressa vengono detti circuiti lineari tempo invarianti (LTI).
 
 Se vi sono anche bipoli tempo-varianti come interruttori che si chiudono o si aprono, il circuito
 si definisce lineare tempo variante (LTV).
 
-Preso un generico circuito, vogliamo determinare una tensione o un'intensità di corrente di un generico
+Preso un generico circuito, si vuole determinare una tensione o un'intensità di corrente di un generico
 bipolo.
 
 \textbf{Strumenti a disposizione:}
@@ -43,7 +43,7 @@ costruire un set di equazioni indipendenti scegliendo \textit{n-1} nodi o \texti
 dove n ed l sono rispettivamente il numero di nodi e lati del grafo connesso.
 
 NOTA: per ogni induttore la potenza assorbita:
-$$ P^a(t) = v_l\cdot i_l = L \frac{di_L}{dt}\cdot i_l = \frac{d}{dt} [\frac{1}{2}Li_L^2] = \frac{dW_m}{dt} $$ 
+$$ P^a(t) = v_l\cdot i_l = L \frac{di_L}{dt}\cdot i_l = \frac{d}{dt} \left[\frac{1}{2}Li_L^2\right] = \frac{dW_m}{dt} $$ 
 L' energia immagazzinata nel campo magnetico dell'induttore invece:
 $$\Delta W^a(t_1,t_2) = \int_{t_1}^{t_2} P^a(\tau)d\tau = W_m (t_2) - W_m(t_1) $$
 Se in un certo istante di tempo l'induttore presenta una certa quantità di energia in Joule [\si{\joule}] quella sarà la massima energia estraibile.
@@ -114,8 +114,8 @@ quali esiste un circuito tempo invariante (LTI) equivalente a quello di partenza
  \end{subfigure}
 \end{figure}
 
-Supponiamo che i generatori indipendenti abbiano grandezze \textbf{limitate}, ossia le tensioni impresse $e(t)$ e le correnti impresse $j(t)$,
-in questa ipotesi sappiamo che le variabili di stato sono funzioni \textbf{continue} ossia:
+Supponendo che i generatori indipendenti abbiano grandezze \textbf{limitate}, ossia le tensioni impresse $e(t)$ e le correnti impresse $j(t)$,
+in questa ipotesi si sa che le variabili di stato sono funzioni \textbf{continue} ossia:
 \begin{equation*}
 \begin{split}
 i_L (0^+) & = i_L(0^-) \\
@@ -171,7 +171,7 @@ con $\tau = \frac{L}{R_{th}},\ I_0 = I_L (t=0)$
 
 Osservazione: la soluzione generale del circuito RC, ossia la dinamica di $V_c(t)$ può essere espressa 
 come la somma di due termini $V_{C_{tr}}(t)$ e $V_{C_p}(t)$, il primo transitorio, che tende a svanire se 
-attendiamo un tempo sufficiente lungo, porta con se la \textit{memoria} dello stato iniziale, memoria che 
+si attende un tempo sufficiente lungo, porta con se la \textit{memoria} dello stato iniziale, memoria che 
 viene
 persa quando $t>4\sim5\ \tau$, ammesso che $\tau$ sia positiva; esistono infatti alcune combinazioni di 
 elementi circuitali che si comportano come un resistore negativo.
@@ -213,7 +213,7 @@ Divisi in (RC, RL, RLC), la procedura generale di risoluzione richiede tre step:
 \end{enumerate}
 
 Esempio:
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \begin{circuitikz}
  \draw (0,2) to [V,l_=$E$] (0,0);
@@ -234,11 +234,11 @@ Equazioni di interconnessione:
 LKC nel nodo evidenziato in rosso (tra i due resistori)
 \begin{equation*}
 \begin{cases}
-I_1 &= I_C+I_L \ \text{LKC}\\
-E &= R_1\cdot I_1 + V_C\ \text{LKT} \\
-V_C &= R_2 \cdot I_L + V_L \\
-V_L &= L\frac{dI_L}{dt} \\
-I_C &= C\frac{dV_C}{dt}
+I_1 &= I_C+i_L \ \qquad \text{LKC}\\
+E &= R_1\cdot I_1 + v_C\ \qquad \text{LKT} \\
+v_C &= R_2 \cdot i_L + V_L\ \qquad \text{LKT} \\
+V_L &= L\frac{di_L}{dt} \\
+I_C &= C\frac{dv_C}{dt}
 \end{cases}
 \end{equation*}
 Si ricava $I_1$ dalla seconda e si sostituisce nella prima,
