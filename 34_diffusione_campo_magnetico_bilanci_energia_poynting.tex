@@ -226,9 +226,62 @@ A seconda della tipologia di sistema e della variazione più importante di energ
 \item MQS $\frac{\partial \vec{D}}{\partial t}$ trascurabile
 \item Condizioni stazionarie $\frac{\partial \vec{B}}{\partial t},\ \frac{\partial \vec{D}}{\partial t}$ trascurabili
 \end{itemize}
-Nel terzo caso, preso un bipolo generico associato ad una corrente $i$ ed una tensione $v$, il flusso
+Nel terzo caso, in condizioni stazionarie, preso un bipolo generico associato ad una corrente $i$ ed una tensione $v$, il flusso
 del vettore di Poynting
 $$
 -\iint_{\partial\Omega} \vec{S}\cdot\hat{n}dS = v\cdot i = P_\text{in}
 $$
-%1:24:42
+nel caso stazionario dunque si possono sempre applicare i modelli circuitali, si trascura la propagazione 
+elettromagnetica.
+Si vuole eseguire il bilancio energetico dei sistemi conservativi utilizzando il teorema di Poynting,
+si suppone che $\vec{E},\ \vec{P}$ ed $\vec{H},\ \vec{M}$ siano allineati, si considerano dunque i termini
+$$
+\vec{E}\cdot\frac{\partial \vec{P}}{\partial t}\qquad \text{ e }\qquad \vec{H}\cdot\left(\mu_0\frac{\partial \vec{M}}{\partial t}\right)
+$$
+Considerando dunque il caso scalare come appena supposto, i componenti dei campi saranno tutti allineati, 
+di conseguenza i vettori dei campi diventano scalari. Supponendo che $w_e(D)$ sia funzione di $D$ allora
+$$
+E\frac{\partial D}{\partial t} = \frac{d}{dt}w_e = \frac{\partial w_e}{\partial D}\cdot \frac{\partial D}{\partial t}
+$$
+dunque $E = \frac{\partial w_e}{\partial D} $, integrando
+$$
+w_e(D) = \int_{-\infty}^{t} E\frac{\partial D}{\partial t} dt = \int_0^D E\ \delta D
+$$
+con $\delta D$ il differenziale nello spazio di stato $(E,D)$, la funzione energia immagazzinata nel campo elettrico
+dipende dunque solo dallo stato del sistema, della differenza tra i punti di integrazione.
+
+Analogamente per l'energia magnetica
+$$
+w_m(B) = \int_0^B H\ \delta B
+$$
+nello spazio di stato $(H,B)$.
+
+\subparagraph{Esempio EQS} Si considera un sistema che si comporta come un condensatore, un oggetto
+con due armature, si suppone che la regione compresa sia riempita con un dielettrico mentre le armature
+sono conduttori perfetti. Si definiscono una tensione e una corrente per il sistema che viene chiuso nel volume di controllo $\Omega$, si scrive il bilancio energetico
+$$
+-\iint_{\partial\Omega} \vec{E}\times\vec{H}\cdot\hat{n}dS = v\cdot i = \frac{d}{dt}w_e
+$$
+Si applica il principio di sovrapposizione della carica alla superficie $\Sigma_1$ che circonda un'armatura
+$$
+-i = -\frac{dQ_{\Omega_{\Sigma_1}}}{dt} \Rightarrow i = \frac{dQ}{dt}
+$$
+sostituendo nella precedentemente
+$$
+v\frac{dQ}{dt} = \frac{dw_e}{dt}
+$$
+riportando l'equazione in forma differenziale
+$$
+v\delta Q = dw_e
+$$
+integrando
+$$
+w_e(Q) = \int_0^Q v(Q')\delta Q'
+$$
+analogamente si può affermare che 
+$$
+v = \frac{\partial w_e}{\partial Q}
+$$
+Se si riesce a ricavare in un sistema l'energia immagazzinata in termini di variabili integrali, si possono immediatamente
+calcolare le altre variabili, utilizzando le relazioni di Maxwell.
+
