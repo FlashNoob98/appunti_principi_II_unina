@@ -141,4 +141,94 @@ $$
 Anche in questo caso dipende dal quadrato della frequenza e di una grandezza caratteristica del materiale.
 \newpage
 \subsection{Bilanci di energia per un sistema elettromagnetico}
-%55:35
+Si consideri un circuito RLC
+\begin{figure}[H]
+\centering
+\begin{circuitikz}
+\draw (0,2) to [R,i>^=$i(t)$,l_=$R$] (2,2) to [L,l_=$L$] (4,2) to [C,v^=$v_c(t)$,l_=$C$] (4,0) to (0,0);
+\draw (0,2) to [open,v=$v(t)$] (0,0);
+\end{circuitikz}
+\end{figure}
+La potenza assorbita dal circuito nell'istante $t$
+$$
+P^{(a)}_{RLC}(t) = v(t)i(t) = Ri^2 + \frac{d}{dt}\left(\frac{1}{2}Li^2 + \frac{1}{2}Cv_C^2\right)
+$$
+complessivamente
+$$
+-P_{\text{out}} = P_\text{in} = P_\text{diss} + \frac{d}{dt} W
+$$
+Lo stesso bilancio può essere scritto per una teoria di campo, considerata la normale uscente dalla
+superficie di controllo
+$$
+P_\text{in} = -\iint_{\partial\Omega} \vec{S}\cdot\hat{n}dS = \iiint_\Omega P_\text{diss}(p')dV + \frac{d}{dt}\iiint_\Omega w(p')dV
+$$
+dove $\vec{S}$ è il flusso di potenza uscente per unità di superficie, $P_\text{diss}$ è la densità di potenza 
+dissipata per unità di volume, e $w$ è la densità di energia interna per unità di volume.
+Questa tipologia di bilancio vale per qualsiasi sistema.
+
+In forma locale
+$$
+-\iiint_\Omega \nabla\cdot\vec{S}dV = \iiint_\Omega P_\text{diss}dV + \frac{d}{dt} \iiint_\Omega wdV
+$$
+Preso un volumetto di controllo $\Delta\Omega$ al quale si applica questo bilancio e si esegue il limite
+$\text{Vol}(\Delta\Omega)\to 0 $ intorno a $p'$
+$$
+-\nabla\cdot\vec{S} = P_\text{diss} + \frac{\partial w}{\partial t}
+$$
+$$
+[S] = \si{\watt\per\meter^2}\quad [P_\text{diss}] = \si{\watt\per\meter^3}\quad [w] = \si{\joule\per\meter^3}
+$$
+\newpage
+\paragraph{Bilancio energia in Elettromagnetismo}
+Si suppone che il volume $\Omega$ sia sede di campi elettromagnetici retti dalle equazioni di Maxwell complete
+$$
+\nabla\cdot\vec{B} = 0\quad \nabla\cdot\vec{D} = \rho_\text{lib}\quad \nabla\times\vec{E} = -\frac{\partial\vec{B}}{\partial t}\quad \nabla\times\vec{H} = \vec{J}_\text{lib} + \frac{\partial\vec{D}}{\partial t}
+$$
+$$
+\vec{B} = \mu_0\left(\vec{H}+\vec{M}\right)\quad \vec{D} = \varepsilon_0\vec{E} + \vec{P}
+$$
+Si moltiplica la terza per $\vec{H}$ e la quarta per $\vec{E}$
+$$
+\vec{H}\cdot\nabla\times\vec{E} = -\vec{H}\cdot\frac{\partial\vec{B}}{\partial t} \qquad \vec{E}\cdot\nabla\times\vec{H} = \vec{E}\cdot\vec{J}_\text{lib} + \vec{E}\cdot\frac{\partial\vec{D}}{\partial t}
+$$
+Si sottrae la prima alla seconda
+$$
+\vec{E}\cdot\nabla\times\vec{H} - \vec{H}\cdot\nabla\times\vec{E} = -\nabla\cdot\left(\vec{E}\times\vec{H}\right)=
+\vec{E}\cdot\vec{J}_\text{lib} + \vec{E}\cdot\frac{\partial\vec{D}}{\partial t} + \vec{H}\cdot\frac{\partial\vec{B}}{\partial t}
+$$
+Rinominando $\vec{E}\times\vec{H} = \vec{S}$ chiamato \href{https://it.wikipedia.org/wiki/Teorema_di_Poynting}{vettore di Poynting} si ottiene proprio il bilancio di energia
+in forma locale precedentemente ricavato. Sostituendo le definizioni di $\vec{B}$ e $\vec{D}$ si ottiene
+$$
+-\nabla\cdot\vec{S} = \vec{E}\cdot\vec{J}_\text{lib} + \frac{\partial}{\partial t}\left(\frac{1}{2}\varepsilon_0E^2 + \frac{1}{2}\mu_0H^2\right) + \vec{E}\cdot\frac{\partial\vec{P}}{\partial t} + \vec{H}\cdot\frac{\partial}{\partial t} \left(\mu_0 \vec{M}\right)
+$$
+In forma integrale
+$$\begin{aligned}
+-\iint_{\partial\Omega}\vec{S}\cdot\hat{n}dS &= \iiint_\Omega\vec{E}\cdot \vec{J}_\text{lib}dV + \frac{d}{dt}\iiint_\Omega \frac{1}{2}\varepsilon_0E^2dV + \frac{d}{dt}\iiint_\Omega \frac{1}{2}\mu_0H^2dV +\\ 
+&+ \iiint_\Omega\vec{E}\cdot\frac{\partial \vec{P}}{\partial t} + \vec{H}\cdot\left(\mu_0\frac{\partial\vec{M}}{\partial t}\right)dV
+\end{aligned}
+$$
+Se le sorgenti sono tutte prossime all'origine e si considera una sfera $\Omega$ di raggio $r\to\infty$ i campi
+sono tutti normali all'infinito, in particolare $\vec{E}$ va come $1/r^2$ e $\vec{H}$ va come
+$1/r^3$ quindi il prodotto $\vec{E}\times\vec{H}$ va come $1/r^5$ moltiplicato per una superficie
+diventa $1/r^3$. L'energia elettromagnetica è dunque concentrata attorno le sorgenti se i campi sono
+quasi-stazionari.
+
+L'unico modo di avere potenza irradiata a grande distanza è avere $\vec{E}$ e $\vec{H}$ che scalino come $1/r$,
+il vettore di Poynting andrà come $1/r^2$, ottenendo una potenza irradiata costante sulla superficie, ciò
+avviene con la propagazione elettromagnetica, in condizioni non stazionarie.
+
+\newpage
+\paragraph{Sistemi conservativi} $P_\text{diss} = 0$ la potenza in ingresso sarà concentrata in variazione di
+energia interna.
+A seconda della tipologia di sistema e della variazione più importante di energia si ha la condizione 
+\begin{itemize}
+\item EQS $\frac{\partial \vec{B}}{\partial t}$ trascurabile
+\item MQS $\frac{\partial \vec{D}}{\partial t}$ trascurabile
+\item Condizioni stazionarie $\frac{\partial \vec{B}}{\partial t},\ \frac{\partial \vec{D}}{\partial t}$ trascurabili
+\end{itemize}
+Nel terzo caso, preso un bipolo generico associato ad una corrente $i$ ed una tensione $v$, il flusso
+del vettore di Poynting
+$$
+-\iint_{\partial\Omega} \vec{S}\cdot\hat{n}dS = v\cdot i = P_\text{in}
+$$
+%1:24:42
