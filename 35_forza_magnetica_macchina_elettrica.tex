@@ -288,5 +288,79 @@ un altro avvolgimento.
 
 Si suppone che nella condizione iniziale l'avvolgimento del rotore sia ruotato di un certo angolo
 $\theta$ rispetto allo statore; il cilindro del rotore ha un raggio $b$ mentre il raggio interno dello 
-statore è invece $b$.
-%1:31:57
+statore è invece $a$.
+
+Se
+$$
+fd\xi \rightarrow f = \frac{\partial w_m'}{\partial\xi}
+$$
+allora
+$$
+\tau d\theta \rightarrow \tau= \frac{\partial w_m'}{\partial \theta}
+$$
+ricordando che 
+$$
+dw_m' = \Phi_1di_1 + \Phi_2di_2 + fd\xi
+$$
+si può ricavare analogamente la formula per lo spostamento angolare
+$$
+dw_m' = \Phi_1di_1 + \Phi_2di_2 + fd\theta
+$$
+integrando
+$$
+w_m'(i_1,i_2,\theta) = \frac{1}{2}L_1i_1^2 +  \frac{1}{2}L_2i_2^2 + M(\theta)i_1i_2
+$$
+i coefficienti $L_1$ ed $L_2$ non dipendono da $\theta$ essendo di auto-induzione
+$$
+\tau = \frac{\partial w_m'}{\partial \theta} = i_1i_2\frac{\partial M}{\partial \theta}
+$$
+supponendo che 
+$$
+M(\theta) = M^*\cos\theta
+$$
+ossia che l'accoppiamento sia massimo quando gli avvolgimenti sono allineati, mentre $M^*$ si potrebbe
+calcolare misurando il campo $B$ al traferro pressoché radiale.
+
+$\tau$ dipende anche da $i_1(t)$ e $i_2(t)$ quindi con la stessa macchina è possibile realizzare
+sia un motore che un generatore, a seconda del segno della coppia.
+
+\subparagraph{Macchina sincrona} Utilizzata per realizzare motori sincroni o alternatori, si
+suppone la corrente $i_1$ di statore sinusoidale mentre la corrente $i_2$ nel rotore costante.
+Supponendo che la velocità angolare $\omega$ del rotore sia costante, l'angolo $\theta$ sarà
+$$
+\omega t - \alpha
+$$
+dunque la coppia istantanea 
+$$
+\tau = i_1(t)i_2(t) \frac{\partial M}{\partial \theta} = -I_1\cos\left(\omega t\right) I_2 M^* \sin\left(\Omega t - \alpha\right)
+$$
+con la \href{https://it.wikipedia.org/wiki/Formule_di_Werner}{formula di Werner}
+$$
+\cos\left(x\right)\sin\left(y\right) = \frac{1}{2}\left( \sin\left(x+y\right) + \sin\left(x-y\right) \right)
+$$
+la $\tau$ diventa
+$$
+\tau = -\frac{I_1I_2}{2}M^*\left[\sin\left(\left(\omega+\Omega\right)t - \alpha\right) +
+\sin\left(\left(\Omega-\omega\right)t-\alpha\right)\right]
+$$
+il valor medio
+$$
+\frac{1}{T}\int_0^T \tau dt' = <\tau>_T \neq 0 \text{ se e solo se } \Omega = \omega
+$$
+ossia la pulsazione della corrente di alimentazione dello statore deve essere identica alla velocità angolare
+del rotore. In quest'ipotesi
+$$
+<\tau>_T = \frac{I_1I_2}{2}M^*\sin\alpha \
+\begin{aligned}
+&\diagup > 0 \text{ se } \alpha \ \in\ (0,\pi) \text{ motore} \\
+&\diagdown < 0 \text{ se } \alpha \ \in\ (\pi,2\pi) \text{ generatore}
+\end{aligned}
+$$
+Si rappresenta in figura il momento magnetico dello statore, che ruota attorno all'asse al variare
+della corrente per il teorema di \href{https://it.wikipedia.org/wiki/Campo_magnetico_alternato_e_rotante}{Galileo Ferraris}. Anche il momento magnetico del rotore ruota, nonostante la corrente sia costante a causa della
+rotazione meccanica del rotore.
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.4\linewidth]{assi_magnetici}
+\end{figure}
+L'angolo $\alpha$ è dunque l'angolo di ritardo tra i due assi magnetici.
