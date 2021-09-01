@@ -1,5 +1,10 @@
 %\documentclass[a4paper,11pt]{article}
-\documentclass[a4paper,11pt]{scrartcl}
+\documentclass[a4paper,11pt,twoside]{scrartcl}
+%Elimina l'opzione twoside e commenta le successive quattro righe per rimuovere la rilegatura
+\let\tmp\oddsidemargin
+\let\oddsidemargin\evensidemargin
+\let\evensidemargin\tmp
+\reversemarginpar
 
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
@@ -58,6 +63,7 @@ Ti piacciono i miei appunti? Saranno sempre liberi e gratuiti ma puoi sostenermi
 
 Puoi invece accedere al codice sorgente seguendo questo \href{https://github.com/FlashNoob98/appunti_principi_II_unina}{link}.
 \setcounter{tocdepth}{2}
+\newpage
 \tableofcontents
 \setlength\arrayrulewidth{1.2pt} %larghezza righe tabelle
 \include{01_09_03_introduzione_circuiti_dinamici}
